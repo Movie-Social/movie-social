@@ -1,3 +1,5 @@
+import Input from "@/components/Input";
+
 const Auth = () => {
   return (
     <main className="relative h-full w-full bg-[url('/images/socialHero.png')] bg-no-repeat bg-center bg-fixed bg-cover">
@@ -8,6 +10,9 @@ const Auth = () => {
         <div className="flex justify-center">
           <div className="bg-black bg-opacity-70 px-16 py-16 self-center mt-2 w-3/5 max-w-md rounded-md w-full">
             <h2 className="text-white text-3xl mb-8 font-semibold">Sign In</h2>
+            <section className="flex flex-col gap-4">
+              <Input />
+            </section>
           </div>
         </div>
       </section>
