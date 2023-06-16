@@ -1,7 +1,8 @@
-export default function Home() {
+const Home = () => {
   return (
-    <>
-      <h1>Movie Social</h1>
-    </>
+    <section>
+      <h1 className="text-2xl text-yellow-500">Movie Social</h1>
+    </section>
   );
-}
+};
+export default Home;
