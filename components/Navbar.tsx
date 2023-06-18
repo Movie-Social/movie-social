@@ -4,12 +4,18 @@ import NavbarItem from "./NavbarItem";
 import { BsChevronDown } from "react-icons/bs";
 import { BsSearch } from "react-icons/bs";
 import { BsBell } from "react-icons/bs";
+import AccountMenu from "./AccountMenu";
 
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [showAccountMenu, setShowAccountMenu] = useState(false);
 
   const toggleMobileMenu = () => {
     setShowMobileMenu((current) => !current);
+  };
+
+  const toggleAccountMenu = () => {
+    setShowAccountMenu((current) => !current);
   };
 
   return (
@@ -33,7 +39,11 @@ const Navbar = () => {
           className="lg:hidden flex flex-row items-center gap-2 ml-8 cursor-pointer relative"
         >
           <p className="text-white text-sm">Browse</p>
-          <BsChevronDown className="text-white transition" />
+          <BsChevronDown
+            className={`text-white transition ${
+              showMobileMenu ? "rotate-180" : "rotate-0"
+            }`}
+          />
           <MobileMenu visible={showMobileMenu} />
         </section>
         <section className="flex flex-row ml-auto gap-7 items-center">
@@ -43,12 +53,19 @@ const Navbar = () => {
           <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
             <BsBell />
           </div>
-          <div className="flex flex-row items-center gap-2 cursor-pointer relative">
+          <div
+            onClick={toggleAccountMenu}
+            className="flex flex-row items-center gap-2 cursor-pointer relative"
+          >
             <div className="w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden">
-              <img src="/images/socialUSer.png" alt="Default user logo" />
+              <img src="/images/socialUser.png" alt="Default user logo" />
             </div>
-            <BsChevronDown className="text-white transition" />
-            {/* <AccountMenu /> */}
+            <BsChevronDown
+              className={`text-white transition ${
+                showAccountMenu ? "rotate-180" : "rotate-0"
+              }`}
+            />
+            <AccountMenu visible={showAccountMenu} />
           </div>
         </section>
       </main>
