@@ -1,9 +1,12 @@
 import Input from "@/components/Input";
 import { useState } from "react";
+import axios from "axios";
+import { useCallback } from "react";
+import { signIn } from "next-auth/react";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [variant, setVariant] = useState("login");
   const toggleVariant = () => {
@@ -11,6 +14,31 @@ const Auth = () => {
       currentVariant === "login" ? "register" : "login"
     );
   };
+
+  const register = useCallback(async () => {
+    try {
+      await axios.post("/api/register", {
+        email,
+        name,
+        password,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, [email, name, password]);
+
+  const login = useCallback(async () => {
+    try {
+      await signIn("credentials", {
+        email,
+        password,
+        redirect: true,
+        callbackUrl: "/",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, [email, password]);
 
   return (
     <main className="relative h-full w-full bg-[url('/images/socialHero.png')] bg-no-repeat bg-center bg-fixed bg-cover">
@@ -27,9 +55,9 @@ const Auth = () => {
               {variant === "register" && (
                 <Input
                   label="Username"
-                  onChange={(e: any) => setUsername(e.target.value)}
-                  id="username"
-                  value={username}
+                  onChange={(e: any) => setName(e.target.value)}
+                  id="name"
+                  value={name}
                 />
               )}
               <Input
@@ -48,6 +76,7 @@ const Auth = () => {
               />
             </section>
             <button
+              onClick={variant === "login" ? login : register}
               className="
             bg-yellow-600
             py-3
