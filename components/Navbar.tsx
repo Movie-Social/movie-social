@@ -1,3 +1,6 @@
+import NavbarItem from "./NavbarItem";
+import { BsChevronDown } from "react-icons/bs";
+
 const Navbar = () => {
   return (
     <nav className="w-full fixed z-40">
@@ -8,7 +11,17 @@ const Navbar = () => {
           alt="Movie Social Logo"
         />
         <section className="flex-row ml-8 gap-7 hidden lg:flex">
-          {/* <NavbarItem /> */}
+          <NavbarItem label="Home" />
+          <NavbarItem label="Reviews" />
+          <NavbarItem label="Favorites" />
+          <NavbarItem label="Watchlist" />
+          <NavbarItem label="Friends" />
+          <NavbarItem label="Clubs" />
+        </section>
+        <section className="lg:hidden flex flex-row items-center gap-2 ml-8 cursor-pointer relative">
+          <p className="text-white text-sm">Browse</p>
+          <BsChevronDown className="text-white transition" />
+          {/* <MobileMenu /> */}
         </section>
       </main>
     </nav>
