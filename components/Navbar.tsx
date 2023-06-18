@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MobileMenu from "./MobileMenu";
 import NavbarItem from "./NavbarItem";
 import { BsChevronDown } from "react-icons/bs";
@@ -6,10 +6,29 @@ import { BsSearch } from "react-icons/bs";
 import { BsBell } from "react-icons/bs";
 import AccountMenu from "./AccountMenu";
 
+const TOP_OFFSET = 66;
+
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showAccountMenu, setShowAccountMenu] = useState(false);
+  const [showBackground, setShowBackground] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= TOP_OFFSET) {
+        setShowBackground(true);
+      } else {
+        setShowBackground(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    //useEffect unmount function
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   const toggleMobileMenu = () => {
     setShowMobileMenu((current) => !current);
   };
@@ -20,7 +39,11 @@ const Navbar = () => {
 
   return (
     <nav className="w-full fixed z-40">
-      <main className="px-4 md:px-16 py-6 flex flex-row items-center transition duration-500 bg-zinc-900 bg-opacity-90">
+      <main
+        className={`px-4 md:px-16 py-6 flex flex-row items-center transition duration-500 
+      ${showBackground ? "bg-zinc-900 bg-opacity-90" : ""}
+      `}
+      >
         <img
           className="h-9 lg:h-20"
           src="/images/socialLogo.png"
