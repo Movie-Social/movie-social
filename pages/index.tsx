@@ -1,3 +1,4 @@
+import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { NextPageContext } from "next";
@@ -24,6 +25,7 @@ const Home = () => {
   return (
     <main>
       <Navbar />
+      <Hero />
     </main>
   );
 };
