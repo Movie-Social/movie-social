@@ -3,6 +3,8 @@ import { BsArrowLeft } from "react-icons/bs";
 import { BsArrowRight } from "react-icons/bs";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
+//* Without this line of code I will have a hydration error. Why?
+import dynamic from "next/dynamic";
 
 interface ShuffleArgs {
   image: string;
@@ -153,18 +155,6 @@ const Hero = () => {
     },
   ];
 
-  //styles @11:50
-  //   prevArrow: (
-  //     <div className="ml-10 top-40 md:top-72">
-  //       <BsArrowLeft className="h-8 w-8 text-white cursor-pointer" />
-  //     </div>
-  //   ),
-  //   nextArrow: (
-  //     <div className="ml-10 top-40 md:top-72">
-  //       <BsArrowRight className="h-8 w-8 text-white cursor-pointer" />
-  //     </div>
-  //   ),
-  // };
   const shuffle = (array: ShuffleArgs[]) => {
     let currentIndex = array.length,
       randomIndex;
@@ -203,5 +193,5 @@ const Hero = () => {
     </main>
   );
 };
-
-export default Hero;
+//* Without this line of code I will have a hydration error. Why?
+export default dynamic(() => Promise.resolve(Hero), { ssr: false });
