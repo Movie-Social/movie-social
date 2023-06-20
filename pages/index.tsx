@@ -31,7 +31,10 @@ const Home = () => {
       <Navbar />
       <Hero />
       <section className="pb-40">
-        <MovieList title="Trending Now" data={movies} />
+        <MovieList title="Comedy" data={movies} />
+        <MovieList title="Romance" data={movies} />
+        <MovieList title="Action" data={movies} />
+        <MovieList title="Horror" data={movies} />
       </section>
     </main>
   );
