@@ -1,8 +1,8 @@
 //Route for adding and deleting movies to a favorites list
 import { NextApiRequest, NextApiResponse } from "next";
 import prismadb from "@/lib/prismadb";
-import { without } from "lodash";
 import serverAuth from "@/lib/serverAuth";
+import { without } from "lodash";
 
 export default async function handler(
   req: NextApiRequest,
@@ -50,7 +50,7 @@ export default async function handler(
       });
 
       if (!existingMovie) {
-        throw new Error("Invalid IS");
+        throw new Error("Invalid ID");
       }
 
       const updatedFavoriteIds = without(currentUser.favoriteIds, movieId);
@@ -67,8 +67,8 @@ export default async function handler(
       return res.status(200).json(updatedUser);
     }
     return res.status(405).end();
-  } catch (error) {
-    console.log(error);
+  } catch (error: any) {
+    console.log("ERROR", error.message);
     return res.status(400).end();
   }
 }
