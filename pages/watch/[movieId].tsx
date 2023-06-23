@@ -44,7 +44,8 @@ const Watch = () => {
         autoPlay
         controls
         className="h-full w-full"
-        src={data?.videoUrl}
+        // src={data?.videoUrl}
+        src="https://imdb-video.media-imdb.com/vi1016775449/1434659607842-pgv4ql-1633897968257.mp4?Expires=1687646991&Signature=kOcRC99rU-bbezrlGOjEbFMyfpHn-OBVwJymB6mCKpDoOCDLMo8L0A7XWeumuOoWx2CbjgkobjFUGN5ezMzAp2ec0OpsDnPvRugC~wDucqHjAUuRflDDY-PFKVGdmrAL3j55LI4avg294H9kDxKRQ8P6Ko0r-iqVz27bKujvZ2sIR757Ckemr~o33fvL3MN~-EL2hL4sk0R8N21DhxTWA~rQYdygaYMD6J4rYaI2L12VZ3EALqxr7QVQW-2TAfhNId2Si0kuNdUOgS7ArOEr7tUXuAvEyzRkA6G6XS3USXzofM6wWtrOxEdGn2aA5k-u~JB5pVLXyIZP7pM-BQ6G6g__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA"
       ></video>
     </main>
   );
