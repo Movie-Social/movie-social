@@ -5,6 +5,7 @@ import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 //* Without this line of code I will have a hydration error. Why?
 import dynamic from "next/dynamic";
+import PlayButton from "./PlayButton";
 
 interface ShuffleArgs {
   image: string;
@@ -187,6 +188,7 @@ const Hero = () => {
             <h2 className="absolute bottom-1 inset-x-1/4 text-center z-10 md:text-5xl text-2xl bold text-white">
               {slideImage.caption.split("Scene from the movie ")[1]}
             </h2>
+            {/* <PlayButton movieId="hardcoded" /> */}
           </div>
         ))}
       </Slide>
