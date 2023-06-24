@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import InfoModal from "@/components/InfoModal";
 import MovieList from "@/components/MovieList";
 import Navbar from "@/components/Navbar";
 import useCurrentUser from "@/hooks/useCurrentUser";
@@ -30,6 +31,7 @@ const Home = () => {
 
   return (
     <main>
+      <InfoModal visible onClose={() => {}} />
       <Navbar />
       <Hero />
       <section className="pb-40">
