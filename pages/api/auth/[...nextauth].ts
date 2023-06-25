@@ -6,6 +6,8 @@ import prismadb from "@/lib/prismadb";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import logger from "@/lib/logger";
+
 export default NextAuth({
   providers: [
     GithubProvider({
@@ -31,6 +33,7 @@ export default NextAuth({
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
+          logger.info("Wrong email/password");
           throw new Error("Email and password required");
         }
         const user = await prismadb.user.findUnique({
@@ -39,6 +42,7 @@ export default NextAuth({
           },
         });
         if (!user || !user.hashedPassword) {
+          logger.info("Email does not exist");
           throw new Error("Email does not exist");
         }
 
@@ -48,6 +52,7 @@ export default NextAuth({
         );
 
         if (!isCorrectPassword) {
+          logger.info("Incorrect password");
           throw new Error("Incorrect Password");
         }
 
