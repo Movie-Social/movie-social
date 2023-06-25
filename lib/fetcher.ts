@@ -1,10 +1,10 @@
 import axios from "axios";
-import pino from "pino";
-const logger = pino();
+import logger from "./logger";
+
 const fetcher = (url: string) =>
   axios
     .get(url)
-    .then((res) => resdata)
+    .then((res) => res.data)
     .catch((error) => {
       // Handle error
       logger.info(`Error fetching data from ${url}`, error);
