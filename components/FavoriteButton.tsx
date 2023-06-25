@@ -4,6 +4,7 @@ import useCurrentUser from "@/hooks/useCurrentUser";
 import useFavorites from "@/hooks/useFavorites";
 import { MdFavorite } from "react-icons/md";
 import { AiOutlineCheck } from "react-icons/ai";
+import logger from "../lib/logger";
 interface FavoriteButtonProps {
   movieId: string;
 }
@@ -21,8 +22,10 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieId }) => {
     let response;
 
     if (isFavorite) {
+      logger.info("test DELETE");
       response = await axios.delete("/api/favorite", { data: { movieId } });
     } else {
+      logger.info("test POST");
       response = await axios.post("/api/favorite", { movieId });
     }
 
@@ -40,7 +43,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieId }) => {
 
   return (
     <main
-      //   onClick={toggleFavorites}
+      onClick={toggleFavorites}
       className="cursor-pointer
   group/item
   w-6

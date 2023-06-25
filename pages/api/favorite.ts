@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import prismadb from "@/lib/prismadb";
 import serverAuth from "@/lib/serverAuth";
 import { without } from "lodash";
-
+import logger from "../../lib/logger";
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -21,6 +21,7 @@ export default async function handler(
       });
 
       if (!existingMovie) {
+        logger.info("No movie exists");
         throw new Error("Invalid ID");
       }
 
@@ -50,6 +51,7 @@ export default async function handler(
       });
 
       if (!existingMovie) {
+        logger.info("No movie exists");
         throw new Error("Invalid ID");
       }
 
@@ -68,7 +70,7 @@ export default async function handler(
     }
     return res.status(405).end();
   } catch (error: any) {
-    console.log("ERROR", error.message);
+    logger.error(error.message);
     return res.status(400).end();
   }
 }
