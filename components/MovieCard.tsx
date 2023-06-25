@@ -1,6 +1,8 @@
-import { BsFillPlayFill } from "react-icons/bs";
+import { BsFillPlayFill, BsFillInfoCircleFill } from "react-icons/bs";
 import FavoriteButton from "./FavoriteButton";
 import { useRouter } from "next/router";
+import { useCallback } from "react";
+import useInfoModal from "@/hooks/useInfoModal";
 
 interface MovieCardProps {
   data: Record<string, any>;
@@ -8,6 +10,11 @@ interface MovieCardProps {
 
 const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
   const router = useRouter();
+  const { openModal } = useInfoModal();
+
+  const handleOpenModal = useCallback(() => {
+    openModal(data?.id);
+  }, [openModal, data?.id]);
 
   return (
     <main className="group bg-zinc-900 col-span relative h-[12vw]">
@@ -99,6 +106,7 @@ flex flex-row items-center gap-3
               <BsFillPlayFill size={30} />
             </div>
             <FavoriteButton movieId={data?.id} />
+            <BsFillInfoCircleFill size={30} onClick={handleOpenModal} />
           </div>
           <p className="text-green-400 font-semibold mt-4">
             New <span className="text-white">2023</span>
