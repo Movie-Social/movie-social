@@ -42,10 +42,11 @@ const Watch = () => {
       </nav>
       <video
         autoPlay
+        muted
         controls
         className="h-full w-full"
         // src={data?.videoUrl}
-        src="https://www.dailymotion.com/video/x2pi3xi"
+        src="https://www.imdb.com/video/vi3716789785/?ref_=ext_shr_lnk"
       ></video>
     </main>
   );
