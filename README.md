@@ -69,14 +69,14 @@
  - [Taba11y]()
 
 ## Organizational Resources
- - [Project Board]()
- - [Figma]()
+ - [Project Board](https://github.com/users/kendallm360/projects/9/views/1)
+ - [Figma](https://www.figma.com/file/oZAqVK1lRyLbxgsAfVlD1g/Movie-Club?type=design&node-id=0-1&mode=design&t=eOyU4LJwOz8A4WBi-0)
  - [MVP]()
  - [Design Inspiration]()
 
 ## Future Additions
 
-## Contributor
+## Sole Contributor 💪🏾
   Kendall McGree
   
   <p><a href="https://www.linkedin.com/in/kendall-mcgree/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"></a></p>
