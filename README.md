@@ -41,7 +41,7 @@
 ![demo4](
 
 
-## Technologies Used
+## Technologies Used 👨🏾‍💻
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
@@ -52,7 +52,7 @@
 <img src="https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white" />
 
 
-## Tools Used
+## Tools Used 🧮
 
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 ![CircleCI](https://img.shields.io/badge/circle%20ci-%23161616.svg?style=for-the-badge&logo=circleci&logoColor=white)
@@ -63,18 +63,18 @@
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)
 
-## Accessibility
+## Accessibility ♿️
 
  - [Lighthouse Score]()
  - [Taba11y]()
 
-## Organizational Resources
+## Organizational Resources 🤓
  - [Project Board](https://github.com/users/kendallm360/projects/9/views/1)
  - [Figma](https://www.figma.com/file/oZAqVK1lRyLbxgsAfVlD1g/Movie-Club?type=design&node-id=0-1&mode=design&t=eOyU4LJwOz8A4WBi-0)
  - [MVP]()
  - [Design Inspiration]()
 
-## Future Additions
+## Future Additions 🔮
 
 ## Sole Contributor 💪🏾
   Kendall McGree
