@@ -6,6 +6,7 @@ import "react-slideshow-image/dist/styles.css";
 //* Without this line of code I will have a hydration error. Why?
 import dynamic from "next/dynamic";
 import PlayButton from "./PlayButton";
+import Image from "next/image";
 
 interface ShuffleArgs {
   image: string;
@@ -179,10 +180,11 @@ const Hero = () => {
     <main className="relative opacity-50">
       <Slide>
         {shuffled.map((slideImage, index) => (
-          <div className="relative" key={index}>
-            <img
+          <div className="relative h-56 lg:h-96 w-full" key={index}>
+            <Image
               src={slideImage.image}
-              className="w-full h-1/5"
+              fill
+              priority
               alt={slideImage.caption}
             />
             <h2 className="absolute bottom-1 inset-x-1/4 text-center z-10 md:text-5xl text-2xl bold text-white">
