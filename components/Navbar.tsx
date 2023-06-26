@@ -4,6 +4,8 @@ import NavbarItem from "./NavbarItem";
 import { BsChevronDown } from "react-icons/bs";
 import { BsSearch } from "react-icons/bs";
 import { BsBell } from "react-icons/bs";
+import { BiUserCircle } from "react-icons/bi";
+
 import AccountMenu from "./AccountMenu";
 
 const TOP_OFFSET = 66;
@@ -45,7 +47,7 @@ const Navbar = () => {
       `}
       >
         <img
-          className="h-9 lg:h-20"
+          className="h-9 lg:h-15 rounded-full"
           src="/images/socialLogo.png"
           alt="Movie Social Logo"
         />
@@ -69,26 +71,28 @@ const Navbar = () => {
           />
           <MobileMenu visible={showMobileMenu} />
         </section>
-        <section className="flex flex-row ml-auto gap-7 items-center">
-          <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
-            <BsSearch />
+        <section className="flex flex-row ml-auto gap-6 content-center">
+          <div className="text-gray-200 hover:text-yellow-300 cursor-pointer transition">
+            <BsSearch size={20} />
           </div>
-          <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
-            <BsBell />
+          <div className="text-gray-200 hover:text-yellow-300 cursor-pointer transition">
+            <BsBell size={20} />
           </div>
           <div
             onClick={toggleAccountMenu}
             className="flex flex-row items-center gap-2 cursor-pointer relative"
           >
-            <div className="w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden">
-              <img
+            <div className="text-gray-200 hover:text-yellow-300 cursor-pointer transition">
+              {/* <img
                 className="w-5 h-5 mt-1 lg:mt-2"
                 src="/images/account.png"
                 alt="Default user logo"
-              />
+              /> */}
+              <BiUserCircle size={20} />
             </div>
             <BsChevronDown
-              className={`text-white transition ${
+              size={20}
+              className={`text-white  hover:text-yellow-300 transition ${
                 showAccountMenu ? "rotate-180" : "rotate-0"
               }`}
             />
