@@ -15,7 +15,7 @@ const MovieList: React.FC<MovieListProps> = ({ data, title }) => {
           {title}
         </p>
         <div className="grid grid-cols-5 gap-2 mb-24 md:mb-48 lg:mb-96">
-          {title !== "My List"
+          {title !== "Watchlist"
             ? data
                 .filter((movie) => movie.categories[0] === title)
                 .map((movie) => <MovieCard key={movie.id} data={movie} />)

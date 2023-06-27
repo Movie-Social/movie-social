@@ -3,6 +3,7 @@ import FavoriteButton from "./FavoriteButton";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
 import useInfoModal from "@/hooks/useInfoModal";
+import WatchlistButton from "./WatchlistButton";
 
 interface MovieCardProps {
   data: Record<string, any>;
@@ -109,6 +110,7 @@ flex flex-row items-center gap-3
             </div>
 
             <FavoriteButton movieId={data?.id} />
+            <WatchlistButton movieId={data?.id} />
             <div
               className="
                 cursor-pointer

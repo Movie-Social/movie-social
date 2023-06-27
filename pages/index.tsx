@@ -39,12 +39,12 @@ const Home = () => {
       <Navbar />
       <Hero />
       <section className="pb-40">
-        <MovieList title="My List" data={favorites} />
+        <MovieList title="Watchlist" data={watchlist} />
         <MovieList title="Comedy" data={movies} />
         <MovieList title="Romance" data={movies} />
         <MovieList title="Action" data={movies} />
         <MovieList title="Horror" data={movies} />
-        <MovieList title="Watchlist" data={watchlist} />
+        {/* <MovieList title="My List" data={favorites} /> */}
       </section>
     </main>
   );
