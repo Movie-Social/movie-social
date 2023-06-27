@@ -6,6 +6,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import logger from "@/lib/logger";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
@@ -29,8 +30,8 @@ const Auth = () => {
       });
 
       router.push("/");
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      logger.error(error.message);
     }
   }, [email, password, router]);
 
@@ -42,8 +43,8 @@ const Auth = () => {
         password,
       });
       login();
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      logger.error(error.message);
     }
   }, [email, name, password, login]);
 

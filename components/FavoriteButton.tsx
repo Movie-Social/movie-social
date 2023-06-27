@@ -4,6 +4,7 @@ import useCurrentUser from "@/hooks/useCurrentUser";
 import useFavorites from "@/hooks/useFavorites";
 import { MdFavorite } from "react-icons/md";
 import { AiOutlineCheck } from "react-icons/ai";
+import logger from "../lib/logger";
 interface FavoriteButtonProps {
   movieId: string;
 }
@@ -18,13 +19,8 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieId }) => {
   }, [currentUser, movieId]);
 
   const toggleFavorites = useCallback(async () => {
-    let response;
-
-    if (isFavorite) {
-      response = await axios.delete("/api/favorite", { data: { movieId } });
-    } else {
-      response = await axios.post("/api/favorite", { movieId });
-    }
+    const url = isFavorite ? "/api/unfavorite" : "/api/favorite";
+    const response = await axios.post(url, { movieId });
 
     const updatedFavoriteIds = response?.data?.favoriteIds;
 
@@ -40,13 +36,13 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieId }) => {
 
   return (
     <main
-      //   onClick={toggleFavorites}
+      onClick={toggleFavorites}
       className="cursor-pointer
   group/item
   w-6
   h-6
-  lg:w-10
-  lg:h-10
+  lg:w-8
+  lg:h-8
   border-white
   border-2
   rounded-full
@@ -57,7 +53,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieId }) => {
   hover:border-neutral-300
   "
     >
-      {<Icon className="text-white self-center" size={30} />}
+      {<Icon className="text-white self-center" size={25} />}
     </main>
   );
 };
