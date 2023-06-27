@@ -70,12 +70,12 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movieId }) => {
           <div>
             <p>{data?.summary}</p>
             <h2>Rating: {data?.rating}</h2>
-            <h2>Genre/ catrgories: </h2>
+            <h2>Genre: {data?.categories} </h2>
             <h2>Director: {data?.director}</h2>
-            <h2>Writer: </h2>
-            <h2>Release Date: </h2>
-            <h2>Box Office: </h2>
-            <h2>Cast: </h2>
+            <h2>Writer: {data?.writer} </h2>
+            <h2>Release Date: {data?.releaseDate} </h2>
+            <h2>Box Office: {data?.boxOffice}</h2>
+            {/* <h2>Cast: {data?.director} </h2> */}
           </div>
           <h2 className="border-left-yellow border-l-2 mx-2 px-5">
             Movie Social Reviews
