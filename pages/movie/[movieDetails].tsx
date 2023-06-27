@@ -15,12 +15,12 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movieId }) => {
   const { data = {} } = useMovie("643dd150ea3c9d361ac2b0be");
   console.log(data, "<<<working?");
   return (
-    <main className="text-white text-center">
+    <main className="text-white">
       {/* <Navbar /> */}
       <section>
         {/* <video></video> */}
-        <div>
-          <h2>{data?.title}</h2>
+        <section>
+          <h2 className="text-center">{data?.title}</h2>
           <div className="flex flex-row justify-around">
             <button>{data?.rating}</button>
             <p>{data?.year}</p>
@@ -60,7 +60,28 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movieId }) => {
               </div>
             </div>
           </div>
-        </div>
+          <h2 className="border-left-yellow border-l-2 mx-2 px-5">
+            RATE AND REVIEW
+          </h2>
+          {/* <div>review form will go here</div> */}
+          <h2 className="border-left-yellow border-l-2 mx-2 px-5">
+            Movie Info
+          </h2>
+          <div>
+            <p>{data?.summary}</p>
+            <h2>Rating: {data?.rating}</h2>
+            <h2>Genre/ catrgories: </h2>
+            <h2>Director: </h2>
+            <h2>Writer: </h2>
+            <h2>Release Date: </h2>
+            <h2>Box Office: </h2>
+            <h2>Cast: </h2>
+          </div>
+          <h2 className="border-left-yellow border-l-2 mx-2 px-5">
+            Movie Social Reviews
+          </h2>
+          {/* <div>other reviews will go here</div> */}
+        </section>
       </section>
     </main>
   );
