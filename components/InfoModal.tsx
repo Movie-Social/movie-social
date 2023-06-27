@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
+import { BsFillInfoCircleFill } from "react-icons/bs";
 
 import PlayButton from "./PlayButton";
 import FavoriteButton from "./FavoriteButton";
@@ -90,7 +91,7 @@ overflow-hidden
             "
               //   src={data?.videoUrl}
               src="https://imdb-video.media-imdb.com/vi1016775449/1434659607842-pgv4ql-1633897968257.mp4?Expires=1687646991&Signature=kOcRC99rU-bbezrlGOjEbFMyfpHn-OBVwJymB6mCKpDoOCDLMo8L0A7XWeumuOoWx2CbjgkobjFUGN5ezMzAp2ec0OpsDnPvRugC~wDucqHjAUuRflDDY-PFKVGdmrAL3j55LI4avg294H9kDxKRQ8P6Ko0r-iqVz27bKujvZ2sIR757Ckemr~o33fvL3MN~-EL2hL4sk0R8N21DhxTWA~rQYdygaYMD6J4rYaI2L12VZ3EALqxr7QVQW-2TAfhNId2Si0kuNdUOgS7ArOEr7tUXuAvEyzRkA6G6XS3USXzofM6wWtrOxEdGn2aA5k-u~JB5pVLXyIZP7pM-BQ6G6g__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA"
-              //   poster={data?.poster}
+              // poster={data?.poster}
               poster="https://m.media-amazon.com/images/I/91BHOtTuGUL._AC_UY218_.jpg"
             ></video>
             <div
@@ -139,8 +140,14 @@ justify-center
               items-center
               "
               >
+                {/* Once I have reference IDs for the parent movie collection I can use that id instead below */}
                 <PlayButton movieId={data?.id} />
                 <FavoriteButton movieId={data?.id} />
+                <BsFillInfoCircleFill
+                  className="text-white"
+                  size={30}
+                  // onClick={handleOpenModal}
+                />
               </div>
             </div>
           </div>
@@ -148,13 +155,19 @@ justify-center
             className="px-12
           py-8"
           >
-            <p
+            {/* <p
               className="text-green-400 font-semibold
             text-lg"
             >
               New
-            </p>
+            </p> */}
+            <p className="text-white text-lg">{data?.year}</p>
             <p className="text-white text-lg">{data?.runtime}</p>
+
+            <p className="text-white text-lg">{data?.rating}</p>
+            <p className="text-white text-lg">{data?.reviewCount}</p>
+
+            {/* <p className="text-white text-lg">{data?.trailer}</p> */}
             {/* <p className="text-white text-lg">{data?.genre}</p> */}
             <p className="text-white text-lg">{data?.summary}</p>
           </div>
