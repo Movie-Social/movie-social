@@ -36,14 +36,14 @@ export default async function handler(
       throw new Error("Invalid email");
     }
 
-    const updatedFavoriteIds = without(user.favoriteIds, movieId);
+    const updatedWatchlistIds = without(user.watchlistIds, movieId);
 
     const updatedUser = await prismadb.user.update({
       where: {
         email: currentUser.email || "",
       },
       data: {
-        favoriteIds: updatedFavoriteIds,
+        watchlistIds: updatedWatchlistIds,
       },
     });
 
