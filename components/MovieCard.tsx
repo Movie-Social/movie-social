@@ -112,25 +112,6 @@ flex flex-row items-center gap-3
 
             <FavoriteButton movieId={data?.id} />
             <WatchlistButton movieId={data?.id} />
-            <div
-              className="
-                cursor-pointer
-                w-6
-                h-6
-                lg:w-8
-                lg:h-8
-                rounded-full
-                border-white
-                border-solid
-                border-1
-                flex
-                justify-center
-                items-center
-                content-center
-                transition
-                hover:bg-neutral-300
-                "
-            ></div>
           </div>
           {/* <p className="text-green-400 font-semibold mt-4">
             New <span className="text-white">2023</span>
