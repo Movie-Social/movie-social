@@ -6,6 +6,7 @@ import useCurrentUser from "@/hooks/useCurrentUser";
 import useFavorites from "@/hooks/useFavorites";
 import useInfoModal from "@/hooks/useInfoModal";
 import useMovieList from "@/hooks/useMovieList";
+import useWatchlist from "@/hooks/useWatchlist";
 import { NextPageContext } from "next";
 import { getSession, signOut } from "next-auth/react";
 
@@ -29,6 +30,7 @@ const Home = () => {
   // const { data: user } = useCurrentUser();
   const { data: movies = [] } = useMovieList();
   const { data: favorites = [] } = useFavorites();
+  const { data: watchlist = [] } = useWatchlist();
   const { isOpen, closeModal } = useInfoModal();
 
   return (
@@ -42,6 +44,7 @@ const Home = () => {
         <MovieList title="Romance" data={movies} />
         <MovieList title="Action" data={movies} />
         <MovieList title="Horror" data={movies} />
+        <MovieList title="Watchlist" data={watchlist} />
       </section>
     </main>
   );
