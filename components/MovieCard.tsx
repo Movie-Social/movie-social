@@ -18,23 +18,24 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
   }, [openModal, data?.id]);
 
   return (
-    <main className="group bg-zinc-900 col-span relative h-[12vw]">
+    <main
+      onClick={handleOpenModal}
+      className=" cursor-pointer group bg-zinc-900 col-span relative h-[12vw]"
+    >
       <img
-        onClick={handleOpenModal}
         className="
-      cursor-pointer
-      ml-2
-      object-fill
-      transition
-      duration
-      shadow-xl
-      rounded-md
-      group-hover:opacity-90
-      sm:group-hover:opacity-0
-      delay-300
-      w-full
-      h-[20vw]
-      "
+        ml-2
+        object-fill
+        transition
+        duration
+        shadow-xl
+        rounded-md
+        group-hover:opacity-90
+        sm:group-hover:opacity-0
+        delay-300
+        w-full
+        h-[20vw]
+        "
         src={data.poster}
         alt="Movie poster"
       />
@@ -129,17 +130,11 @@ flex flex-row items-center gap-3
                 transition
                 hover:bg-neutral-300
                 "
-            >
-              <BsFillInfoCircleFill
-                className="text-white"
-                size={30}
-                onClick={handleOpenModal}
-              />
-            </div>
+            ></div>
           </div>
-          <p className="text-green-400 font-semibold mt-4">
+          {/* <p className="text-green-400 font-semibold mt-4">
             New <span className="text-white">2023</span>
-          </p>
+          </p> */}
           <div className="flex flex-row mt-4 gap-2 items-center">
             <p className="text-white text-[10px] lg:text-sm">{data.title}</p>
           </div>
