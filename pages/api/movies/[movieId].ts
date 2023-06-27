@@ -13,7 +13,6 @@ export default async function handler(
 
   try {
     await serverAuth(req, res);
-
     const { movieId } = req.query;
     if (typeof movieId !== "string") {
       logger.info("No movie exists for fetching its details");
@@ -31,12 +30,19 @@ export default async function handler(
       },
     });
 
-    if (!movie) {
+    //Maybe this step would be unneccessary if I structured my database differently
+    const movieDetails = await prismadb.movieDetails.findUnique({
+      where: {
+        id: movie?.details,
+      },
+    });
+
+    if (!movieDetails) {
       logger.info("No movie exists for fetching its details");
       throw new Error("Invalid ID");
     }
 
-    res.status(200).json(movie);
+    res.status(200).json(movieDetails);
   } catch (error: any) {
     logger.error(error.message);
     return res.status(400).end();
