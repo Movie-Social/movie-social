@@ -74,8 +74,9 @@ model MovieDetails {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   title String
   year Int
+  director String
   rating String
-  runtime Int
+  runtime String
   trailer String
   summary String
   reviewCount Int
