@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsFillInfoCircleFill } from "react-icons/bs";
-
+import { useRouter } from "next/router";
 import PlayButton from "./PlayButton";
 import FavoriteButton from "./FavoriteButton";
 import useInfoModal from "@/hooks/useInfoModal";
@@ -16,6 +16,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
   const [isVisible, setIsVisisble] = useState(!!visible);
   const { movieId } = useInfoModal();
   const { data = {} } = useMovie(movieId);
+  const router = useRouter();
 
   useEffect(() => {
     setIsVisisble(!!visible);
@@ -144,9 +145,9 @@ justify-center
                 <PlayButton movieId={data?.id} />
                 <FavoriteButton movieId={data?.id} />
                 <BsFillInfoCircleFill
-                  className="text-white"
+                  className="text-white cursor-pointer"
                   size={30}
-                  // onClick={handleOpenModal}
+                  onClick={() => router.push(`/movie/${data?.id}`)}
                 />
               </div>
             </div>
