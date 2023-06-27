@@ -71,7 +71,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movieId }) => {
             <p>{data?.summary}</p>
             <h2>Rating: {data?.rating}</h2>
             <h2>Genre/ catrgories: </h2>
-            <h2>Director: </h2>
+            <h2>Director: {data?.director}</h2>
             <h2>Writer: </h2>
             <h2>Release Date: </h2>
             <h2>Box Office: </h2>
