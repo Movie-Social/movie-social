@@ -22,6 +22,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
         onClick={handleOpenModal}
         className="
       cursor-pointer
+      ml-2
       object-fill
       transition
       duration
@@ -31,7 +32,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
       sm:group-hover:opacity-0
       delay-300
       w-full
-      h-[30vw]
+      h-[20vw]
       "
         src={data.poster}
         alt="Movie poster"
@@ -42,16 +43,15 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
       absolute
       top-0
       transition
-      duration-200
+      duration-300
       z-10
       invisible
       sm:visible
-      delay-300
+      delay-200
       w-full
       scale-0
       group-hover:scale-110
       group-hover:-translate-y-[6vw]
-      group-hover:-translate-x-[2vw]
       group-hover:opacity-100
       "
       >
@@ -64,7 +64,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
         shadow-xl
         rounded-t-md
         w-full
-        h-[30vw]
+        h-[20vw]
         "
           src={data.poster}
           alt="thumbnail"
@@ -93,21 +93,47 @@ flex flex-row items-center gap-3
             cursor-pointer
             w-6
             h-6
-            lg:w-10
-            lg:h-10
+            lg:w-8
+            lg:h-8
             bg-white
             rounded-full
             flex
             justify-center
             items-center
+            content-center
             transition
             hover:bg-neutral-300
             "
             >
-              <BsFillPlayFill size={30} />
+              <BsFillPlayFill size={25} />
             </div>
+
             <FavoriteButton movieId={data?.id} />
-            <BsFillInfoCircleFill size={30} onClick={handleOpenModal} />
+            <div
+              className="
+                cursor-pointer
+                w-6
+                h-6
+                lg:w-8
+                lg:h-8
+                rounded-full
+                border-white
+                border-solid
+                border-1
+                flex
+                justify-center
+                items-center
+                content-center
+                transition
+                hover:bg-neutral-300
+                "
+            >
+              <BsFillInfoCircleFill
+                className="text-white"
+                size={30}
+                onClick={handleOpenModal}
+              />
+            </div>
           </div>
           <p className="text-green-400 font-semibold mt-4">
             New <span className="text-white">2023</span>
