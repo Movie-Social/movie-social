@@ -33,6 +33,8 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
     return null;
   }
 
+  console.log(data, "modaldata");
+  console.log(data?.movieId, "movieID");
   return (
     <main
       onClick={handleClose}
@@ -141,12 +143,12 @@ justify-center
               items-center
               "
               >
-                {/* Once I have reference IDs for the parent movie collection I can use that id instead below */}
-                <PlayButton movieId={data?.id} />
-                <FavoriteButton movieId={data?.id} />
+                <PlayButton movieId={data?.movieId} />
+                <FavoriteButton movieId={data?.movieId} />
                 <BsFillInfoCircleFill
                   className="text-white cursor-pointer"
                   size={30}
+                  // bug below
                   onClick={() => router.push(`/movie/${data?.id}`)}
                 />
               </div>
