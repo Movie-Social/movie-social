@@ -20,7 +20,7 @@
  
 
 
-## Deployed Application
+## [Deployed Application]()
 
 ## User Stories
 - As a user I should be able to 
@@ -75,6 +75,7 @@
  - [Taba11y]()
 
 ## Organizational Resources 🤓
+ - [Jira Sprint Tracker]() 
  - [Project Board](https://github.com/users/kendallm360/projects/9/views/1)
  - [Figma](https://www.figma.com/file/oZAqVK1lRyLbxgsAfVlD1g/Movie-Club?type=design&node-id=0-1&mode=design&t=eOyU4LJwOz8A4WBi-0)
  - [MVP]()
@@ -83,7 +84,7 @@
 ## Future Additions 🔮
 
 ## Sole Contributor 💪🏾
-  Kendall McGree
+  <p><a href="https://github.com/kendallm360">Kendall McGree</a></p>
   
   <p><a href="https://www.linkedin.com/in/kendall-mcgree/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"></a></p>
   
