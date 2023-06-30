@@ -1,15 +1,19 @@
 import { signOut } from "next-auth/react";
 import React from "react";
-
+import { useRouter } from "next/router";
+import useCurrentUser from "@/hooks/useCurrentUser";
 interface AccountMenuProps {
   visible: boolean;
 }
 
 const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
+  const router = useRouter();
+  const { data: currentUser } = useCurrentUser();
   if (!visible) {
     return null;
   }
 
+  console.log(currentUser, "<<");
   return (
     <main className="bg-black w-56 absolute top-14 right-0 py-5 flex-col border-2 border-gray-800 flex">
       <section className="flex flex-col gap-3">
@@ -19,7 +23,10 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
             src="/images/socialUser.png"
             alt="Default user logo"
           />
-          <p className="text-white text-sm group-hover/item:underline">
+          <p
+            onClick={() => router.push(`/myProfile`)}
+            className="text-white text-sm group-hover/item:underline"
+          >
             Username
           </p>
         </div>
