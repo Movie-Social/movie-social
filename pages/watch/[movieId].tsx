@@ -2,7 +2,6 @@ import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import useMovie from "@/hooks/useMovie";
 import React from "react";
 import { useRouter } from "next/router";
-
 const Watch = () => {
   const router = useRouter();
   const { movieId } = router.query;
@@ -45,8 +44,7 @@ const Watch = () => {
         muted
         controls
         className="h-full w-full"
-        // src={data?.videoUrl}
-        src="https://www.imdb.com/video/vi3716789785/?ref_=ext_shr_lnk"
+        src={data?.videoUrl}
       ></video>
     </main>
   );
