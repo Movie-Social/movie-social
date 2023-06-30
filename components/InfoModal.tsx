@@ -33,6 +33,8 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
     return null;
   }
 
+  console.log(data, "modaldata");
+  console.log(data?.movieId, "movieID");
   return (
     <main
       onClick={handleClose}
