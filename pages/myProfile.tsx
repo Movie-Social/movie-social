@@ -7,6 +7,7 @@ import ProfileList from "@/components/ProfileList";
 import { BiUserCircle } from "react-icons/bi";
 import { GrAddCircle } from "react-icons/gr";
 import { useRouter } from "next/router";
+import ReviewList from "@/components/ReviewList";
 
 const MyProfile = () => {
   const { data: currentUser } = useCurrentUser();
@@ -87,7 +88,7 @@ const MyProfile = () => {
             </h2>
           </div>
           {reviews?.length >= 1 ? (
-            <ProfileList data={reviews} />
+            <ReviewList data={reviews} />
           ) : (
             <div className="flex flex-col justify-center items-center content-center border-yellow-500 border-2 rounded-md mb-5 p-3">
               <GrAddCircle size={50} />
