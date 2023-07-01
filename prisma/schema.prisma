@@ -102,6 +102,8 @@ model Review {
   movieId String @db.ObjectId
   stars   Int
   review  String
+  title String
+  poster String
 
   // user  User         @relation(fields: [userId], references: [id], onDelete: Cascade)
   // movie MovieDetails @relation(fields: [movieId], references: [id], onDelete: Cascade)
