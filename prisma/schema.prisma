@@ -96,16 +96,16 @@ model MovieDetails {
   // Review      Review[]
 }
 
-// model Review {
-//   id      String @id @default(auto()) @map("_id") @db.ObjectId
-//   userId  String @db.ObjectId
-//   movieId String @db.ObjectId
-//   stars   Int
-//   review  String
+model Review {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  userId  String @db.ObjectId
+  movieId String @db.ObjectId
+  stars   Int
+  review  String
 
-//   user  User         @relation(fields: [userId], references: [id], onDelete: Cascade)
-//   movie MovieDetails @relation(fields: [movieId], references: [id], onDelete: Cascade)
-// }
+  // user  User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  // movie MovieDetails @relation(fields: [movieId], references: [id], onDelete: Cascade)
+}
 
 model Tomato {
   id     String       @id @default(auto()) @map("_id") @db.ObjectId
