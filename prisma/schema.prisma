@@ -21,7 +21,8 @@ model User {
   updatedAt      DateTime  @updatedAt
   favoriteIds    String[]  @db.ObjectId
   watchlistIds   String[]  @db.ObjectId
-  reviews        Review[]
+  reviewIds      String[]  @db.ObjectId
+  // reviews        Review[]
   sessions       Session[]
   accounts       Account[]
 }
@@ -92,19 +93,19 @@ model MovieDetails {
   releaseDate String
   writer      String
   categories  String[]
-  Review      Review[]
+  // Review      Review[]
 }
 
-model Review {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  userId  String @db.ObjectId
-  movieId String @db.ObjectId
-  stars   Int
-  review  String
+// model Review {
+//   id      String @id @default(auto()) @map("_id") @db.ObjectId
+//   userId  String @db.ObjectId
+//   movieId String @db.ObjectId
+//   stars   Int
+//   review  String
 
-  user  User         @relation(fields: [userId], references: [id], onDelete: Cascade)
-  movie MovieDetails @relation(fields: [movieId], references: [id], onDelete: Cascade)
-}
+//   user  User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   movie MovieDetails @relation(fields: [movieId], references: [id], onDelete: Cascade)
+// }
 
 model Tomato {
   id     String       @id @default(auto()) @map("_id") @db.ObjectId
