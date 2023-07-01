@@ -6,17 +6,27 @@ import useCurrentUser from "@/hooks/useCurrentUser";
 import { BiUserCircle } from "react-icons/bi";
 import { GrAddCircle } from "react-icons/gr";
 import { useRouter } from "next/router";
+import ProfileListItem from "@/components/ProfileListItem";
 
 const MyProfile = () => {
   const { data: currentUser } = useCurrentUser();
   const { data: faves } = useFavorites();
   const { data: watchlist } = useWatchlist();
   const router = useRouter();
+  console.log(watchlist);
+
+  const list = watchlist.map((movie: any) => {
+    return (
+      <div className="flex flex-row border-2 border-red" key={movie.id}>
+        <ProfileListItem movieId={movie.id} />
+      </div>
+    );
+  });
 
   return (
     <main className="flex justify-center text-white">
       <main className="flex flex-row justify-around w-[70vw] py-5 mt-7 border-2 border-red-500">
-        <aside className="border-2 border-yellow-500 rounded-md w-1/5 p-3">
+        <aside className=" flex flex-col justify-center content-center border-2 border-yellow-500 rounded-md w-1/5 p-3 h-1/5">
           <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-1xl lg:text-2xl font-bold">
             Profile
           </h2>
@@ -46,7 +56,7 @@ const MyProfile = () => {
             </div>
           )}
           {watchlist?.length > 1 ? (
-            <MovieList data={watchlist} title="My Watchlist" />
+            list
           ) : (
             <div className="flex flex-col justify-center items-center content-center border-yellow-500 border-2 rounded-md mb-5 p-3">
               <GrAddCircle size={50} />
