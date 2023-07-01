@@ -11,7 +11,7 @@ const MovieDetails = () => {
   const router = useRouter();
   const movieId = router.query.movieDetails;
   const { data } = useMovie(movieId as string);
-  console.log(data);
+  console.log(data, "testing testing");
   return (
     <main className="text-white flex justify-center">
       {/* <Navbar /> */}

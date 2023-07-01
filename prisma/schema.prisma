@@ -11,98 +11,113 @@ datasource db {
 }
 
 model User {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  name String
-  image String?
-  email String? @unique
-  emailVerified DateTime?
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  image          String?
+  email          String?   @unique
+  emailVerified  DateTime?
   hashedPassword String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  favoriteIds String[] @db.ObjectId
-  watchlistIds String[] @db.ObjectId
-  sessions Session[]
-  accounts Account[]
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  favoriteIds    String[]  @db.ObjectId
+  watchlistIds   String[]  @db.ObjectId
+  reviews        Review[]
+  sessions       Session[]
+  accounts       Account[]
 }
 
 model Account {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  userId String @db.ObjectId
-  type String
-  provider String
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  type              String
+  provider          String
   providerAccountId String
-  refresh_token String? @db.String
-  access_token String? @db.String
-  expires_at Int?
-  token_type String?
-  scope String?
-  id_token String? @db.String
-  session_state String?
+  refresh_token     String? @db.String
+  access_token      String? @db.String
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.String
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   @@unique([provider, providerAccountId])
 }
 
 model Session {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  sessionToken String @unique
-  userId String @db.ObjectId
-  expires DateTime
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  sessionToken String   @unique
+  userId       String   @db.ObjectId
+  expires      DateTime
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model VerificationToken {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  identifier String 
-  token String @unique
-  expires DateTime
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  identifier String
+  token      String   @unique
+  expires    DateTime
 
   @@unique([identifier, token])
 }
 
 model Movie {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  title String
-  score Int
-  poster String
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  title      String
+  score      Int
+  poster     String
   categories String[]
-  details String @db.ObjectId
+  details    String   @db.ObjectId
 }
 
 model MovieDetails {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  title String
-  year Int
-  rating String
-  runtime String
-  trailer String
-  summary String
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  year        Int
+  rating      String
+  runtime     String
+  trailer     String
+  summary     String
   reviewCount Int
-  cast Cast[]
-  boxOffice String
-  director String
-  imdbRating String
-  metascore String
-  movieId String @db.ObjectId
-  poster String
-  ratings Tomato[]
+  cast        Cast[]
+  boxOffice   String
+  director    String
+  imdbRating  String
+  metascore   String
+  movieId     String   @db.ObjectId
+  poster      String
+  ratings     Tomato[]
   releaseDate String
-  writer String
-  categories String[]
+  writer      String
+  categories  String[]
+  Review      Review[]
+}
+
+model Review {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  userId  String @db.ObjectId
+  movieId String @db.ObjectId
+  stars   Int
+  review  String
+
+  user  User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  movie MovieDetails @relation(fields: [movieId], references: [id], onDelete: Cascade)
 }
 
 model Tomato {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
+  id     String       @id @default(auto()) @map("_id") @db.ObjectId
+  //todo add movieId here
   source String
-  value String
-
-  movie MovieDetails @relation(fields: [id], references: [id], onDelete: Cascade)
+  value  String
+  //todo update fileds with movieid
+  movie  MovieDetails @relation(fields: [id], references: [id], onDelete: Cascade)
 }
 
 model Cast {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  actor String
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  actor     String
   character String
 
   movie MovieDetails @relation(fields: [id], references: [id], onDelete: Cascade)
