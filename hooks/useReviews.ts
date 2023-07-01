@@ -11,3 +11,5 @@ const useReviews = () => {
     mutate,
   };
 };
+
+export default useReviews;
