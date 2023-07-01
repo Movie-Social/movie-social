@@ -8,8 +8,8 @@ const ProfileListItem: React.FC<ListItemProps> = ({ movieId }) => {
 
   return (
     <main className="">
-      <img src={data.poster} alt={`${data.title}'s official data poster`} />
-      <h2>{data.title}</h2>
+      <img src={data?.poster} alt={`${data?.title}'s official data poster`} />
+      <h2>{data?.title}</h2>
     </main>
   );
 };

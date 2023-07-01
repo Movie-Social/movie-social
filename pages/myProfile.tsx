@@ -1,27 +1,17 @@
-import MovieList from "@/components/MovieList";
-import Navbar from "@/components/Navbar";
+import useCurrentUser from "@/hooks/useCurrentUser";
 import useFavorites from "@/hooks/useFavorites";
 import useWatchlist from "@/hooks/useWatchlist";
-import useCurrentUser from "@/hooks/useCurrentUser";
+//! import Navbar from "@/components/Navbar";
+import ProfileList from "@/components/ProfileList";
 import { BiUserCircle } from "react-icons/bi";
 import { GrAddCircle } from "react-icons/gr";
 import { useRouter } from "next/router";
-import ProfileListItem from "@/components/ProfileListItem";
 
 const MyProfile = () => {
   const { data: currentUser } = useCurrentUser();
   const { data: faves } = useFavorites();
   const { data: watchlist } = useWatchlist();
   const router = useRouter();
-  console.log(watchlist);
-
-  const list = watchlist.map((movie: any) => {
-    return (
-      <div className="flex flex-row border-2 border-red" key={movie.id}>
-        <ProfileListItem movieId={movie.id} />
-      </div>
-    );
-  });
 
   return (
     <main className="flex justify-center text-white">
@@ -41,7 +31,7 @@ const MyProfile = () => {
 
         <section className="flex flex-col justify-around w-3/5">
           {faves?.length > 1 ? (
-            <MovieList data={faves} title="My Favorites" />
+            <ProfileList data={faves} title="My Favorites" />
           ) : (
             <div className="flex flex-col justify-center items-center content-center border-yellow-500 border-2 rounded-md mb-5 p-3">
               <GrAddCircle className="text-white" size={50} />
@@ -56,7 +46,7 @@ const MyProfile = () => {
             </div>
           )}
           {watchlist?.length > 1 ? (
-            list
+            <ProfileList data={watchlist} title="Watchlist" />
           ) : (
             <div className="flex flex-col justify-center items-center content-center border-yellow-500 border-2 rounded-md mb-5 p-3">
               <GrAddCircle size={50} />
