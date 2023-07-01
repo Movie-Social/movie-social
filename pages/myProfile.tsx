@@ -5,18 +5,18 @@ import useWatchlist from "@/hooks/useWatchlist";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { BiUserCircle } from "react-icons/bi";
 import { GrAddCircle } from "react-icons/gr";
+import { useRouter } from "next/router";
 
 const MyProfile = () => {
   const { data: currentUser } = useCurrentUser();
   const { data: faves } = useFavorites();
   const { data: watchlist } = useWatchlist();
-  console.log(currentUser, "<<");
-  console.log(faves, "faves");
-  console.log(watchlist, "watchlist");
+  const router = useRouter();
+
   return (
     <main className="flex justify-center text-white">
-      <main className="flex flex-row justify-around w-[70vw] py-5 border-2 border-red-500">
-        <aside className="border-2 border-yellow-500 w-1/5">
+      <main className="flex flex-row justify-around w-[70vw] py-5 mt-7 border-2 border-red-500">
+        <aside className="border-2 border-yellow-500 rounded-md w-1/5 p-3">
           <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-1xl lg:text-2xl font-bold">
             Profile
           </h2>
@@ -29,15 +29,18 @@ const MyProfile = () => {
           </div>
         </aside>
 
-        <section className="border-2 border-blue-500 w-3/5">
+        <section className="flex flex-col justify-around w-3/5">
           {faves?.length > 1 ? (
             <MovieList data={faves} title="My Favorites" />
           ) : (
-            <div className="flex flex-col justify-center items-center content-center border-red-500 border-2">
-              <GrAddCircle size={50} />
+            <div className="flex flex-col justify-center items-center content-center border-yellow-500 border-2 rounded-md mb-5 p-3">
+              <GrAddCircle className="text-white" size={50} />
               <h2>Your Favorites are Empty</h2>
               <p>Add movies to keep track of your favorites</p>
-              <button className="bg-yellow-500 rounded-sm">
+              <button
+                onClick={() => router.push("/")}
+                className="bg-yellow-500 rounded-md p-1 m-2"
+              >
                 Browse Movies
               </button>
             </div>
@@ -45,11 +48,14 @@ const MyProfile = () => {
           {watchlist?.length > 1 ? (
             <MovieList data={watchlist} title="My Watchlist" />
           ) : (
-            <div className="flex flex-col justify-center items-center content-center border-red-500 border-2">
+            <div className="flex flex-col justify-center items-center content-center border-yellow-500 border-2 rounded-md mb-5 p-3">
               <GrAddCircle size={50} />
               <h2>Your Watchlist is Empty</h2>
               <p>Add movies to keep track of what you want to watch</p>
-              <button className="bg-yellow-500 rounded-sm">
+              <button
+                onClick={() => router.push("/")}
+                className="bg-yellow-500 rounded-md p-1 m-2"
+              >
                 Browse Movies
               </button>
             </div>
