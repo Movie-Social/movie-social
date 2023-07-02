@@ -11,7 +11,7 @@ const ProfileListItem: React.FC<ListItemProps> = ({ movieId }) => {
     <main className="w-full h-full">
       <Image
         onClick={() => router.push(`/movie/${data?.movieId}`)}
-        className="cursor-pointer"
+        className="cursor-pointer transition hover:opacity-70"
         width={150}
         height={50}
         src={data?.poster}
