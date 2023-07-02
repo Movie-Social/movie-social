@@ -76,7 +76,8 @@ Solo fullstack application built with Next.js. As a frontend engineer it had bee
 ## Organizational Resources 🤓
  - [Jira Sprint Tracker](https://movieclub.atlassian.net/jira/software/projects/MS/boards/2/timeline?selectedIssue=MS-2&shared=&atlOrigin=eyJpIjoiOTY0NGRmNzc1YzVkNDYwNzgxZTc0ODBlOTE4MzRkZTIiLCJwIjoiaiJ9)
  - [Standup Tracker](https://docs.google.com/spreadsheets/d/15W0ZOf6QuopjNkneR7NCgACKUaP8B5sUfrAjegcO9Bo/edit?usp=sharing)
- - [Project Board](https://github.com/users/kendallm360/projects/9/views/1)
+ - [Current Project Board](https://github.com/orgs/Movie-Social/projects/2/views/1)
+ - [Original Project Board](https://github.com/users/kendallm360/projects/9/views/1)
  - [Figma](https://www.figma.com/file/oZAqVK1lRyLbxgsAfVlD1g/Movie-Club?type=design&node-id=0-1&mode=design&t=eOyU4LJwOz8A4WBi-0)
  - [Sprint 1 MVP](https://docs.google.com/document/d/1Kwk03A8VvwA6KMVbE-R77hyDKUV8YLc4AlEuOxlKjLE/edit?usp=sharing)
  - [Design Inspiration]()
@@ -89,7 +90,7 @@ Solo fullstack application built with Next.js. As a frontend engineer it had bee
 ## Future Additions 🔮
 
 ## Sole Contributor 💪🏾
-  <p><a href="https://github.com/kendallm360">Kendall McGree</a></p>
+  <a href="https://github.com/kendallm360">![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)/a>
   
   <p><a href="https://www.linkedin.com/in/kendall-mcgree/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"></a></p><br><p><a href="mailto:mcgreekendall@gmail.com"><img src="https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail Badge"></a></p>
 
