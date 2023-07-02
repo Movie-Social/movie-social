@@ -27,7 +27,8 @@ const WatchlistButton: React.FC<WatchlistButtonProps> = ({ movieId }) => {
       ...currentUser,
       watchlistIds: updatedWatchlist,
     });
-  }, []);
+    mutateWatchlist();
+  }, [movieId, inWatchlist, currentUser, mutate, mutateWatchlist]);
 
   const Icon = inWatchlist ? AiOutlineCheck : AiOutlineEye;
 
