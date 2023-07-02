@@ -90,7 +90,7 @@ Solo fullstack application built with Next.js. As a frontend engineer it had bee
 ## Future Additions 🔮
 
 ## Sole Contributor 💪🏾
-  <a href="https://github.com/kendallm360">![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)/a>
+  <a href="https://github.com/kendallm360">![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)</a>
   
   <p><a href="https://www.linkedin.com/in/kendall-mcgree/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"></a></p><br><p><a href="mailto:mcgreekendall@gmail.com"><img src="https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail Badge"></a></p>
 
