@@ -5,7 +5,7 @@ import { BsChevronDown } from "react-icons/bs";
 import { BsSearch } from "react-icons/bs";
 import { BsBell } from "react-icons/bs";
 import { BiUserCircle } from "react-icons/bi";
-
+import { useRouter } from "next/router";
 import AccountMenu from "./AccountMenu";
 
 const TOP_OFFSET = 66;
@@ -14,6 +14,7 @@ const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showAccountMenu, setShowAccountMenu] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,7 +48,8 @@ const Navbar = () => {
       `}
       >
         <img
-          className="h-9 lg:h-15 rounded-full"
+          onClick={() => router.push("/")}
+          className="h-9 lg:h-15 rounded-full cursor-pointer"
           src="/images/socialLogo.png"
           alt="Movie Social Logo"
         />
