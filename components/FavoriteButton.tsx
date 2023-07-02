@@ -4,7 +4,6 @@ import useCurrentUser from "@/hooks/useCurrentUser";
 import useFavorites from "@/hooks/useFavorites";
 import { MdFavorite } from "react-icons/md";
 import { AiOutlineCheck } from "react-icons/ai";
-import logger from "../lib/logger";
 interface FavoriteButtonProps {
   movieId: string;
 }
