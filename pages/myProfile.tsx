@@ -81,7 +81,7 @@ const MyProfile = () => {
           )}
           <div className="flex flex-row justify-between items-center">
             <h2 className="border-l-2 border-yellow-500 mb-2 mx-2 px-2 text-1xl lg:text-2xl font-bold">
-              Reviews
+              My Reviews
             </h2>
             <h2 className="text-yellow-400 cursor-pointer text-l lg:text-xl font-light">
               View All
