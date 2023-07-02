@@ -1,5 +1,5 @@
 import { isEmpty } from "lodash";
-// import
+import ReviewListItem from "./ReviewListItem";
 
 interface ReviewListProps {
   data: Record<string, any>[];
@@ -11,7 +11,11 @@ const ReviewList: React.FC<ReviewListProps> = ({ data }) => {
   return (
     <main>
       <h2>Steve</h2>
-      <div className="flex justify-around border-blue border-2 my-3"></div>
+      <div className="flex justify-around border-blue border-2 my-3">
+        {data.map((movie) => {
+          return <ReviewListItem key={movie.id} data={movie} />;
+        })}
+      </div>
     </main>
   );
 };
