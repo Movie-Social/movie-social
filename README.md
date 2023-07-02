@@ -17,7 +17,7 @@
 </details>
 
 ## About the project
- 
+Solo fullstack application built with Next.js. As a frontend engineer it had been frustrating for me to be so dependent on the open source APIs available....
 
 
 ## [Deployed Application]()
@@ -42,7 +42,6 @@
 
 
 ## Frontend Technologies Used 👨🏾‍💻
-
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
@@ -72,17 +71,18 @@
 ![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white)
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 
-## Accessibility ♿️
-
- - [Lighthouse Score]()
- - [Taba11y]()
-
 ## Organizational Resources 🤓
- - [Jira Sprint Tracker]() 
+ - [Jira Sprint Tracker](https://movieclub.atlassian.net/jira/software/projects/MS/boards/2/timeline?selectedIssue=MS-2&shared=&atlOrigin=eyJpIjoiOTY0NGRmNzc1YzVkNDYwNzgxZTc0ODBlOTE4MzRkZTIiLCJwIjoiaiJ9)
+ - [Standup Tracker](https://docs.google.com/spreadsheets/d/15W0ZOf6QuopjNkneR7NCgACKUaP8B5sUfrAjegcO9Bo/edit?usp=sharing)
  - [Project Board](https://github.com/users/kendallm360/projects/9/views/1)
  - [Figma](https://www.figma.com/file/oZAqVK1lRyLbxgsAfVlD1g/Movie-Club?type=design&node-id=0-1&mode=design&t=eOyU4LJwOz8A4WBi-0)
  - [MVP]()
  - [Design Inspiration]()
+
+## Accessibility ♿️
+ - [Lighthouse Score]()
+ - [Taba11y]()
+
 
 ## Future Additions 🔮
 
