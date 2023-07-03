@@ -6,6 +6,7 @@ import RestfulMovieList from "@/components/RestfulMovieList";
 import useFavorites from "@/hooks/useFavorites";
 import useInfoModal from "@/hooks/useInfoModal";
 import useMovieList from "@/hooks/useMovieList";
+import useTMDB from "@/hooks/useTMDB";
 import useWatchlist from "@/hooks/useWatchlist";
 import { NextPageContext } from "next";
 import { getSession, signOut } from "next-auth/react";
@@ -29,10 +30,12 @@ export async function getServerSideProps(context: NextPageContext) {
 const Home = () => {
   // const { data: user } = useCurrentUser();
   const { data: movies = [] } = useMovieList();
+  const { data: pops = [] } = useTMDB("popular");
   const { data: favorites = [] } = useFavorites();
   const { data: watchlist = [] } = useWatchlist();
   const { isOpen, closeModal } = useInfoModal();
 
+  console.log(pops, "POP");
   return (
     <main>
       <InfoModal visible={isOpen} onClose={closeModal} />
