@@ -8,12 +8,14 @@ const options = {
   },
 };
 const tmdbFetcher = async () => {
-  const popularMovies = await fetch(
-    "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
-    options
-  )
-    .then((response) => response.json())
-    .catch((error) => logger.info(error));
-  logger.fatal(popularMovies, "test TMDB");
+  try {
+    const response = await fetch(
+      "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+      options
+    );
+    return response.json();
+  } catch (error) {
+    logger.error(error);
+  }
 };
 export default tmdbFetcher;
