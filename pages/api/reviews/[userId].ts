@@ -19,8 +19,6 @@ export default async function handler(
       },
     });
 
-    console.log(reviews, "<<");
-    console.log(currentUser, "<<");
     return res.status(200).json(reviews);
   } catch (error: any) {
     logger.error(error.message);
