@@ -7,10 +7,10 @@ const options = {
     Authorization: process.env.TMDB || "",
   },
 };
-const tmdbFetcher = async () => {
+const tmdbFetcher = async (category: string) => {
   try {
     const response = await fetch(
-      "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+      `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=1`,
       options
     );
     return response.json();
