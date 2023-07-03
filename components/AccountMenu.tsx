@@ -13,7 +13,6 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
     return null;
   }
 
-  console.log(currentUser, "<<");
   return (
     <main className="bg-black w-56 absolute top-14 right-0 py-5 flex-col border-2 border-gray-800 flex">
       <section className="flex flex-col gap-3">
