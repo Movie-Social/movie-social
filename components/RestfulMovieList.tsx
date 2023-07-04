@@ -1,6 +1,7 @@
 import tmdbFetcher from "@/lib/tmdbFetcher";
 import { useEffect, useState } from "react";
 import RestfulMovieCard from "./RestfulMovieCard";
+import { Slide } from "react-slideshow-image";
 
 interface RestfulMovieListProps {
   title: string;
@@ -24,15 +25,23 @@ const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
 
   return (
     <main className="px-4 md:px-12 mt-2 space-y-4">
-      <section>
+      <section className="flex flex-col content-center">
         <h2 className="text-white text-md md:text-xl lg:text-2xl font-semibold mb-4">
           {title}
         </h2>
-        <div className="grid grid-cols-5 gap-2 mb-24 md:mb-48 lg:mb-96">
+        {/* <div className="grid grid-cols-5 gap-2 mb-24 md:mb-48 lg:mb-96 border-2 border-red-500"> */}
+        <Slide
+          transitionDuration={1000}
+          autoplay={false}
+          slidesToScroll={3}
+          slidesToShow={5}
+          indicators={true}
+        >
           {tmdbList.map((movie: any) => {
             return <RestfulMovieCard key={movie.id} data={movie} />;
           })}
-        </div>
+        </Slide>
+        {/* </div> */}
       </section>
     </main>
   );
