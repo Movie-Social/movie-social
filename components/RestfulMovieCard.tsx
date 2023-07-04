@@ -9,7 +9,7 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
   return (
     <main>
       <img
-        onClick={() => router.push("/auth")}
+        onClick={() => router.push(`/movie/tmdb/${data?.title}`)}
         alt={`${data.title}'s official movie poster"`}
         src={`https://image.tmdb.org/t/p/original/${data?.poster_path}`}
         fill
