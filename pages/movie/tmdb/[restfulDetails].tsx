@@ -1,20 +1,28 @@
 import { useRouter } from "next/router";
-import omdbFetcher from "@/lib/omdbFetcher";
 import { useEffect, useState } from "react";
+import omdbFetcher from "@/lib/omdbFetcher";
+import tmdbDetailsFetcher from "@/lib/tmdbDetailsFetcher";
 const RestfulMovieDetails = () => {
-  const [omdb, setOmdb] = useState([]);
   const [tmdb, setTmdb] = useState([]);
+  const [omdb, setOmdb] = useState([]);
   const router = useRouter();
   const movieId = router.query.restfulDetails;
   useEffect(() => {
+    const fetchTmdb = async () => {
+      const tmdbDetails = await tmdbDetailsFetcher(movieId);
+      setTmdb(tmdbDetails);
+    };
+    fetchTmdb();
+  }, []);
+  useEffect(() => {
     const fetchOmdb = async () => {
-      const omdbDetails = await omdbFetcher(movieId);
+      const omdbDetails = await omdbFetcher(tmdb?.title);
       setOmdb(omdbDetails);
     };
-    fetchOmdb();
-  }, []);
-
-  // console.log(movieId, "movieid test");
+    if (tmdb?.title) {
+      fetchOmdb();
+    }
+  }, [tmdb]);
   console.log(omdb, "omdb");
   return (
     <main>

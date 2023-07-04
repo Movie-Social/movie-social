@@ -5,11 +5,10 @@ interface RestfulMovieCardProps {
 
 const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
   const router = useRouter();
-  console.log(data.poster_path, "<<");
   return (
     <main>
       <img
-        onClick={() => router.push(`/movie/tmdb/${data?.title}`)}
+        onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
         alt={`${data.title}'s official movie poster"`}
         src={`https://image.tmdb.org/t/p/original/${data?.poster_path}`}
         fill

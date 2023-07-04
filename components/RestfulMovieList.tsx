@@ -22,7 +22,6 @@ const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
     return null;
   }
 
-  console.log(tmdbList[0]?.title, "NP");
   return (
     <main className="px-4 md:px-12 mt-2 space-y-4">
       <section>
