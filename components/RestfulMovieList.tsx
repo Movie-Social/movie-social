@@ -1,10 +1,11 @@
 import tmdbFetcher from "@/lib/tmdbFetcher";
 import { useEffect, useState } from "react";
 import RestfulMovieCard from "./RestfulMovieCard";
+import upcomingFetcher from "@/lib/upcomingFetcher";
 
 const RestfulMovieList = () => {
   const [popularMovies, setPopularMovies] = useState<any>();
-  // const [upcomingMovies, setUpcomingMovies] = useState<any>();
+  const [upcomingMovies, setUpcomingMovies] = useState<any>();
   // const [nowPlayingMovies, setNowPlayingMovies] = useState<any>();
 
   useEffect(() => {
@@ -13,8 +14,8 @@ const RestfulMovieList = () => {
       setPopularMovies(populars.results);
       // const nowPlayings = await tmdbFetcher("now_playing");
       // setNowPlayingMovies(nowPlayings.results);
-      // const upcomings = await tesFetcher();
-      // setUpcomingMovies(upcomings.results);
+      const upcomings = await upcomingFetcher();
+      setUpcomingMovies(upcomings);
     };
 
     fetchPopulars();
@@ -25,7 +26,7 @@ const RestfulMovieList = () => {
   }
 
   console.log(popularMovies, "POP");
-  // console.log(upcomingMovies, "UP");
+  console.log(upcomingMovies, "UP");
   // console.log(nowPlayingMovies, "NP");
   return (
     <main className="px-4 md:px-12 mt-2 space-y-4">
@@ -35,7 +36,7 @@ const RestfulMovieList = () => {
         </h2>
         <div className="grid grid-cols-5 gap-2 mb-24 md:mb-48 lg:mb-96">
           {popularMovies.map((movie: any) => {
-            console.log(movie, "<<<<");
+            // console.log(movie, "<<<<");
             return <RestfulMovieCard key={movie.id} data={movie} />;
           })}
         </div>
