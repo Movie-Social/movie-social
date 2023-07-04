@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import InfoModal from "@/components/InfoModal";
 import MovieList from "@/components/MovieList";
 import Navbar from "@/components/Navbar";
+import RestfulMovieList from "@/components/RestfulMovieList";
 import useFavorites from "@/hooks/useFavorites";
 import useInfoModal from "@/hooks/useInfoModal";
 import useMovieList from "@/hooks/useMovieList";
@@ -29,7 +30,6 @@ const Home = () => {
   // const { data: user } = useCurrentUser();
   const { data: movies = [] } = useMovieList();
   const { data: favorites = [] } = useFavorites();
-  const { data: watchlist = [] } = useWatchlist();
   const { isOpen, closeModal } = useInfoModal();
 
   return (
@@ -38,7 +38,10 @@ const Home = () => {
       <Navbar />
       <Hero />
       <section className="pb-40">
-        {/* <MovieList title="Watchlist" data={watchlist} /> */}
+        <RestfulMovieList title="Now Playing" />
+        <RestfulMovieList title="Top Rated" />
+        <RestfulMovieList title="Upcoming" />
+        <RestfulMovieList title="Popular" />
         <MovieList title="Comedy" data={movies} />
         <MovieList title="Romance" data={movies} />
         <MovieList title="Action" data={movies} />
