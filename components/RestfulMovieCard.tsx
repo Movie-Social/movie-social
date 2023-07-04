@@ -27,8 +27,8 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
         width={200}
         height={200}
       />
-      {/* </div> */}
       <div
+        onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
         className="
       opacity-0
       absolute
@@ -61,6 +61,7 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
           alt="thumbnail"
         />
         <section
+          onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
           className="
         z-10
         bg-zinc-800
