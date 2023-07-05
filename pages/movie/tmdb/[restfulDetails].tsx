@@ -7,6 +7,7 @@ import rotten from "../../../public/images/rotten.png";
 import imdb from "../../../public/images/imdb.png";
 import meta from "../../../public/images/meta.png";
 import Image from "next/image";
+import Reviewform from "@/components/ReviewForm";
 const RestfulMovieDetails = () => {
   const [tmdb, setTmdb] = useState([]);
   const [omdb, setOmdb] = useState([]);
@@ -141,6 +142,7 @@ const RestfulMovieDetails = () => {
             </h2>
             <br></br>
             {/* <div>review form will go here</div> */}
+            <Reviewform />
             <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
               Movie Info
             </h2>
