@@ -7,19 +7,43 @@ interface ReviewProps {
   count: number;
   onRating: Function;
   rating: number;
+  color: string;
 }
 
-const Reviewform: React.FC<ReviewProps> = ({ count, onRating, rating }) => {
+const Reviewform: React.FC<ReviewProps> = ({
+  count,
+  onRating,
+  color,
+  rating,
+}) => {
   const currentUser = useCurrentUser();
-  //   const [rating, setRating] = useState(0);
+  const [hoverRating, setHoverRating] = useState(0);
+
+  const getColor = (index) => {
+    if (hoverRating >= index) {
+      return color.filled;
+    } else if (!hoverRating && rating >= index) {
+      return color.filled;
+    }
+    return color.unfilled;
+  };
+
   const starRating = useMemo(() => {
     return Array(count)
       .fill(0)
       .map((_, i) => i + 1)
       .map((idx) => {
-        <BsFillStarFill key={idx} size={30} onClick={() => onRating(idx)} />;
+        <BsFillStarFill
+          key={idx}
+          size={30}
+          style={{ color: getColor(idx) }}
+          onMouseEnter={() => setHoverRating(idx)}
+          onMouseLeave={() => setHoverRating(0)}
+          onClick={() => onRating(idx)}
+        />;
       });
-  }, [count, rating]);
+  }, [count, rating, hoverRating]);
+
   return (
     <main className="border-2 border-red-300 relative">
       <section className="flex flex-row justify-between">
@@ -28,6 +52,7 @@ const Reviewform: React.FC<ReviewProps> = ({ count, onRating, rating }) => {
           {currentUser.data.name}
         </div>
         <div className="flex flex-row">
+          {starRating}
           {/* <BsFillStarFill className="cursor-pointer" size={30} />
           <BsFillStarFill size={30} />
           <BsFillStarFill size={30} />
