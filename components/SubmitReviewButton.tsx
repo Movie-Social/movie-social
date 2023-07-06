@@ -31,22 +31,7 @@ const SubmitReviewButton: React.FC<SubmitReviewButtonProps> = ({ movieId }) => {
   return (
     <main
       onClick={addReview}
-      className="cursor-pointer
-      m-10
-group/item
-w-6
-h-6
-lg:w-8
-lg:h-8
-border-white
-border-2
-rounded-full
-flex
-justify-center
-items-center
-transition
-hover:border-neutral-300
-"
+      className="bg-yellow-500 rounded-md p-1 m-2 my-10 cursor-pointer"
     >
       Submit button
     </main>

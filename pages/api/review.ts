@@ -12,6 +12,11 @@ export default async function handler(
       const { currentUser } = await serverAuth(req, res);
 
       const { movieId } = req.body;
+
+      //!   below I am trying to find a movie that does not exist in my
+      //!   movie collection because restful movies are fetched.
+
+      //!   I first need to add the movie to the db before running this logic for it to work
       const existingMovie = await prismadb.movie.findUnique({
         where: {
           id: movieId,
