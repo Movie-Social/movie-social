@@ -11,6 +11,12 @@ interface ReviewProps {
 const Reviewform: React.FC<ReviewProps> = ({ onRating, rating }) => {
   const currentUser = useCurrentUser();
   const [hoverRating, setHoverRating] = useState(0);
+  const [review, setReview] = useState("");
+
+  const handleChange = (event: any) => {
+    const { value } = event.target;
+    setReview(value);
+  };
 
   const getColor = (index: number) => {
     if (hoverRating >= index) {
@@ -39,7 +45,7 @@ const Reviewform: React.FC<ReviewProps> = ({ onRating, rating }) => {
   }, [rating, hoverRating]);
 
   return (
-    <main className="border-2 border-red-300 relative">
+    <main className="border-2 border-red-300 h-[40vh]">
       <section className="flex flex-row justify-between">
         <div className="flex flex-row">
           <BiUserCircle size={30} />
@@ -47,6 +53,13 @@ const Reviewform: React.FC<ReviewProps> = ({ onRating, rating }) => {
         </div>
         <div className="flex flex-row">{starRating}</div>
       </section>
+      <input
+        type="text"
+        placeholder="What did you think of the movie? (optional)"
+        value={review}
+        onChange={handleChange}
+        className="w-full h-[90%] text-black"
+      />
     </main>
   );
 };
