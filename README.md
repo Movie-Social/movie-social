@@ -13,7 +13,7 @@
     <li><a href="#tools-used">Tools Used</a></li>
     <li><a href="#stretch-tech">Stretch Techs</a></li>
     <li><a href="#accessibility">Accessibility</a></li>
-    <li><a href="#future-additions">Future Additions</a></li>
+    <li><a href="#future-additions-🔮">Future Additions</a></li>
     <li><a href="#contributor">Contributor</a></li>
   </ol>
 </details>
