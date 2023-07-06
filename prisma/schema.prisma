@@ -22,7 +22,7 @@ model User {
   favoriteIds    String[]  @db.ObjectId
   watchlistIds   String[]  @db.ObjectId
   reviewIds      String[]  @db.ObjectId
-  // reviews        Review[]
+  // reviews        String[] @db.ObjectId
   sessions       Session[]
   accounts       Account[]
 }
