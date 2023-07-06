@@ -142,7 +142,11 @@ const RestfulMovieDetails = () => {
               Rate and Review
             </h2>
             <br></br>
-            <Reviewform rating={rating} onRating={(rate) => setRating(rate)} />
+            <Reviewform
+              movieId={movieId}
+              rating={rating}
+              onRating={(rate) => setRating(rate)}
+            />
             <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
               Movie Info
             </h2>

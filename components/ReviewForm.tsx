@@ -7,9 +7,10 @@ import SubmitReviewButton from "./SubmitReviewButton";
 interface ReviewProps {
   onRating: Function;
   rating: number;
+  movieId: string | "";
 }
 
-const Reviewform: React.FC<ReviewProps> = ({ onRating, rating }) => {
+const Reviewform: React.FC<ReviewProps> = ({ onRating, rating, movieId }) => {
   const currentUser = useCurrentUser();
   const [hoverRating, setHoverRating] = useState(0);
   const [review, setReview] = useState("");
@@ -61,7 +62,7 @@ const Reviewform: React.FC<ReviewProps> = ({ onRating, rating }) => {
         onChange={handleChange}
         className="w-full h-[90%] text-black"
       />
-      <SubmitReviewButton />
+      <SubmitReviewButton movieId={movieId} />
     </main>
   );
 };
