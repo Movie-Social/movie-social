@@ -2,6 +2,7 @@ import useCurrentUser from "@/hooks/useCurrentUser";
 import { useMemo, useState } from "react";
 import { BiUserCircle } from "react-icons/bi";
 import { BsFillStarFill } from "react-icons/bs";
+import SubmitReviewButton from "./SubmitReviewButton";
 
 interface ReviewProps {
   onRating: Function;
@@ -49,7 +50,7 @@ const Reviewform: React.FC<ReviewProps> = ({ onRating, rating }) => {
       <section className="flex flex-row justify-between">
         <div className="flex flex-row">
           <BiUserCircle size={30} />
-          {currentUser.data.name}
+          {currentUser?.data?.name}
         </div>
         <div className="flex flex-row">{starRating}</div>
       </section>
@@ -60,6 +61,7 @@ const Reviewform: React.FC<ReviewProps> = ({ onRating, rating }) => {
         onChange={handleChange}
         className="w-full h-[90%] text-black"
       />
+      <SubmitReviewButton />
     </main>
   );
 };
