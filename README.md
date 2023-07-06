@@ -11,6 +11,7 @@
     <li><a href="#backendend-technologies-used">Technologies Used</a></li>
     <li><a href="#organizational-resources">Organizational Resources</a></li>
     <li><a href="#tools-used">Tools Used</a></li>
+    <li><a href="#stretch-tech">Stretch Techs</a></li>
     <li><a href="#accessibility">Accessibility</a></li>
     <li><a href="#future-additions">Future Additions</a></li>
     <li><a href="#contributor">Contributor</a></li>
@@ -73,6 +74,11 @@ Solo fullstack application built with Next.js. As a frontend engineer it had bee
 ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)
 ![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white)
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+
+## Stretch Techs
+The following are all technologies that I had to self-teach in order to complete this application:
+- Tailwind CSS
+- useSWR?
 
 ## Organizational Resources 🤓
  - [Jira Sprint Tracker](https://movieclub.atlassian.net/jira/software/projects/MS/boards/2/timeline?selectedIssue=MS-2&shared=&atlOrigin=eyJpIjoiOTY0NGRmNzc1YzVkNDYwNzgxZTc0ODBlOTE4MzRkZTIiLCJwIjoiaiJ9)
