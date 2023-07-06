@@ -7,10 +7,11 @@
     <li><a href="#deployed-application">Deployed Application</a></li>
     <li><a href="#user-stories">User Stories</a></li>
     <li><a href="#application-in-action">Application in Action</a></li>
-    <li><a href="#technologies-used">Technologies Used</a></li>
+    <li><a href="#frontend-technologies-used">Technologies Used</a></li>
+    <li><a href="#backendend-technologies-used">Technologies Used</a></li>
+    <li><a href="#organizational-resources">Organizational Resources</a></li>
     <li><a href="#tools-used">Tools Used</a></li>
     <li><a href="#accessibility">Accessibility</a></li>
-    <li><a href="#organizational-resources">Organizational Resources</a></li>
     <li><a href="#future-additions">Future Additions</a></li>
     <li><a href="#contributor">Contributor</a></li>
   </ol>
@@ -51,7 +52,7 @@ Solo fullstack application built with Next.js. As a frontend engineer it had bee
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 <img src="https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white" />
 
-## Backendend Technologies Used 👨🏾‍💻
+## Backend Technologies Used 👨🏾‍💻
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
 ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
