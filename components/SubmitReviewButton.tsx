@@ -1,7 +1,7 @@
 import useCurrentUser from "@/hooks/useCurrentUser";
 import useReviews from "@/hooks/useReviews";
 import axios from "axios";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 
 interface SubmitReviewButtonProps {
   movieId: string;
@@ -9,6 +9,11 @@ interface SubmitReviewButtonProps {
 const SubmitReviewButton: React.FC<SubmitReviewButtonProps> = ({ movieId }) => {
   const { mutate: mutateReviews } = useReviews();
   const { data: currentUser, mutate } = useCurrentUser();
+
+  const reviewed = useMemo(() => {
+    const list = currentUser?.reviewIds || [];
+    return list.includes(movieId);
+  }, [currentUser, movieId]);
 
   const addReview = useCallback(async () => {
     const response = await axios.post("/api/review", { movieId });
@@ -22,7 +27,7 @@ const SubmitReviewButton: React.FC<SubmitReviewButtonProps> = ({ movieId }) => {
     mutateReviews();
     console.log("user", currentUser);
     console.log("user reviews", currentUser?.reviews);
-  }, [movieId, currentUser, mutate, mutateReviews]);
+  }, [movieId, reviewed, currentUser, mutate, mutateReviews]);
   return (
     <main
       onClick={addReview}
