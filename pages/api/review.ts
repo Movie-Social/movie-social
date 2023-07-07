@@ -17,16 +17,16 @@ export default async function handler(
       //!   movie collection because restful movies are fetched.
 
       //!   I first need to add the movie to the db before running this logic for it to work
-      const existingMovie = await prismadb.movie.findUnique({
-        where: {
-          id: movieId,
-        },
-      });
+      //   const existingMovie = await prismadb.movie.findUnique({
+      //     where: {
+      //       id: movieId,
+      //     },
+      //   });
 
-      if (!existingMovie) {
-        logger.info("No movie exists");
-        throw new Error("Invalid ID");
-      }
+      //   if (!existingMovie) {
+      //     logger.info("No movie exists");
+      //     throw new Error("Invalid ID");
+      //   }
 
       const user = await prismadb.user.update({
         where: {
