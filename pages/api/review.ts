@@ -9,10 +9,32 @@ export default async function handler(
 ) {
   try {
     if (req.method === "POST") {
-      const { currentUser } = await serverAuth(req, res);
+      //   const { currentUser } = await serverAuth(req, res);
 
-      const { movieId } = req.body;
+      const { movieId, userId, rating, review } = req.body;
 
+      const existingReview = await prismadb.review.findUnique({
+        where: {
+          movieId,
+        },
+      });
+
+      if (existingReview) {
+        return res
+          .status(422)
+          .json({ error: "Movie has already been reviewed" });
+      }
+
+      const movieReview = await prismadb.review.create({
+        data: {
+          userId,
+          movieId,
+          rating,
+          review,
+        },
+      });
+
+      return res.status(200).json(movieReview);
       //!   below I am trying to find a movie that does not exist in my
       //!   movie collection because restful movies are fetched.
 
@@ -28,18 +50,18 @@ export default async function handler(
       //     throw new Error("Invalid ID");
       //   }
 
-      const user = await prismadb.user.update({
-        where: {
-          email: currentUser.email || "",
-        },
-        data: {
-          reviewIds: {
-            push: movieId,
-          },
-        },
-      });
+      //   const user = await prismadb.user.update({
+      //     where: {
+      //       email: currentUser.userId || "",
+      //     },
+      //     data: {
+      //       reviewIds: {
+      //         push: movieId,
+      //       },
+      //     },
+      //   });
 
-      return res.status(200).json(user);
+      //   return res.status(200).json(user);
     }
     return res.status(405).end();
   } catch (error: any) {
