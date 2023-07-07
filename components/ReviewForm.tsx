@@ -45,7 +45,6 @@ const Reviewform: React.FC<ReviewProps> = ({ onRating, rating, movieId }) => {
         />
       ));
   }, [rating, hoverRating]);
-
   return (
     <main className="border-2 border-red-300 h-[40vh]">
       <section className="flex flex-row justify-between">
@@ -62,7 +61,12 @@ const Reviewform: React.FC<ReviewProps> = ({ onRating, rating, movieId }) => {
         onChange={handleChange}
         className="w-full h-[90%] text-black"
       />
-      <SubmitReviewButton movieId={movieId} />
+      <SubmitReviewButton
+        userId={currentUser.data.id}
+        rating={rating}
+        review={review}
+        movieId={movieId}
+      />
     </main>
   );
 };
