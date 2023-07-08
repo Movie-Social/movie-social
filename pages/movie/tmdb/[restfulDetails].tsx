@@ -33,28 +33,25 @@ const RestfulMovieDetails = () => {
       fetchOmdb();
     }
   }, [tmdb]);
-  
+
   const generateUniqueHex = () => {
     const bytes = crypto.randomBytes(12);
     return bytes.toString("hex");
   };
 
   const postMovie = useCallback(async () => {
-    if (omdb?.Title) {
+    if (omdb?.Title && omdb?.Genre.split(", ")) {
       await axios.post("/api/movie", {
         title: tmdb?.title,
-        score: parseInt(omdb?.imdbRating),
+        score: parseInt(omdb?.imdbRating) || 0,
         poster: `https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`,
-        categories: "Action",
+        categories: omdb?.Genre.split(", ") || [],
         details: generateUniqueHex(),
       });
     }
   }, [tmdb, omdb]);
 
   postMovie();
-  // const categories =
-  console.log(omdb, "omdb");
-  console.log(tmdb, "tmdb");
   return (
     <main className="text-white flex justify-center">
       {/* <Navbar /> */}
