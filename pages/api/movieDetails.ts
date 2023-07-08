@@ -42,7 +42,7 @@ export default async function handler(
       return res.status(200).json({ message: "Movie Already exists" });
     } else {
       const transactionResult = await prismadb.$transaction(async (prisma) => {
-        const newMovie = await prismadb.movie.create({
+        const newMovie = await prismadb.movieDetails.create({
           data: {
             title,
             year,
