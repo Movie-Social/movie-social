@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import omdbFetcher from "@/lib/omdbFetcher";
 import tmdbDetailsFetcher from "@/lib/tmdbDetailsFetcher";
 import trash from "../../../public/images/recyclingBag.png";
@@ -8,6 +8,8 @@ import imdb from "../../../public/images/imdb.png";
 import meta from "../../../public/images/meta.png";
 import Image from "next/image";
 import Reviewform from "@/components/ReviewForm";
+import axios from "axios";
+
 const RestfulMovieDetails = () => {
   const [tmdb, setTmdb] = useState([]);
   const [omdb, setOmdb] = useState([]);
@@ -30,8 +32,22 @@ const RestfulMovieDetails = () => {
       fetchOmdb();
     }
   }, [tmdb]);
-  console.log(omdb, "omdb");
-  console.log(tmdb, "tmdb");
+
+  const postMovie = useCallback(async () => {
+    if (omdb?.Title) {
+      await axios.post("/api/movie", {
+        title: tmdb?.title,
+        score: parseInt(omdb?.imdbRating),
+        poster: `https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`,
+        categories: "Action",
+        details: "64a8b2e892b1dbc8642024a5",
+      });
+    }
+  }, [tmdb, omdb]);
+
+  postMovie();
+  console.log(omdb?.Title, "omdb");
+  console.log(tmdb?.title, "tmdb");
   return (
     <main className="text-white flex justify-center">
       {/* <Navbar /> */}

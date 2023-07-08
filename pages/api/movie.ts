@@ -15,26 +15,29 @@ export default async function handler(
 
     const { title, score, poster, categories, details } = req.body;
 
-    const existingMovie = await prismadb.movie.findFirstOrThrow({
-      where: {
-        title: title,
+    // const existingMovie = await prismadb.movie.findFirstOrThrow({
+    //   where: {
+    //     title: title,
+    //   },
+    // });
+
+    // if (!existingMovie) {
+    // logger.info
+    const newMovie = await prismadb.movie.create({
+      data: {
+        title,
+        score,
+        poster,
+        categories,
+        details,
       },
     });
-
-    if (!existingMovie) {
-      // logger.info
-      const newMovie = await prismadb.movie.create({
-        data: {
-          title,
-          score,
-          poster,
-          categories,
-          details,
-        },
-      });
-
-      return res.status(200).json(newMovie);
-    }
+    console.log(newMovie, "posted? movie");
+    return res.status(200).json(newMovie);
+    // } else {
+    //   // console.log("")
+    //   return res.status(200).json({ message: "issue" });
+    // }
   } catch (error: any) {
     logger.error(error.message);
     return res.status(400).end();
