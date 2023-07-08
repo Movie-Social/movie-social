@@ -1,8 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import prismadb from "@/lib/prismadb";
-import serverAuth from "@/lib/serverAuth";
-import logger from "@/lib/logger";
 import { Prisma } from "@prisma/client";
+import prismadb from "@/lib/prismadb";
+import logger from "@/lib/logger";
 
 export default async function handler(
   req: NextApiRequest,
@@ -15,7 +14,7 @@ export default async function handler(
   try {
     const { title, score, poster, categories, details } = req.body;
 
-    const existingMovie = await prismadb.movie.findFirst({
+    const existingMovie = await prismadb.movie.findUnique({
       where: {
         title: title,
       },
@@ -34,11 +33,7 @@ export default async function handler(
           categories,
           details,
         },
-        // validate: {
-        //   fields: ["title"],
-        // },
       });
-      console.log(newMovie, "posted? movie");
       return newMovie;
     });
 

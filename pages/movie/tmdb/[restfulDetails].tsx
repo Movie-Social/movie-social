@@ -1,3 +1,4 @@
+import crypto from "crypto";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import omdbFetcher from "@/lib/omdbFetcher";
@@ -32,6 +33,11 @@ const RestfulMovieDetails = () => {
       fetchOmdb();
     }
   }, [tmdb]);
+  
+  const generateUniqueHex = () => {
+    const bytes = crypto.randomBytes(12);
+    return bytes.toString("hex");
+  };
 
   const postMovie = useCallback(async () => {
     if (omdb?.Title) {
@@ -40,14 +46,15 @@ const RestfulMovieDetails = () => {
         score: parseInt(omdb?.imdbRating),
         poster: `https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`,
         categories: "Action",
-        details: "64a8b2e892b1dbc8642024a5",
+        details: generateUniqueHex(),
       });
     }
   }, [tmdb, omdb]);
 
   postMovie();
-  console.log(omdb?.Title, "omdb");
-  console.log(tmdb?.title, "tmdb");
+  // const categories =
+  console.log(omdb, "omdb");
+  console.log(tmdb, "tmdb");
   return (
     <main className="text-white flex justify-center">
       {/* <Navbar /> */}
