@@ -76,7 +76,7 @@ model VerificationToken {
 
 model Movie {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  title      String
+  title      String   @unique
   score      Int
   poster     String
   categories String[]
