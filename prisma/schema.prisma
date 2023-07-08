@@ -86,7 +86,7 @@ model Movie {
 
 model MovieDetails {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  title       String
+  title       String   @unique
   year        Int
   rating      String
   runtime     String
