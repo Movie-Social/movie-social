@@ -10,6 +10,8 @@ import meta from "../../../public/images/meta.png";
 import Image from "next/image";
 import Reviewform from "@/components/ReviewForm";
 import axios from "axios";
+import useAllReviews from "@/hooks/useAllReviews";
+import ExistingReviews from "@/components/ExistingReviews";
 
 const RestfulMovieDetails = () => {
   const [tmdb, setTmdb] = useState([]);
@@ -17,9 +19,9 @@ const RestfulMovieDetails = () => {
   const [rating, setRating] = useState(0);
   const [mongoMovieId, setMongoMovieId] = useState("");
   const [mongoDetailsId, setMongoDetailsId] = useState("");
-
   const router = useRouter();
   const movieId = router.query.restfulDetails;
+  const allReviews = useAllReviews();
   useEffect(() => {
     const fetchTmdb = async () => {
       const tmdbDetails = await tmdbDetailsFetcher(movieId);
@@ -64,6 +66,11 @@ const RestfulMovieDetails = () => {
     postMovie();
   }, [tmdb, omdb, mongoMovieId, mongoDetailsId]);
 
+  const reviews = allReviews?.data?.filter(
+    (review) => review.title === tmdb?.title
+  );
+
+  console.log(reviews, "rev");
   return (
     <main className="text-white flex justify-center">
       <section className="border-2 w-[90vw] h-full">
@@ -83,11 +90,7 @@ const RestfulMovieDetails = () => {
               alt={`Movie poster for ${tmdb?.title}`}
               className="rounded-lg border-2"
             />
-            <div
-              className="w-3/5 border-2 rounded-lg border-blue-500 flex flex-col justify-evenly
-   
-            "
-            >
+            <div className="w-3/5 border-2 rounded-lg border-blue-500 flex flex-col justify-evenly">
               <h2 className="text-white text-center text-1xl lg:text-3xl font-bold">
                 {tmdb?.title}
               </h2>
@@ -226,6 +229,7 @@ const RestfulMovieDetails = () => {
               Movie Social Reviews
             </h2>
           </section>
+          <ExistingReviews data={reviews} />
           {/* <div>other reviews will go here</div> */}
         </section>
       </section>
