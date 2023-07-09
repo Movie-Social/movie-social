@@ -6,6 +6,7 @@ interface Review {
   rating: number;
   title: string;
   userId: string;
+  review: string;
 }
 
 interface ExistingReviewProps {
@@ -22,7 +23,7 @@ const ExistingReviews: React.FC<ExistingReviewProps> = ({ data }) => {
       <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
         Movie Social Reviews
       </h2>
-      <section>
+      <section className="flex justify-center">
         {data.map((review) => (
           <ExistingReviewCard
             key={review?.id}
