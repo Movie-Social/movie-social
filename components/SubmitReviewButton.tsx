@@ -7,6 +7,7 @@ interface SubmitReviewButtonProps {
   review: string;
   userId: string;
   title: string;
+  poster: string;
 }
 
 const SubmitReviewButton: React.FC<SubmitReviewButtonProps> = ({
@@ -14,6 +15,7 @@ const SubmitReviewButton: React.FC<SubmitReviewButtonProps> = ({
   review,
   userId,
   title,
+  poster,
 }) => {
   const addReview = useCallback(async () => {
     try {
@@ -22,11 +24,12 @@ const SubmitReviewButton: React.FC<SubmitReviewButtonProps> = ({
         rating,
         review,
         title,
+        poster,
       });
     } catch (error: any) {
       logger.error(error.message);
     }
-  }, [title, review, rating, userId]);
+  }, [title, poster, review, rating, userId]);
 
   return (
     <main

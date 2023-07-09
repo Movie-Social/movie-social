@@ -174,6 +174,7 @@ const RestfulMovieDetails = () => {
             <br></br>
             <Reviewform
               title={tmdb?.title}
+              poster={`https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`}
               rating={rating}
               onRating={(rate: number) => setRating(rate)}
             />
