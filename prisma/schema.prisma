@@ -28,7 +28,7 @@ model User {
 
 model Review {
   id     String @id @default(auto()) @map("_id") @db.ObjectId
-  userId String @db.ObjectId
+  userId String @unique @db.ObjectId
   rating Int
   review String
   title  String @unique

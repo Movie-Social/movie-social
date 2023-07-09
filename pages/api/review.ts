@@ -20,13 +20,13 @@ export default async function handler(
         throw new Error("Movie does not exist in Mongodb");
       }
 
-      const existingReview = await prismadb.review.findUnique({
+      const existingUserReview = await prismadb.review.findMany({
         where: {
-          title: title,
+          userId: userId,
         },
       });
 
-      if (existingReview) {
+      if (existingUserReview.find((review) => review.title === title)) {
         return res
           .status(422)
           .json({ error: "Movie has already been reviewed" });
