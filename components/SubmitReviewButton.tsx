@@ -9,6 +9,7 @@ interface SubmitReviewButtonProps {
   rating: number;
   review: string;
   userId: string;
+  title: string;
 }
 
 const SubmitReviewButton: React.FC<SubmitReviewButtonProps> = ({
@@ -16,6 +17,7 @@ const SubmitReviewButton: React.FC<SubmitReviewButtonProps> = ({
   rating,
   review,
   userId,
+  title,
 }) => {
   //   const { mutate: mutateReviews } = useReviews();
   const { data: currentUser, mutate } = useCurrentUser();
@@ -32,6 +34,7 @@ const SubmitReviewButton: React.FC<SubmitReviewButtonProps> = ({
         userId,
         rating,
         review,
+        title,
       });
     } catch (error: any) {
       logger.error(error.message);
@@ -47,7 +50,9 @@ const SubmitReviewButton: React.FC<SubmitReviewButtonProps> = ({
     // mutateReviews();
     // console.log("user", currentUser);
     // console.log("user reviews", currentUser?.reviews);
-  }, [movieId, review, rating, userId, movieId]);
+  }, [movieId, title, review, rating, userId, movieId]);
+  console.log("Review data title", title);
+  console.log("Review data movieID", movieId);
   return (
     <main
       onClick={addReview}
