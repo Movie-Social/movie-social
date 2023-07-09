@@ -15,6 +15,9 @@ const RestfulMovieDetails = () => {
   const [tmdb, setTmdb] = useState([]);
   const [omdb, setOmdb] = useState([]);
   const [rating, setRating] = useState(0);
+  const [mongoMovieId, setMongoMovieId] = useState("");
+  const [mongoDetailsId, setMongoDetailsId] = useState("");
+
   const router = useRouter();
   const movieId = router.query.restfulDetails;
   useEffect(() => {
@@ -34,58 +37,63 @@ const RestfulMovieDetails = () => {
     }
   }, [tmdb]);
 
-  const generateUniqueHex = () => {
-    const bytes = crypto.randomBytes(12);
-    return bytes.toString("hex");
-  };
+  useEffect(() => {
+    const generateUniqueHex = () => {
+      const bytes = crypto.randomBytes(12);
+      return bytes.toString("hex");
+    };
+    setMongoMovieId(generateUniqueHex());
+    setMongoDetailsId(generateUniqueHex());
+  }, []);
 
-  // const mongoMovieId = generateUniqueHex()
-  const detailsId = generateUniqueHex();
+  useEffect(() => {
+    const postMovie = async () => {
+      if (omdb?.Title && omdb?.Genre.split(", ")) {
+        let response = await axios.post("/api/movie", {
+          id: mongoMovieId,
+          title: tmdb?.title,
+          score: parseInt(omdb?.imdbRating) || 0,
+          poster: `https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`,
+          categories: omdb?.Genre.split(", ") || [],
+          details: mongoDetailsId,
+        });
+        return response;
+      }
+    };
 
-  const postMovie = useCallback(async () => {
-    if (omdb?.Title && omdb?.Genre.split(", ")) {
-      let response = await axios.post("/api/movie", {
-        // id: mongoMovieId
-        title: tmdb?.title,
-        score: parseInt(omdb?.imdbRating) || 0,
-        poster: `https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`,
-        categories: omdb?.Genre.split(", ") || [],
-        details: detailsId,
-      });
-      return response;
-    }
-  }, [tmdb, omdb]);
+    postMovie();
+  }, [tmdb, omdb, mongoMovieId, mongoDetailsId]);
 
-  postMovie();
+  // useEffect(() => {
+  //   const postMovieDetails = async () => {
+  //     if (mongoDetailsId) {
+  //       await axios.post("/api/movieDetails", {
+  //         id: mongoDetailsId,
+  //         title: tmdb?.title,
+  //         year: parseInt(omdb?.Year) || 0,
+  //         rating: omdb?.Rated || "",
+  //         runtime: omdb.Runtime || "N/A",
+  //         trailer: "",
+  //         summary: tmdb?.overview || "",
+  //         reviewCount: tmdb?.vote_count || "N/A",
+  //         // cast: [{ actor: "", character: "" }],
+  //         boxOffice: omdb?.BoxOffice || "N/A",
+  //         director: omdb?.Director || "N/A",
+  //         writer: omdb?.Writer || "N/A",
+  //         imdbRating: omdb?.imdbRating || "0",
+  //         metascore: omdb?.Metascore || "0",
+  //         movieId: mongoMovieId,
+  //         poster: `https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`,
+  //         ratings: omdb?.Ratings,
+  //         releaseDate: omdb?.Released || "N/A",
+  //         categories: [],
+  //       });
+  //     }
+  //   };
+  //   postMovieDetails();
+  // }, [tmdb, omdb, mongoDetailsId, mongoMovieId]);
 
-  const postMovieDetails = useCallback(async () => {
-    if (detailsId) {
-      await axios.post("/api/movieDetails", {
-        // id: detailsId,
-        title: tmdb?.title,
-        year: parseInt(omdb?.Year) || 0,
-        rating: omdb?.Rated || "",
-        runtime: omdb.Runtime || "N/A",
-        trailer: "",
-        summary: tmdb?.overview || "",
-        reviewCount: tmdb?.vote_count || "N/A",
-        // cast: [{ actor: "", character: "" }],
-        boxOffice: omdb?.BoxOffice || "N/A",
-        director: omdb?.Director || "N/A",
-        writer: omdb?.Writer || "N/A",
-        imdbRating: omdb?.imdbRating || "0",
-        metascore: omdb?.Metascore || "0",
-        movieId: "",
-        poster: `https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`,
-        ratings: omdb?.Ratings,
-        releaseDate: omdb?.Released || "N/A",
-        categories: [],
-      });
-    }
-  }, [tmdb, omdb]);
-
-  postMovieDetails();
-  console.log(tmdb, "tmdb");
+  // console.log(tmdb, "tmdb");
   // console.log(omdb?.Ratings[1], "omdb");
   return (
     <main className="text-white flex justify-center">
