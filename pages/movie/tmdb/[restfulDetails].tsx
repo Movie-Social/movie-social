@@ -69,7 +69,7 @@ const RestfulMovieDetails = () => {
         trailer: "",
         summary: tmdb?.overview || "",
         reviewCount: tmdb?.vote_count || "N/A",
-        cast: [{ actor: "", character: "" }],
+        // cast: [{ actor: "", character: "" }],
         boxOffice: omdb?.BoxOffice || "N/A",
         director: omdb?.Director || "N/A",
         writer: omdb?.Writer || "N/A",
@@ -77,7 +77,7 @@ const RestfulMovieDetails = () => {
         metascore: omdb?.Metascore || "0",
         movieId: "",
         poster: `https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`,
-        ratings: [omdb?.Ratings],
+        ratings: omdb?.Ratings,
         releaseDate: omdb?.Released || "N/A",
         categories: [],
       });
@@ -86,7 +86,7 @@ const RestfulMovieDetails = () => {
 
   postMovieDetails();
   console.log(tmdb, "tmdb");
-  console.log(omdb?.Ratings[1], "omdb");
+  // console.log(omdb?.Ratings[1], "omdb");
   return (
     <main className="text-white flex justify-center">
       {/* <Navbar /> */}
