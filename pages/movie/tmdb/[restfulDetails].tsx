@@ -206,7 +206,8 @@ const RestfulMovieDetails = () => {
             </h2>
             <br></br>
             <Reviewform
-              movieId={movieId}
+              title={tmdb?.title}
+              movieId={mongoMovieId}
               rating={rating}
               onRating={(rate) => setRating(rate)}
             />

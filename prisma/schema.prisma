@@ -32,6 +32,7 @@ model Review {
   movieId String @db.ObjectId
   rating  Int
   review  String
+  title   String @unique
 
   user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
   movie Movie @relation(fields: [movieId], references: [id], onDelete: Cascade)

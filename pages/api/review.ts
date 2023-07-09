@@ -11,30 +11,40 @@ export default async function handler(
     if (req.method === "POST") {
       //   const { currentUser } = await serverAuth(req, res);
 
-      const { movieId, userId, rating, review } = req.body;
-
-      const existingReview = await prismadb.review.findUnique({
+      const { movieId, title, userId, rating, review } = req.body;
+      const existingMovie = await prismadb.movie.findUnique({
         where: {
-          movieId,
+          title: title,
         },
       });
 
-      if (existingReview) {
-        return res
-          .status(422)
-          .json({ error: "Movie has already been reviewed" });
+      if (!existingMovie) {
+        logger.fatal("cant find the movie");
       }
+      logger.fatal(existingMovie, "<<movie data");
+      // const existingReview = await prismadb.review.findUnique({
+      //   where: {
+      //     movieId,
+      //   },
+      // });
+
+      // if (existingReview) {
+      //   return res
+      //     .status(422)
+      //     .json({ error: "Movie has already been reviewed" });
+      // }
 
       const movieReview = await prismadb.review.create({
         data: {
-          userId,
           movieId,
+          title,
+          userId,
           rating,
           review,
         },
       });
 
-      return res.status(200).json(movieReview);
+      return res.status(200).json("movieReview");
       //!   below I am trying to find a movie that does not exist in my
       //!   movie collection because restful movies are fetched.
 
