@@ -1,3 +1,4 @@
+import crypto from "crypto";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import omdbFetcher from "@/lib/omdbFetcher";
@@ -7,11 +8,20 @@ import rotten from "../../../public/images/rotten.png";
 import imdb from "../../../public/images/imdb.png";
 import meta from "../../../public/images/meta.png";
 import Image from "next/image";
+import Reviewform from "@/components/ReviewForm";
+import axios from "axios";
+import useAllReviews from "@/hooks/useAllReviews";
+import ExistingReviews from "@/components/ExistingReviews";
+
 const RestfulMovieDetails = () => {
   const [tmdb, setTmdb] = useState([]);
   const [omdb, setOmdb] = useState([]);
+  const [rating, setRating] = useState(0);
+  const [mongoMovieId, setMongoMovieId] = useState("");
+  const [mongoDetailsId, setMongoDetailsId] = useState("");
   const router = useRouter();
   const movieId = router.query.restfulDetails;
+  const allReviews = useAllReviews();
   useEffect(() => {
     const fetchTmdb = async () => {
       const tmdbDetails = await tmdbDetailsFetcher(movieId);
@@ -28,11 +38,41 @@ const RestfulMovieDetails = () => {
       fetchOmdb();
     }
   }, [tmdb]);
-  console.log(omdb, "omdb");
-  console.log(tmdb, "tmdb");
+
+  useEffect(() => {
+    const generateUniqueHex = () => {
+      const bytes = crypto.randomBytes(12);
+      return bytes.toString("hex");
+    };
+    setMongoMovieId(generateUniqueHex());
+    setMongoDetailsId(generateUniqueHex());
+  }, []);
+
+  useEffect(() => {
+    const postMovie = async () => {
+      if (omdb?.Title && omdb?.Genre.split(", ")) {
+        let response = await axios.post("/api/movie", {
+          id: mongoMovieId,
+          title: tmdb?.title,
+          score: parseInt(omdb?.imdbRating) || 0,
+          poster: `https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`,
+          categories: omdb?.Genre.split(", ") || [],
+          details: mongoDetailsId,
+        });
+        return response;
+      }
+    };
+
+    postMovie();
+  }, [tmdb, omdb, mongoMovieId, mongoDetailsId]);
+
+  const reviews = allReviews?.data?.filter(
+    (review) => review.title === tmdb?.title
+  );
+
+  console.log(reviews, "rev");
   return (
     <main className="text-white flex justify-center">
-      {/* <Navbar /> */}
       <section className="border-2 w-[90vw] h-full">
         <div className="mt-3 mb-5 flex justify-center">
           <video
@@ -40,7 +80,6 @@ const RestfulMovieDetails = () => {
             muted
             controls
             className="h-2/5 w-[75%] rounded-md"
-            // src={data?.videoUrl}
             src="https://youtu.be/cnDObXxwWy0"
           ></video>
         </div>
@@ -51,11 +90,7 @@ const RestfulMovieDetails = () => {
               alt={`Movie poster for ${tmdb?.title}`}
               className="rounded-lg border-2"
             />
-            <div
-              className="w-3/5 border-2 rounded-lg border-blue-500 flex flex-col justify-evenly
-   
-            "
-            >
+            <div className="w-3/5 border-2 rounded-lg border-blue-500 flex flex-col justify-evenly">
               <h2 className="text-white text-center text-1xl lg:text-3xl font-bold">
                 {tmdb?.title}
               </h2>
@@ -140,7 +175,12 @@ const RestfulMovieDetails = () => {
               Rate and Review
             </h2>
             <br></br>
-            {/* <div>review form will go here</div> */}
+            <Reviewform
+              title={tmdb?.title}
+              poster={`https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`}
+              rating={rating}
+              onRating={(rate: number) => setRating(rate)}
+            />
             <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
               Movie Info
             </h2>
@@ -184,11 +224,8 @@ const RestfulMovieDetails = () => {
               </h2>
               {/* <h2><span>Cast:</span>{data?.director} </h2> */}
             </div>
-            <br></br>
-            <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
-              Movie Social Reviews
-            </h2>
           </section>
+          <ExistingReviews data={reviews} />
           {/* <div>other reviews will go here</div> */}
         </section>
       </section>
