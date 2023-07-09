@@ -1,4 +1,6 @@
-interface Reviews {
+import { isEmpty } from "lodash";
+import ExistingReviewCard from "./ExistingReviewCard";
+interface Review {
   id: string;
   poster: string;
   rating: number;
@@ -7,14 +9,28 @@ interface Reviews {
 }
 
 interface ExistingReviewProps {
-  data: Reviews[];
+  data: Review[];
 }
 
 const ExistingReviews: React.FC<ExistingReviewProps> = ({ data }) => {
-  console.log(data, "recieved");
+  if (isEmpty(data)) {
+    return null;
+  }
+
   return (
-    <main>
-      <h1>ReviewCard</h1>
+    <main className="w-[90%] ml-[5%] border-2 self-center mt-5">
+      <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
+        Movie Social Reviews
+      </h2>
+      <section>
+        {data.map((review) => (
+          <ExistingReviewCard
+            key={review?.id}
+            rating={review?.rating}
+            review={review?.review}
+          />
+        ))}
+      </section>
     </main>
   );
 };

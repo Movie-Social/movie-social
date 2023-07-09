@@ -224,10 +224,6 @@ const RestfulMovieDetails = () => {
               </h2>
               {/* <h2><span>Cast:</span>{data?.director} </h2> */}
             </div>
-            <br></br>
-            <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
-              Movie Social Reviews
-            </h2>
           </section>
           <ExistingReviews data={reviews} />
           {/* <div>other reviews will go here</div> */}
