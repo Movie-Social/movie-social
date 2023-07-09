@@ -27,15 +27,14 @@ model User {
 }
 
 model Review {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  userId  String @db.ObjectId
-  movieId String @db.ObjectId
-  rating  Int
-  review  String
-  title   String @unique
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  rating Int
+  review String
+  title  String @unique
 
   user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
-  movie Movie @relation(fields: [movieId], references: [id], onDelete: Cascade)
+  movie Movie @relation(fields: [title], references: [title], onDelete: Cascade)
 }
 
 model Account {

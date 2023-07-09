@@ -1,6 +1,6 @@
 import crypto from "crypto";
 import { useRouter } from "next/router";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import omdbFetcher from "@/lib/omdbFetcher";
 import tmdbDetailsFetcher from "@/lib/tmdbDetailsFetcher";
 import trash from "../../../public/images/recyclingBag.png";
@@ -64,40 +64,8 @@ const RestfulMovieDetails = () => {
     postMovie();
   }, [tmdb, omdb, mongoMovieId, mongoDetailsId]);
 
-  // useEffect(() => {
-  //   const postMovieDetails = async () => {
-  //     if (mongoDetailsId) {
-  //       await axios.post("/api/movieDetails", {
-  //         id: mongoDetailsId,
-  //         title: tmdb?.title,
-  //         year: parseInt(omdb?.Year) || 0,
-  //         rating: omdb?.Rated || "",
-  //         runtime: omdb.Runtime || "N/A",
-  //         trailer: "",
-  //         summary: tmdb?.overview || "",
-  //         reviewCount: tmdb?.vote_count || "N/A",
-  //         // cast: [{ actor: "", character: "" }],
-  //         boxOffice: omdb?.BoxOffice || "N/A",
-  //         director: omdb?.Director || "N/A",
-  //         writer: omdb?.Writer || "N/A",
-  //         imdbRating: omdb?.imdbRating || "0",
-  //         metascore: omdb?.Metascore || "0",
-  //         movieId: mongoMovieId,
-  //         poster: `https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`,
-  //         ratings: omdb?.Ratings,
-  //         releaseDate: omdb?.Released || "N/A",
-  //         categories: [],
-  //       });
-  //     }
-  //   };
-  //   postMovieDetails();
-  // }, [tmdb, omdb, mongoDetailsId, mongoMovieId]);
-
-  // console.log(tmdb, "tmdb");
-  // console.log(omdb?.Ratings[1], "omdb");
   return (
     <main className="text-white flex justify-center">
-      {/* <Navbar /> */}
       <section className="border-2 w-[90vw] h-full">
         <div className="mt-3 mb-5 flex justify-center">
           <video
@@ -105,7 +73,6 @@ const RestfulMovieDetails = () => {
             muted
             controls
             className="h-2/5 w-[75%] rounded-md"
-            // src={data?.videoUrl}
             src="https://youtu.be/cnDObXxwWy0"
           ></video>
         </div>
@@ -207,9 +174,8 @@ const RestfulMovieDetails = () => {
             <br></br>
             <Reviewform
               title={tmdb?.title}
-              movieId={mongoMovieId}
               rating={rating}
-              onRating={(rate) => setRating(rate)}
+              onRating={(rate: number) => setRating(rate)}
             />
             <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
               Movie Info
