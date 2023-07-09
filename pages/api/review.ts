@@ -11,7 +11,7 @@ export default async function handler(
     if (req.method === "POST") {
       //   const { currentUser } = await serverAuth(req, res);
 
-      const { movieId, title, userId, rating, review } = req.body;
+      const { movieId, title, userId, rating, poster, review } = req.body;
       const existingMovie = await prismadb.movie.findUnique({
         where: {
           title: title,
@@ -20,6 +20,7 @@ export default async function handler(
 
       if (!existingMovie) {
         logger.fatal("cant find the movie");
+        throw new Error("Movie does not exist in Mongodb");
       }
       logger.fatal(existingMovie, "<<movie data");
       // const existingReview = await prismadb.review.findUnique({
@@ -36,7 +37,7 @@ export default async function handler(
 
       const movieReview = await prismadb.review.create({
         data: {
-          movieId,
+          poster,
           title,
           userId,
           rating,

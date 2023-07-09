@@ -32,6 +32,7 @@ model Review {
   rating Int
   review String
   title  String @unique
+  poster String
 
   user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
   movie Movie @relation(fields: [title], references: [title], onDelete: Cascade)

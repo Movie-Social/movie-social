@@ -8,9 +8,15 @@ interface ReviewProps {
   onRating: Function;
   rating: number;
   title: string;
+  poster: string;
 }
 
-const Reviewform: React.FC<ReviewProps> = ({ onRating, rating, title }) => {
+const Reviewform: React.FC<ReviewProps> = ({
+  onRating,
+  rating,
+  title,
+  poster,
+}) => {
   const currentUser = useCurrentUser();
   const [hoverRating, setHoverRating] = useState(0);
   const [review, setReview] = useState("");
@@ -66,6 +72,7 @@ const Reviewform: React.FC<ReviewProps> = ({ onRating, rating, title }) => {
         rating={rating}
         review={review}
         title={title}
+        poster={poster}
       />
     </main>
   );
