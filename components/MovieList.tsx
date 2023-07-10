@@ -1,5 +1,6 @@
 import { isEmpty } from "lodash";
 import MovieCard from "./MovieCard";
+import { Slide } from "react-slideshow-image";
 interface MovieListProps {
   data: Record<string, any>[];
   title: string;
@@ -14,7 +15,14 @@ const MovieList: React.FC<MovieListProps> = ({ data, title }) => {
         <p className="text-white text-md md:text-xl lg:text-2xl font-semibold mb-4">
           {title}
         </p>
-        <div className="grid grid-cols-5 gap-2 mb-24 md:mb-48 lg:mb-96">
+        <Slide
+          transitionDuration={1000}
+          autoplay={false}
+          slidesToScroll={3}
+          slidesToShow={5}
+          indicators={true}
+        >
+          {/* <div className="grid grid-cols-5 gap-2 mb-24 md:mb-48 lg:mb-96"> */}
           {title === "My Watchlist" &&
             data.map((movie) => <MovieCard key={movie.id} data={movie} />)}
           {title !== "My Favorites"
@@ -22,7 +30,8 @@ const MovieList: React.FC<MovieListProps> = ({ data, title }) => {
                 .filter((movie) => movie.categories[0] === title)
                 .map((movie) => <MovieCard key={movie.id} data={movie} />)
             : data.map((movie) => <MovieCard key={movie.id} data={movie} />)}
-        </div>
+        </Slide>
+        {/* </div> */}
       </section>
     </main>
   );
