@@ -12,6 +12,7 @@ import Reviewform from "@/components/ReviewForm";
 import axios from "axios";
 import useAllReviews from "@/hooks/useAllReviews";
 import ExistingReviews from "@/components/ExistingReviews";
+import { ReviewProps } from "../[movieDetails]";
 
 const RestfulMovieDetails = () => {
   const [tmdb, setTmdb] = useState([]);
@@ -67,7 +68,7 @@ const RestfulMovieDetails = () => {
   }, [tmdb, omdb, mongoMovieId, mongoDetailsId]);
 
   const reviews = allReviews?.data?.filter(
-    (review) => review.title === tmdb?.title
+    (review: ReviewProps) => review.title === tmdb?.title
   );
 
   console.log(reviews, "rev");

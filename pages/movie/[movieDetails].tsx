@@ -8,13 +8,29 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import Reviewform from "@/components/ReviewForm";
 import { useState } from "react";
+import ExistingReviews from "@/components/ExistingReviews";
+import useAllReviews from "@/hooks/useAllReviews";
+
+export interface ReviewProps {
+  id: string;
+  poster: string;
+  rating: number;
+  review: string;
+  title: string;
+  userId: string;
+}
 
 const MovieDetails = () => {
   const router = useRouter();
   const movieId = router.query.movieDetails;
   const { data } = useMovie(movieId as string);
   const [rating, setRating] = useState(0);
+  const allReviews = useAllReviews();
 
+  const reviews = allReviews?.data?.filter(
+    (review: ReviewProps) => review.title === data?.title
+  );
+  console.log(reviews, "reviews");
   return (
     <main className="text-white flex justify-center">
       {/* <Navbar /> */}
@@ -181,6 +197,7 @@ const MovieDetails = () => {
             rating={rating}
             onRating={(rate: number) => setRating(rate)}
           />
+          <ExistingReviews data={reviews} />
         </section>
       </section>
     </main>
