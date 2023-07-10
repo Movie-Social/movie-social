@@ -137,9 +137,9 @@ const MovieDetails = () => {
           </div>
 
           <section className="w-[90%] ml-[5%] border-2 self-center mt-5">
-            <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
+            {/* <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
               Rate and Review
-            </h2>
+            </h2> */}
             <br></br>
             {/* <div>review form will go here</div> */}
             <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
@@ -186,18 +186,18 @@ const MovieDetails = () => {
               {/* <h2><span>Cast:</span>{data?.director} </h2> */}
             </div>
             <br></br>
-            <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
-              Movie Social Reviews
-            </h2>
           </section>
           {/* <div>other reviews will go here</div> */}
+          <ExistingReviews data={reviews} />
+          <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
+            Rate and Review
+          </h2>
           <Reviewform
             title={data?.title}
             poster={data?.poster}
             rating={rating}
             onRating={(rate: number) => setRating(rate)}
           />
-          <ExistingReviews data={reviews} />
         </section>
       </section>
     </main>
