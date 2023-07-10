@@ -71,7 +71,6 @@ const RestfulMovieDetails = () => {
     (review: ReviewProps) => review.title === tmdb?.title
   );
 
-  console.log(reviews, "rev");
   return (
     <main className="text-white flex justify-center">
       <section className="border-2 w-[90vw] h-full">
@@ -173,16 +172,6 @@ const RestfulMovieDetails = () => {
 
           <section className="w-[90%] ml-[5%] border-2 self-center mt-5">
             <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
-              Rate and Review
-            </h2>
-            <br></br>
-            <Reviewform
-              title={tmdb?.title}
-              poster={`https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`}
-              rating={rating}
-              onRating={(rate: number) => setRating(rate)}
-            />
-            <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
               Movie Info
             </h2>
             <div className="ml-5 text-white text-l lg:text-2xl font-light font ">
@@ -225,8 +214,18 @@ const RestfulMovieDetails = () => {
               </h2>
               {/* <h2><span>Cast:</span>{data?.director} </h2> */}
             </div>
+            <ExistingReviews data={reviews} />
+            <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
+              Rate and Review
+            </h2>
+            <br></br>
+            <Reviewform
+              title={tmdb?.title}
+              poster={`https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`}
+              rating={rating}
+              onRating={(rate: number) => setRating(rate)}
+            />
           </section>
-          <ExistingReviews data={reviews} />
           {/* <div>other reviews will go here</div> */}
         </section>
       </section>
