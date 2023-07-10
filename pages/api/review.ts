@@ -16,7 +16,7 @@ export default async function handler(
       });
 
       if (!existingMovie) {
-        logger.fatal("cant find the movie");
+        logger.fatal("Can't find the movie in the DB. Check casing");
         throw new Error("Movie does not exist in Mongodb");
       }
 
