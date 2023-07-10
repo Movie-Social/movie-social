@@ -6,12 +6,15 @@ import imdb from "../../public/images/imdb.png";
 import meta from "../../public/images/meta.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Reviewform from "@/components/ReviewForm";
+import { useState } from "react";
 
 const MovieDetails = () => {
   const router = useRouter();
   const movieId = router.query.movieDetails;
   const { data } = useMovie(movieId as string);
-  console.log(data, "testing testing");
+  const [rating, setRating] = useState(0);
+
   return (
     <main className="text-white flex justify-center">
       {/* <Navbar /> */}
@@ -172,6 +175,12 @@ const MovieDetails = () => {
             </h2>
           </section>
           {/* <div>other reviews will go here</div> */}
+          <Reviewform
+            title={data?.title}
+            poster={data?.poster}
+            rating={rating}
+            onRating={(rate: number) => setRating(rate)}
+          />
         </section>
       </section>
     </main>
