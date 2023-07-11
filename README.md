@@ -97,6 +97,8 @@ The following are all technologies that I had to self-teach in order to complete
 
 ## Future Additions 🔮
 - chatGPT integration for curated movie suggestions
+- clubs for users to join
+- friends lists
 
 ## Sole Contributor 💪🏾
   <a href="https://github.com/kendallm360">![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)</a>
