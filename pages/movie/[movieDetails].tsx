@@ -6,12 +6,31 @@ import imdb from "../../public/images/imdb.png";
 import meta from "../../public/images/meta.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Reviewform from "@/components/ReviewForm";
+import { useState } from "react";
+import ExistingReviews from "@/components/ExistingReviews";
+import useAllReviews from "@/hooks/useAllReviews";
+
+export interface ReviewProps {
+  id: string;
+  poster: string;
+  rating: number;
+  review: string;
+  title: string;
+  userId: string;
+}
 
 const MovieDetails = () => {
   const router = useRouter();
   const movieId = router.query.movieDetails;
   const { data } = useMovie(movieId as string);
-  console.log(data, "testing testing");
+  const [rating, setRating] = useState(0);
+  const allReviews = useAllReviews();
+
+  const reviews = allReviews?.data?.filter(
+    (review: ReviewProps) => review.title === data?.title
+  );
+  console.log(reviews, "reviews");
   return (
     <main className="text-white flex justify-center">
       {/* <Navbar /> */}
@@ -118,9 +137,9 @@ const MovieDetails = () => {
           </div>
 
           <section className="w-[90%] ml-[5%] border-2 self-center mt-5">
-            <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
+            {/* <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
               Rate and Review
-            </h2>
+            </h2> */}
             <br></br>
             {/* <div>review form will go here</div> */}
             <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
@@ -167,11 +186,18 @@ const MovieDetails = () => {
               {/* <h2><span>Cast:</span>{data?.director} </h2> */}
             </div>
             <br></br>
-            <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
-              Movie Social Reviews
-            </h2>
           </section>
           {/* <div>other reviews will go here</div> */}
+          <ExistingReviews data={reviews} />
+          <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
+            Rate and Review
+          </h2>
+          <Reviewform
+            title={data?.title}
+            poster={data?.poster}
+            rating={rating}
+            onRating={(rate: number) => setRating(rate)}
+          />
         </section>
       </section>
     </main>

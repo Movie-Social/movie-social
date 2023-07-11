@@ -39,13 +39,13 @@ const Home = () => {
       <Hero />
       <section className="pb-40">
         <RestfulMovieList title="Now Playing" />
-        <RestfulMovieList title="Top Rated" />
         <RestfulMovieList title="Upcoming" />
         <RestfulMovieList title="Popular" />
         <MovieList title="Comedy" data={movies} />
         <MovieList title="Romance" data={movies} />
         <MovieList title="Action" data={movies} />
         <MovieList title="Horror" data={movies} />
+        <RestfulMovieList title="Top Rated" />
         <MovieList title="My Favorites" data={favorites} />
       </section>
     </main>

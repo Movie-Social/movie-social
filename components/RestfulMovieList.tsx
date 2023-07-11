@@ -29,7 +29,6 @@ const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
         <h2 className="text-white text-md md:text-xl lg:text-2xl font-semibold mb-4">
           {title}
         </h2>
-        {/* <div className="grid grid-cols-5 gap-2 mb-24 md:mb-48 lg:mb-96 border-2 border-red-500"> */}
         <Slide
           transitionDuration={1000}
           autoplay={false}
@@ -41,7 +40,6 @@ const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
             return <RestfulMovieCard key={movie.id} data={movie} />;
           })}
         </Slide>
-        {/* </div> */}
       </section>
     </main>
   );
