@@ -79,6 +79,7 @@ Solo fullstack application built with Next.js. As a frontend engineer it had bee
 The following are all technologies that I had to self-teach in order to complete this application:
 - Tailwind CSS
 - useSWR?
+- MongoDB
 
 ## Organizational Resources 🤓
  - [Jira Sprint Tracker](https://movieclub.atlassian.net/jira/software/projects/MS/boards/2/timeline?selectedIssue=MS-2&shared=&atlOrigin=eyJpIjoiOTY0NGRmNzc1YzVkNDYwNzgxZTc0ODBlOTE4MzRkZTIiLCJwIjoiaiJ9)
@@ -95,6 +96,7 @@ The following are all technologies that I had to self-teach in order to complete
 
 
 ## Future Additions 🔮
+- chatGPT integration for curated movie suggestions
 
 ## Sole Contributor 💪🏾
   <a href="https://github.com/kendallm360">![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)</a>
