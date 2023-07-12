@@ -40,7 +40,7 @@ Solo fullstack application built with Next.js. As a frontend engineer it had bee
 ![demo4]()
 
 ### Site navigation:
-![demo4](
+![demo4]()
 
 
 ## Frontend Technologies Used 👨🏾‍💻
@@ -101,6 +101,7 @@ The following are all technologies that I had to self-teach in order to complete
 - chatGPT integration for curated movie suggestions
 - clubs for users to join
 - friends lists
+
 
 ## Sole Contributor 💪🏾
   <a href="https://github.com/kendallm360">![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)</a>
