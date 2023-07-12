@@ -12,7 +12,7 @@
     <li><a href="#organizational-resources">Organizational Resources</a></li>
     <li><a href="#tools-used">Tools Used</a></li>
     <li><a href="#stretch-tech">Stretch Techs</a></li>
-    <li><a href="#accessibility">Accessibility</a></li>
+    <li><a href="#accessibility-%EF%B8%8F">Accessibility</a></li>
     <li><a href="#future-additions-">Future Additions</a></li>
     <li><a href="#contributor">Contributor</a></li>
   </ol>
