@@ -13,7 +13,7 @@ const ExistingReviewCard: React.FC<ExistingReviewCardProps> = ({
         <Image
           alt="Movie Social logo"
           className="ml-2"
-          src="/images/socialLogo.png"
+          src="/images/newLogo.png"
           width={50}
           height={50}
         />
