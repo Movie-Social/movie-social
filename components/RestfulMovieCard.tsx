@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { BsFillPlayFill } from "react-icons/bs";
 import FavoriteButton from "./FavoriteButton";
 import WatchlistButton from "./WatchlistButton";
+import Image from "next/image";
 interface RestfulMovieCardProps {
   data: Record<string, any>;
 }
@@ -11,7 +12,7 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
   return (
     <main className="flex flex-col items-center justify-center content-center text-center group bg-zinc-900 relative">
       {/* <div className="flex justify-center"> */}
-      <img
+      <Image
         className="
           self-center         
           transition
@@ -45,18 +46,18 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
       group-hover:opacity-100
       "
       >
-        <img
+        <Image
           onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
           className="
         cursor-pointer
-        object-fill
         transition
         duration
         shadow-xl
         rounded-t-md
         w-full
-        h-[20vw]
         "
+          width={200}
+          height={200}
           src={`https://image.tmdb.org/t/p/original/${data?.poster_path}`}
           alt="thumbnail"
         />
