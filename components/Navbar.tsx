@@ -1,11 +1,12 @@
+import { useRouter } from "next/router";
+import Image from "next/image";
 import { useEffect, useState } from "react";
-import MobileMenu from "./MobileMenu";
-import NavbarItem from "./NavbarItem";
 import { BsChevronDown } from "react-icons/bs";
 import { BsSearch } from "react-icons/bs";
 import { BsBell } from "react-icons/bs";
 import { BiUserCircle } from "react-icons/bi";
-import { useRouter } from "next/router";
+import MobileMenu from "./MobileMenu";
+import NavbarItem from "./NavbarItem";
 import AccountMenu from "./AccountMenu";
 
 const TOP_OFFSET = 66;
@@ -27,7 +28,6 @@ const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll);
 
-    //useEffect unmount function
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -47,10 +47,12 @@ const Navbar = () => {
       ${showBackground ? "bg-zinc-900 bg-opacity-90" : ""}
       `}
       >
-        <img
+        <Image
+          width={35}
+          height={35}
           onClick={() => router.push("/")}
-          className="h-9 lg:h-15 rounded-full cursor-pointer"
-          src="/images/socialLogo.png"
+          className="bg-white rounded-full cursor-pointer text-white"
+          src="/images/newLogo.png"
           alt="Movie Social Logo"
         />
         <section className="flex-row ml-8 gap-7 hidden lg:flex">
@@ -85,11 +87,6 @@ const Navbar = () => {
             className="flex flex-row items-center gap-2 cursor-pointer relative"
           >
             <div className="text-gray-200 hover:text-yellow-300 cursor-pointer transition">
-              {/* <img
-                className="w-5 h-5 mt-1 lg:mt-2"
-                src="/images/account.png"
-                alt="Default user logo"
-              /> */}
               <BiUserCircle className="text-white" color="white" size={20} />
             </div>
             <BsChevronDown
