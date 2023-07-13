@@ -1,18 +1,18 @@
-import crypto from "crypto";
+import axios from "axios";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import crypto from "crypto";
+import { ReviewProps } from "../[movieDetails]";
 import omdbFetcher from "@/lib/omdbFetcher";
 import tmdbDetailsFetcher from "@/lib/tmdbDetailsFetcher";
+import useAllReviews from "@/hooks/useAllReviews";
+import Reviewform from "@/components/ReviewForm";
+import ExistingReviews from "@/components/ExistingReviews";
 import trash from "../../../public/images/recyclingBag.png";
 import rotten from "../../../public/images/rotten.png";
 import imdb from "../../../public/images/imdb.png";
 import meta from "../../../public/images/meta.png";
-import Image from "next/image";
-import Reviewform from "@/components/ReviewForm";
-import axios from "axios";
-import useAllReviews from "@/hooks/useAllReviews";
-import ExistingReviews from "@/components/ExistingReviews";
-import { ReviewProps } from "../[movieDetails]";
 
 const RestfulMovieDetails = () => {
   const [tmdb, setTmdb] = useState([]);
@@ -85,10 +85,12 @@ const RestfulMovieDetails = () => {
         </div>
         <section>
           <div className="flex flex-row justify-evenly h-[40vh]">
-            <img
+            <Image
+              width={350}
+              height={20}
               src={`https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`}
               alt={`Movie poster for ${tmdb?.title}`}
-              className="rounded-lg border-2"
+              className="rounded-lg border border-yellow-300"
             />
             <div className="w-3/5 border-2 rounded-lg border-blue-500 flex flex-col justify-evenly">
               <h2 className="text-white text-center text-1xl lg:text-3xl font-bold">
