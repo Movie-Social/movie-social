@@ -1,11 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import Image from "next/image";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsFillInfoCircleFill } from "react-icons/bs";
-import { useRouter } from "next/router";
-import PlayButton from "./PlayButton";
-import FavoriteButton from "./FavoriteButton";
 import useInfoModal from "@/hooks/useInfoModal";
 import useMovie from "@/hooks/useMovie";
+import FavoriteButton from "./FavoriteButton";
+import PlayButton from "./PlayButton";
 
 interface InfoModalProps {
   visible: boolean;
@@ -33,8 +34,6 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
     return null;
   }
 
-  console.log(data, "modaldata");
-  console.log(data?.movieId, "movieID");
   return (
     <main
       onClick={handleClose}
@@ -51,7 +50,6 @@ overflow-x-hidden
 overflow-y-auto
 fixed
 inset-0
-
   "
     >
       <section
@@ -62,7 +60,6 @@ mx-auto
 max-w-3xl
 rounded-md
 overflow-hidden
-
 "
       >
         <div
@@ -94,15 +91,13 @@ overflow-hidden
             "
               src={data?.videoUrl}
             ></video> */}
-            <img
+            <Image
               className="
-            
-            w-full
             brightness-[60%]
-            object-fit
-            h-full
             "
+              fill
               src={data?.poster}
+              alt={`${data?.title}'s movie cover`}
             />
             <div
               onClick={handleClose}
