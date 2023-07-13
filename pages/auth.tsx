@@ -1,12 +1,12 @@
-import Input from "@/components/Input";
-import { useState } from "react";
 import axios from "axios";
-import { useCallback } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
+import { useState } from "react";
+import { useCallback } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import logger from "@/lib/logger";
+import Input from "@/components/Input";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
@@ -52,7 +52,7 @@ const Auth = () => {
     <main className="relative h-full w-full bg-[url('/images/socialHero.png')] bg-no-repeat bg-center bg-fixed bg-cover">
       <section className="bg-black w-full h-full lg:bg-opacity-50 ">
         <nav className="px-12 py-5">
-          <img src="/images/socialLogo.png" alt="Logo" className="h-12" />
+          <img src="/images/newLogo.png" alt="Logo" className="h-12" />
         </nav>
         <div className="flex justify-center">
           <div className="bg-black bg-opacity-70 px-16 py-16 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full">
