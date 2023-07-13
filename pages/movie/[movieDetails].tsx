@@ -1,15 +1,15 @@
-import Navbar from "@/components/Navbar";
+import Image from "next/image";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import Reviewform from "@/components/ReviewForm";
+import useAllReviews from "@/hooks/useAllReviews";
 import useMovie from "@/hooks/useMovie";
+import ExistingReviews from "@/components/ExistingReviews";
+import Navbar from "@/components/Navbar";
 import trash from "../../public/images/recyclingBag.png";
 import rotten from "../../public/images/rotten.png";
 import imdb from "../../public/images/imdb.png";
 import meta from "../../public/images/meta.png";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import Reviewform from "@/components/ReviewForm";
-import { useState } from "react";
-import ExistingReviews from "@/components/ExistingReviews";
-import useAllReviews from "@/hooks/useAllReviews";
 
 export interface ReviewProps {
   id: string;
@@ -47,10 +47,12 @@ const MovieDetails = () => {
         </div>
         <section>
           <div className="flex flex-row justify-evenly h-[40vh]">
-            <img
+            <Image
+              width={350}
+              height={20}
               src={data?.poster}
               alt={`Movie poster for ${data?.title}`}
-              className="rounded-lg border-2"
+              className="rounded-lg border border-yellow-300"
             />
             <div
               className="w-3/5 border-2 rounded-lg border-blue-500 flex flex-col justify-evenly
