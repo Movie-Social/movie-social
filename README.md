@@ -7,8 +7,8 @@
     <li><a href="#deployed-application">Deployed Application</a></li>
     <li><a href="#user-stories">User Stories</a></li>
     <li><a href="#application-in-action">Application in Action</a></li>
-    <li><a href="#frontend-technologies-used">Technologies Used</a></li>
-    <li><a href="#backendend-technologies-used">Technologies Used</a></li>
+    <li><a href="#frontend-technologies-used-">Technologies Used</a></li>
+    <li><a href="#backend-technologies-used-">Technologies Used</a></li>
     <li><a href="#organizational-resources">Organizational Resources</a></li>
     <li><a href="#tools-used">Tools Used</a></li>
     <li><a href="#stretch-tech">Stretch Techs</a></li>
