@@ -150,7 +150,7 @@ justify-center
               items-center
               "
               >
-                <PlayButton movieId={data?.movieId} />
+                {/* <PlayButton movieId={data?.movieId} /> */}
                 <FavoriteButton movieId={data?.movieId} />
                 <BsFillInfoCircleFill
                   className="text-white cursor-pointer"
