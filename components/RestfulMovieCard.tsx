@@ -9,7 +9,7 @@ interface RestfulMovieCardProps {
 const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
   const router = useRouter();
   return (
-    <main className="flex flex-col items-center justify-center content-center text-center cursor-pointer group bg-zinc-900 relative">
+    <main className="flex flex-col items-center justify-center content-center text-center group bg-zinc-900 relative">
       {/* <div className="flex justify-center"> */}
       <img
         className="
@@ -28,7 +28,6 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
         height={200}
       />
       <div
-        onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
         className="
       opacity-0
       absolute
@@ -47,6 +46,7 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
       "
       >
         <img
+          onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
           className="
         cursor-pointer
         object-fill
@@ -61,7 +61,6 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
           alt="thumbnail"
         />
         <section
-          onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
           className="
         z-10
         bg-zinc-800
@@ -79,8 +78,8 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
 flex flex-row items-center gap-3
 "
           >
-            <div
-              // onClick={() => router.push(`/watch/${data?.id}`)}
+            {/* <div
+              onClick={() => router.push(`/watch/${data?.id}`)}
               className="
             cursor-pointer
             w-6
@@ -98,7 +97,7 @@ flex flex-row items-center gap-3
             "
             >
               <BsFillPlayFill size={25} />
-            </div>
+            </div> */}
 
             {/* <FavoriteButton movieId={data?.id} />
             <WatchlistButton movieId={data?.id} /> */}
@@ -107,7 +106,12 @@ flex flex-row items-center gap-3
             New <span className="text-white">2023</span>
           </p> */}
           <div className="flex flex-row mt-4 gap-2 items-center">
-            <p className="text-white text-[10px] lg:text-sm">{data?.title}</p>
+            <p
+              onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
+              className="cursor-pointer text-white text-[10px] lg:text-sm"
+            >
+              {data?.title}
+            </p>
           </div>
           <div className="flex flex-row mt-4 gap-2 items-center">
             <p className="text-white text-[10px] lg:text-sm">
