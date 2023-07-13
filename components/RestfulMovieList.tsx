@@ -14,7 +14,10 @@ const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
   useEffect(() => {
     const fetchTMDBLists = async () => {
       const list = await tmdbFetcher(apiString);
-      setTmdbList(list.results);
+      const englishMovies = list.results.filter(
+        (movie) => movie?.original_language === "en"
+      );
+      setTmdbList(englishMovies);
     };
 
     fetchTMDBLists();
