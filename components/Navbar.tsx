@@ -90,7 +90,7 @@ const Navbar = () => {
                 src="/images/account.png"
                 alt="Default user logo"
               /> */}
-              <BiUserCircle size={20} />
+              <BiUserCircle className="text-white" color="white" size={20} />
             </div>
             <BsChevronDown
               size={20}
