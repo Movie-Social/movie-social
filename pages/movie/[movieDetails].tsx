@@ -10,6 +10,7 @@ import trash from "../../public/images/recyclingBag.png";
 import rotten from "../../public/images/rotten.png";
 import imdb from "../../public/images/imdb.png";
 import meta from "../../public/images/meta.png";
+import loady from "../../public/images/imgLoad.gif";
 
 export interface ReviewProps {
   id: string;
@@ -30,7 +31,6 @@ const MovieDetails = () => {
   const reviews = allReviews?.data?.filter(
     (review: ReviewProps) => review.title === data?.title
   );
-  console.log(reviews, "reviews");
   return (
     <main className="text-white flex justify-center">
       {/* <Navbar /> */}
@@ -51,7 +51,7 @@ const MovieDetails = () => {
               priority
               width={350}
               height={20}
-              src={data?.poster}
+              src={!data?.poster ? loady : data?.poster}
               alt={`Movie poster for ${data?.title}`}
               className="rounded-lg border border-yellow-300"
             />
