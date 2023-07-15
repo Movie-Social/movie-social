@@ -35,8 +35,6 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
     return null;
   }
 
-  console.log(isLoading, "Is it loading rn?");
-
   return (
     <main
       onClick={handleClose}

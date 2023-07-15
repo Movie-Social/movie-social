@@ -13,6 +13,7 @@ import trash from "../../../public/images/recyclingBag.png";
 import rotten from "../../../public/images/rotten.png";
 import imdb from "../../../public/images/imdb.png";
 import meta from "../../../public/images/meta.png";
+import loady from "../../../public/images/imgLoad.gif";
 
 const RestfulMovieDetails = () => {
   const [tmdb, setTmdb] = useState([]);
@@ -70,6 +71,8 @@ const RestfulMovieDetails = () => {
   const reviews = allReviews?.data?.filter(
     (review: ReviewProps) => review.title === tmdb?.title
   );
+  console.log(tmdb, "tmdb");
+  console.log(omdb, "omdb");
 
   return (
     <main className="text-white flex justify-center">
@@ -89,13 +92,17 @@ const RestfulMovieDetails = () => {
               priority
               width={350}
               height={20}
-              src={`https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`}
+              src={
+                !tmdb?.poster_path
+                  ? loady
+                  : `https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`
+              }
               alt={`Movie poster for ${tmdb?.title}`}
               className="rounded-lg border border-yellow-300"
             />
             <div className="w-3/5 border-2 rounded-lg border-blue-500 flex flex-col justify-evenly">
               <h2 className="text-white text-center text-1xl lg:text-3xl font-bold">
-                {tmdb?.title}
+                {!tmdb?.title ? "..........." : tmdb?.title}
               </h2>
               <div className="flex flex-row justify-evenly items-center border-2 border-red-500 w-1/6 self-center text-md lg:text-1xl">
                 <button className="border-2 border-yellow-300 p-.8">
@@ -136,22 +143,24 @@ const RestfulMovieDetails = () => {
                     </p>
                   </div>
                 </div>
-                <div className="flex flex-col items-center content-center">
-                  <h2 className="text-white text-center text-xl lg:text-1xl font-light">
-                    MetaCritic
-                  </h2>
-                  <div className="flex flex-row justify-around items-center content-center">
-                    <Image
-                      src={meta}
-                      width={50}
-                      height={50}
-                      alt="Metacritic logo"
-                    />
-                    <p className="text-white text-center text-xl lg:text-2xl font-semibold">
-                      {/* {omdb?.Ratings[2]?.value?.split("/")[0]}% */}
-                    </p>
+                {!omdb?.Metascore === "N/A" ? (
+                  <div className="flex flex-col items-center content-center">
+                    <h2 className="text-white text-center text-xl lg:text-1xl font-light">
+                      MetaCritic
+                    </h2>
+                    <div className="flex flex-row justify-around items-center content-center">
+                      <Image
+                        src={meta}
+                        width={50}
+                        height={50}
+                        alt="Metacritic logo"
+                      />
+                      <p className="text-white text-center text-xl lg:text-2xl font-semibold">
+                        {omdb?.Metascore}%
+                      </p>
+                    </div>
                   </div>
-                </div>
+                ) : null}
                 <div className="flex flex-col items-center content-center">
                   <h2 className="text-white text-center text-xl lg:text-1xl font-light">
                     Movie Social
