@@ -71,8 +71,31 @@ const RestfulMovieDetails = () => {
   const reviews = allReviews?.data?.filter(
     (review: ReviewProps) => review.title === tmdb?.title
   );
+
+  const rottenScore = () => {
+    if (!omdb?.Ratings) {
+      return null;
+    } else {
+      return omdb?.Ratings.reduce((acc, rate) => {
+        if (rate.Source === "Rotten Tomatoes") {
+          acc = rate.Value;
+        }
+        return acc;
+      }, "");
+    }
+  };
+
+  const theRottenScore = rottenScore();
+  // const rottenScore = omdb?.Ratings.reduce((acc, rate) => {
+  //   if (rate.Source === "Rotten Tomatoes") {
+  //     acc = rate.Value;
+  //   }
+  //   return acc;
+  // }, "");
+
   console.log(tmdb, "tmdb");
   console.log(omdb, "omdb");
+  console.log(theRottenScore, "theRottenScore");
 
   return (
     <main className="text-white flex justify-center">
@@ -124,25 +147,25 @@ const RestfulMovieDetails = () => {
                     </p>
                   </div>
                 </div>
-                <div className="flex flex-col items-center content-center">
-                  <h2 className="text-white text-center text-xl lg:text-1xl font-light">
-                    Rotten Tomatoes
-                  </h2>
-                  <div className="flex flex-row justify-around items-center content-center">
-                    <Image
-                      src={rotten}
-                      width={50}
-                      height={50}
-                      alt="Rotten Tomatoes logo"
-                    />
-
-                    {/* <p className="text-white text-center text-xl lg:text-2xl font-semibold">{data?.ratings[0].value}</p> */}
-                    {/* update once schema is fixed */}
-                    <p className="text-white text-center text-xl lg:text-2xl font-semibold">
-                      88%
-                    </p>
+                {theRottenScore ? (
+                  <div className="flex flex-col items-center content-center">
+                    <h2 className="text-white text-center text-xl lg:text-1xl font-light">
+                      Rotten Tomatoes
+                    </h2>
+                    <div className="flex flex-row justify-around items-center content-center">
+                      <Image
+                        className="rounded-full"
+                        src={rotten}
+                        width={50}
+                        height={50}
+                        alt="Rotten Tomatoes logo"
+                      />
+                      <p className="text-white text-center text-xl lg:text-2xl font-semibold">
+                        {theRottenScore}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                ) : null}
                 {!omdb?.Metascore === "N/A" ? (
                   <div className="flex flex-col items-center content-center">
                     <h2 className="text-white text-center text-xl lg:text-1xl font-light">
