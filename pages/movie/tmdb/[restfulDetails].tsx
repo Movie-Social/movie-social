@@ -86,6 +86,7 @@ const RestfulMovieDetails = () => {
         <section>
           <div className="flex flex-row justify-evenly h-[40vh]">
             <Image
+              priority
               width={350}
               height={20}
               src={`https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`}
