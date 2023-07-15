@@ -48,6 +48,7 @@ const MovieDetails = () => {
         <section>
           <div className="flex flex-row justify-evenly h-[40vh]">
             <Image
+              priority
               width={350}
               height={20}
               src={data?.poster}
