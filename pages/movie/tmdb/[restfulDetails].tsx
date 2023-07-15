@@ -86,17 +86,18 @@ const RestfulMovieDetails = () => {
   };
 
   const theRottenScore = rottenScore();
-  // const rottenScore = omdb?.Ratings.reduce((acc, rate) => {
-  //   if (rate.Source === "Rotten Tomatoes") {
-  //     acc = rate.Value;
-  //   }
-  //   return acc;
-  // }, "");
 
-  console.log(tmdb, "tmdb");
-  console.log(omdb, "omdb");
-  console.log(theRottenScore, "theRottenScore");
+  // console.log(tmdb, "tmdb");
+  // console.log(omdb, "omdb");
+  // console.log(theRottenScore, "theRottenScore");
 
+  // const math = () => {
+  //   const result = parseInt(theRottenScore.split("")) + omdb?.imdbRating * 10;
+  //   console.log(result, "math");
+  //   return result;
+  // };
+
+  // math();
   return (
     <main className="text-white flex justify-center">
       <section className="border-2 w-[90vw] h-full">
@@ -136,17 +137,24 @@ const RestfulMovieDetails = () => {
                 <p> {omdb?.runtime}</p>
               </div>
               <div className="flex flex-row justify-around mt-2 ">
-                <div className="flex flex-col items-center content-center">
-                  <h2 className="text-white text-center text-xl lg:text-1xl font-light">
-                    IMDB
-                  </h2>
-                  <div className="flex flex-row justify-around items-center content-center">
-                    <Image src={imdb} width={50} height={50} alt="IMDB Logo" />
-                    <p className="text-white text-center text-xl lg:text-2xl font-semibold">
-                      {omdb?.imdbRating * 10}%
-                    </p>
+                {omdb?.imdbRating ? (
+                  <div className="flex flex-col items-center content-center">
+                    <h2 className="text-white text-center text-xl lg:text-1xl font-light">
+                      IMDB
+                    </h2>
+                    <div className="flex flex-row justify-around items-center content-center">
+                      <Image
+                        src={imdb}
+                        width={50}
+                        height={50}
+                        alt="IMDB Logo"
+                      />
+                      <p className="text-white text-center text-xl lg:text-2xl font-semibold">
+                        {omdb?.imdbRating * 10}%
+                      </p>
+                    </div>
                   </div>
-                </div>
+                ) : null}
                 {theRottenScore ? (
                   <div className="flex flex-col items-center content-center">
                     <h2 className="text-white text-center text-xl lg:text-1xl font-light">
