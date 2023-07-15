@@ -1,12 +1,12 @@
 import Image from "next/image";
 import loadingGif from "../public/images/loading.gif";
-import trash from "../public/images/recyclingBag.png";
 const LoadingModal = () => {
   return (
     <section
       className="
+      opacity-60
       border-2
-      border-blue-700
+      border-yellow-300
 relative
 w-auto
 mx-auto
@@ -14,12 +14,20 @@ w-[40vw]
 h-[40vh]
  bg-zinc-900
 rounded-md
+flex
+flex-col
+justify-center
+content-center
+items-center
 "
     >
+      <h2 className="text-white text-center text-3xl">Loading...</h2>
       <Image
-        src={trash}
+        className="rounded-full"
+        src={loadingGif}
         alt="Custom GIf of movie social logo rumbling while the data loads"
-        fill
+        height={300}
+        width={300}
       />
     </section>
   );
