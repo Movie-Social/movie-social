@@ -1,7 +1,7 @@
-import loady from "../public/images/imgLoad.gif";
-import useMovie from "@/hooks/useMovie";
-import Image from "next/image";
 import { useRouter } from "next/router";
+import Image from "next/image";
+import useMovie from "@/hooks/useMovie";
+import loady from "../public/images/imgLoad.gif";
 interface ListItemProps {
   movieId: string;
 }
@@ -21,6 +21,7 @@ const ProfileListItem: React.FC<ListItemProps> = ({ movieId }) => {
         />
       ) : (
         <Image
+          priority
           onClick={() => router.push(`/movie/${data?.movieId}`)}
           className="cursor-pointer transition hover:opacity-70"
           width={150}
