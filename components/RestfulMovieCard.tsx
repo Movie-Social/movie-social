@@ -3,6 +3,7 @@ import { BsFillPlayFill } from "react-icons/bs";
 import FavoriteButton from "./FavoriteButton";
 import WatchlistButton from "./WatchlistButton";
 import Image from "next/image";
+import loady from "../public/images/imgLoad.gif";
 interface RestfulMovieCardProps {
   data: Record<string, any>;
 }
@@ -12,8 +13,16 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
   return (
     <main className="flex flex-col items-center justify-center content-center text-center group bg-zinc-900 relative">
       {/* <div className="flex justify-center"> */}
-      <Image
-        className="
+      {!data?.poster_path ? (
+        <Image
+          src={loady}
+          alt="gif to show the intended image is loading"
+          width={200}
+          height={200}
+        />
+      ) : (
+        <Image
+          className="
           self-center         
           transition
           duration
@@ -22,12 +31,13 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
           group-hover:opacity-90
           sm:group-hover:opacity-0
           delay-300"
-        onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
-        alt={`${data.title}'s official movie poster"`}
-        src={`https://image.tmdb.org/t/p/original/${data?.poster_path}`}
-        width={200}
-        height={200}
-      />
+          onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
+          alt={`${data.title}'s official movie poster"`}
+          src={`https://image.tmdb.org/t/p/original/${data?.poster_path}`}
+          width={200}
+          height={200}
+        />
+      )}
       <div
         className="
       opacity-0
@@ -129,6 +139,7 @@ flex flex-row items-center gap-3
           </div>
         </section>
       </div>
+
       {/* <h2 className="text-white">{data?.title}</h2>
       <h2>{data?.popularity}</h2> */}
     </main>
