@@ -1,7 +1,8 @@
-import tmdbFetcher from "@/lib/tmdbFetcher";
+import { isEmpty } from "lodash";
 import { useEffect, useState } from "react";
-import RestfulMovieCard from "./RestfulMovieCard";
 import { Slide } from "react-slideshow-image";
+import tmdbFetcher from "@/lib/tmdbFetcher";
+import RestfulMovieCard from "./RestfulMovieCard";
 
 interface RestfulMovieListProps {
   title: string;
@@ -22,7 +23,7 @@ const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
 
     fetchTMDBLists();
   }, []);
-  if (!tmdbList) {
+  if (isEmpty(tmdbList)) {
     return null;
   }
 
