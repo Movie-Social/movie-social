@@ -17,7 +17,7 @@ const Reviewform: React.FC<ReviewProps> = ({
   title,
   poster,
 }) => {
-  const currentUser = useCurrentUser();
+  const { data: currentUser } = useCurrentUser();
   const [hoverRating, setHoverRating] = useState(0);
   const [review, setReview] = useState("");
 
@@ -68,7 +68,7 @@ const Reviewform: React.FC<ReviewProps> = ({
         className="w-full h-[90%] text-black"
       />
       <SubmitReviewButton
-        userId={currentUser.data.id}
+        userId={currentUser?.data?.id}
         rating={rating}
         review={review}
         title={title}
