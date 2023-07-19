@@ -1,3 +1,4 @@
+import ErrorPage from "./error";
 import Hero from "@/components/Hero";
 import InfoModal from "@/components/InfoModal";
 import MovieList from "@/components/MovieList";
@@ -34,7 +35,8 @@ const Home = () => {
 
   return (
     <main>
-      <InfoModal visible={isOpen} onClose={closeModal} />
+      <ErrorPage />
+      {/* <InfoModal visible={isOpen} onClose={closeModal} />
       <Navbar />
       <Hero />
       <section className="pb-40">
@@ -47,7 +49,7 @@ const Home = () => {
         <MovieList title="Horror" data={movies} />
         <RestfulMovieList title="Top Rated" />
         <MovieList title="My Favorites" data={favorites} />
-      </section>
+      </section> */}
     </main>
   );
 };
