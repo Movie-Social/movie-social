@@ -68,11 +68,12 @@ const Reviewform: React.FC<ReviewProps> = ({
         className="w-full h-[90%] text-black"
       />
       <SubmitReviewButton
-        userId={currentUser?.data?.id}
+        userId={currentUser?.id}
         rating={rating}
         review={review}
         title={title}
         poster={poster}
+        usersName={currentUser?.name}
       />
     </main>
   );
