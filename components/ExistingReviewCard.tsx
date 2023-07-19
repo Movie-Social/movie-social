@@ -2,10 +2,12 @@ import Image from "next/image";
 interface ExistingReviewCardProps {
   review: string;
   rating: number;
+  name: string;
 }
 const ExistingReviewCard: React.FC<ExistingReviewCardProps> = ({
   rating,
   review,
+  name,
 }) => {
   return (
     <main className="border-2 border-yellow-500 m-2 w-[50%]">
@@ -20,6 +22,7 @@ const ExistingReviewCard: React.FC<ExistingReviewCardProps> = ({
         <h2 className="ml-5">{review}</h2>
       </div>
       <h2>{rating}/5</h2>
+      <p>{name}</p>
     </main>
   );
 };

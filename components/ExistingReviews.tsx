@@ -7,6 +7,7 @@ interface Review {
   title: string;
   userId: string;
   review: string;
+  usersName: string;
 }
 
 interface ExistingReviewProps {
@@ -29,6 +30,7 @@ const ExistingReviews: React.FC<ExistingReviewProps> = ({ data }) => {
             key={review?.id}
             rating={review?.rating}
             review={review?.review}
+            name={review?.usersName}
           />
         ))}
       </section>
