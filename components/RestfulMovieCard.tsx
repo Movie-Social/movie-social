@@ -42,17 +42,15 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
         className="
       opacity-0
       absolute
-      top-0
       transition
       duration-300
       z-10
       invisible
       sm:visible
       delay-200
-      w-full
       scale-0
-      group-hover:scale-110
-      group-hover:-translate-y-[6vw]
+      group-hover:scale-100
+      group-hover:-translate-y-[2vw]
       group-hover:opacity-100
       "
       >
@@ -64,7 +62,8 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
         duration
         shadow-xl
         rounded-t-md
-        w-full
+        border 
+        border-blue-300
         "
           width={200}
           height={200}
@@ -86,37 +85,13 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
         >
           <div
             className="
-flex flex-row items-center gap-3
+flex flex-row items-center
 "
           >
-            {/* <div
-              onClick={() => router.push(`/watch/${data?.id}`)}
-              className="
-            cursor-pointer
-            w-6
-            h-6
-            lg:w-8
-            lg:h-8
-            bg-white
-            rounded-full
-            flex
-            justify-center
-            items-center
-            content-center
-            transition
-            hover:bg-neutral-300
-            "
-            >
-              <BsFillPlayFill size={25} />
-            </div> */}
-
             {/* <FavoriteButton movieId={data?.id} />
             <WatchlistButton movieId={data?.id} /> */}
           </div>
-          {/* <p className="text-green-400 font-semibold mt-4">
-            New <span className="text-white">2023</span>
-          </p> */}
-          <div className="flex flex-row mt-4 gap-2 items-center">
+          <div className="flex flex-row items-center">
             <p
               onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
               className="cursor-pointer text-white text-[10px] lg:text-sm"
@@ -124,24 +99,8 @@ flex flex-row items-center gap-3
               {data?.title}
             </p>
           </div>
-          <div className="flex flex-row mt-4 gap-2 items-center">
-            <p className="text-white text-[10px] lg:text-sm">
-              {/* Rating: {data.score} */}
-            </p>
-          </div>
-          <div className="flex flex-row mt-4 gap-2 items-center">
-            {/* <button className="text-white text-[10px] lg:text-sm">
-              {data.categories[0]}
-            </button>
-            <button className="text-white text-[10px] lg:text-sm">
-              {data.categories[1]}
-            </button> */}
-          </div>
         </section>
       </div>
-
-      {/* <h2 className="text-white">{data?.title}</h2>
-      <h2>{data?.popularity}</h2> */}
     </main>
   );
 };

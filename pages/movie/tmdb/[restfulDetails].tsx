@@ -2,6 +2,7 @@ import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import YouTube, { YouTubeProps } from "react-youtube";
 import crypto from "crypto";
 import { ReviewProps } from "../[movieDetails]";
 import omdbFetcher from "@/lib/omdbFetcher";
@@ -24,6 +25,7 @@ const RestfulMovieDetails = () => {
   const router = useRouter();
   const movieId = router.query.restfulDetails;
   const allReviews = useAllReviews();
+
   useEffect(() => {
     const fetchTmdb = async () => {
       const tmdbDetails = await tmdbDetailsFetcher(movieId);
@@ -31,6 +33,7 @@ const RestfulMovieDetails = () => {
     };
     fetchTmdb();
   }, []);
+
   useEffect(() => {
     const fetchOmdb = async () => {
       const omdbDetails = await omdbFetcher(tmdb?.title);
@@ -87,28 +90,22 @@ const RestfulMovieDetails = () => {
 
   const theRottenScore = rottenScore();
 
-  // console.log(tmdb, "tmdb");
-  // console.log(omdb, "omdb");
-  // console.log(theRottenScore, "theRottenScore");
+  const onPlayerReady: YouTubeProps["onReady"] = (event) => {
+    event.target.pauseVideo();
+  };
 
-  // const math = () => {
-  //   const result = parseInt(theRottenScore.split("")) + omdb?.imdbRating * 10;
-  //   console.log(result, "math");
-  //   return result;
-  // };
-
-  // math();
+  const opts: YouTubeProps["opts"] = {
+    height: "390",
+    width: "1000",
+    playerVars: {
+      autoplay: 1,
+    },
+  };
   return (
     <main className="text-white flex justify-center">
       <section className="border-2 w-[90vw] h-full">
         <div className="mt-3 mb-5 flex justify-center">
-          <video
-            autoPlay
-            muted
-            controls
-            className="h-2/5 w-[75%] rounded-md"
-            src="https://youtu.be/cnDObXxwWy0"
-          ></video>
+          <YouTube videoId="KAE5ymVLmZg" opts={opts} onReady={onPlayerReady} />;
         </div>
         <section>
           <div className="flex flex-row justify-evenly h-[40vh]">
