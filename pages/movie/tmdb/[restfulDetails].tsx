@@ -15,6 +15,7 @@ import rotten from "../../../public/images/rotten.png";
 import imdb from "../../../public/images/imdb.png";
 import meta from "../../../public/images/meta.png";
 import loady from "../../../public/images/imgLoad.gif";
+import trailerFetcher from "@/lib/trailerFetcher";
 
 const RestfulMovieDetails = () => {
   const [tmdb, setTmdb] = useState([]);
@@ -25,7 +26,8 @@ const RestfulMovieDetails = () => {
   const router = useRouter();
   const movieId = router.query.restfulDetails;
   const allReviews = useAllReviews();
-
+  const [trailer, setTrailer] = useState("");
+  // const trailerFetcher = useTrailer(tmdb?.id);
   useEffect(() => {
     const fetchTmdb = async () => {
       const tmdbDetails = await tmdbDetailsFetcher(movieId);
@@ -71,6 +73,21 @@ const RestfulMovieDetails = () => {
     postMovie();
   }, [tmdb, omdb, mongoMovieId, mongoDetailsId]);
 
+  useEffect(() => {
+    const fetchTrailer = async () => {
+      const trailer = await trailerFetcher(tmdb.id);
+      if (trailer?.results?.length > 0) {
+        const youtubeKey = trailer.results
+          .filter((video: any) => video.type === "Trailer")
+          .filter((video: any) => video.site === "YouTube")
+          .filter((video: any) => video.official === true)[0].key;
+        setTrailer(youtubeKey);
+      }
+    };
+
+    fetchTrailer();
+  }, [trailer]);
+
   const reviews = allReviews?.data?.filter(
     (review: ReviewProps) => review.title === tmdb?.title
   );
@@ -101,11 +118,22 @@ const RestfulMovieDetails = () => {
       autoplay: 1,
     },
   };
+
+  console.log(trailer, "TRAILER");
+  // console.log(
+  // trailer?.results?
+  //   .filter((video) => video.type === "Trailer")
+  //   .filter((video) => video.site === "YouTube")
+  //   .filter((video) => video.official === true)[0].key,
+  //   "Fetcher"
+  // );
   return (
     <main className="text-white flex justify-center">
       <section className="border-2 w-[90vw] h-full">
         <div className="mt-3 mb-5 flex justify-center">
-          <YouTube videoId="KAE5ymVLmZg" opts={opts} onReady={onPlayerReady} />;
+          {trailer ? (
+            <YouTube videoId={trailer} opts={opts} onReady={onPlayerReady} />
+          ) : null}
         </div>
         <section>
           <div className="flex flex-row justify-evenly h-[40vh]">
