@@ -6,6 +6,7 @@ import YouTube, { YouTubeProps } from "react-youtube";
 import crypto from "crypto";
 import { ReviewProps } from "../[movieDetails]";
 import omdbFetcher from "@/lib/omdbFetcher";
+import trailerFetcher from "@/lib/trailerFetcher";
 import tmdbDetailsFetcher from "@/lib/tmdbDetailsFetcher";
 import useAllReviews from "@/hooks/useAllReviews";
 import Reviewform from "@/components/ReviewForm";
@@ -15,7 +16,6 @@ import rotten from "../../../public/images/rotten.png";
 import imdb from "../../../public/images/imdb.png";
 import meta from "../../../public/images/meta.png";
 import loady from "../../../public/images/imgLoad.gif";
-import trailerFetcher from "@/lib/trailerFetcher";
 
 const RestfulMovieDetails = () => {
   const [tmdb, setTmdb] = useState([]);
@@ -27,7 +27,6 @@ const RestfulMovieDetails = () => {
   const movieId = router.query.restfulDetails;
   const allReviews = useAllReviews();
   const [trailer, setTrailer] = useState("");
-  // const trailerFetcher = useTrailer(tmdb?.id);
   useEffect(() => {
     const fetchTmdb = async () => {
       const tmdbDetails = await tmdbDetailsFetcher(movieId);
@@ -80,8 +79,7 @@ const RestfulMovieDetails = () => {
       if (trailer?.results?.length > 0) {
         const youtubeKey = trailer.results
           .filter((video: any) => video.type === "Trailer")
-          .filter((video: any) => video.site === "YouTube")
-          .filter((video: any) => video.official === true)[0].key;
+          .filter((video: any) => video.site === "YouTube")[0].key;
         setTrailer(youtubeKey);
       }
     };
