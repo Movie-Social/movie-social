@@ -75,7 +75,8 @@ const RestfulMovieDetails = () => {
 
   useEffect(() => {
     const fetchTrailer = async () => {
-      const trailer = await trailerFetcher(tmdb.id);
+      await tmdb?.id;
+      const trailer = await trailerFetcher(tmdb?.id);
       if (trailer?.results?.length > 0) {
         const youtubeKey = trailer.results
           .filter((video: any) => video.type === "Trailer")
@@ -86,7 +87,7 @@ const RestfulMovieDetails = () => {
     };
 
     fetchTrailer();
-  }, [trailer]);
+  }, [trailer, tmdb]);
 
   const reviews = allReviews?.data?.filter(
     (review: ReviewProps) => review.title === tmdb?.title
@@ -119,14 +120,6 @@ const RestfulMovieDetails = () => {
     },
   };
 
-  console.log(trailer, "TRAILER");
-  // console.log(
-  // trailer?.results?
-  //   .filter((video) => video.type === "Trailer")
-  //   .filter((video) => video.site === "YouTube")
-  //   .filter((video) => video.official === true)[0].key,
-  //   "Fetcher"
-  // );
   return (
     <main className="text-white flex justify-center">
       <section className="border-2 w-[90vw] h-full">
