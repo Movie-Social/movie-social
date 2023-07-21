@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Reviewform from "@/components/ReviewForm";
 import trailerFetcher from "@/lib/trailerFetcher";
-import tmdbDetailsFetcher from "@/lib/tmdbDetailsFetcher";
+import tmdbMovieFetcher from "@/lib/tmdbMovieFetcher";
 import useAllReviews from "@/hooks/useAllReviews";
 import useMovie from "@/hooks/useMovie";
 import ExistingReviews from "@/components/ExistingReviews";
@@ -30,15 +30,17 @@ const MovieDetails = () => {
   const { data } = useMovie(movieId as string);
   const [rating, setRating] = useState(0);
   const allReviews = useAllReviews();
-  const [tmdb, setTmdb] = useState([]);
+  const [tmdb, setTmdb] = useState({});
   const [trailer, setTrailer] = useState("");
 
   useEffect(() => {
-    //it will work once I correct the logic below to setTMDB to retrieve
-    // TMDB details for the movie
     const fetchTmdb = async () => {
-      const tmdbDetails = await tmdbDetailsFetcher(movieId);
-      setTmdb(tmdbDetails);
+      const tmdbDetails = await tmdbMovieFetcher(data?.title);
+      const details = tmdbDetails.results
+        .filter((movie) => movie.original_language === "en")
+        .filter((movie) => movie.original_title === data?.title)
+        .sort((a, b) => b.popularity - a.popularity)[0];
+      setTmdb(details);
     };
     fetchTmdb();
   }, []);
@@ -46,7 +48,6 @@ const MovieDetails = () => {
   useEffect(() => {
     const fetchTrailer = async () => {
       await tmdb?.id;
-      console.log(tmdb, "TMDBID");
       const trailer = await trailerFetcher(tmdb?.id);
       if (trailer?.results?.length > 0) {
         const youtubeKey = trailer.results
