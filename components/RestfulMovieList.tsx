@@ -1,7 +1,8 @@
-import tmdbFetcher from "@/lib/tmdbFetcher";
+import { isEmpty } from "lodash";
 import { useEffect, useState } from "react";
-import RestfulMovieCard from "./RestfulMovieCard";
 import { Slide } from "react-slideshow-image";
+import tmdbFetcher from "@/lib/tmdbFetcher";
+import RestfulMovieCard from "./RestfulMovieCard";
 
 interface RestfulMovieListProps {
   title: string;
@@ -14,18 +15,21 @@ const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
   useEffect(() => {
     const fetchTMDBLists = async () => {
       const list = await tmdbFetcher(apiString);
-      setTmdbList(list.results);
+      const englishMovies = list.results.filter(
+        (movie) => movie?.original_language === "en"
+      );
+      setTmdbList(englishMovies);
     };
 
     fetchTMDBLists();
   }, []);
-  if (!tmdbList) {
+  if (isEmpty(tmdbList)) {
     return null;
   }
 
   return (
-    <main className="px-4 md:px-12 mt-2 space-y-4">
-      <section className="flex flex-col content-center">
+    <main className="px-4 md:px-12 mt-2 space-y-4 flex justify-center border border-orange-300">
+      <section className="flex flex-col content-center  w-[70vw]">
         <h2 className="text-white text-md md:text-xl lg:text-2xl font-semibold mb-4">
           {title}
         </h2>
@@ -33,7 +37,7 @@ const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
           transitionDuration={1000}
           autoplay={false}
           slidesToScroll={3}
-          slidesToShow={5}
+          slidesToShow={4}
           indicators={true}
         >
           {tmdbList.map((movie: any) => {

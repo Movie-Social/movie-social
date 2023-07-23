@@ -1,15 +1,19 @@
-import Navbar from "@/components/Navbar";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import Reviewform from "@/components/ReviewForm";
+import trailerFetcher from "@/lib/trailerFetcher";
+import tmdbMovieFetcher from "@/lib/tmdbMovieFetcher";
+import useAllReviews from "@/hooks/useAllReviews";
 import useMovie from "@/hooks/useMovie";
+import ExistingReviews from "@/components/ExistingReviews";
+import Navbar from "@/components/Navbar";
 import trash from "../../public/images/recyclingBag.png";
 import rotten from "../../public/images/rotten.png";
 import imdb from "../../public/images/imdb.png";
 import meta from "../../public/images/meta.png";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import Reviewform from "@/components/ReviewForm";
-import { useState } from "react";
-import ExistingReviews from "@/components/ExistingReviews";
-import useAllReviews from "@/hooks/useAllReviews";
+import loady from "../../public/images/imgLoad.gif";
+import YouTube, { YouTubeProps } from "react-youtube";
 
 export interface ReviewProps {
   id: string;
@@ -26,31 +30,72 @@ const MovieDetails = () => {
   const { data } = useMovie(movieId as string);
   const [rating, setRating] = useState(0);
   const allReviews = useAllReviews();
+  const [tmdb, setTmdb] = useState({});
+  const [trailer, setTrailer] = useState("");
+
+  useEffect(() => {
+    const fetchTmdb = async () => {
+      const tmdbDetails = await tmdbMovieFetcher(data?.title);
+      const details = tmdbDetails.results
+        .filter((movie) => movie.original_language === "en")
+        .filter((movie) => movie.original_title === data?.title)
+        .sort((a, b) => b.popularity - a.popularity)[0];
+      setTmdb(details);
+    };
+    fetchTmdb();
+  }, []);
+
+  useEffect(() => {
+    const fetchTrailer = async () => {
+      await tmdb?.id;
+      const trailer = await trailerFetcher(tmdb?.id);
+      if (trailer?.results?.length > 0) {
+        const youtubeKey = trailer.results
+          .filter((video: any) => video.type === "Trailer")
+          .filter((video: any) => video.site === "YouTube")[0].key;
+        setTrailer(youtubeKey);
+      }
+    };
+
+    fetchTrailer();
+  }, [trailer, tmdb]);
 
   const reviews = allReviews?.data?.filter(
     (review: ReviewProps) => review.title === data?.title
   );
-  console.log(reviews, "reviews");
+
+  const onPlayerReady: YouTubeProps["onReady"] = (event) => {
+    event.target.pauseVideo();
+  };
+
+  const opts: YouTubeProps["opts"] = {
+    height: "390",
+    width: "1000",
+    playerVars: {
+      autoplay: 1,
+    },
+  };
+
   return (
     <main className="text-white flex justify-center">
-      {/* <Navbar /> */}
-      <section className="border-2 w-[90vw] h-full">
+      <Navbar />
+      <br></br>
+      <section className="w-[90vw] mt-10">
         <div className="mt-3 mb-5 flex justify-center">
-          <video
-            autoPlay
-            muted
-            controls
-            className="h-2/5 w-[75%] rounded-md"
-            // src={data?.videoUrl}
-            src="https://youtu.be/cnDObXxwWy0"
-          ></video>
+          {trailer ? (
+            <YouTube videoId={trailer} opts={opts} onReady={onPlayerReady} />
+          ) : null}
         </div>
+
         <section>
           <div className="flex flex-row justify-evenly h-[40vh]">
-            <img
-              src={data?.poster}
+            <Image
+              priority
+              width={350}
+              height={20}
+              src={!data?.poster ? loady : data?.poster}
               alt={`Movie poster for ${data?.title}`}
-              className="rounded-lg border-2"
+              className="rounded-lg border border-yellow-300"
             />
             <div
               className="w-3/5 border-2 rounded-lg border-blue-500 flex flex-col justify-evenly
