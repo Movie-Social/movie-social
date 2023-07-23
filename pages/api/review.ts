@@ -8,7 +8,7 @@ export default async function handler(
 ) {
   try {
     if (req.method === "POST") {
-      const { title, userId, rating, poster, review } = req.body;
+      const { title, userId, rating, poster, review, usersName } = req.body;
       const existingMovie = await prismadb.movie.findUnique({
         where: {
           title: title,
@@ -39,6 +39,7 @@ export default async function handler(
           userId,
           rating,
           review,
+          usersName,
         },
       });
 

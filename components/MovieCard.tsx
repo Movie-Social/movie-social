@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useCallback } from "react";
 import useInfoModal from "@/hooks/useInfoModal";
 import WatchlistButton from "./WatchlistButton";
+import Image from "next/image";
 
 interface MovieCardProps {
   data: Record<string, any>;
@@ -22,10 +23,9 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
       onClick={handleOpenModal}
       className=" cursor-pointer group bg-zinc-900 col-span relative h-[12vw]"
     >
-      <img
+      <Image
         className="
         ml-2
-        object-fill
         transition
         duration
         shadow-xl
@@ -33,9 +33,8 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
         group-hover:opacity-90
         sm:group-hover:opacity-0
         delay-300
-        w-full
-        h-[20vw]
         "
+        fill
         src={data.poster}
         alt="Movie poster"
       />
@@ -57,17 +56,16 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
       group-hover:opacity-100
       "
       >
-        <img
+        <Image
           className="
         cursor-pointer
-        object-fill
         transition
         duration
         shadow-xl
         rounded-t-md
-        w-full
-        h-[20vw]
         "
+          width={400}
+          height={100}
           src={data.poster}
           alt="thumbnail"
         />

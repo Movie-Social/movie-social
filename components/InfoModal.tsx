@@ -1,11 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import Image from "next/image";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsFillInfoCircleFill } from "react-icons/bs";
-import { useRouter } from "next/router";
-import PlayButton from "./PlayButton";
-import FavoriteButton from "./FavoriteButton";
 import useInfoModal from "@/hooks/useInfoModal";
 import useMovie from "@/hooks/useMovie";
+import FavoriteButton from "./FavoriteButton";
+import PlayButton from "./PlayButton";
+import LoadingModal from "./LoadingModal";
 
 interface InfoModalProps {
   visible: boolean;
@@ -15,7 +17,7 @@ interface InfoModalProps {
 const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
   const [isVisible, setIsVisisble] = useState(!!visible);
   const { movieId } = useInfoModal();
-  const { data = {} } = useMovie(movieId);
+  const { data = {}, isLoading } = useMovie(movieId);
   const router = useRouter();
 
   useEffect(() => {
@@ -33,8 +35,6 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
     return null;
   }
 
-  console.log(data, "modaldata");
-  console.log(data?.movieId, "movieID");
   return (
     <main
       onClick={handleClose}
@@ -51,22 +51,23 @@ overflow-x-hidden
 overflow-y-auto
 fixed
 inset-0
-
   "
     >
-      <section
-        className="
+      {isLoading ? (
+        <LoadingModal />
+      ) : (
+        <section
+          className="
 relative
 w-auto
 mx-auto
 max-w-3xl
 rounded-md
 overflow-hidden
-
 "
-      >
-        <div
-          className={`${isVisible ? "scale-100" : "scale-0"}
+        >
+          <div
+            className={`${isVisible ? "scale-100" : "scale-0"}
         transform
         duration-300
         relative
@@ -74,14 +75,14 @@ overflow-hidden
         bg-zinc-900
         drop-shadow-md
         `}
-        >
-          <div
-            className="
+          >
+            <div
+              className="
             relative
             h-96
             "
-          >
-            {/* <video
+            >
+              {/* <video
               autoPlay
               muted
               loop
@@ -94,19 +95,17 @@ overflow-hidden
             "
               src={data?.videoUrl}
             ></video> */}
-            <img
-              className="
-            
-            w-full
+              <Image
+                className="
             brightness-[60%]
-            object-fit
-            h-full
             "
-              src={data?.poster}
-            />
-            <div
-              onClick={handleClose}
-              className="
+                fill
+                src={data?.poster}
+                alt={`${data?.title}'s movie cover`}
+              />
+              <div
+                onClick={handleClose}
+                className="
         cursor-pointer
         absolute
         top-3
@@ -120,18 +119,18 @@ overflow-hidden
         items-center
 justify-center
         "
-            >
-              <AiOutlineClose size={20} className="text-white" />
-            </div>
-            <div
-              className="
+              >
+                <AiOutlineClose size={20} className="text-white" />
+              </div>
+              <div
+                className="
             absolute
             bottom-[10%]
             left-10
             "
-            >
-              <p
-                className="
+              >
+                <p
+                  className="
               text-white
               text-3xl
               md:text-4xl
@@ -140,45 +139,46 @@ justify-center
               font-bold
               mb-8
               "
-              >
-                {data?.title}
-              </p>
-              <div
-                className="flex
+                >
+                  {data?.title}
+                </p>
+                <div
+                  className="flex
               flex-row
               gap-4
               items-center
               "
-              >
-                <PlayButton movieId={data?.movieId} />
-                <FavoriteButton movieId={data?.movieId} />
-                <BsFillInfoCircleFill
-                  className="text-white cursor-pointer"
-                  size={30}
-                  onClick={() => router.push(`/movie/${data?.movieId}`)}
-                />
+                >
+                  {/* <PlayButton movieId={data?.movieId} /> */}
+                  <FavoriteButton movieId={data?.movieId} />
+                  <BsFillInfoCircleFill
+                    className="text-white cursor-pointer"
+                    size={30}
+                    onClick={() => router.push(`/movie/${data?.movieId}`)}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            className="px-12
+            <div
+              className="px-12
           py-8"
-          >
-            {/* <p
+            >
+              {/* <p
               className="text-green-400 font-semibold
             text-lg"
             >
               New
             </p> */}
-            <p className="text-white text-lg">{data?.runtime}</p>
-            <p className="text-white text-lg">Rated: {data?.rating}</p>
-            {/* <p className="text-white text-lg">{data?.reviewCount}</p> */}
-            {/* <p className="text-white text-lg">{data?.trailer}</p> */}
-            {/* <p className="text-white text-lg">{data?.genre}</p> */}
-            <p className="text-white text-lg">{data?.summary}</p>
+              <p className="text-white text-lg">{data?.runtime}</p>
+              <p className="text-white text-lg">Rated: {data?.rating}</p>
+              {/* <p className="text-white text-lg">{data?.reviewCount}</p> */}
+              {/* <p className="text-white text-lg">{data?.trailer}</p> */}
+              {/* <p className="text-white text-lg">{data?.genre}</p> */}
+              <p className="text-white text-lg">{data?.summary}</p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </main>
   );
 };
