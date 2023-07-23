@@ -9,14 +9,14 @@ import omdbFetcher from "@/lib/omdbFetcher";
 import trailerFetcher from "@/lib/trailerFetcher";
 import tmdbDetailsFetcher from "@/lib/tmdbDetailsFetcher";
 import useAllReviews from "@/hooks/useAllReviews";
-import Reviewform from "@/components/ReviewForm";
-import ExistingReviews from "@/components/ExistingReviews";
 import trash from "../../../public/images/recyclingBag.png";
 import rotten from "../../../public/images/rotten.png";
 import imdb from "../../../public/images/imdb.png";
 import meta from "../../../public/images/meta.png";
 import loady from "../../../public/images/imgLoad.gif";
 import Navbar from "@/components/Navbar";
+import Reviewform from "@/components/ReviewForm";
+import ExistingReviews from "@/components/ExistingReviews";
 
 const RestfulMovieDetails = () => {
   const [tmdb, setTmdb] = useState([]);
@@ -268,7 +268,7 @@ const RestfulMovieDetails = () => {
                 <span className="font-light text-yellow-300 m-2">
                   Box Office:
                 </span>
-                ${omdb?.BoxOffice}
+                {omdb?.BoxOffice}
               </h2>
               <h2>
                 <span className="font-light text-yellow-300 m-2">Runtime:</span>
@@ -288,7 +288,6 @@ const RestfulMovieDetails = () => {
               onRating={(rate: number) => setRating(rate)}
             />
           </section>
-          {/* <div>other reviews will go here</div> */}
         </section>
       </section>
     </main>
