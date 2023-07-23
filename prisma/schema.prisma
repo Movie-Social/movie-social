@@ -95,7 +95,6 @@ model MovieDetails {
   trailer     String
   summary     String
   reviewCount Int
-  // cast        Cast[]
   boxOffice   String
   director    String
   imdbRating  String
@@ -106,7 +105,8 @@ model MovieDetails {
   releaseDate String
   writer      String
   categories  String[]
-  // Review      Review[]
+  tagline     String
+  budget      Int
 }
 
 model Tomato {
