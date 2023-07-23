@@ -7,14 +7,14 @@
     <li><a href="#deployed-application">Deployed Application</a></li>
     <li><a href="#user-stories">User Stories</a></li>
     <li><a href="#application-in-action">Application in Action</a></li>
-    <li><a href="#frontend-technologies-used-">Technologies Used</a></li>
-    <li><a href="#backend-technologies-used-">Technologies Used</a></li>
+    <li><a href="#frontend-technologies-used-">Frontend Technologies Used</a></li>
+    <li><a href="#backend-technologies-used-">Backend Technologies Used</a></li>
     <li><a href="#organizational-resources-">Organizational Resources</a></li>
     <li><a href="#tools-used-">Tools Used</a></li>
     <li><a href="#stretch-techs">Stretch Techs</a></li>
     <li><a href="#accessibility-%EF%B8%8F">Accessibility</a></li>
     <li><a href="#future-additions-">Future Additions</a></li>
-    <li><a href="#contributor">Contributor</a></li>
+    <li><a href="#sole-contributor-">Contributor</a></li>
   </ol>
 </details>
 
