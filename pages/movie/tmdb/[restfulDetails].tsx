@@ -16,6 +16,7 @@ import rotten from "../../../public/images/rotten.png";
 import imdb from "../../../public/images/imdb.png";
 import meta from "../../../public/images/meta.png";
 import loady from "../../../public/images/imgLoad.gif";
+import Navbar from "@/components/Navbar";
 
 const RestfulMovieDetails = () => {
   const [tmdb, setTmdb] = useState([]);
@@ -120,7 +121,9 @@ const RestfulMovieDetails = () => {
 
   return (
     <main className="text-white flex justify-center">
-      <section className="border-2 w-[90vw] h-full">
+      <Navbar />
+      <br></br>
+      <section className="mt-10 w-[90vw]">
         <div className="mt-3 mb-5 flex justify-center">
           {trailer ? (
             <YouTube videoId={trailer} opts={opts} onReady={onPlayerReady} />
