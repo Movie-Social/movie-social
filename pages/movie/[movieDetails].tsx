@@ -78,8 +78,9 @@ const MovieDetails = () => {
 
   return (
     <main className="text-white flex justify-center">
-      {/* <Navbar /> */}
-      <section className="border-2 w-[90vw] h-full">
+      <Navbar />
+      <br></br>
+      <section className="w-[90vw] mt-10">
         <div className="mt-3 mb-5 flex justify-center">
           {trailer ? (
             <YouTube videoId={trailer} opts={opts} onReady={onPlayerReady} />
