@@ -18,9 +18,10 @@ export default async function handler(
       runtime,
       trailer,
       summary,
+      tagline,
       reviewCount,
-      //   cast,
       boxOffice,
+      budget,
       director,
       writer,
       imdbRating,
@@ -51,7 +52,6 @@ export default async function handler(
             trailer,
             summary,
             reviewCount,
-            // cast,
             boxOffice,
             director,
             writer,
@@ -62,6 +62,8 @@ export default async function handler(
             ratings,
             releaseDate,
             categories,
+            tagline,
+            budget,
           },
         });
         return newMovie;

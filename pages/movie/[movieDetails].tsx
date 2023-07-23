@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
@@ -75,6 +76,8 @@ const MovieDetails = () => {
       autoplay: 1,
     },
   };
+
+  console.log(tmdb, "TMDB");
 
   return (
     <main className="text-white flex justify-center">
