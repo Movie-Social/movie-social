@@ -1,3 +1,4 @@
+import React from "react";
 import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -119,6 +120,10 @@ const RestfulMovieDetails = () => {
     },
   };
 
+  console.log(tmdb, "TMDB");
+  console.log(omdb, "OMDB");
+  console.log(tmdb.genres.map((genre) => genre.name).join(", "));
+
   return (
     <main className="text-white flex justify-center">
       <Navbar />
@@ -147,13 +152,24 @@ const RestfulMovieDetails = () => {
               <h2 className="text-white text-center text-1xl lg:text-3xl font-bold">
                 {!tmdb?.title ? "..........." : tmdb?.title}
               </h2>
+              {tmdb?.tagline ? (
+                <h3 className="text-white text-center text-xl ">
+                  {tmdb?.tagline}
+                </h3>
+              ) : null}
               <div className="flex flex-row justify-evenly items-center border-2 border-red-500 w-1/6 self-center text-md lg:text-1xl">
-                <button className="border-2 border-yellow-300 p-.8">
-                  {omdb?.Rated}
-                </button>
-                <p>{tmdb?.release_date?.split("-")[0]}, </p>
-                <p>{/* {data?.categories[0]}/{data?.categories[1]}, */}</p>
-                <p> {omdb?.runtime}</p>
+                {omdb?.Rated ? (
+                  <p className="border-2 border-yellow-300 p-.8">
+                    {omdb?.Rated}
+                  </p>
+                ) : null}
+                {tmdb?.release_date ? (
+                  <p>, {tmdb?.release_date?.split("-")[0]}</p>
+                ) : null}
+                {tmdb?.genres ? (
+                  <p>, {tmdb?.genres.map((genre) => genre.name)[0]}</p>
+                ) : null}
+                {omdb?.Runtime ? <p>, {omdb?.Runtime}</p> : null}
               </div>
               <div className="flex flex-row justify-around mt-2 ">
                 {omdb?.imdbRating ? (
@@ -239,24 +255,16 @@ const RestfulMovieDetails = () => {
             <div className="ml-5 text-white text-l lg:text-2xl font-light font ">
               <p className="m-2">{tmdb?.overview}</p>
               <h2>
+                <span className="font-light text-yellow-300 m-2">Runtime:</span>
+                {omdb?.Runtime}
+              </h2>
+              <h2>
                 <span className="font-light text-yellow-300 m-2">Rating:</span>
                 {omdb?.Rated}
               </h2>
               <h2>
-                <span className="font-light text-yellow-300 m-2">Genre:</span>
-                {/* {data?.categories.length === 1
-                  ? data?.categories[0]
-                  : data?.categories[0] / data?.categories[1]} */}
-              </h2>
-              <h2>
-                <span className="font-light text-yellow-300 m-2">
-                  Director:
-                </span>
-                {omdb?.Director}
-              </h2>
-              <h2>
-                <span className="font-light text-yellow-300 m-2">Writer:</span>
-                {omdb?.Writer}{" "}
+                <span className="font-light text-yellow-300 m-2">Genres:</span>
+                {tmdb?.genres.map((genre) => genre.name).join(", ")}
               </h2>
               <h2>
                 <span className="font-light text-yellow-300 m-2">
@@ -266,15 +274,31 @@ const RestfulMovieDetails = () => {
               </h2>
               <h2>
                 <span className="font-light text-yellow-300 m-2">
+                  Director(s):
+                </span>
+                {omdb?.Director}
+              </h2>
+              <h2>
+                <span className="font-light text-yellow-300 m-2">
+                  Writer(s):
+                </span>
+                {omdb?.Writer}{" "}
+              </h2>
+              <h2>
+                <span className="font-light text-yellow-300 m-2">Actors:</span>
+                {omdb?.Actors}{" "}
+              </h2>
+
+              <h2>
+                <span className="font-light text-yellow-300 m-2">Budget:</span>$
+                {tmdb?.budget.toLocaleString("en-US")}
+              </h2>
+              <h2>
+                <span className="font-light text-yellow-300 m-2">
                   Box Office:
                 </span>
                 {omdb?.BoxOffice}
               </h2>
-              <h2>
-                <span className="font-light text-yellow-300 m-2">Runtime:</span>
-                {omdb?.Runtime}
-              </h2>
-              {/* <h2><span>Cast:</span>{data?.director} </h2> */}
             </div>
             <ExistingReviews data={reviews} />
             <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
