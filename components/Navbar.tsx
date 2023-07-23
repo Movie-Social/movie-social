@@ -60,8 +60,8 @@ const Navbar = () => {
           <NavbarItem label="Reviews" />
           <NavbarItem label="Favorites" />
           <NavbarItem label="Watchlist" />
-          <NavbarItem label="Friends" />
-          <NavbarItem label="Clubs" />
+          {/* <NavbarItem label="Friends" />
+          <NavbarItem label="Clubs" /> */}
         </section>
         <section
           onClick={toggleMobileMenu}

@@ -8,6 +8,7 @@ import { BiUserCircle } from "react-icons/bi";
 import { GrAddCircle } from "react-icons/gr";
 import { useRouter } from "next/router";
 import ReviewList from "@/components/ReviewList";
+import Navbar from "@/components/Navbar";
 
 const MyProfile = () => {
   const { data: currentUser } = useCurrentUser();
@@ -17,7 +18,8 @@ const MyProfile = () => {
   const router = useRouter();
   return (
     <main className="flex justify-center text-white">
-      <main className="flex flex-row justify-around w-[70vw] py-5 mt-7 border-2 border-red-500">
+      <Navbar />
+      <main className="flex flex-row justify-around w-[70vw] py-5 mt-10 border-2 border-red-500">
         <aside className=" flex flex-col justify-center  items-centercontent-center border-2 border-yellow-500 rounded-md w-1/5 p-3 h-1/5">
           <h2 className="border-l-2 border-yellow-500 mb-2 mx-2 px-2 text-1xl lg:text-2xl font-bold">
             Profile
