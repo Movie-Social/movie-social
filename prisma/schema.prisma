@@ -105,8 +105,8 @@ model MovieDetails {
   releaseDate String
   writer      String
   categories  String[]
-  tagline     String
-  budget      Int
+  tagline     String?
+  budget      Int?
 }
 
 model Tomato {
