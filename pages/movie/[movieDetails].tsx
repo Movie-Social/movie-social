@@ -16,6 +16,7 @@ import meta from "../../public/images/meta.png";
 import loady from "../../public/images/imgLoad.gif";
 import YouTube, { YouTubeProps } from "react-youtube";
 import tmdbDetailsFetcher from "@/lib/tmdbDetailsFetcher";
+import omdbFetcher from "@/lib/omdbFetcher";
 export interface ReviewProps {
   id: string;
   poster: string;
@@ -32,6 +33,7 @@ const MovieDetails = () => {
   const [rating, setRating] = useState(0);
   const allReviews = useAllReviews();
   const [tmdb, setTmdb] = useState({});
+  const [omdb, setOmdb] = useState([]);
   const [details, setDetails] = useState({});
   const [trailer, setTrailer] = useState("");
 
@@ -56,6 +58,16 @@ const MovieDetails = () => {
   }, []);
 
   useEffect(() => {
+    const fetchOmdb = async () => {
+      const omdbDetails = await omdbFetcher(data?.title);
+      setOmdb(omdbDetails);
+    };
+    if (tmdb?.title) {
+      fetchOmdb();
+    }
+  }, [tmdb]);
+
+  useEffect(() => {
     const fetchTrailer = async () => {
       await tmdb?.id;
       const trailer = await trailerFetcher(tmdb?.id);
@@ -74,6 +86,21 @@ const MovieDetails = () => {
     (review: ReviewProps) => review.title === data?.title
   );
 
+  const rottenScore = () => {
+    if (!omdb?.Ratings) {
+      return null;
+    } else {
+      return omdb?.Ratings.reduce((acc, rate) => {
+        if (rate.Source === "Rotten Tomatoes") {
+          acc = rate.Value;
+        }
+        return acc;
+      }, "");
+    }
+  };
+
+  const theRottenScore = rottenScore();
+
   const onPlayerReady: YouTubeProps["onReady"] = (event) => {
     event.target.pauseVideo();
   };
@@ -86,6 +113,7 @@ const MovieDetails = () => {
     },
   };
   console.log(details, "TEST");
+  console.log(omdb, "OMDB");
   return (
     <main className="text-white flex justify-center">
       <Navbar />
@@ -121,62 +149,75 @@ const MovieDetails = () => {
                 </h3>
               ) : null}
               <div className="flex flex-row justify-evenly items-center border-2 border-red-500 w-1/6 self-center text-md lg:text-1xl">
-                <button className="border-2 border-yellow-300 p-.8">
-                  {data?.rating}
-                </button>
-                <p>{data?.year}, </p>
-                {tmdb?.genres ? (
-                  <p>, {tmdb?.genres.map((genre) => genre.name)[0]}</p>
-                ) : null}{" "}
-                <p> {data?.runtime}</p>
+                {omdb?.Rated ? (
+                  <p className="border-2 border-yellow-300 p-.8">
+                    {omdb?.Rated}
+                  </p>
+                ) : null}
+                {details?.release_date ? (
+                  <p>, {details?.release_date?.split("-")[0]}</p>
+                ) : null}
+                {details?.genres ? (
+                  <p>, {details?.genres.map((genre) => genre.name)[0]}</p>
+                ) : null}
+                {omdb?.Runtime ? <p>, {omdb?.Runtime}</p> : null}
               </div>
               <div className="flex flex-row justify-around mt-2 ">
-                <div className="flex flex-col items-center content-center">
-                  <h2 className="text-white text-center text-xl lg:text-1xl font-light">
-                    IMDB
-                  </h2>
-                  <div className="flex flex-row justify-around items-center content-center">
-                    <Image src={imdb} width={50} height={50} alt="IMDB Logo" />
-                    <p className="text-white text-center text-xl lg:text-2xl font-semibold">
-                      {data?.imdbRating * 10}%
-                    </p>
+                {omdb?.imdbRating ? (
+                  <div className="flex flex-col items-center content-center">
+                    <h2 className="text-white text-center text-xl lg:text-1xl font-light">
+                      IMDB
+                    </h2>
+                    <div className="flex flex-row justify-around items-center content-center">
+                      <Image
+                        src={imdb}
+                        width={50}
+                        height={50}
+                        alt="IMDB Logo"
+                      />
+                      <p className="text-white text-center text-xl lg:text-2xl font-semibold">
+                        {omdb?.imdbRating * 10}%
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex flex-col items-center content-center">
-                  <h2 className="text-white text-center text-xl lg:text-1xl font-light">
-                    Rotten Tomatoes
-                  </h2>
-                  <div className="flex flex-row justify-around items-center content-center">
-                    <Image
-                      src={rotten}
-                      width={50}
-                      height={50}
-                      alt="Rotten Tomatoes logo"
-                    />
-
-                    {/* <p className="text-white text-center text-xl lg:text-2xl font-semibold">{data?.ratings[0].value}</p> */}
-                    {/* update once schema is fixed */}
-                    <p className="text-white text-center text-xl lg:text-2xl font-semibold">
-                      88%
-                    </p>
+                ) : null}
+                {theRottenScore ? (
+                  <div className="flex flex-col items-center content-center">
+                    <h2 className="text-white text-center text-xl lg:text-1xl font-light">
+                      Rotten Tomatoes
+                    </h2>
+                    <div className="flex flex-row justify-around items-center content-center">
+                      <Image
+                        className="rounded-full"
+                        src={rotten}
+                        width={50}
+                        height={50}
+                        alt="Rotten Tomatoes logo"
+                      />
+                      <p className="text-white text-center text-xl lg:text-2xl font-semibold">
+                        {theRottenScore}
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex flex-col items-center content-center">
-                  <h2 className="text-white text-center text-xl lg:text-1xl font-light">
-                    MetaCritic
-                  </h2>
-                  <div className="flex flex-row justify-around items-center content-center">
-                    <Image
-                      src={meta}
-                      width={50}
-                      height={50}
-                      alt="Metacritic logo"
-                    />
-                    <p className="text-white text-center text-xl lg:text-2xl font-semibold">
-                      {data?.metascore}%
-                    </p>
+                ) : null}
+                {omdb?.Metascore === "N/A" ? null : (
+                  <div className="flex flex-col items-center content-center">
+                    <h2 className="text-white text-center text-xl lg:text-1xl font-light">
+                      MetaCritic
+                    </h2>
+                    <div className="flex flex-row justify-around items-center content-center">
+                      <Image
+                        src={meta}
+                        width={50}
+                        height={50}
+                        alt="Metacritic logo"
+                      />
+                      <p className="text-white text-center text-xl lg:text-2xl font-semibold">
+                        {omdb?.Metascore}%
+                      </p>
+                    </div>
                   </div>
-                </div>
+                )}
                 <div className="flex flex-col items-center content-center">
                   <h2 className="text-white text-center text-xl lg:text-1xl font-light">
                     Movie Social
@@ -199,11 +240,7 @@ const MovieDetails = () => {
           </div>
 
           <section className="w-[90%] ml-[5%] border-2 self-center mt-5">
-            {/* <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
-              Rate and Review
-            </h2> */}
             <br></br>
-            {/* <div>review form will go here</div> */}
             <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
               Movie Info
             </h2>

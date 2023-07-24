@@ -205,7 +205,7 @@ const RestfulMovieDetails = () => {
                     </div>
                   </div>
                 ) : null}
-                {!omdb?.Metascore === "N/A" ? (
+                {omdb?.Metascore === "N/A" ? null : (
                   <div className="flex flex-col items-center content-center">
                     <h2 className="text-white text-center text-xl lg:text-1xl font-light">
                       MetaCritic
@@ -222,7 +222,7 @@ const RestfulMovieDetails = () => {
                       </p>
                     </div>
                   </div>
-                ) : null}
+                )}
                 <div className="flex flex-col items-center content-center">
                   <h2 className="text-white text-center text-xl lg:text-1xl font-light">
                     Movie Social
