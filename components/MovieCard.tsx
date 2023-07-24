@@ -5,6 +5,7 @@ import { useCallback } from "react";
 import useInfoModal from "@/hooks/useInfoModal";
 import WatchlistButton from "./WatchlistButton";
 import Image from "next/image";
+import loady from "../public/images/imgLoad.gif";
 
 interface MovieCardProps {
   data: Record<string, any>;
@@ -20,39 +21,47 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 
   return (
     <main
+      className="flex flex-col items-center justify-center content-center text-center group bg-zinc-900 relative mx-1"
       onClick={handleOpenModal}
-      className=" cursor-pointer group bg-zinc-900 col-span relative h-[12vw]"
     >
-      <Image
-        className="
-        ml-2
-        transition
-        duration
-        shadow-xl
-        rounded-md
-        group-hover:opacity-90
-        sm:group-hover:opacity-0
-        delay-300
+      {!data?.poster ? (
+        <Image
+          src={loady}
+          alt="gif to show the intended image is loading"
+          width={200}
+          height={200}
+        />
+      ) : (
+        <Image
+          className="
+          self-center         
+          transition
+          duration
+          shadow-xl
+          rounded-md
+          group-hover:opacity-90
+          sm:group-hover:opacity-0
+          delay-300
         "
-        fill
-        src={data.poster}
-        alt="Movie poster"
-      />
+          width={200}
+          height={200}
+          src={data.poster}
+          alt={`${data.title}'s official movie poster"`}
+        />
+      )}
       <div
         className="
       opacity-0
       absolute
-      top-0
       transition
       duration-300
       z-10
       invisible
       sm:visible
       delay-200
-      w-full
       scale-0
-      group-hover:scale-110
-      group-hover:-translate-y-[6vw]
+      group-hover:scale-100
+      group-hover:-translate-y-[2vw]
       group-hover:opacity-100
       "
       >
@@ -64,8 +73,8 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
         shadow-xl
         rounded-t-md
         "
-          width={400}
-          height={100}
+          width={200}
+          height={200}
           src={data.poster}
           alt="thumbnail"
         />
@@ -84,10 +93,12 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
         >
           <div
             className="
-flex flex-row items-center gap-3
+flex flex-row items-center
 "
           >
-            <div
+            {/* <FavoriteButton movieId={data?.id} />
+            <WatchlistButton movieId={data?.id} /> */}
+            {/* <div
               onClick={() => router.push(`/watch/${data?.id}`)}
               className="
             cursor-pointer
@@ -106,10 +117,10 @@ flex flex-row items-center gap-3
             "
             >
               <BsFillPlayFill size={25} />
-            </div>
+            </div> */}
 
-            <FavoriteButton movieId={data?.id} />
-            <WatchlistButton movieId={data?.id} />
+            {/* <FavoriteButton movieId={data?.id} />
+            <WatchlistButton movieId={data?.id} /> */}
           </div>
           {/* <p className="text-green-400 font-semibold mt-4">
             New <span className="text-white">2023</span>
