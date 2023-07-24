@@ -11,7 +11,7 @@ interface RestfulMovieCardProps {
 const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
   const router = useRouter();
   return (
-    <main className="flex flex-col items-center justify-center content-center text-center group bg-zinc-900 relative">
+    <main className="flex flex-col items-center justify-center content-center text-center group bg-zinc-900 relative mx-1">
       {/* <div className="flex justify-center"> */}
       {!data?.poster_path ? (
         <Image

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Slide } from "react-slideshow-image";
 import tmdbFetcher from "@/lib/tmdbFetcher";
 import RestfulMovieCard from "./RestfulMovieCard";
+import { BiSkipNext, BiSkipPrevious } from "react-icons/bi";
 
 interface RestfulMovieListProps {
   title: string;
@@ -28,8 +29,8 @@ const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
   }
 
   return (
-    <main className="px-4 md:px-12 mt-2 space-y-4 flex justify-center border border-orange-300">
-      <section className="flex flex-col content-center  w-[70vw]">
+    <main className="px-2 mt-2 space-y-4 flex justify-center">
+      <section className="flex flex-col content-center w-full">
         <h2 className="text-white text-md md:text-xl lg:text-2xl font-semibold mb-4">
           {title}
         </h2>
@@ -39,6 +40,28 @@ const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
           slidesToScroll={3}
           slidesToShow={4}
           indicators={true}
+          nextArrow={
+            <button
+              style={{
+                cursor: "pointer",
+                border: "0px",
+                opacity: "90%",
+              }}
+            >
+              <BiSkipNext size={40} className="text-yellow-300" />
+            </button>
+          }
+          prevArrow={
+            <button
+              style={{
+                cursor: "pointer",
+                border: "0px",
+                opacity: "90%",
+              }}
+            >
+              <BiSkipPrevious size={40} className="text-yellow-300" />
+            </button>
+          }
         >
           {tmdbList.map((movie: any) => {
             return <RestfulMovieCard key={movie.id} data={movie} />;

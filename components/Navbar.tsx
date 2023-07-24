@@ -76,12 +76,12 @@ const Navbar = () => {
           <MobileMenu visible={showMobileMenu} />
         </section>
         <section className="flex flex-row ml-auto gap-6 content-center">
-          <div className="text-gray-200 hover:text-yellow-300 cursor-pointer transition">
+          {/* <div className="text-gray-200 hover:text-yellow-300 cursor-pointer transition">
             <BsSearch size={20} />
           </div>
           <div className="text-gray-200 hover:text-yellow-300 cursor-pointer transition">
             <BsBell size={20} />
-          </div>
+          </div> */}
           <div
             onClick={toggleAccountMenu}
             className="flex flex-row items-center gap-2 cursor-pointer relative"
