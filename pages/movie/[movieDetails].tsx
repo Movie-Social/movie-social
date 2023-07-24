@@ -15,7 +15,7 @@ import imdb from "../../public/images/imdb.png";
 import meta from "../../public/images/meta.png";
 import loady from "../../public/images/imgLoad.gif";
 import YouTube, { YouTubeProps } from "react-youtube";
-
+import tmdbDetailsFetcher from "@/lib/tmdbDetailsFetcher";
 export interface ReviewProps {
   id: string;
   poster: string;
@@ -32,6 +32,7 @@ const MovieDetails = () => {
   const [rating, setRating] = useState(0);
   const allReviews = useAllReviews();
   const [tmdb, setTmdb] = useState({});
+  const [details, setDetails] = useState({});
   const [trailer, setTrailer] = useState("");
 
   useEffect(() => {
@@ -42,6 +43,14 @@ const MovieDetails = () => {
         .filter((movie) => movie.original_title === data?.title)
         .sort((a, b) => b.popularity - a.popularity)[0];
       setTmdb(details);
+    };
+    fetchTmdb();
+  }, []);
+
+  useEffect(() => {
+    const fetchTmdb = async () => {
+      const tmdbDetails = await tmdbDetailsFetcher(tmdb?.id);
+      setDetails(tmdbDetails);
     };
     fetchTmdb();
   }, []);
@@ -76,9 +85,7 @@ const MovieDetails = () => {
       autoplay: 1,
     },
   };
-
-  console.log(tmdb, "TMDB");
-
+  console.log(details, "TEST");
   return (
     <main className="text-white flex justify-center">
       <Navbar />
@@ -106,14 +113,21 @@ const MovieDetails = () => {
             "
             >
               <h2 className="text-white text-center text-1xl lg:text-3xl font-bold">
-                {data?.title}
+                {!data?.title ? "..........." : data?.title}
               </h2>
+              {details?.tagline ? (
+                <h3 className="text-white text-center text-xl ">
+                  {details?.tagline}
+                </h3>
+              ) : null}
               <div className="flex flex-row justify-evenly items-center border-2 border-red-500 w-1/6 self-center text-md lg:text-1xl">
                 <button className="border-2 border-yellow-300 p-.8">
                   {data?.rating}
                 </button>
                 <p>{data?.year}, </p>
-                <p>{/* {data?.categories[0]}/{data?.categories[1]}, */}</p>
+                {tmdb?.genres ? (
+                  <p>, {tmdb?.genres.map((genre) => genre.name)[0]}</p>
+                ) : null}{" "}
                 <p> {data?.runtime}</p>
               </div>
               <div className="flex flex-row justify-around mt-2 ">
