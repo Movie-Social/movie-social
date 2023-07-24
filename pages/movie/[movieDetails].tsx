@@ -245,49 +245,88 @@ const MovieDetails = () => {
               Movie Info
             </h2>
             <div className="ml-5 text-white text-l lg:text-2xl font-light font ">
-              <p className="m-2">{data?.summary}</p>
-              <h2>
-                <span className="font-light text-yellow-300 m-2">Rating:</span>
-                {data?.rating}
-              </h2>
-              <h2>
-                <span className="font-light text-yellow-300 m-2">Genre:</span>
-                {/* {data?.categories.length === 1
-                  ? data?.categories[0]
-                  : data?.categories[0] / data?.categories[1]} */}
-              </h2>
-              <h2>
-                <span className="font-light text-yellow-300 m-2">
-                  Director:
-                </span>
-                {data?.director}
-              </h2>
-              <h2>
-                <span className="font-light text-yellow-300 m-2">Writer:</span>
-                {data?.writer}{" "}
-              </h2>
-              <h2>
-                <span className="font-light text-yellow-300 m-2">
-                  Release Date:
-                </span>
-                {data?.releaseDate}{" "}
-              </h2>
-              <h2>
-                <span className="font-light text-yellow-300 m-2">
-                  Box Office:
-                </span>
-                ${data?.boxOffice}
-              </h2>
-              <h2>
-                <span className="font-light text-yellow-300 m-2">Runtime:</span>
-                {data?.runtime}
-              </h2>
-              {/* <h2><span>Cast:</span>{data?.director} </h2> */}
+              {data?.summary ? (
+                <p className="m-2">{data?.summary}</p>
+              ) : (
+                <p className="m-2">{omdb?.Plot}</p>
+              )}
+              {omdb?.Runtime ? (
+                <h2>
+                  <span className="font-light text-yellow-300 m-2">
+                    Runtime:
+                  </span>
+                  {omdb?.Runtime}
+                </h2>
+              ) : null}
+              {omdb?.Rated ? (
+                <h2>
+                  <span className="font-light text-yellow-300 m-2">
+                    Rating:
+                  </span>
+                  {omdb?.Rated}
+                </h2>
+              ) : null}
+              {details?.genres ? (
+                <h2>
+                  <span className="font-light text-yellow-300 m-2">
+                    Genres:
+                  </span>
+                  {details?.genres.map((genre) => genre.name).join(", ")}
+                </h2>
+              ) : null}
+              {omdb?.Released ? (
+                <h2>
+                  <span className="font-light text-yellow-300 m-2">
+                    Release Date:
+                  </span>
+                  {omdb?.Released}{" "}
+                </h2>
+              ) : null}
+              {omdb?.Director ? (
+                <h2>
+                  <span className="font-light text-yellow-300 m-2">
+                    Director(s):
+                  </span>
+                  {omdb?.Director}
+                </h2>
+              ) : null}
+              {omdb?.Writer ? (
+                <h2>
+                  <span className="font-light text-yellow-300 m-2">
+                    Writer(s):
+                  </span>
+                  {omdb?.Writer}{" "}
+                </h2>
+              ) : null}
+              {omdb?.Actors ? (
+                <h2>
+                  <span className="font-light text-yellow-300 m-2">
+                    Actors:
+                  </span>
+                  {omdb?.Actors}{" "}
+                </h2>
+              ) : null}
+              {details?.budget ? (
+                <h2>
+                  <span className="font-light text-yellow-300 m-2">
+                    Budget:
+                  </span>
+                  ${details?.budget.toLocaleString("en-US")}
+                </h2>
+              ) : null}
+              {omdb?.BoxOffice ? (
+                <h2>
+                  <span className="font-light text-yellow-300 m-2">
+                    Box Office:
+                  </span>
+                  {omdb?.BoxOffice}
+                </h2>
+              ) : null}
             </div>
             <br></br>
           </section>
-          {/* <div>other reviews will go here</div> */}
           <ExistingReviews data={reviews} />
+          <br></br>
           <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
             Rate and Review
           </h2>
