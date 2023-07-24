@@ -112,8 +112,7 @@ const MovieDetails = () => {
       autoplay: 1,
     },
   };
-  console.log(details, "TEST");
-  console.log(omdb, "OMDB");
+
   return (
     <main className="text-white flex justify-center">
       <Navbar />
