@@ -1,11 +1,13 @@
 import { BsFillPlayFill, BsFillInfoCircleFill } from "react-icons/bs";
 import FavoriteButton from "./FavoriteButton";
 import { useRouter } from "next/router";
-import { useCallback } from "react";
-import useInfoModal from "@/hooks/useInfoModal";
+import { useCallback, useEffect, useState } from "react";
+// import useInfoModal from "@/hooks/useInfoModal";
 import WatchlistButton from "./WatchlistButton";
 import Image from "next/image";
 import loady from "../public/images/imgLoad.gif";
+import tmdbDetailsFetcher from "@/lib/tmdbDetailsFetcher";
+import tmdbMovieFetcher from "@/lib/tmdbMovieFetcher";
 
 interface MovieCardProps {
   data: Record<string, any>;
@@ -13,16 +15,22 @@ interface MovieCardProps {
 
 const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
   const router = useRouter();
-  const { openModal } = useInfoModal();
-
-  const handleOpenModal = useCallback(() => {
-    openModal(data?.id);
-  }, [openModal, data?.id]);
-
+  const [tmdb, setTmdb] = useState("");
+  useEffect(() => {
+    const fetchTmdb = async () => {
+      const tmdbDetails = await tmdbMovieFetcher(data?.title);
+      setTmdb(tmdbDetails);
+    };
+    fetchTmdb();
+  }, []);
+  // const { openModal } = useInfoModal();
+  // const handleOpenModal = useCallback(() => {
+  //   openModal(data?.id);
+  // }, [openModal, data?.id]);
   return (
     <main
       className="flex flex-col items-center justify-center content-center text-center group bg-zinc-900 relative mx-1"
-      onClick={handleOpenModal}
+      // onClick={handleOpenModal}
     >
       {!data?.poster ? (
         <Image
@@ -47,6 +55,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
           height={200}
           src={data.poster}
           alt={`${data.title}'s official movie poster"`}
+          onClick={() => router.push(`/movie/${data?.id}`)}
         />
       )}
       <div

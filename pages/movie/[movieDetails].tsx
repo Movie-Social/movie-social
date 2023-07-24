@@ -40,7 +40,7 @@ const MovieDetails = () => {
   useEffect(() => {
     const fetchTmdb = async () => {
       const tmdbDetails = await tmdbMovieFetcher(data?.title);
-      const details = tmdbDetails.results
+      const details = tmdbDetails?.results
         .filter((movie) => movie.original_language === "en")
         .filter((movie) => movie.original_title === data?.title)
         .sort((a, b) => b.popularity - a.popularity)[0];
