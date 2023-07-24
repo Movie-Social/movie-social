@@ -62,8 +62,6 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
         duration
         shadow-xl
         rounded-t-md
-        border 
-        border-blue-300
         "
           width={200}
           height={200}
