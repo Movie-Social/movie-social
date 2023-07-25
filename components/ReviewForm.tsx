@@ -50,6 +50,7 @@ const Reviewform: React.FC<ReviewProps> = ({
           onClick={() => onRating(idx)}
         />
       ));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rating, hoverRating]);
   return (
     <main className="border-2 border-red-300 h-[40vh]">
