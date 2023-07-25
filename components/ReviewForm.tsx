@@ -7,7 +7,7 @@ import SubmitReviewButton from "./SubmitReviewButton";
 interface ReviewProps {
   onRating: Function;
   rating: number;
-  title: string;
+  title: string | undefined;
   poster: string;
 }
 

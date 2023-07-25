@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import axios from "axios";
 import Image from "next/image";
@@ -20,11 +21,35 @@ import Reviewform from "@/components/ReviewForm";
 import ExistingReviews from "@/components/ExistingReviews";
 
 interface tmdbProps {
+  id: string;
   title: string;
+  poster_path: string;
+  tagline: string;
+  overview: string;
+  genres: string[];
+  budget: string;
+  release_date: string;
 }
 
 interface omdbProps {
   Title: string;
+  Genre: string;
+  imdbRating: string;
+  Ratings: Rating[];
+  Metascore: string;
+  Plot: string;
+  Runtime: string;
+  Rated: string;
+  Released: string;
+  Director: string;
+  Writer: string;
+  Actors: string;
+  BoxOffice: string;
+}
+
+interface Rating {
+  Source: string;
+  Value: string;
 }
 
 const RestfulMovieDetails = () => {
@@ -84,8 +109,8 @@ const RestfulMovieDetails = () => {
 
   useEffect(() => {
     const fetchTrailer = async () => {
-      await tmdb?.id;
-      const trailer = await trailerFetcher(tmdb?.id);
+      tmdb?.id;
+      const trailer = await trailerFetcher(tmdb?.id as string);
       if (trailer?.results?.length > 0) {
         const youtubeKey = trailer.results
           .filter((video: any) => video.type === "Trailer")
@@ -174,7 +199,7 @@ const RestfulMovieDetails = () => {
                 ) : null}
                 {tmdb?.genres ? (
                   <p className="text-l">
-                    | Genre: {tmdb?.genres.map((genre) => genre.name)[0]}
+                    | Genre: {tmdb?.genres.map((genre: any) => genre.name)[0]}
                   </p>
                 ) : null}
                 {omdb?.Runtime ? (
@@ -289,7 +314,7 @@ const RestfulMovieDetails = () => {
                   <span className="font-light text-yellow-300 m-2">
                     Genres:
                   </span>
-                  {tmdb?.genres.map((genre) => genre.name).join(", ")}
+                  {tmdb?.genres.map((genre: any) => genre.name).join(", ")}
                 </h2>
               ) : null}
               {omdb?.Released ? (
@@ -329,7 +354,7 @@ const RestfulMovieDetails = () => {
                   <span className="font-light text-yellow-300 m-2">
                     Budget:
                   </span>
-                  ${tmdb?.budget.toLocaleString("en-US")}
+                  ${tmdb?.budget.toLocaleString()}
                 </h2>
               ) : null}
               {omdb?.BoxOffice ? (
