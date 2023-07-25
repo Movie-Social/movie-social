@@ -10,7 +10,7 @@ const ReviewList: React.FC<ReviewListProps> = ({ data }) => {
   }
   return (
     <main>
-      <div className="flex flex-col justify-around border-blue border-2 my-3">
+      <div className="flex flex-col justify-around my-3 border-yellow-300 border">
         {data.map((movie) => {
           return <ReviewListItem key={movie.id} data={movie} />;
         })}
