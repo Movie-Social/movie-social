@@ -285,10 +285,10 @@ const RestfulMovieDetails = () => {
           </aside>
 
           <article className="w-full lg:w-[90%] lg:self-center lg:ml-[5%] border-2">
-            <h2 className="mx-2 px-2 text-white text-2xl lg:text-3xl font-bold border-l-2 border-yellow-300 ">
+            <h2 className="mx-2 px-2 text-white text-2xl lg:text-3xl font-bold mb-5 border-l-2 border-yellow-300 ">
               Movie Info
             </h2>
-            <div className="text-xl lg:text-2xl p-2 lg:ml-5 border border-green-500">
+            <div className="text-xl lg:text-2xl p-2 lg:ml-5 mb-5 border border-green-500">
               {tmdb?.overview ? (
                 <p className="m-2">{tmdb?.overview}</p>
               ) : (
