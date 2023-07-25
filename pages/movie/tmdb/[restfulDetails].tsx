@@ -113,24 +113,22 @@ const RestfulMovieDetails = () => {
   };
 
   const opts: YouTubeProps["opts"] = {
-    height: "390",
-    width: "1000",
     playerVars: {
       autoplay: 1,
     },
   };
 
   return (
-    <main className="text-white flex justify-center">
+    <main className="text-white w-[100vh]">
       <Navbar />
       <br></br>
-      <section className="mt-10 w-[90vw]">
-        <div className="mt-3 mb-5 flex justify-center">
+      <section className="mt-10 w-[100%] lg:w-[90vw] border border-red-600">
+        <div className="mt-3 mb-5">
           {trailer ? (
             <YouTube videoId={trailer} opts={opts} onReady={onPlayerReady} />
           ) : null}
         </div>
-        <section>
+        <section className="border border-purple-200">
           <div className="flex flex-row justify-evenly h-[40vh]">
             <Image
               priority
