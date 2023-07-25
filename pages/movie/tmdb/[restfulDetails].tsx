@@ -34,7 +34,7 @@ interface tmdbProps {
 interface omdbProps {
   Title: string;
   Genre: string;
-  imdbRating: string;
+  imdbRating: string | any;
   Ratings: Rating[];
   Metascore: string;
   Plot: string;
@@ -208,7 +208,7 @@ const RestfulMovieDetails = () => {
                 ) : null}
               </div>
               <div className="flex flex-row justify-around mt-2 ">
-                {omdb?.imdbRating ? (
+                {omdb?.imdbRating === "N/A" ? null : (
                   <div className="flex flex-col">
                     <h2 className="text-white text-center text-xl lg:text-2xl font-semibold">
                       IMDB
@@ -225,7 +225,7 @@ const RestfulMovieDetails = () => {
                       </p>
                     </div>
                   </div>
-                ) : null}
+                )}
                 {theRottenScore ? (
                   <div className="flex flex-col">
                     <h2 className="text-white text-center text-xl lg:text-2xl font-semibold">
