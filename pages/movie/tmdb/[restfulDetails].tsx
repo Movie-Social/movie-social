@@ -62,6 +62,7 @@ const RestfulMovieDetails = () => {
   const movieId = router.query.restfulDetails;
   const allReviews = useAllReviews();
   const [trailer, setTrailer] = useState("");
+
   useEffect(() => {
     const fetchTmdb = async () => {
       const tmdbDetails = await tmdbDetailsFetcher(movieId);
@@ -179,7 +180,7 @@ const RestfulMovieDetails = () => {
               alt={`Movie poster for ${tmdb?.title}`}
               className="w-2/5 self-center mb-5 border border-yellow-300 rounded-lg"
             />
-            <div className="flex flex-col justify-evenly w-full border-2 border-blue-500 rounded-lg">
+            <div className="flex flex-col justify-evenly w-full mb-5 border-2 border-blue-500 rounded-lg">
               <h2 className="text-white text-center text-2xl lg:text-3xl font-bold">
                 {!tmdb?.title ? "..........." : tmdb?.title}
               </h2>
@@ -283,11 +284,11 @@ const RestfulMovieDetails = () => {
             </div>
           </aside>
 
-          <section className="w-[90%] ml-[5%] border-2 self-center mt-5">
-            <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
+          <article className="w-full lg:w-[90%] lg:self-center lg:ml-[5%] border-2">
+            <h2 className="mx-2 px-2 text-white text-2xl lg:text-3xl font-bold border-l-2 border-yellow-300 ">
               Movie Info
             </h2>
-            <div className="ml-5 text-white text-l lg:text-2xl font-light font ">
+            <div className="text-xl lg:text-2xl p-2 lg:ml-5 border border-green-500">
               {tmdb?.overview ? (
                 <p className="m-2">{tmdb?.overview}</p>
               ) : (
@@ -366,9 +367,8 @@ const RestfulMovieDetails = () => {
                 </h2>
               ) : null}
             </div>
-            <br></br>
             <ExistingReviews data={reviews} />
-            <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
+            <h2 className="mx-2 px-2 text-white text-2xl lg:text-3xl font-bold border-l-2 border-yellow-300 ">
               Rate and Review
             </h2>
             <br></br>
@@ -378,7 +378,7 @@ const RestfulMovieDetails = () => {
               rating={rating}
               onRating={(rate: number) => setRating(rate)}
             />
-          </section>
+          </article>
         </section>
       </section>
     </main>
