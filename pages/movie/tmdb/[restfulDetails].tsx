@@ -19,9 +19,17 @@ import Navbar from "@/components/Navbar";
 import Reviewform from "@/components/ReviewForm";
 import ExistingReviews from "@/components/ExistingReviews";
 
+interface tmdbProps {
+  title: string;
+}
+
+interface omdbProps {
+  Title: string;
+}
+
 const RestfulMovieDetails = () => {
-  const [tmdb, setTmdb] = useState([]);
-  const [omdb, setOmdb] = useState([]);
+  const [tmdb, setTmdb] = useState<tmdbProps>();
+  const [omdb, setOmdb] = useState<omdbProps>();
   const [rating, setRating] = useState(0);
   const [mongoMovieId, setMongoMovieId] = useState("");
   const [mongoDetailsId, setMongoDetailsId] = useState("");
