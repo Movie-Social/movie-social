@@ -10,7 +10,7 @@ const ProfileList: React.FC<ProfileListProps> = ({ data }) => {
   }
   return (
     <main>
-      <div className="relative flex justify-around border-blue border-2 my-3">
+      <div className="grid grid-cols-3 gap-2 p-2 my-3 border-yellow-300 border">
         {data.map((movie) => {
           return <ProfileListItem key={movie.id} movieId={movie.id} />;
         })}

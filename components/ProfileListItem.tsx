@@ -10,7 +10,7 @@ const ProfileListItem: React.FC<ListItemProps> = ({ movieId }) => {
   const router = useRouter();
 
   return (
-    <main className="w-full h-full">
+    <main className="flex flex-col items-center justify-center w-full h-full">
       {isLoading ? (
         <Image
           className=" transition hover:opacity-70"
@@ -23,7 +23,7 @@ const ProfileListItem: React.FC<ListItemProps> = ({ movieId }) => {
         <Image
           priority
           onClick={() => router.push(`/movie/${data?.movieId}`)}
-          className="cursor-pointer transition hover:opacity-70"
+          className="h-full cursor-pointer transition hover:opacity-70"
           width={150}
           height={50}
           src={data?.poster}
