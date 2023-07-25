@@ -119,20 +119,24 @@ const RestfulMovieDetails = () => {
   };
 
   return (
-    <main className="text-white w-[100vh]">
+    <main className="w-[100vh] text-white">
       <Navbar />
       <br></br>
-      <section className="mt-10 w-[100%] lg:w-[90vw] border border-red-600">
-        <div className="mt-3 mb-5">
+      <section className="flex flex-col items-center w-[100vh] lg:w-[90vw] mt-10 border border-red-600">
+        <div className="mb-5 mt-3">
           {trailer ? (
             <YouTube videoId={trailer} opts={opts} onReady={onPlayerReady} />
           ) : null}
         </div>
-        <section className="border border-purple-200">
-          <div className="flex flex-row justify-evenly h-[40vh]">
+        <section className="flex flex-col">
+          {/* :lg may need h-[40vh] justify-evenly*/}
+          <aside
+            className="flex flex-col items-center lg:flex-row border border-purple-500
+          "
+          >
             <Image
               priority
-              width={350}
+              width={300}
               height={20}
               src={
                 !tmdb?.poster_path
@@ -140,35 +144,39 @@ const RestfulMovieDetails = () => {
                   : `https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`
               }
               alt={`Movie poster for ${tmdb?.title}`}
-              className="rounded-lg border border-yellow-300"
+              className="w-2/5 self-center mb-5 border border-yellow-300 rounded-lg"
             />
-            <div className="w-3/5 border-2 rounded-lg border-blue-500 flex flex-col justify-evenly">
-              <h2 className="text-white text-center text-1xl lg:text-3xl font-bold">
+            <div className="flex flex-col justify-evenly w-full border-2 border-blue-500 rounded-lg">
+              <h2 className="text-white text-center text-2xl lg:text-3xl font-bold">
                 {!tmdb?.title ? "..........." : tmdb?.title}
               </h2>
               {tmdb?.tagline ? (
-                <h3 className="text-white text-center text-xl ">
+                <h3 className="text-white text-center text-xl lg:text-2xl italic">
                   {tmdb?.tagline}
                 </h3>
               ) : null}
-              <div className="flex flex-row justify-evenly items-center border-2 border-red-500 w-1/6 self-center text-md lg:text-1xl">
+              <div className="flex flex-row justify-evenly items-center self-center border-2 border-red-500 ">
                 {omdb?.Rated ? (
-                  <p className="border-2 border-yellow-300 p-.8">
-                    {omdb?.Rated}
-                  </p>
+                  <p className="text-l">Rated: {omdb?.Rated} </p>
                 ) : null}
                 {tmdb?.release_date ? (
-                  <p>, {tmdb?.release_date?.split("-")[0]}</p>
+                  <p className="text-l">
+                    | Year: {tmdb?.release_date?.split("-")[0]}{" "}
+                  </p>
                 ) : null}
                 {tmdb?.genres ? (
-                  <p>, {tmdb?.genres.map((genre) => genre.name)[0]}</p>
+                  <p className="text-l">
+                    | Genre: {tmdb?.genres.map((genre) => genre.name)[0]}
+                  </p>
                 ) : null}
-                {omdb?.Runtime ? <p>, {omdb?.Runtime}</p> : null}
+                {omdb?.Runtime ? (
+                  <p className="text-l"> | Runtime: {omdb?.Runtime}</p>
+                ) : null}
               </div>
               <div className="flex flex-row justify-around mt-2 ">
                 {omdb?.imdbRating ? (
-                  <div className="flex flex-col items-center content-center">
-                    <h2 className="text-white text-center text-xl lg:text-1xl font-light">
+                  <div className="flex flex-col">
+                    <h2 className="text-white text-center text-xl lg:text-2xl font-semibold">
                       IMDB
                     </h2>
                     <div className="flex flex-row justify-around items-center content-center">
@@ -178,15 +186,15 @@ const RestfulMovieDetails = () => {
                         height={50}
                         alt="IMDB Logo"
                       />
-                      <p className="text-white text-center text-xl lg:text-2xl font-semibold">
+                      <p className="text-white text-center text-xl lg:text-2xl">
                         {omdb?.imdbRating * 10}%
                       </p>
                     </div>
                   </div>
                 ) : null}
                 {theRottenScore ? (
-                  <div className="flex flex-col items-center content-center">
-                    <h2 className="text-white text-center text-xl lg:text-1xl font-light">
+                  <div className="flex flex-col">
+                    <h2 className="text-white text-center text-xl lg:text-2xl font-semibold">
                       Rotten Tomatoes
                     </h2>
                     <div className="flex flex-row justify-around items-center content-center">
@@ -197,15 +205,15 @@ const RestfulMovieDetails = () => {
                         height={50}
                         alt="Rotten Tomatoes logo"
                       />
-                      <p className="text-white text-center text-xl lg:text-2xl font-semibold">
+                      <p className="text-white text-center text-xl lg:text-2xl">
                         {theRottenScore}
                       </p>
                     </div>
                   </div>
                 ) : null}
                 {omdb?.Metascore === "N/A" ? null : (
-                  <div className="flex flex-col items-center content-center">
-                    <h2 className="text-white text-center text-xl lg:text-1xl font-light">
+                  <div className="flex flex-col">
+                    <h2 className="text-white text-center text-xl lg:text-2xl font-semibold">
                       MetaCritic
                     </h2>
                     <div className="flex flex-row justify-around items-center content-center">
@@ -215,14 +223,14 @@ const RestfulMovieDetails = () => {
                         height={50}
                         alt="Metacritic logo"
                       />
-                      <p className="text-white text-center text-xl lg:text-2xl font-semibold">
+                      <p className="text-white text-center text-xl lg:text-2xl">
                         {omdb?.Metascore}%
                       </p>
                     </div>
                   </div>
                 )}
-                <div className="flex flex-col items-center content-center">
-                  <h2 className="text-white text-center text-xl lg:text-1xl font-light">
+                <div className="flex flex-col">
+                  <h2 className="text-white text-center text-xl lg:text-2xl font-semibold">
                     Movie Social
                   </h2>
                   <div className="flex flex-row justify-around items-center content-center">
@@ -233,14 +241,14 @@ const RestfulMovieDetails = () => {
                       alt="Movie Social logo"
                     />
                     {/* <span>{data?.score}</span> */}
-                    <p className="text-white text-center text-xl lg:text-2xl font-semibold">
+                    <p className="text-white text-center text-xl lg:text-2xl">
                       88%
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </aside>
 
           <section className="w-[90%] ml-[5%] border-2 self-center mt-5">
             <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
