@@ -6,7 +6,7 @@ interface SubmitReviewButtonProps {
   rating: number;
   review: string;
   userId: string;
-  title: string;
+  title: string | undefined;
   poster: string;
   usersName: string;
 }
@@ -37,7 +37,7 @@ const SubmitReviewButton: React.FC<SubmitReviewButtonProps> = ({
   return (
     <main
       onClick={addReview}
-      className="bg-yellow-500 rounded-md p-1 m-2 my-10 cursor-pointer"
+      className="cursor-pointer w-1/5 m-2 my-10 p-1 bg-yellow-500 rounded-md"
     >
       Submit button
     </main>
