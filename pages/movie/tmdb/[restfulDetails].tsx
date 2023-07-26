@@ -120,7 +120,7 @@ const RestfulMovieDetails = () => {
     };
 
     fetchTrailer();
-  }, [trailer, tmdb]);
+  }, [trailer, tmdb?.id]);
 
   const reviews = allReviews?.data?.filter(
     (review: ReviewProps) => review.title === tmdb?.title

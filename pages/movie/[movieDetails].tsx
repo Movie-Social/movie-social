@@ -39,9 +39,9 @@ const MovieDetails = () => {
   const [omdb, setOmdb] = useState<omdbProps>();
   const [details, setDetails] = useState<tmdbProps>();
   const [trailer, setTrailer] = useState("");
-
   useEffect(() => {
     const fetchTmdb = async () => {
+      data?.title;
       const tmdbDetails = await tmdbMovieFetcher(data?.title);
       const details = tmdbDetails?.results
         .filter((movie: any) => movie.original_language === "en")
@@ -49,7 +49,7 @@ const MovieDetails = () => {
       setTmdb(details);
     };
     fetchTmdb();
-  }, []);
+  }, [data?.title]);
 
   useEffect(() => {
     const fetchTmdb = async () => {
@@ -82,7 +82,7 @@ const MovieDetails = () => {
     };
 
     fetchTrailer();
-  }, [trailer, tmdb]);
+  }, [trailer, tmdb?.id, setTrailer]);
 
   const reviews = allReviews?.data?.filter(
     (review: ReviewProps) => review.title === data?.title
@@ -108,26 +108,23 @@ const MovieDetails = () => {
   };
 
   const opts: YouTubeProps["opts"] = {
-    height: "390",
-    width: "1000",
     playerVars: {
       autoplay: 1,
     },
   };
 
   return (
-    <main className="text-white flex justify-center">
+    <main className="w-[100vh] text-white">
       <Navbar />
       <br></br>
-      <section className="w-[90vw] mt-10">
-        <div className="mt-3 mb-5 flex justify-center">
+      <section className="flex flex-col items-center w-[100vh] lg:w-[90vw] mt-10 border border-red-600">
+        <div className="mb-5 mt-3">
           {trailer ? (
             <YouTube videoId={trailer} opts={opts} onReady={onPlayerReady} />
           ) : null}
         </div>
-
         <section>
-          <div className="flex flex-row justify-evenly h-[40vh]">
+          <aside className="flex flex-col items-center lg:flex-row border border-purple-500">
             <Image
               priority
               width={350}
@@ -238,7 +235,7 @@ const MovieDetails = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </aside>
 
           <section className="w-[90%] ml-[5%] border-2 self-center mt-5">
             <br></br>
