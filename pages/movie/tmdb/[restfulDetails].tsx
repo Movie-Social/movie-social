@@ -11,7 +11,6 @@ import omdbFetcher from "@/lib/omdbFetcher";
 import trailerFetcher from "@/lib/trailerFetcher";
 import tmdbDetailsFetcher from "@/lib/tmdbDetailsFetcher";
 import useAllReviews from "@/hooks/useAllReviews";
-import trash from "../../../public/images/recyclingBag.png";
 import rotten from "../../../public/images/rotten.png";
 import imdb from "../../../public/images/imdb.png";
 import meta from "../../../public/images/meta.png";
@@ -20,8 +19,8 @@ import Navbar from "@/components/Navbar";
 import Reviewform from "@/components/ReviewForm";
 import ExistingReviews from "@/components/ExistingReviews";
 
-interface tmdbProps {
-  id: string;
+export interface tmdbProps {
+  id: string | any;
   title: string;
   poster_path: string;
   tagline: string;
@@ -31,7 +30,7 @@ interface tmdbProps {
   release_date: string;
 }
 
-interface omdbProps {
+export interface omdbProps {
   Title: string;
   Genre: string;
   imdbRating: string | any;
@@ -47,7 +46,7 @@ interface omdbProps {
   BoxOffice: string;
 }
 
-interface Rating {
+export interface Rating {
   Source: string;
   Value: string;
 }

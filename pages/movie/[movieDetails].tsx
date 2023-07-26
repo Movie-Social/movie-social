@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -17,6 +18,7 @@ import loady from "../../public/images/imgLoad.gif";
 import YouTube, { YouTubeProps } from "react-youtube";
 import tmdbDetailsFetcher from "@/lib/tmdbDetailsFetcher";
 import omdbFetcher from "@/lib/omdbFetcher";
+import { omdbProps, tmdbProps } from "./tmdb/[restfulDetails]";
 export interface ReviewProps {
   id: string;
   poster: string;
@@ -32,18 +34,18 @@ const MovieDetails = () => {
   const { data } = useMovie(movieId as string);
   const [rating, setRating] = useState(0);
   const allReviews = useAllReviews();
-  const [tmdb, setTmdb] = useState({});
-  const [omdb, setOmdb] = useState([]);
-  const [details, setDetails] = useState({});
+  const [tmdb, setTmdb] = useState<tmdbProps>();
+  const [omdb, setOmdb] = useState<omdbProps>();
+  const [details, setDetails] = useState<tmdbProps>();
   const [trailer, setTrailer] = useState("");
 
   useEffect(() => {
     const fetchTmdb = async () => {
       const tmdbDetails = await tmdbMovieFetcher(data?.title);
       const details = tmdbDetails?.results
-        .filter((movie) => movie.original_language === "en")
-        .filter((movie) => movie.original_title === data?.title)
-        .sort((a, b) => b.popularity - a.popularity)[0];
+        .filter((movie: any) => movie.original_language === "en")
+        .filter((movie: any) => movie.original_title === data?.title)
+        .sort((a: any, b: any) => b.popularity - a.popularity)[0];
       setTmdb(details);
     };
     fetchTmdb();
@@ -69,7 +71,7 @@ const MovieDetails = () => {
 
   useEffect(() => {
     const fetchTrailer = async () => {
-      await tmdb?.id;
+      tmdb?.id;
       const trailer = await trailerFetcher(tmdb?.id);
       if (trailer?.results?.length > 0) {
         const youtubeKey = trailer.results
@@ -157,7 +159,7 @@ const MovieDetails = () => {
                   <p>, {details?.release_date?.split("-")[0]}</p>
                 ) : null}
                 {details?.genres ? (
-                  <p>, {details?.genres.map((genre) => genre.name)[0]}</p>
+                  <p>, {details?.genres.map((genre: any) => genre.name)[0]}</p>
                 ) : null}
                 {omdb?.Runtime ? <p>, {omdb?.Runtime}</p> : null}
               </div>
@@ -270,7 +272,7 @@ const MovieDetails = () => {
                   <span className="font-light text-yellow-300 m-2">
                     Genres:
                   </span>
-                  {details?.genres.map((genre) => genre.name).join(", ")}
+                  {details?.genres.map((genre: any) => genre.name).join(", ")}
                 </h2>
               ) : null}
               {omdb?.Released ? (
@@ -310,7 +312,7 @@ const MovieDetails = () => {
                   <span className="font-light text-yellow-300 m-2">
                     Budget:
                   </span>
-                  ${details?.budget.toLocaleString("en-US")}
+                  ${details?.budget.toLocaleString()}
                 </h2>
               ) : null}
               {omdb?.BoxOffice ? (
