@@ -269,10 +269,11 @@ const RestfulMovieDetails = () => {
                   </h2>
                   <div className="flex flex-row justify-around items-center content-center">
                     <Image
-                      src={trash}
+                      alt="Movie Social logo"
+                      className="ml-2 rounded-full"
+                      src="/images/newLogo.png"
                       width={50}
                       height={50}
-                      alt="Movie Social logo"
                     />
                     {/* <span>{data?.score}</span> */}
                     <p className="text-white text-center text-xl lg:text-2xl">
@@ -368,7 +369,7 @@ const RestfulMovieDetails = () => {
               ) : null}
             </div>
             <ExistingReviews data={reviews} />
-            <h2 className="mx-2 px-2 text-white text-2xl lg:text-3xl font-bold border-l-2 border-yellow-300 ">
+            <h2 className=" text-white text-2xl lg:text-3xl font-bold mx-2 px-2 border-l-2 border-yellow-300 ">
               Rate and Review
             </h2>
             <br></br>

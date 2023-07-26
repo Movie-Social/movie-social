@@ -53,7 +53,7 @@ const Reviewform: React.FC<ReviewProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rating, hoverRating]);
   return (
-    <main className="border-2 border-red-300 h-[40vh]">
+    <main className="w-full h-[30vh] p-4 border-2 border-orange-500">
       <section className="flex flex-row justify-between">
         <div className="flex flex-row">
           <BiUserCircle size={30} />
@@ -66,16 +66,18 @@ const Reviewform: React.FC<ReviewProps> = ({
         placeholder="What did you think of the movie? (optional)"
         value={review}
         onChange={handleChange}
-        className="w-full h-[90%] text-black"
+        className="w-full h-3/5 lg:h-[90%] text-center text-xl lg:text-2xl text-black my-3 rounded-md"
       />
-      <SubmitReviewButton
-        userId={currentUser?.id}
-        rating={rating}
-        review={review}
-        title={title}
-        poster={poster}
-        usersName={currentUser?.name}
-      />
+      <div className="flex justify-center">
+        <SubmitReviewButton
+          userId={currentUser?.id}
+          rating={rating}
+          review={review}
+          title={title}
+          poster={poster}
+          usersName={currentUser?.name}
+        />
+      </div>
     </main>
   );
 };
