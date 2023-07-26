@@ -1,12 +1,12 @@
+import { useState } from "react";
+import { useCallback } from "react";
 import axios from "axios";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
-import { useState } from "react";
-import { useCallback } from "react";
+import Input from "@/components/Input";
+import logger from "@/lib/logger";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
-import logger from "@/lib/logger";
-import Input from "@/components/Input";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
@@ -49,14 +49,20 @@ const Auth = () => {
   }, [email, name, password, login]);
 
   return (
-    <main className="relative h-full w-full bg-[url('/images/socialHero.png')] bg-no-repeat bg-center bg-fixed bg-cover">
-      <section className="bg-black w-full h-full lg:bg-opacity-50">
-        <div className="h-full flex justify-center items-center content-center">
-          <div className="bg-black bg-opacity-70 px-16 py-16 lg:w-2/5 lg:max-w-md rounded-md w-full">
-            <h2 className="text-white text-2xl mb-8 font-semibold">
+    <main className="relative h-full w-full bg-[url('/images/socialHero.png')] bg-center bg-fixed bg-no-repeat">
+      <main className="w-full h-full bg-black lg:bg-opacity-50">
+        <section className="flex justify-center items-center content-center h-full">
+          <div className="w-full lg:w-2/5 px-16 py-16 bg-black bg-opacity-70 rounded-md lg:max-w-md">
+            <h2 className="text-white text-2xl font-semibold mb-8">
               {variant === "login" ? "Sign In" : "Create An Account"}
             </h2>
-            <section className="flex flex-col gap-4">
+            <section
+              className="
+            flex 
+            flex-col 
+            gap-4
+            "
+            >
               {variant === "register" && (
                 <Input
                   label="Username"
@@ -83,39 +89,39 @@ const Auth = () => {
             <button
               onClick={variant === "login" ? login : register}
               className="
-            bg-yellow-600
-            py-3
-            text-white
-            rounded-md
-            w-full
-            mt-10
-            hover:bg-yellow-700
-            transition
+              w-full
+              text-white
+              mt-10
+              py-3
+              bg-yellow-300
+              hover:bg-yellow-700
+              rounded-md
+              transition
             "
             >
               {variant === "login" ? "Login" : "Sign Up"}
             </button>
-            <div
+            <nav
               className="
              flex
              flex-row
+             justify-center
              items-center
              gap-4
              mt-8
-             justify-center
-
               "
             >
               <div
                 onClick={() => signIn("google", { callbackUrl: "/" })}
-                className="w-10
+                className="
+                cursor-pointer
+                flex
+                justify-center
+                items-center
+                w-10
                 h-10
                 bg-white
                 rounded-full
-                flex
-                items-center
-                justify-center
-                cursor-pointer
                 hover:opacity-80
                 transition"
               >
@@ -123,42 +129,35 @@ const Auth = () => {
               </div>
               <div
                 onClick={() => signIn("github", { callbackUrl: "/" })}
-                className="w-10
+                className="
+                cursor-pointer
+                flex
+                justify-center
+                items-center
+                w-10
                 h-10
                 bg-white
                 rounded-full
-                flex
-                items-center
-                justify-center
-                cursor-pointer
                 hover:opacity-80
                 transition"
               >
                 <FaGithub size={30} />
               </div>
-            </div>
-            <p
-              className="text-neutral-500
-      text-md
-            mt-12"
-            >
+            </nav>
+            <p className="text-neutral-500 text-md mt-12">
               {variant === "login"
                 ? "First time Using Movie Social"
                 : "Already have an account?"}
               <span
                 onClick={toggleVariant}
-                className="text-white
-      text-md
-
-              ml-1
-              hover:underline cursor-pointer"
+                className="text-white text-md ml-1 hover:underline cursor-pointer"
               >
                 {variant === "login" ? "Create an account" : "Login"}
               </span>
             </p>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
     </main>
   );
 };
