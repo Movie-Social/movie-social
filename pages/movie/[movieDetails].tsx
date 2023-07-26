@@ -239,14 +239,13 @@ const MovieDetails = () => {
             </div>
           </aside>
 
-          <section className="w-[90%] ml-[5%] border-2 self-center mt-5">
-            <br></br>
-            <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
+          <article className="w-full lg:w-[90%] lg:self-center lg:ml-[5%] border-2">
+            <h2 className="mx-2 px-2 text-white text-2xl lg:text-3xl font-bold mb-5 border-l-2 border-yellow-300 ">
               Movie Info
             </h2>
-            <div className="ml-5 text-white text-l lg:text-2xl font-light font ">
-              {data?.summary ? (
-                <p className="m-2">{data?.summary}</p>
+            <div className="text-xl lg:text-2xl p-2 lg:ml-5 mb-5 border border-green-500">
+              {tmdb?.overview ? (
+                <p className="m-2">{tmdb?.overview}</p>
               ) : (
                 <p className="m-2">{omdb?.Plot}</p>
               )}
@@ -323,19 +322,18 @@ const MovieDetails = () => {
                 </h2>
               ) : null}
             </div>
+            <ExistingReviews data={reviews} />
+            <h2 className=" text-white text-2xl lg:text-3xl font-bold mx-2 px-2 border-l-2 border-yellow-300 ">
+              Rate and Review
+            </h2>
             <br></br>
-          </section>
-          <ExistingReviews data={reviews} />
-          <br></br>
-          <h2 className="border-l-2 border-yellow-500 mx-2 px-2 text-white text-1xl lg:text-2xl font-bold">
-            Rate and Review
-          </h2>
-          <Reviewform
-            title={data?.title}
-            poster={data?.poster}
-            rating={rating}
-            onRating={(rate: number) => setRating(rate)}
-          />
+            <Reviewform
+              title={data?.title}
+              poster={data?.poster}
+              rating={rating}
+              onRating={(rate: number) => setRating(rate)}
+            />
+          </article>
         </section>
       </section>
     </main>
