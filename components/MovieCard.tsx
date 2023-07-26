@@ -22,6 +22,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
       setTmdb(tmdbDetails);
     };
     fetchTmdb();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   // const { openModal } = useInfoModal();
   // const handleOpenModal = useCallback(() => {
