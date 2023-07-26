@@ -19,6 +19,7 @@ import YouTube, { YouTubeProps } from "react-youtube";
 import tmdbDetailsFetcher from "@/lib/tmdbDetailsFetcher";
 import omdbFetcher from "@/lib/omdbFetcher";
 import { omdbProps, tmdbProps } from "./tmdb/[restfulDetails]";
+
 export interface ReviewProps {
   id: string;
   poster: string;
@@ -44,7 +45,6 @@ const MovieDetails = () => {
       const tmdbDetails = await tmdbMovieFetcher(data?.title);
       const details = tmdbDetails?.results
         .filter((movie: any) => movie.original_language === "en")
-        .filter((movie: any) => movie.original_title === data?.title)
         .sort((a: any, b: any) => b.popularity - a.popularity)[0];
       setTmdb(details);
     };

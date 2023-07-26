@@ -17,7 +17,8 @@ const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
     const fetchTMDBLists = async () => {
       const list = await tmdbFetcher(apiString);
       const englishMovies = list.results.filter(
-        (movie) => movie?.original_language === "en"
+        (movie: { original_language: string }) =>
+          movie?.original_language === "en"
       );
       setTmdbList(englishMovies);
       // if (title === "Upcoming") {
@@ -34,6 +35,7 @@ const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
     };
 
     fetchTMDBLists();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   if (isEmpty(tmdbList)) {
     return null;
