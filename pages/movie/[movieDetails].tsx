@@ -127,43 +127,44 @@ const MovieDetails = () => {
           <aside className="flex flex-col items-center lg:flex-row border border-purple-500">
             <Image
               priority
-              width={350}
+              width={300}
               height={20}
               src={!data?.poster ? loady : data?.poster}
               alt={`Movie poster for ${data?.title}`}
               className="rounded-lg border border-yellow-300"
             />
-            <div
-              className="w-3/5 border-2 rounded-lg border-blue-500 flex flex-col justify-evenly
-   
-            "
-            >
-              <h2 className="text-white text-center text-1xl lg:text-3xl font-bold">
+            <div className="flex flex-col justify-evenly w-full mb-5 border-2 border-blue-500 rounded-lg">
+              <h2 className="text-white text-center text-2xl lg:text-3xl font-bold">
                 {!data?.title ? "..........." : data?.title}
               </h2>
               {details?.tagline ? (
-                <h3 className="text-white text-center text-xl ">
+                <h3 className="text-white text-center text-xl lg:text-2xl italic">
                   {details?.tagline}
                 </h3>
               ) : null}
-              <div className="flex flex-row justify-evenly items-center border-2 border-red-500 w-1/6 self-center text-md lg:text-1xl">
+              <div className="flex flex-row justify-evenly items-center self-center border-2 border-red-500 ">
                 {omdb?.Rated ? (
-                  <p className="border-2 border-yellow-300 p-.8">
-                    {omdb?.Rated}
-                  </p>
+                  <p className="text-l">Rated: {omdb?.Rated} </p>
                 ) : null}
                 {details?.release_date ? (
-                  <p>, {details?.release_date?.split("-")[0]}</p>
+                  <p className="text-l">
+                    | Year: {details?.release_date?.split("-")[0]}{" "}
+                  </p>
                 ) : null}
                 {details?.genres ? (
-                  <p>, {details?.genres.map((genre: any) => genre.name)[0]}</p>
+                  <p className="text-l">
+                    | Genre:{" "}
+                    {details?.genres.map((genre: any) => genre.name)[0]}
+                  </p>
                 ) : null}
-                {omdb?.Runtime ? <p>, {omdb?.Runtime}</p> : null}
+                {omdb?.Runtime ? (
+                  <p className="text-l"> | Runtime: {omdb?.Runtime}</p>
+                ) : null}
               </div>
               <div className="flex flex-row justify-around mt-2 ">
-                {omdb?.imdbRating ? (
-                  <div className="flex flex-col items-center content-center">
-                    <h2 className="text-white text-center text-xl lg:text-1xl font-light">
+                {omdb?.imdbRating === "N/A" ? null : (
+                  <div className="flex flex-col">
+                    <h2 className="text-white text-center text-xl lg:text-2xl font-semibold">
                       IMDB
                     </h2>
                     <div className="flex flex-row justify-around items-center content-center">
@@ -173,15 +174,15 @@ const MovieDetails = () => {
                         height={50}
                         alt="IMDB Logo"
                       />
-                      <p className="text-white text-center text-xl lg:text-2xl font-semibold">
+                      <p className="text-white text-center text-xl lg:text-2xl">
                         {omdb?.imdbRating * 10}%
                       </p>
                     </div>
                   </div>
-                ) : null}
+                )}
                 {theRottenScore ? (
-                  <div className="flex flex-col items-center content-center">
-                    <h2 className="text-white text-center text-xl lg:text-1xl font-light">
+                  <div className="flex flex-col">
+                    <h2 className="text-white text-center text-xl lg:text-2xl font-semibold">
                       Rotten Tomatoes
                     </h2>
                     <div className="flex flex-row justify-around items-center content-center">
@@ -192,15 +193,15 @@ const MovieDetails = () => {
                         height={50}
                         alt="Rotten Tomatoes logo"
                       />
-                      <p className="text-white text-center text-xl lg:text-2xl font-semibold">
+                      <p className="text-white text-center text-xl lg:text-2xl">
                         {theRottenScore}
                       </p>
                     </div>
                   </div>
                 ) : null}
                 {omdb?.Metascore === "N/A" ? null : (
-                  <div className="flex flex-col items-center content-center">
-                    <h2 className="text-white text-center text-xl lg:text-1xl font-light">
+                  <div className="flex flex-col">
+                    <h2 className="text-white text-center text-xl lg:text-2xl font-semibold">
                       MetaCritic
                     </h2>
                     <div className="flex flex-row justify-around items-center content-center">
@@ -210,25 +211,26 @@ const MovieDetails = () => {
                         height={50}
                         alt="Metacritic logo"
                       />
-                      <p className="text-white text-center text-xl lg:text-2xl font-semibold">
+                      <p className="text-white text-center text-xl lg:text-2xl">
                         {omdb?.Metascore}%
                       </p>
                     </div>
                   </div>
                 )}
-                <div className="flex flex-col items-center content-center">
-                  <h2 className="text-white text-center text-xl lg:text-1xl font-light">
+                <div className="flex flex-col">
+                  <h2 className="text-white text-center text-xl lg:text-2xl font-semibold">
                     Movie Social
                   </h2>
                   <div className="flex flex-row justify-around items-center content-center">
                     <Image
-                      src={trash}
+                      alt="Movie Social logo"
+                      className="ml-2 rounded-full"
+                      src="/images/newLogo.png"
                       width={50}
                       height={50}
-                      alt="Movie Social logo"
                     />
                     {/* <span>{data?.score}</span> */}
-                    <p className="text-white text-center text-xl lg:text-2xl font-semibold">
+                    <p className="text-white text-center text-xl lg:text-2xl">
                       88%
                     </p>
                   </div>
