@@ -11,28 +11,37 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ visible }) => {
   }
 
   return (
-    <main className="bg-zinc-900 w-56 absolute top-8 left-0 py-2 flex-col border border-yellow-300">
+    <main
+      className="bg-zinc-900 
+    absolute 
+    top-8 
+    left-0 
+    md:opacity-70
+    py-2 
+    border 
+    border-yellow-300"
+    >
       <section className="flex flex-col gap-3">
         <div
-          className="px-3 text-center text-white hover:underline"
+          className="text-center text-white hover:underline px-3"
           onClick={() => router.push("/")}
         >
           Home
         </div>
         <div
-          className="px-3 text-center text-white hover:underline"
+          className="text-center text-white hover:underline px-3"
           onClick={() => router.push("/myProfile")}
         >
           Reviews
         </div>
         <div
-          className="px-3 text-center text-white hover:underline"
+          className="text-center text-white hover:underline px-3"
           onClick={() => router.push("/myProfile")}
         >
           Favorites
         </div>
         <div
-          className="px-3 text-center text-white hover:underline"
+          className="text-center text-white hover:underline px-3"
           onClick={() => router.push("/myProfile")}
         >
           Watchlist
