@@ -2,7 +2,7 @@ import Image from "next/image";
 import movie404 from "../public/images/movie404.gif";
 const ErrorPage = () => {
   return (
-    <main className="flex flex-col justify-center w-full h-full text-white">
+    <main className="flex flex-col justify-center w-full h-full text-white px-3">
       <h2 className="text-center lg:text-3xl">
         If you have reached this page you caught the developer{" "}
         <span className="text-yellow-300 font-light">
