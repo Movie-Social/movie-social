@@ -43,15 +43,15 @@ const Navbar = () => {
   return (
     <nav className="w-full fixed z-40">
       <main
-        className={`px-4 md:px-16 py-2 flex flex-row items-center transition duration-500 
+        className={`flex flex-row items-center transition duration-500 px-4 md:px-12 py-2 
       ${showBackground ? "bg-zinc-900" : ""}
       `}
       >
         <Image
-          width={20}
-          height={20}
+          width={30}
+          height={30}
           onClick={() => router.push("/")}
-          className="bg-white rounded-full cursor-pointer text-white"
+          className="cursor-pointer w-6 h-6 md:w-8 md:h-8 object-cover rounded-3xl text-white"
           src="/images/newLogo.png"
           alt="Movie Social Logo"
         />
@@ -87,11 +87,15 @@ const Navbar = () => {
             className="flex flex-row items-center gap-2 cursor-pointer relative"
           >
             <div className="text-gray-200 hover:text-yellow-300 cursor-pointer transition">
-              <BiUserCircle className="text-white" color="white" size={20} />
+              <BiUserCircle
+                className="cursor-pointer w-5 h-5 md:w-7 md:h-7 object-cover rounded-3xl text-white"
+                color="white"
+                size={20}
+              />
             </div>
             <BsChevronDown
               size={20}
-              className={`text-white  hover:text-yellow-300 transition ${
+              className={`cursor-pointer w-5 h-5 md:w-7 md:h-7 object-cover rounded-3xl text-white hover:text-yellow-300 transition ${
                 showAccountMenu ? "rotate-180" : "rotate-0"
               }`}
             />
