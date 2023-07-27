@@ -30,7 +30,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
   // }, [openModal, data?.id]);
   return (
     <main
-      className="flex flex-col items-center justify-center content-center text-center group bg-zinc-900 relative mx-1"
+      className="h-full flex flex-col items-center justify-center content-center text-center group bg-zinc-900 relative mx-1"
       // onClick={handleOpenModal}
     >
       {!data?.poster ? (
@@ -43,6 +43,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
       ) : (
         <Image
           className="
+          h-full
           self-center         
           transition
           duration

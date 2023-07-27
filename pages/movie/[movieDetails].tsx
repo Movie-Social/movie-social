@@ -19,6 +19,8 @@ import YouTube, { YouTubeProps } from "react-youtube";
 import tmdbDetailsFetcher from "@/lib/tmdbDetailsFetcher";
 import omdbFetcher from "@/lib/omdbFetcher";
 import { omdbProps, tmdbProps } from "./tmdb/[restfulDetails]";
+import FavoriteButton from "@/components/FavoriteButton";
+import WatchlistButton from "@/components/WatchlistButton";
 
 export interface ReviewProps {
   id: string;
@@ -125,6 +127,10 @@ const MovieDetails = () => {
         </div>
         <section>
           <aside className="flex flex-col items-center lg:flex-row border border-purple-500">
+            {/* <section className="flex flex-row justify-between w-full border border-orange-400">
+              <div className="flex justify-center items-center mx-10 border border-pink-700">
+                <WatchlistButton movieId={tmdb?.id} />
+              </div> */}
             <Image
               priority
               width={300}
@@ -133,6 +139,11 @@ const MovieDetails = () => {
               alt={`Movie poster for ${data?.title}`}
               className="rounded-lg border border-yellow-300"
             />
+            {/* <div className="flex justify-center items-center mx-10 border border-pink-700">
+                <FavoriteButton movieId={tmdb?.id} />
+              </div>
+            </section> */}
+
             <div className="flex flex-col justify-evenly w-full mb-5 border-2 border-blue-500 rounded-lg">
               <h2 className="text-white text-center text-2xl lg:text-3xl font-bold">
                 {!data?.title ? "..........." : data?.title}
