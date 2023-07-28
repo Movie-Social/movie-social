@@ -187,7 +187,7 @@ const Hero = () => {
               priority
               alt={slideImage.caption}
             />
-            <h2 className="absolute bottom-1 inset-x-1/4 text-center z-10 md:text-5xl text-2xl bold text-white">
+            <h2 className="absolute bottom-1 inset-x-1/4 text-center z-10 md:text-5xl text-2xl bold text-gray-200">
               {slideImage.caption.split("Scene from the movie ")[1]}
             </h2>
             {/* <PlayButton movieId="hardcoded" /> */}

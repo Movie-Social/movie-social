@@ -65,18 +65,18 @@ const Navbar = () => {
         </section>
         <section
           onClick={toggleMobileMenu}
-          //! START HERE
           className="
           lg:hidden 
+          relative
           flex 
           flex-row 
           items-center 
           gap-2 
-          ml-8 
           cursor-pointer 
-          relative"
+          ml-8 
+          "
         >
-          <p className="text-white text-sm">Browse</p>
+          <p className="text-white text-sm md:text-base">Browse</p>
           <BsChevronDown
             className={`text-white transition ${
               showMobileMenu ? "rotate-180" : "rotate-0"
@@ -84,7 +84,7 @@ const Navbar = () => {
           />
           <MobileMenu visible={showMobileMenu} />
         </section>
-        <section className="flex flex-row ml-auto gap-6 content-center">
+        <section className="flex flex-row content-center gap-6 ml-auto">
           {/* <div className="text-gray-200 hover:text-yellow-300 cursor-pointer transition">
             <BsSearch size={20} />
           </div>
@@ -93,9 +93,9 @@ const Navbar = () => {
           </div> */}
           <div
             onClick={toggleAccountMenu}
-            className="flex flex-row items-center gap-2 cursor-pointer relative"
+            className="relative flex flex-row items-center gap-2 cursor-pointer"
           >
-            <div className="text-gray-200 hover:text-yellow-300 cursor-pointer transition">
+            <div className="cursor-pointer text-gray-200 hover:text-yellow-300 transition">
               <BiUserCircle
                 className="cursor-pointer w-5 h-5 md:w-7 md:h-7 object-cover rounded-3xl text-white"
                 color="white"
