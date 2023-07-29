@@ -21,7 +21,7 @@ const ExistingReviews: React.FC<ExistingReviewProps> = ({ data }) => {
   }
   return (
     <main className=" w-full lg:w-[90%] self-center lg:ml-[5%]">
-      <h2 className=" text-white text-2xl lg:text-3xl font-bold mb-5 mx-2 px-2 border-l-2 border-yellow-300 ">
+      <h2 className="text-white text-xl md:text-2xl lg:text-3xl font-bold mx-2 px-2 border-l-2 border-yellow-300 ">
         Movie Social Reviews
       </h2>
       <section className="flex justify-center">
