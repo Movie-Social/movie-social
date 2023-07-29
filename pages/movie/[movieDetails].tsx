@@ -138,23 +138,19 @@ const MovieDetails = () => {
       <Navbar />
       <br></br>
       <section className="flex flex-col items-center md:w-[90vw] mt-10">
-        <div className="w-full my-5">
+        <div className="lg:flex lg:justify-center w-full my-5">
           {trailer ? (
             <YouTube
               videoId={trailer}
               opts={opts}
               onReady={onPlayerReady}
-              className="aspect-w-16 aspect-h-9 sm:aspect-w-4 sm:aspect-h-3 md:aspect-w-16 md:aspect-h-9 lg:aspect-w-16 lg:aspect-h-9 mx-1"
+              className="aspect-w-16 aspect-h-9 sm:aspect-w-4 sm:aspect-h-3 md:aspect-w-16 md:aspect-h-9 lg:w-[80vw] lg:aspect-h-6 mx-1"
             />
           ) : null}
         </div>
-        <section className="flex flex-col">
+        <section className="flex flex-col lg:w-[80vw]">
           {/* :lg may need h-[40vh] justify-evenly*/}
-          <aside
-            className="flex flex-col items-center md:flex-row border border-purple-500
-          "
-          >
-            {" "}
+          <aside className="flex flex-col items-center md:flex-row border border-purple-500">
             {/* <section className="flex flex-row justify-between w-full border border-orange-400">
               <div className="flex justify-center items-center mx-10 border border-pink-700">
                 <WatchlistButton movieId={tmdb?.id} />
@@ -165,7 +161,7 @@ const MovieDetails = () => {
               height={20}
               src={!data?.poster ? loady : data?.poster}
               alt={`Movie poster for ${data?.title}`}
-              className=" max-[767px]:w-2/5 h-2/5 self-center mb-5 border border-yellow-300 rounded-lg"
+              className="max-[767px]:w-2/5 h-2/5 self-center mb-5 border border-yellow-300 rounded-lg"
             />
             {/* <div className="flex justify-center items-center mx-10 border border-pink-700">
                 <FavoriteButton movieId={tmdb?.id} />
@@ -183,30 +179,30 @@ const MovieDetails = () => {
               <div className="flex flex-row justify-evenly items-center content-center w-5/6 self-center mx-2 border-2 border-red-500 ">
                 {omdb?.Rated ? (
                   <div className="ml-4 px-2 border-l border-yellow-300">
-                    <p className="text-l">Rated:</p>
-                    <p className="text-l">{omdb?.Rated} </p>
+                    <p className="text-l lg:text-xl">Rated:</p>
+                    <p className="text-l lg:text-xl">{omdb?.Rated} </p>
                   </div>
                 ) : null}
                 {details?.release_date ? (
                   <div className="ml-4 px-2 border-l border-yellow-300">
-                    <p className="text-l">Year:</p>
-                    <p className="text-l">
+                    <p className="text-l lg:text-xl">Year:</p>
+                    <p className="text-l lg:text-xl">
                       {details?.release_date?.split("-")[0]}{" "}
                     </p>
                   </div>
                 ) : null}
                 {details?.genres ? (
                   <div className="ml-4 px-2 border-l border-yellow-300">
-                    <p className="text-l">Genre:</p>
-                    <p className="text-l">
+                    <p className="text-l lg:text-xl">Genre:</p>
+                    <p className="text-l lg:text-xl">
                       {details?.genres.map((genre: any) => genre.name)[0]}{" "}
                     </p>
                   </div>
                 ) : null}
                 {omdb?.Runtime ? (
                   <div className="ml-4 px-2 border-l border-yellow-300">
-                    <p className="text-l">Runtime:</p>
-                    <p className="text-l">{omdb?.Runtime} </p>
+                    <p className="text-l lg:text-xl">Runtime:</p>
+                    <p className="text-l lg:text-xl">{omdb?.Runtime} </p>
                   </div>
                 ) : null}
               </div>
@@ -287,8 +283,8 @@ const MovieDetails = () => {
             </div>
           </aside>
 
-          <article className="w-full lg:w-[90%] lg:self-center lg:ml-[5%] border border-pink-600">
-            <h2 className="mx-2 px-2 text-white text-xl md:text-2xl lg:text-3xl font-bold mb-5 border-l-2 border-yellow-300 ">
+          <article className="w-full lg:self-center border border-pink-600">
+            <h2 className=" text-white text-xl md:text-2xl lg:text-3xl font-bold lg:font-semibold mx-2 px-2 border-l-2 border-yellow-300">
               Movie Info
             </h2>
             <div className="text-l md:text-xl lg:text-2xl p-2 lg:ml-5 mb-5 border border-green-500">
@@ -371,7 +367,7 @@ const MovieDetails = () => {
               ) : null}
             </div>
             <ExistingReviews data={reviews} />
-            <h2 className=" text-white text-xl md:text-2xl lg:text-3xl font-bold mx-2 px-2 border-l-2 border-yellow-300 ">
+            <h2 className=" text-white text-xl md:text-2xl lg:text-3xl font-bold lg:font-semibold mx-2 px-2 border-l-2 border-yellow-300">
               Rate and Review
             </h2>
             <br></br>
