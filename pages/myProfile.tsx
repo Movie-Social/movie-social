@@ -36,8 +36,8 @@ const MyProfile = () => {
   return (
     <main className="flex justify-center text-white">
       <Navbar />
-      <main className="flex flex-col lg:flex-row justify-around w-[100vw] lg:w-[70vw] py-5 mt-10">
-        <aside className="flex flex-col lg:justify-center lg:items-center content-center w-5/5 lg:w-1/5 h-1/5 p-2 mb-3">
+      <main className="flex flex-col lg:flex-row justify-around lg:justify-between w-[100vw] lg:w-4/5 py-5 mt-10">
+        <aside className="flex flex-col content-center w-full lg:w-1/6 h-1/5 p-2 lg:p-0 mb-3 lg:border lg:border-yellow-300 rounded-md">
           <h2 className="text-2xl lg:text-3xl font-bold mb-2 mx-2 md:mx-10 md:my-5 px-2 border-l-2 border-yellow-300">
             Profile
           </h2>
@@ -49,7 +49,7 @@ const MyProfile = () => {
             </div>
           </section>
         </aside>
-        <section className="flex flex-col justify-around w-5/5 lg:w-3/5 px-2">
+        <section className="flex flex-col justify-around w-5/5 lg:w-4/6 px-2 lg:border lg:border-yellow-300 rounded-md">
           <div className="flex flex-row justify-between items-center">
             <h2 className="text-2xl lg:text-3xl font-bold mb-2 mx-2 md:mx-10 md:my-5 px-2 border-l-2 border-yellow-300">
               Favorites
@@ -61,7 +61,7 @@ const MyProfile = () => {
           {faves?.length >= 1 ? (
             <ProfileList data={faves} />
           ) : (
-            <div className="flex flex-col justify-center items-center content-center md:w-5/6 md:self-center  mb-5 p-3 border-yellow-300 border-2 rounded-md">
+            <div className="flex flex-col justify-center items-center content-center md:w-5/6 md:self-center mb-5 p-3 border-yellow-300 border-2 rounded-md">
               <GrAddCircle className="text-white" size={50} />
               <h2>Your Favorites are Empty</h2>
               <p>Add movies to keep track of your favorites</p>

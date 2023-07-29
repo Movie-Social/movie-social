@@ -84,7 +84,7 @@ const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
           </Slide>
         </div>
         {/* Slideshow for larger screens */}
-        <div className="invisible lg:visible">
+        <div className="hidden lg:block">
           <Slide
             transitionDuration={1000}
             autoplay={false}
