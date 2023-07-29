@@ -55,9 +55,9 @@ const Reviewform: React.FC<ReviewProps> = ({
   return (
     <main className="w-full h-[30vh] p-4 border-2 border-orange-500">
       <section className="flex flex-row justify-between items-center">
-        <div className="flex flex-row">
+        <div className="flex flex-row justify-center items-center">
           <BiUserCircle size={30} />
-          {currentUser?.data?.name}
+          <p className="text-white ">{currentUser?.name}</p>
         </div>
         <div className="flex flex-row">{starRating}</div>
       </section>
@@ -66,7 +66,7 @@ const Reviewform: React.FC<ReviewProps> = ({
         placeholder="What did you think of the movie? (optional)"
         value={review}
         onChange={handleChange}
-        className="w-full h-3/5 lg:h-[90%] text-center md:text-xl lg:text-2xl text-black my-3 rounded-md"
+        className="w-full h-3/5 lg:h-[90%] text-center md:text-xl lg:text-xl text-black my-3 rounded-md"
       />
       <div className="flex justify-center">
         <SubmitReviewButton
