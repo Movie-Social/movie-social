@@ -36,8 +36,8 @@ const Home = () => {
     <main>
       <InfoModal visible={isOpen} onClose={closeModal} />
       <Navbar />
-      <Hero />
-      <section className="pb-40">
+      <section className="flex flex-col justify-center pb-40">
+        <Hero />
         <RestfulMovieList title="Now Playing" />
         <RestfulMovieList title="Upcoming" />
         <RestfulMovieList title="Popular" />
@@ -46,7 +46,6 @@ const Home = () => {
         <MovieList title="Action" data={movies} />
         <MovieList title="Horror" data={movies} />
         <RestfulMovieList title="Top Rated" />
-        <MovieList title="My Favorites" data={favorites} />
       </section>
     </main>
   );
