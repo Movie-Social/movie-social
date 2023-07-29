@@ -42,6 +42,7 @@ const WatchlistButton: React.FC<WatchlistButtonProps> = ({ movieId }) => {
     h-6
     lg:w-8
     lg:h-8
+    mx-1
     border-white
     border-2
     rounded-full
