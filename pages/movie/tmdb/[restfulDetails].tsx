@@ -202,7 +202,7 @@ const RestfulMovieDetails = () => {
               alt={`Movie poster for ${tmdb?.title}`}
               className=" max-[767px]:w-2/5 h-2/5 self-center mb-5 border border-yellow-300 rounded-lg"
             />
-            <div className="flex flex-col justify-evenly w-full pb-2 mb-4 border-2 border-blue-500 rounded-lg">
+            <div className="flex flex-col justify-evenly w-full p-2 mb-4 border-2 border-blue-500 rounded-lg">
               <h2 className="text-white text-center text-xl md:text-2xl lg:text-3xl font-bold">
                 {!tmdb?.title ? "..........." : tmdb?.title}
               </h2>
@@ -403,7 +403,7 @@ const RestfulMovieDetails = () => {
               ) : null}
             </div>
             <ExistingReviews data={reviews} />
-            <h2 className=" text-white text-xl md:text-2xl lg:text-3xl font-bold mx-2 px-2 border-l-2 border-yellow-300 ">
+            <h2 className=" text-white text-xl md:text-2xl lg:text-3xl font-bold mx-2 px-2 border-l-2 border-yellow-300">
               Rate and Review
             </h2>
             <br></br>
