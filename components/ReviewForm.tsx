@@ -53,7 +53,7 @@ const Reviewform: React.FC<ReviewProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rating, hoverRating]);
   return (
-    <main className="w-full h-[30vh] p-4 border-2 border-orange-500">
+    <main className="w-full h-[30vh] p-4 ">
       <section className="flex flex-row justify-between items-center">
         <div className="flex flex-row justify-center items-center">
           <BiUserCircle size={30} />

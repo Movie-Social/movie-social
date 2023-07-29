@@ -56,7 +56,6 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
         border
         h-[45vw]
         w-full
-        border-purple-600
       "
       >
         <Image

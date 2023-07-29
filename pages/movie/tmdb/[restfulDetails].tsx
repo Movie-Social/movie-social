@@ -186,7 +186,7 @@ const RestfulMovieDetails = () => {
         </div>
         <section className="flex flex-col lg:w-[80vw]">
           <aside
-            className="flex flex-col items-center md:flex-row border border-purple-500
+            className="flex flex-col items-center md:flex-row
           "
           >
             <Image
@@ -201,24 +201,24 @@ const RestfulMovieDetails = () => {
               alt={`Movie poster for ${tmdb?.title}`}
               className="max-[767px]:w-2/5 h-2/5 self-center mb-5 border border-yellow-300 rounded-lg"
             />
-            <div className="flex flex-col justify-evenly w-full p-2 mb-4 border-2 border-blue-500 rounded-lg">
+            <div className="flex flex-col justify-evenly w-full p-2 my-4 ml-10 border border-yellow-300 rounded-lg bg-opacity-50">
               <h2 className="text-white text-center text-xl md:text-2xl lg:text-3xl font-bold lg:font-semibold">
                 {!tmdb?.title ? "..........." : tmdb?.title}
               </h2>
               {tmdb?.tagline ? (
-                <h3 className="text-white text-center text-l md:text-xl lg:text-2xl italic">
+                <h3 className="text-white text-center text-l md:text-xl lg:text-2xl lg:my-3 italic">
                   {tmdb?.tagline}
                 </h3>
               ) : null}
-              <div className="flex flex-row justify-evenly items-center content-center w-5/6 self-center mx-2 border-2 border-red-500 ">
+              <div className="flex flex-row justify-evenly items-center content-center w-5/6 self-center m-3">
                 {omdb?.Rated ? (
-                  <div className="ml-4 px-2 border-l border-yellow-300">
+                  <div className="ml-4 px-2">
                     <p className="text-l lg:text-xl">Rated:</p>
                     <p className="text-l lg:text-xl">{omdb?.Rated} </p>
                   </div>
                 ) : null}
                 {tmdb?.release_date ? (
-                  <div className="ml-4 px-2 border-l border-yellow-300">
+                  <div className="ml-4 px-2">
                     <p className="text-l lg:text-xl">Year:</p>
                     <p className="text-l lg:text-xl">
                       {tmdb?.release_date?.split("-")[0]}{" "}
@@ -226,7 +226,7 @@ const RestfulMovieDetails = () => {
                   </div>
                 ) : null}
                 {tmdb?.genres ? (
-                  <div className="ml-4 px-2 border-l border-yellow-300">
+                  <div className="ml-4 px-2">
                     <p className="text-l lg:text-xl">Genre:</p>
                     <p className="text-l lg:text-xl">
                       {tmdb?.genres.map((genre: any) => genre.name)[0]}{" "}
@@ -234,13 +234,13 @@ const RestfulMovieDetails = () => {
                   </div>
                 ) : null}
                 {omdb?.Runtime ? (
-                  <div className="ml-4 px-2 border-l border-yellow-300">
+                  <div className="ml-4 px-2">
                     <p className="text-l lg:text-xl">Runtime:</p>
                     <p className="text-l lg:text-xl">{omdb?.Runtime} </p>
                   </div>
                 ) : null}
               </div>
-              <div className="flex flex-row justify-around h-full mt-2 py-1 border border-orange-400">
+              <div className="flex flex-row justify-around h-full mt-2 py-1">
                 {omdb?.imdbRating === "N/A" ? null : (
                   <div className="flex flex-col flex-grow justify-between items-center">
                     <h2 className="text-white text-center text-l md:text-xl lg:text-2xl font-semibold">
@@ -318,11 +318,11 @@ const RestfulMovieDetails = () => {
             </div>
           </aside>
 
-          <article className="w-full lg:self-center border border-pink-600">
+          <article className="w-full lg:self-center">
             <h2 className="mx-2 px-2 text-white text-xl md:text-2xl lg:text-3xl font-bold lg:font-semibold mb-5 border-l-2 border-yellow-300 ">
               Movie Info
             </h2>
-            <div className="text-l md:text-xl lg:text-2xl p-2 lg:ml-5 mb-5 border border-green-500">
+            <div className="text-l md:text-xl lg:text-2xl p-2 lg:ml-5 mb-5 ">
               {tmdb?.overview ? (
                 <p className="m-2">{tmdb?.overview}</p>
               ) : (
