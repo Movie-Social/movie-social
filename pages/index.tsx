@@ -36,7 +36,7 @@ const Home = () => {
     <main>
       <InfoModal visible={isOpen} onClose={closeModal} />
       <Navbar />
-      <section className="flex flex-col justify-center pb-40">
+      <section className="lg:flex lg:flex-col lg:justify-center pb-10">
         <Hero />
         <RestfulMovieList title="Now Playing" />
         <RestfulMovieList title="Upcoming" />

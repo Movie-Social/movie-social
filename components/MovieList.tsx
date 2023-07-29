@@ -57,7 +57,7 @@ const MovieList: React.FC<MovieListProps> = ({ data, title }) => {
           </Slide>
         </div>
         {/* Slideshow for larger screens */}
-        <div className="invisible lg:visible">
+        <div className="hidden lg:block">
           <Slide
             transitionDuration={1000}
             autoplay={false}
