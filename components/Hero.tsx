@@ -7,6 +7,7 @@ import "react-slideshow-image/dist/styles.css";
 import dynamic from "next/dynamic";
 import PlayButton from "./PlayButton";
 import Image from "next/image";
+import { BiSkipNext, BiSkipPrevious } from "react-icons/bi";
 
 interface ShuffleArgs {
   image: string;
@@ -177,8 +178,33 @@ const Hero = () => {
   const shuffled = shuffle(images);
 
   return (
-    <main className="relative opacity-50">
-      <Slide>
+    <main className="lg:w-4/5 lg:rounded-lg self-center opacity-50">
+      <Slide
+        transitionDuration={1000}
+        autoplay={true}
+        nextArrow={
+          <button
+            style={{
+              cursor: "pointer",
+              border: "0px",
+              opacity: "90%",
+            }}
+          >
+            <BiSkipNext size={40} className="text-yellow-300" />
+          </button>
+        }
+        prevArrow={
+          <button
+            style={{
+              cursor: "pointer",
+              border: "0px",
+              opacity: "90%",
+            }}
+          >
+            <BiSkipPrevious size={40} className="text-yellow-300" />
+          </button>
+        }
+      >
         {shuffled.map((slideImage, index) => (
           <div className="relative h-56 lg:h-96 w-full" key={index}>
             <Image
@@ -190,7 +216,6 @@ const Hero = () => {
             <h2 className="absolute bottom-1 inset-x-1/4 text-center z-10 md:text-5xl text-2xl bold text-gray-200">
               {slideImage.caption.split("Scene from the movie ")[1]}
             </h2>
-            {/* <PlayButton movieId="hardcoded" /> */}
           </div>
         ))}
       </Slide>
