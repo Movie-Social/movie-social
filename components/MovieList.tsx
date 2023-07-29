@@ -11,7 +11,7 @@ const MovieList: React.FC<MovieListProps> = ({ data, title }) => {
     return null;
   }
   return (
-    <main className="px-2 mt-2 space-y-4 flex justify-center">
+    <main className="flex justify-center px-2 mt-4 space-y-5 md:space-y-7">
       <section className="flex flex-col content-center w-full">
         <p className="text-white text-md md:text-xl lg:text-2xl font-semibold mb-4">
           {title}

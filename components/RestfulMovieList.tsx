@@ -42,7 +42,7 @@ const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
   }
 
   return (
-    <main className="px-2 mt-4 space-y-5 md:space-y-7 flex justify-center ">
+    <main className="flex justify-center px-2 mt-4 space-y-5 md:space-y-7">
       <section className="flex flex-col content-center w-full">
         <h2 className="text-white text-md md:text-xl lg:text-2xl font-semibold md:mx-2 my-4">
           {title}
