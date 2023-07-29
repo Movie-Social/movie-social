@@ -74,7 +74,6 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
         border
         h-[45vw]
         w-full
-        border-purple-600
       "
       >
         <Image

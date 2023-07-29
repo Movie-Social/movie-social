@@ -150,7 +150,7 @@ const MovieDetails = () => {
         </div>
         <section className="flex flex-col lg:w-[80vw]">
           {/* :lg may need h-[40vh] justify-evenly*/}
-          <aside className="flex flex-col items-center md:flex-row border border-purple-500">
+          <aside className="flex flex-col items-center md:flex-row ">
             {/* <section className="flex flex-row justify-between w-full border border-orange-400">
               <div className="flex justify-center items-center mx-10 border border-pink-700">
                 <WatchlistButton movieId={tmdb?.id} />
@@ -167,24 +167,24 @@ const MovieDetails = () => {
                 <FavoriteButton movieId={tmdb?.id} />
               </div>
             </section> */}
-            <div className="flex flex-col justify-evenly w-full p-2 mb-4 border-2 border-blue-500 rounded-lg">
+            <div className="flex flex-col justify-evenly w-full p-2 mb-4 ml-10 border border-yellow-300 rounded-lg bg-opacity-50">
               <h2 className="text-white text-center text-xl md:text-2xl lg:text-3xl font-bold">
                 {!data?.title ? "..........." : data?.title}
               </h2>
               {details?.tagline ? (
-                <h3 className="text-white text-center text-l md:text-xl lg:text-2xl italic">
+                <h3 className="text-white text-center text-l md:text-xl lg:text-2xl italic lg:my-3">
                   {details?.tagline}
                 </h3>
               ) : null}
-              <div className="flex flex-row justify-evenly items-center content-center w-5/6 self-center mx-2 border-2 border-red-500 ">
+              <div className="flex flex-row justify-evenly items-center content-center w-5/6 self-center m-3">
                 {omdb?.Rated ? (
-                  <div className="ml-4 px-2 border-l border-yellow-300">
+                  <div className="ml-4 px-2 ">
                     <p className="text-l lg:text-xl">Rated:</p>
                     <p className="text-l lg:text-xl">{omdb?.Rated} </p>
                   </div>
                 ) : null}
                 {details?.release_date ? (
-                  <div className="ml-4 px-2 border-l border-yellow-300">
+                  <div className="ml-4 px-2 ">
                     <p className="text-l lg:text-xl">Year:</p>
                     <p className="text-l lg:text-xl">
                       {details?.release_date?.split("-")[0]}{" "}
@@ -192,7 +192,7 @@ const MovieDetails = () => {
                   </div>
                 ) : null}
                 {details?.genres ? (
-                  <div className="ml-4 px-2 border-l border-yellow-300">
+                  <div className="ml-4 px-2 ">
                     <p className="text-l lg:text-xl">Genre:</p>
                     <p className="text-l lg:text-xl">
                       {details?.genres.map((genre: any) => genre.name)[0]}{" "}
@@ -200,13 +200,13 @@ const MovieDetails = () => {
                   </div>
                 ) : null}
                 {omdb?.Runtime ? (
-                  <div className="ml-4 px-2 border-l border-yellow-300">
+                  <div className="ml-4 px-2">
                     <p className="text-l lg:text-xl">Runtime:</p>
                     <p className="text-l lg:text-xl">{omdb?.Runtime} </p>
                   </div>
                 ) : null}
               </div>
-              <div className="flex flex-row justify-around h-full mt-2 py-1 border border-orange-400">
+              <div className="flex flex-row justify-around h-full mt-2 py-1">
                 {omdb?.imdbRating === "N/A" ? null : (
                   <div className="flex flex-col flex-grow justify-between items-center">
                     <h2 className="text-white text-center text-l md:text-xl lg:text-2xl font-semibold">
@@ -283,11 +283,11 @@ const MovieDetails = () => {
             </div>
           </aside>
 
-          <article className="w-full lg:self-center border border-pink-600">
+          <article className="w-full lg:self-center mt-8">
             <h2 className=" text-white text-xl md:text-2xl lg:text-3xl font-bold lg:font-semibold mx-2 px-2 border-l-2 border-yellow-300">
               Movie Info
             </h2>
-            <div className="text-l md:text-xl lg:text-2xl p-2 lg:ml-5 mb-5 border border-green-500">
+            <div className="text-l md:text-xl lg:text-2xl p-2 lg:ml-5 mb-8">
               {tmdb?.overview ? (
                 <p className="m-2">{tmdb?.overview}</p>
               ) : (
