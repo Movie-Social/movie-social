@@ -18,6 +18,8 @@ import loady from "../../../public/images/imgLoad.gif";
 import Navbar from "@/components/Navbar";
 import Reviewform from "@/components/ReviewForm";
 import ExistingReviews from "@/components/ExistingReviews";
+import { NextPageContext } from "next";
+import { getSession } from "next-auth/react";
 
 export interface tmdbProps {
   id: string | any;
@@ -49,6 +51,22 @@ export interface omdbProps {
 export interface Rating {
   Source: string;
   Value: string;
+}
+
+export async function getServerSideProps(context: NextPageContext) {
+  const session = await getSession(context);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/auth",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
 }
 
 const RestfulMovieDetails = () => {
