@@ -170,19 +170,24 @@ const RestfulMovieDetails = () => {
   };
 
   return (
-    <main className="w-[100vh] text-white">
+    <main className="flex flex-col w-full text-white">
       <Navbar />
       <br></br>
-      <section className="flex flex-col items-center w-[100vh] lg:w-[90vw] mt-10 border border-red-600">
-        <div className="mb-5 mt-3">
+      <section className="flex flex-col items-center lg:w-[90vw] mt-10 border border-red-600">
+        <div className="w-full my-5">
           {trailer ? (
-            <YouTube videoId={trailer} opts={opts} onReady={onPlayerReady} />
+            <YouTube
+              videoId={trailer}
+              opts={opts}
+              onReady={onPlayerReady}
+              className="aspect-w-16 aspect-h-9 sm:aspect-w-4 sm:aspect-h-3 md:aspect-w-16 md:aspect-h-9 lg:aspect-w-16 lg:aspect-h-9 mx-1"
+            />
           ) : null}
         </div>
         <section className="flex flex-col">
           {/* :lg may need h-[40vh] justify-evenly*/}
           <aside
-            className="flex flex-col items-center lg:flex-row border border-purple-500
+            className="flex flex-col items-center md:flex-row border border-purple-500
           "
           >
             <Image
