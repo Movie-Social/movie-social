@@ -29,10 +29,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
   //   openModal(data?.id);
   // }, [openModal, data?.id]);
   return (
-    <main
-      className="h-full flex flex-col items-center justify-center content-center text-center group bg-zinc-900 relative mx-1"
-      // onClick={handleOpenModal}
-    >
+    <main className="relative group flex flex-col items-center justify-center content-center mx-1 text-center h-full bg-zinc-900">
       {!data?.poster ? (
         <Image
           src={loady}
@@ -43,14 +40,14 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
       ) : (
         <Image
           className="
-          h-full
-          self-center         
-          transition
-          duration
+          h-full  
+          self-center       
           shadow-xl
           rounded-md
           group-hover:opacity-90
           sm:group-hover:opacity-0
+          transition
+          duration
           delay-300
         "
           width={200}
@@ -62,27 +59,34 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
       )}
       <div
         className="
-      opacity-0
-      absolute
-      transition
-      duration-300
-      z-10
-      invisible
-      sm:visible
-      delay-200
-      scale-0
-      group-hover:scale-100
-      group-hover:-translate-y-[2vw]
-      group-hover:opacity-100
+        absolute
+        z-10
+        opacity-0
+        sm:visible
+        invisible
+        group-hover:scale-100
+        group-hover:-translate-y-[-4vw]
+        group-hover:opacity-100
+        scale-0
+        duration-300
+        delay-200
+        transition
+        border
+        h-[45vw]
+        w-full
+        border-purple-600
       "
       >
         <Image
+          onClick={() => router.push(`/movie/${data?.id}`)}
           className="
-        cursor-pointer
-        transition
-        duration
-        shadow-xl
-        rounded-t-md
+          cursor-pointer
+          transition
+          duration
+          shadow-xl
+          rounded-t-md
+          w-full
+          h-[60%]
         "
           width={200}
           height={200}
@@ -91,15 +95,16 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
         />
         <section
           className="
-        z-10
-        bg-zinc-800
-        p-2
-        lg:p-4
-        absolute
-        w-full
-        transition
-        shadow-md
-        rounded-b-md
+          z-10
+          absolute
+          w-full
+          h-[40%]
+          shadow-md
+          rounded-b-md
+          p-2
+          lg:p-4
+          bg-zinc-800
+          transition
         "
         >
           <div
@@ -107,9 +112,10 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 flex flex-row items-center
 "
           >
-            {/* <FavoriteButton movieId={data?.id} />
-            <WatchlistButton movieId={data?.id} /> */}
-            {/* <div
+            <FavoriteButton movieId={data?.id} />
+            <WatchlistButton movieId={data?.id} />
+          </div>
+          {/* <div
               onClick={() => router.push(`/watch/${data?.id}`)}
               className="
             cursor-pointer
@@ -130,27 +136,16 @@ flex flex-row items-center
               <BsFillPlayFill size={25} />
             </div> */}
 
-            {/* <FavoriteButton movieId={data?.id} />
-            <WatchlistButton movieId={data?.id} /> */}
-          </div>
           {/* <p className="text-green-400 font-semibold mt-4">
             New <span className="text-white">2023</span>
           </p> */}
-          <div className="flex flex-row mt-4 gap-2 items-center">
-            <p className="text-white text-[10px] lg:text-sm">{data.title}</p>
-          </div>
-          <div className="flex flex-row mt-4 gap-2 items-center">
-            <p className="text-white text-[10px] lg:text-sm">
-              Rating: {data.score}
+          <div
+            className="flex flex-row items-center"
+            onClick={() => router.push(`/movie/${data?.id}`)}
+          >
+            <p className="cursor-pointer text-white text-center text-sm lg:text-sm">
+              {data.title}
             </p>
-          </div>
-          <div className="flex flex-row mt-4 gap-2 items-center">
-            <button className="text-white text-[10px] lg:text-sm">
-              {data.categories[0]}
-            </button>
-            <button className="text-white text-[10px] lg:text-sm">
-              {data.categories[1]}
-            </button>
           </div>
         </section>
       </div>
