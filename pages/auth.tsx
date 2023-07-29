@@ -51,12 +51,12 @@ const Auth = () => {
   return (
     <main className="relative h-full w-full bg-[url('/images/socialHero.png')] bg-center bg-fixed bg-no-repeat">
       <main className="w-full h-full bg-black lg:bg-opacity-50">
-        <section className="flex justify-center items-center content-center h-full">
-          <div className="w-full lg:w-2/5 px-16 py-16 bg-black bg-opacity-70 rounded-md lg:max-w-md">
+        <section className="flex justify-center items-center content-center h-full ">
+          <section className="w-full md:w-4/5 lg:w-2/5 px-16 py-16 bg-black bg-opacity-70 rounded-md lg:max-w-md">
             <h2 className="text-white text-2xl font-semibold mb-8">
               {variant === "login" ? "Sign In" : "Create An Account"}
             </h2>
-            <section
+            <form
               className="
             flex 
             flex-col 
@@ -85,7 +85,7 @@ const Auth = () => {
                 type="password"
                 value={password}
               />
-            </section>
+            </form>
             <button
               onClick={variant === "login" ? login : register}
               className="
@@ -144,10 +144,10 @@ const Auth = () => {
                 <FaGithub size={30} />
               </div>
             </nav>
-            <p className="text-neutral-500 text-md mt-12">
+            <p className="text-neutral-500 text-md mt-12 md:text-center">
               {variant === "login"
-                ? "First time Using Movie Social"
-                : "Already have an account?"}
+                ? "First time Using Movie Social? | "
+                : "Already have an account? | "}
               <span
                 onClick={toggleVariant}
                 className="text-white text-md ml-1 hover:underline cursor-pointer"
@@ -155,7 +155,7 @@ const Auth = () => {
                 {variant === "login" ? "Create an account" : "Login"}
               </span>
             </p>
-          </div>
+          </section>
         </section>
       </main>
     </main>
