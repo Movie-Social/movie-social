@@ -21,6 +21,8 @@ import omdbFetcher from "@/lib/omdbFetcher";
 import { omdbProps, tmdbProps } from "./tmdb/[restfulDetails]";
 import FavoriteButton from "@/components/FavoriteButton";
 import WatchlistButton from "@/components/WatchlistButton";
+import { getSession } from "next-auth/react";
+import { NextPageContext } from "next";
 
 export interface ReviewProps {
   id: string;
@@ -29,6 +31,22 @@ export interface ReviewProps {
   review: string;
   title: string;
   userId: string;
+}
+
+export async function getServerSideProps(context: NextPageContext) {
+  const session = await getSession(context);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/auth",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
 }
 
 const MovieDetails = () => {
