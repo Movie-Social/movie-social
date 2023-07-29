@@ -37,15 +37,14 @@ const MyProfile = () => {
     <main className="flex justify-center text-white">
       <Navbar />
       <main className="flex flex-col lg:flex-row justify-around lg:justify-between w-[100vw] lg:w-4/5 py-5 mt-10">
-        <aside className="flex flex-col content-center w-full lg:w-1/6 h-1/5 p-2 lg:p-0 mb-3 lg:border lg:border-yellow-300 rounded-md">
-          <h2 className="text-2xl lg:text-3xl font-bold mb-2 mx-2 md:mx-10 md:my-5 px-2 border-l-2 border-yellow-300">
+        <aside className="flex flex-col content-center w-full lg:w-1/6 h-1/5 lg:h-1/6 p-2 lg:p-0 mb-3 lg:border lg:border-yellow-300 rounded-md">
+          <h2 className="text-2xl lg:text-3xl font-bold mb-2 mx-2 md:mx-10 lg:mx-1 md:my-5 px-2 border-l-2 border-yellow-300">
             Profile
           </h2>
-          <section className="flex flex-row items-center md:mx-10">
+          <section className="flex flex-row items-center md:mx-10 lg:mx-1 ">
             <BiUserCircle size={35} />
-            <div className="px-2">
-              <h2>{currentUser?.name}</h2>
-              <h2>{currentUser?.email}</h2>
+            <div className="px-2 lg:p-0">
+              <h2>user: {currentUser?.name}</h2>
             </div>
           </section>
         </aside>
