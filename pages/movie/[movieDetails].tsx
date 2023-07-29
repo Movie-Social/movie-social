@@ -171,7 +171,7 @@ const MovieDetails = () => {
                 <FavoriteButton movieId={tmdb?.id} />
               </div>
             </section> */}
-            <div className="flex flex-col justify-evenly w-full pb-2 mb-4 border-2 border-blue-500 rounded-lg">
+            <div className="flex flex-col justify-evenly w-full p-2 mb-4 border-2 border-blue-500 rounded-lg">
               <h2 className="text-white text-center text-xl md:text-2xl lg:text-3xl font-bold">
                 {!data?.title ? "..........." : data?.title}
               </h2>
@@ -371,7 +371,7 @@ const MovieDetails = () => {
               ) : null}
             </div>
             <ExistingReviews data={reviews} />
-            <h2 className=" text-white text-2xl lg:text-3xl font-bold mx-2 px-2 border-l-2 border-yellow-300 ">
+            <h2 className=" text-white text-xl md:text-2xl lg:text-3xl font-bold mx-2 px-2 border-l-2 border-yellow-300 ">
               Rate and Review
             </h2>
             <br></br>

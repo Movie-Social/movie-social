@@ -39,7 +39,7 @@ const SubmitReviewButton: React.FC<SubmitReviewButtonProps> = ({
       onClick={addReview}
       className="cursor-pointer md:w-1/5 text-center m-2 p-1 bg-yellow-500 rounded-md"
     >
-      Submit button
+      Submit
     </main>
   );
 };
