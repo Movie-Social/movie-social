@@ -42,7 +42,7 @@ const Reviewform: React.FC<ReviewProps> = ({
       .map((idx) => (
         <BsFillStarFill
           key={idx}
-          size={30}
+          size={20}
           style={{ color: getColor(idx) }}
           className="cursor-pointer mx-1"
           onMouseEnter={() => setHoverRating(idx)}
@@ -54,7 +54,7 @@ const Reviewform: React.FC<ReviewProps> = ({
   }, [rating, hoverRating]);
   return (
     <main className="w-full h-[30vh] p-4 border-2 border-orange-500">
-      <section className="flex flex-row justify-between">
+      <section className="flex flex-row justify-between items-center">
         <div className="flex flex-row">
           <BiUserCircle size={30} />
           {currentUser?.data?.name}
@@ -66,7 +66,7 @@ const Reviewform: React.FC<ReviewProps> = ({
         placeholder="What did you think of the movie? (optional)"
         value={review}
         onChange={handleChange}
-        className="w-full h-3/5 lg:h-[90%] text-center text-xl lg:text-2xl text-black my-3 rounded-md"
+        className="w-full h-3/5 lg:h-[90%] text-center md:text-xl lg:text-2xl text-black my-3 rounded-md"
       />
       <div className="flex justify-center">
         <SubmitReviewButton

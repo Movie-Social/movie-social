@@ -173,7 +173,7 @@ const RestfulMovieDetails = () => {
     <main className="flex flex-col items-center w-full text-white">
       <Navbar />
       <br></br>
-      <section className="flex flex-col items-center md:w-[90vw] mt-10 border border-red-600">
+      <section className="flex flex-col items-center md:w-[90vw] mt-10">
         <div className="w-full my-5">
           {trailer ? (
             <YouTube
@@ -203,36 +203,48 @@ const RestfulMovieDetails = () => {
               className=" max-[767px]:w-2/5 h-2/5 self-center mb-5 border border-yellow-300 rounded-lg"
             />
             <div className="flex flex-col justify-evenly w-full pb-2 mb-4 border-2 border-blue-500 rounded-lg">
-              <h2 className="text-white text-center text-2xl lg:text-3xl font-bold">
+              <h2 className="text-white text-center text-xl md:text-2xl lg:text-3xl font-bold">
                 {!tmdb?.title ? "..........." : tmdb?.title}
               </h2>
               {tmdb?.tagline ? (
-                <h3 className="text-white text-center text-xl lg:text-2xl italic">
+                <h3 className="text-white text-center text-l md:text-xl lg:text-2xl italic">
                   {tmdb?.tagline}
                 </h3>
               ) : null}
-              <div className="flex flex-row justify-evenly items-center self-center mx-2 border-2 border-red-500 ">
+              <div className="flex flex-row justify-evenly items-center content-center w-5/6 self-center mx-2 border-2 border-red-500 ">
                 {omdb?.Rated ? (
-                  <p className="text-l">Rated: {omdb?.Rated} </p>
+                  <div className="ml-4 px-2 border-l border-yellow-300">
+                    <p className="text-l">Rated:</p>
+                    <p className="text-l">{omdb?.Rated} </p>
+                  </div>
                 ) : null}
                 {tmdb?.release_date ? (
-                  <p className="text-l">
-                    | Year: {tmdb?.release_date?.split("-")[0]}{" "}
-                  </p>
+                  <div className="ml-4 px-2 border-l border-yellow-300">
+                    <p className="text-l">Year:</p>
+                    <p className="text-l">
+                      {tmdb?.release_date?.split("-")[0]}{" "}
+                    </p>
+                  </div>
                 ) : null}
                 {tmdb?.genres ? (
-                  <p className="text-l">
-                    | Genre: {tmdb?.genres.map((genre: any) => genre.name)[0]}
-                  </p>
+                  <div className="ml-4 px-2 border-l border-yellow-300">
+                    <p className="text-l">Genre:</p>
+                    <p className="text-l">
+                      {tmdb?.genres.map((genre: any) => genre.name)[0]}{" "}
+                    </p>
+                  </div>
                 ) : null}
                 {omdb?.Runtime ? (
-                  <p className="text-l"> | Runtime: {omdb?.Runtime}</p>
+                  <div className="ml-4 px-2 border-l border-yellow-300">
+                    <p className="text-l">Runtime:</p>
+                    <p className="text-l">{omdb?.Runtime} </p>
+                  </div>
                 ) : null}
               </div>
               <div className="flex flex-row justify-around h-full mt-2 py-1 border border-orange-400">
                 {omdb?.imdbRating === "N/A" ? null : (
                   <div className="flex flex-col flex-grow justify-between items-center">
-                    <h2 className="text-white text-center text-xl lg:text-2xl font-semibold">
+                    <h2 className="text-white text-center text-l md:text-xl lg:text-2xl font-semibold">
                       IMDB
                     </h2>
                     <div className="flex flex-row justify-around items-center content-center">
@@ -242,7 +254,7 @@ const RestfulMovieDetails = () => {
                         height={50}
                         alt="IMDB Logo"
                       />
-                      <p className="text-white text-center text-xl lg:text-2xl ml-2">
+                      <p className="text-white text-center text-l md:text-xl lg:text-2xl ml-2">
                         {omdb?.imdbRating * 10}%
                       </p>
                     </div>
@@ -250,7 +262,7 @@ const RestfulMovieDetails = () => {
                 )}
                 {theRottenScore ? (
                   <div className="flex flex-col flex-grow justify-between items-center">
-                    <h2 className="text-white text-center text-xl lg:text-2xl font-semibold">
+                    <h2 className="text-white text-center text-l md:text-xl lg:text-2xl font-semibold">
                       Rotten Tomatoes
                     </h2>
                     <div className="flex flex-row justify-around items-center content-center">
@@ -261,7 +273,7 @@ const RestfulMovieDetails = () => {
                         height={50}
                         alt="Rotten Tomatoes logo"
                       />
-                      <p className="text-white text-center text-xl lg:text-2xl ml-2">
+                      <p className="text-white text-center text-l md:text-xl lg:text-2xl ml-2">
                         {theRottenScore}
                       </p>
                     </div>
@@ -269,7 +281,7 @@ const RestfulMovieDetails = () => {
                 ) : null}
                 {omdb?.Metascore === "N/A" ? null : (
                   <div className="flex flex-col flex-grow justify-between items-center">
-                    <h2 className="text-white text-center text-xl lg:text-2xl font-semibold">
+                    <h2 className="text-white text-center text-l md:text-xl lg:text-2xl font-semibold">
                       MetaCritic
                     </h2>
                     <div className="flex flex-row justify-around items-center content-center">
@@ -280,14 +292,14 @@ const RestfulMovieDetails = () => {
                         alt="Metacritic logo"
                         className="rounded-full"
                       />
-                      <p className="text-white text-center text-xl lg:text-2xl ml-2">
+                      <p className="text-white text-center text-l md:text-xl lg:text-2xl ml-2">
                         {omdb?.Metascore}%
                       </p>
                     </div>
                   </div>
                 )}
                 {/* <div className="flex flex-col flex-grow justify-between items-center">
-                  <h2 className="text-white text-center text-xl lg:text-2xl font-semibold">
+                  <h2 className="text-white text-center text-l md:text-xl lg:text-2xl font-semibold">
                     Movie Social
                   </h2>
                   <div className="flex flex-row justify-around items-center content-center">
@@ -298,7 +310,7 @@ const RestfulMovieDetails = () => {
                       width={50}
                       height={50}
                     />
-                    <p className="text-white text-center text-xl lg:text-2xl ml-2">
+                    <p className="text-white text-center text-l md:text-xl lg:text-2xl ml-2">
 {data?.score}                  
     </p>
                   </div>
@@ -307,11 +319,11 @@ const RestfulMovieDetails = () => {
             </div>
           </aside>
 
-          <article className="w-full lg:w-[90%] lg:self-center lg:ml-[5%] border-2">
-            <h2 className="mx-2 px-2 text-white text-2xl lg:text-3xl font-bold mb-5 border-l-2 border-yellow-300 ">
+          <article className="w-full lg:w-[90%] lg:self-center lg:ml-[5%] border border-pink-600">
+            <h2 className="mx-2 px-2 text-white text-xl md:text-2xl lg:text-3xl font-bold mb-5 border-l-2 border-yellow-300 ">
               Movie Info
             </h2>
-            <div className="text-xl lg:text-2xl p-2 lg:ml-5 mb-5 border border-green-500">
+            <div className="text-l md:text-xl lg:text-2xl p-2 lg:ml-5 mb-5 border border-green-500">
               {tmdb?.overview ? (
                 <p className="m-2">{tmdb?.overview}</p>
               ) : (
@@ -391,7 +403,7 @@ const RestfulMovieDetails = () => {
               ) : null}
             </div>
             <ExistingReviews data={reviews} />
-            <h2 className=" text-white text-2xl lg:text-3xl font-bold mx-2 px-2 border-l-2 border-yellow-300 ">
+            <h2 className=" text-white text-xl md:text-2xl lg:text-3xl font-bold mx-2 px-2 border-l-2 border-yellow-300 ">
               Rate and Review
             </h2>
             <br></br>
