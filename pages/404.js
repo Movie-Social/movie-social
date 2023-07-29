@@ -13,7 +13,7 @@ const ErrorPage = () => {
       <Image
         src={movie404}
         alt="Gif of John Travolta looking for the internet connection"
-        className="w-4/5 lg:w-3/5 self-center my-4 rounded-lg"
+        className="w-4/5 lg:w-5/12 self-center my-4 rounded-lg"
       />
       <h1 className="text-center text-xl lg:text-3xl text-yellow-300 font-semibold">
         Two Options
