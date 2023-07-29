@@ -23,7 +23,7 @@ const ProfileListItem: React.FC<ListItemProps> = ({ movieId }) => {
         <Image
           priority
           onClick={() => router.push(`/movie/${data?.movieId}`)}
-          className="h-full cursor-pointer transition hover:opacity-70"
+          className="cursor-pointer h-full transition hover:opacity-70"
           width={150}
           height={50}
           src={data?.poster}
