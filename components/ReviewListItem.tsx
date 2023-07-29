@@ -14,7 +14,7 @@ const ReviewListItem: React.FC<ReviewListItemProps> = ({ data }) => {
     <main className="flex justify-center">
       <section className="w-[95%] my-3 p-3 border-b-2 border-yellow-300 border-opacity-30">
         <h2
-          className="cursor-pointer text-xl lg:text-2xl text-center mb-3 transtion hover:text-yellow-300"
+          className="cursor-pointer text-xl lg:text-2xl mb-3 transtion hover:text-yellow-300"
           onClick={() => router.push(`/movie/${movieMovie.data}`)}
         >
           {data?.title}
