@@ -178,7 +178,7 @@ const Hero = () => {
   const shuffled = shuffle(images);
 
   return (
-    <main className="lg:w-4/5 lg:rounded-lg self-center opacity-50">
+    <main className="lg:w-full lg:h- lg:rounded-lg self-center opacity-50 mt-10">
       <Slide
         transitionDuration={1000}
         autoplay={true}
