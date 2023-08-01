@@ -9,12 +9,12 @@ const ReviewList: React.FC<ReviewListProps> = ({ data }) => {
     return null;
   }
   return (
-    <main>
-      <div className="flex flex-col justify-around border-blue border-2 my-3">
+    <main className="w-full flex justify-center">
+      <section className="flex flex-col justify-around md:w-5/6 my-5 border-white border-opacity-70 border rounded-md">
         {data.map((movie) => {
           return <ReviewListItem key={movie.id} data={movie} />;
         })}
-      </div>
+      </section>
     </main>
   );
 };

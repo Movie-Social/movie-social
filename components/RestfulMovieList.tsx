@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Slide } from "react-slideshow-image";
 import tmdbFetcher from "@/lib/tmdbFetcher";
 import RestfulMovieCard from "./RestfulMovieCard";
+import { BiSkipNext, BiSkipPrevious } from "react-icons/bi";
 
 interface RestfulMovieListProps {
   title: string;
@@ -16,34 +17,108 @@ const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
     const fetchTMDBLists = async () => {
       const list = await tmdbFetcher(apiString);
       const englishMovies = list.results.filter(
-        (movie) => movie?.original_language === "en"
+        (movie: { original_language: string }) =>
+          movie?.original_language === "en"
       );
       setTmdbList(englishMovies);
+      // if (title === "Upcoming") {
+      //   const upcoming = englishMovies.filter((movie) => {
+      //     const dateString = Date(movie.release_date);
+      //     const dateTime = new Date(dateString);
+      //     const milli = dateTime.getTime();
+      //     console.log(milli, "Movie release");
+      //     console.log(Date.now(), "Now ");
+      //     return milli < Date.now();
+      //   });
+      //   setTmdbList(upcoming);
+      // }
     };
 
     fetchTMDBLists();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   if (isEmpty(tmdbList)) {
     return null;
   }
 
   return (
-    <main className="px-4 md:px-12 mt-2 space-y-4 flex justify-center border border-orange-300">
-      <section className="flex flex-col content-center  w-[70vw]">
-        <h2 className="text-white text-md md:text-xl lg:text-2xl font-semibold mb-4">
+    <main className="flex justify-center lg:w-4/5 self-center px-2 mt-4 space-y-5 md:space-y-7">
+      <section className="flex flex-col content-center w-full">
+        <h2 className="text-white text-md md:text-xl lg:text-2xl font-semibold md:mx-2 my-4">
           {title}
         </h2>
-        <Slide
-          transitionDuration={1000}
-          autoplay={false}
-          slidesToScroll={3}
-          slidesToShow={4}
-          indicators={true}
-        >
-          {tmdbList.map((movie: any) => {
-            return <RestfulMovieCard key={movie.id} data={movie} />;
-          })}
-        </Slide>
+        {/* Small to medium slideshow */}
+        <div className="lg:hidden">
+          <Slide
+            transitionDuration={1000}
+            autoplay={false}
+            slidesToScroll={3}
+            slidesToShow={4}
+            indicators={true}
+            nextArrow={
+              <button
+                style={{
+                  cursor: "pointer",
+                  border: "0px",
+                  opacity: "90%",
+                }}
+              >
+                <BiSkipNext size={40} className="text-yellow-300" />
+              </button>
+            }
+            prevArrow={
+              <button
+                style={{
+                  cursor: "pointer",
+                  border: "0px",
+                  opacity: "90%",
+                }}
+              >
+                <BiSkipPrevious size={40} className="text-yellow-300" />
+              </button>
+            }
+          >
+            {tmdbList.map((movie: any) => {
+              return <RestfulMovieCard key={movie.id} data={movie} />;
+            })}
+          </Slide>
+        </div>
+        {/* Slideshow for larger screens */}
+        <div className="hidden lg:block">
+          <Slide
+            transitionDuration={1000}
+            autoplay={false}
+            slidesToScroll={3}
+            slidesToShow={5}
+            indicators={true}
+            nextArrow={
+              <button
+                style={{
+                  cursor: "pointer",
+                  border: "0px",
+                  opacity: "90%",
+                }}
+              >
+                <BiSkipNext size={40} className="text-yellow-300" />
+              </button>
+            }
+            prevArrow={
+              <button
+                style={{
+                  cursor: "pointer",
+                  border: "0px",
+                  opacity: "90%",
+                }}
+              >
+                <BiSkipPrevious size={40} className="text-yellow-300" />
+              </button>
+            }
+          >
+            {tmdbList.map((movie: any) => {
+              return <RestfulMovieCard key={movie.id} data={movie} />;
+            })}
+          </Slide>
+        </div>
       </section>
     </main>
   );

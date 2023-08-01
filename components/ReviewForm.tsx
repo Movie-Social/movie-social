@@ -7,7 +7,7 @@ import SubmitReviewButton from "./SubmitReviewButton";
 interface ReviewProps {
   onRating: Function;
   rating: number;
-  title: string;
+  title: string | undefined;
   poster: string;
 }
 
@@ -42,7 +42,7 @@ const Reviewform: React.FC<ReviewProps> = ({
       .map((idx) => (
         <BsFillStarFill
           key={idx}
-          size={30}
+          size={20}
           style={{ color: getColor(idx) }}
           className="cursor-pointer mx-1"
           onMouseEnter={() => setHoverRating(idx)}
@@ -50,13 +50,14 @@ const Reviewform: React.FC<ReviewProps> = ({
           onClick={() => onRating(idx)}
         />
       ));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rating, hoverRating]);
   return (
-    <main className="border-2 border-red-300 h-[40vh]">
-      <section className="flex flex-row justify-between">
-        <div className="flex flex-row">
+    <main className="w-full h-[30vh] p-4 ">
+      <section className="flex flex-row justify-between items-center">
+        <div className="flex flex-row justify-center items-center">
           <BiUserCircle size={30} />
-          {currentUser?.data?.name}
+          <p className="text-white ">{currentUser?.name}</p>
         </div>
         <div className="flex flex-row">{starRating}</div>
       </section>
@@ -65,16 +66,18 @@ const Reviewform: React.FC<ReviewProps> = ({
         placeholder="What did you think of the movie? (optional)"
         value={review}
         onChange={handleChange}
-        className="w-full h-[90%] text-black"
+        className="w-full h-3/5 lg:h-[90%] text-center md:text-xl lg:text-xl text-black my-3 rounded-md"
       />
-      <SubmitReviewButton
-        userId={currentUser?.id}
-        rating={rating}
-        review={review}
-        title={title}
-        poster={poster}
-        usersName={currentUser?.name}
-      />
+      <div className="flex justify-center">
+        <SubmitReviewButton
+          userId={currentUser?.id}
+          rating={rating}
+          review={review}
+          title={title}
+          poster={poster}
+          usersName={currentUser?.name}
+        />
+      </div>
     </main>
   );
 };
