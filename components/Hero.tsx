@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 import PlayButton from "./PlayButton";
 import Image from "next/image";
 import { BiSkipNext, BiSkipPrevious } from "react-icons/bi";
+import RestfulMovieList from "./RestfulMovieList";
 
 interface ShuffleArgs {
   image: string;
@@ -178,7 +179,7 @@ const Hero = () => {
   const shuffled = shuffle(images);
 
   return (
-    <main className="lg:w-full lg:h- lg:rounded-lg self-center opacity-50 mt-10">
+    <main className="lg:w-full lg:h-[100vh] lg:rounded-lg self-center opacity-50 border mb-10 border-blue-700">
       <Slide
         transitionDuration={1000}
         autoplay={true}
@@ -206,16 +207,22 @@ const Hero = () => {
         }
       >
         {shuffled.map((slideImage, index) => (
-          <div className="relative h-56 lg:h-96 w-full" key={index}>
+          <div className="relative h-56 lg:h-[100vh] w-full" key={index}>
             <Image
               src={slideImage.image}
               fill
               priority
               alt={slideImage.caption}
+              className="border-2 border-red-200"
             />
-            <h2 className="absolute bottom-1 inset-x-1/4 text-center z-10 md:text-5xl text-2xl bold text-gray-200">
-              {slideImage.caption.split("Scene from the movie ")[1]}
-            </h2>
+            {/* <h2 className="absolute bottom-1 inset-x-1/4 text-center z-10 md:text-5xl text-2xl bold text-gray-200"> */}
+            <div className="absolute left-20 top-[35%] text-center z-10 md:text-5xl text-2xl bold text-gray-200">
+              <h2>{slideImage.caption.split("Scene from the movie ")[1]}</h2>
+            </div>
+            <div className="w-full absolute bottom-1 inset-x-1/4 text-center z-10">
+              {/* Should make new component? That doesnt have slide effect  */}
+              {/* <RestfulMovieList title="Now Playing" /> */}
+            </div>
           </div>
         ))}
       </Slide>
