@@ -12,9 +12,9 @@ const ReviewListItem: React.FC<ReviewListItemProps> = ({ data }) => {
   const isLoading = useMovieByTitle(data.title);
   return (
     <main className="flex justify-center">
-      <section className="border-b-2 border-yellow-300 w-[95%] my-3 p-3">
+      <section className="w-[95%] my-3 p-3 border-b-2 border-yellow-300 border-opacity-30">
         <h2
-          className="cursor-pointer transtion hover:text-yellow-300"
+          className="cursor-pointer text-xl lg:text-2xl mb-3 transtion hover:text-yellow-300"
           onClick={() => router.push(`/movie/${movieMovie.data}`)}
         >
           {data?.title}
@@ -39,7 +39,18 @@ const ReviewListItem: React.FC<ReviewListItemProps> = ({ data }) => {
               height={50}
             />
           )}
-          <p className="mx-3">{data.review}</p>
+          <div className="flex flex-col justify-evenly">
+            {data.review ? (
+              <p className="mx-3">{data.review}</p>
+            ) : (
+              <p className="mx-3">No Review Submitted</p>
+            )}
+            {data.rating > 0 ? (
+              <p className="mx-3">Rating: {data.rating}/5</p>
+            ) : (
+              <p className="mx-3">Rating: N/A</p>
+            )}
+          </div>
         </div>
       </section>
     </main>

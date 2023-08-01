@@ -8,7 +8,7 @@ import useInfoModal from "@/hooks/useInfoModal";
 import useMovieList from "@/hooks/useMovieList";
 import useWatchlist from "@/hooks/useWatchlist";
 import { NextPageContext } from "next";
-import { getSession, signOut } from "next-auth/react";
+import { getSession } from "next-auth/react";
 
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
@@ -36,8 +36,8 @@ const Home = () => {
     <main>
       <InfoModal visible={isOpen} onClose={closeModal} />
       <Navbar />
-      <Hero />
-      <section className="pb-40">
+      <section className="lg:flex lg:flex-col lg:justify-center pb-10">
+        <Hero />
         <RestfulMovieList title="Now Playing" />
         <RestfulMovieList title="Upcoming" />
         <RestfulMovieList title="Popular" />
@@ -46,7 +46,6 @@ const Home = () => {
         <MovieList title="Action" data={movies} />
         <MovieList title="Horror" data={movies} />
         <RestfulMovieList title="Top Rated" />
-        <MovieList title="My Favorites" data={favorites} />
       </section>
     </main>
   );

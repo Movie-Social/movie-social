@@ -95,33 +95,15 @@ model MovieDetails {
   trailer     String
   summary     String
   reviewCount Int
-  // cast        Cast[]
   boxOffice   String
   director    String
   imdbRating  String
   metascore   String
   movieId     String   @db.ObjectId
   poster      String
-  ratings     Tomato[]
   releaseDate String
   writer      String
   categories  String[]
-  // Review      Review[]
+  tagline     String?
+  budget      Int?
 }
-
-model Tomato {
-  id     String       @id @default(auto()) @map("_id") @db.ObjectId
-  //todo add movieId here
-  source String
-  value  String
-  //todo update fileds with movieid
-  movie  MovieDetails @relation(fields: [id], references: [id], onDelete: Cascade)
-}
-
-// model Cast {
-//   id        String @id @default(auto()) @map("_id") @db.ObjectId
-//   actor     String
-//   character String
-
-//   movie MovieDetails @relation(fields: [id], references: [id], onDelete: Cascade)
-// }

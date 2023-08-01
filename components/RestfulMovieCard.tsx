@@ -11,7 +11,7 @@ interface RestfulMovieCardProps {
 const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
   const router = useRouter();
   return (
-    <main className="flex flex-col items-center justify-center content-center text-center group bg-zinc-900 relative">
+    <main className="relative group flex flex-col items-center justify-center content-center mx-1 text-center bg-zinc-900">
       {/* <div className="flex justify-center"> */}
       {!data?.poster_path ? (
         <Image
@@ -24,13 +24,14 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
         <Image
           className="
           self-center         
-          transition
-          duration
           shadow-xl
           rounded-md
           group-hover:opacity-90
           sm:group-hover:opacity-0
-          delay-300"
+          transition
+          duration
+          delay-300
+          "
           onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
           alt={`${data.title}'s official movie poster"`}
           src={`https://image.tmdb.org/t/p/original/${data?.poster_path}`}
@@ -40,18 +41,21 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
       )}
       <div
         className="
-      opacity-0
-      absolute
-      transition
-      duration-300
-      z-10
-      invisible
-      sm:visible
-      delay-200
-      scale-0
-      group-hover:scale-100
-      group-hover:-translate-y-[2vw]
-      group-hover:opacity-100
+        absolute
+        z-10
+        opacity-0
+        sm:visible
+        invisible
+        group-hover:scale-100
+        group-hover:-translate-y-[-4vw]
+        group-hover:opacity-100
+        scale-0
+        duration-300
+        delay-200
+        transition
+        border
+        h-[45vw]
+        w-full
       "
       >
         <Image
@@ -62,8 +66,8 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
         duration
         shadow-xl
         rounded-t-md
-        border 
-        border-blue-300
+        w-full
+        h-[60%]
         "
           width={200}
           height={200}
@@ -73,28 +77,28 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
         <section
           className="
         z-10
-        bg-zinc-800
-        p-2
-        lg:p-4
         absolute
         w-full
-        transition
+        h-[40%]
         shadow-md
         rounded-b-md
+        p-2
+        lg:p-4
+        bg-zinc-800
+        transition
         "
         >
           <div
             className="
-flex flex-row items-center
-"
+            flex flex-row items-center"
           >
-            {/* <FavoriteButton movieId={data?.id} />
-            <WatchlistButton movieId={data?.id} /> */}
+            <FavoriteButton movieId={data?.id} />
+            <WatchlistButton movieId={data?.id} />
           </div>
           <div className="flex flex-row items-center">
             <p
               onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
-              className="cursor-pointer text-white text-[10px] lg:text-sm"
+              className="cursor-pointer text-white text-center text-sm lg:text-sm"
             >
               {data?.title}
             </p>
