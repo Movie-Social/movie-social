@@ -9,6 +9,7 @@ import PlayButton from "./PlayButton";
 import Image from "next/image";
 import { BiSkipNext, BiSkipPrevious } from "react-icons/bi";
 import RestfulMovieList from "./RestfulMovieList";
+import useAllHero from "@/hooks/useAllHero";
 
 interface ShuffleArgs {
   image: string;
@@ -16,6 +17,7 @@ interface ShuffleArgs {
 }
 
 const Hero = () => {
+  const allHero = useAllHero();
   const images = [
     {
       image: "/images/hero/IMG_8084.jpg",
@@ -177,7 +179,7 @@ const Hero = () => {
   };
 
   const shuffled = shuffle(images);
-
+  console.log("steve", allHero.data);
   return (
     <main className="lg:w-full lg:h-[100vh] lg:rounded-lg self-center opacity-50 border mb-10 border-blue-700">
       <Slide
