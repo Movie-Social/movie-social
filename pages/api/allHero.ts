@@ -10,12 +10,7 @@ export default async function handler(
   }
 
   try {
-    // const { title } = req.body;
-    const allHeroOptions = await prismadb.review.findMany({
-      //   where: {
-      //     title: title,
-      //   },
-    });
+    const allHeroOptions = await prismadb.hero.findMany({});
     return res.status(200).json(allHeroOptions);
   } catch (error: any) {
     logger.error(error.message);
