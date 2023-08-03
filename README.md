@@ -19,7 +19,7 @@
 </details>
 
 ## About the project
-Solo fullstack application built with Next.js. As a frontend engineer it has been frustrating for me to be completely dependent on the open source APIs available.
+Solo fullstack application built with Next.js. As a frontend engineer it has been frustrating for me to be completely dependent on the open source APIs available. Partial Netflix comp?
 
 
 ## [Deployed Application]()
