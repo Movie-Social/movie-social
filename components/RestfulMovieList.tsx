@@ -42,7 +42,7 @@ const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
   }
 
   return (
-    <main className="flex justify-center lg:w-4/5 self-center px-2 mt-4 space-y-5 md:space-y-7">
+    <main className="flex justify-center w-full self-center px-2 mt-4 space-y-5 md:space-y-7">
       <section className="flex flex-col content-center w-full">
         <h2 className="text-white text-md md:text-xl lg:text-2xl font-semibold md:mx-2 my-4">
           {title}
@@ -89,7 +89,7 @@ const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
             transitionDuration={1000}
             autoplay={false}
             slidesToScroll={3}
-            slidesToShow={5}
+            slidesToShow={6}
             indicators={true}
             nextArrow={
               <button
