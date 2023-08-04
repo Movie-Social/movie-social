@@ -18,27 +18,39 @@ interface ShuffleArgs {
 }
 
 const Hero = () => {
+  // function shuffleArray(array: ShuffleArgs[]) {
+  //   const shuffledArray = [...array];
+  //   for (let i = shuffledArray.length - 1; i > 0; i--) {
+  //     const j = Math.floor(Math.random() * (i + 1));
+  //     [shuffledArray[i], shuffledArray[j]] = [
+  //       shuffledArray[j],
+  //       shuffledArray[i],
+  //     ];
+  //   }
+  //   return shuffledArray;
+  // }
+
   const allHero = useAllHero();
-
   const heroOptions = allHero?.data;
+  // const shuffledHeroOptions = shuffleArray(heroOptions || []);
 
-  const shuffle = (array: ShuffleArgs[]) => {
-    let currentIndex = array.length,
-      randomIndex;
+  // const shuffle = (array: ShuffleArgs[]) => {
+  //   let currentIndex = array.length,
+  //     randomIndex;
 
-    while (currentIndex != 0) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
+  //   while (currentIndex != 0) {
+  //     randomIndex = Math.floor(Math.random() * currentIndex);
+  //     currentIndex--;
 
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex],
-        array[currentIndex],
-      ];
-    }
+  //     [array[currentIndex], array[randomIndex]] = [
+  //       array[randomIndex],
+  //       array[currentIndex],
+  //     ];
+  //   }
 
-    return array;
-  };
-  const shuffled = shuffle(heroOptions);
+  //   return array;
+  // };
+  // const shuffled = shuffle(heroOptions);
   return (
     <main className="lg:w-full lg:h-[100vh] lg:rounded-lg self-center opacity-50 border mb-10 border-blue-700">
       <Slide
@@ -67,7 +79,7 @@ const Hero = () => {
           </button>
         }
       >
-        {shuffled.map((slideImage, index) => (
+        {heroOptions.map((slideImage: any, index: any) => (
           <div className="relative h-56 lg:h-[100vh] w-full" key={index}>
             <Image
               src={slideImage.poster}
