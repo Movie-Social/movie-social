@@ -15,7 +15,10 @@ const Hero = () => {
     <main className="lg:w-full lg:h-[100vh] self-center opacity-50 mb-10 border lg:rounded-lg border-blue-700">
       <div className="relative h-56 lg:h-[100vh] w-full">
         <Image
-          onClick={() => openModal("643dda29ea3c9d361ac2b0ce")}
+          onClick={() => {
+            console.log(heroOptions?.id, "<<");
+            openModal("643dda29ea3c9d361ac2b0ce");
+          }}
           src={heroOptions?.poster}
           fill
           priority

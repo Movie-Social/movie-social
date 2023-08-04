@@ -163,15 +163,8 @@ justify-center
               className="px-12
           py-8"
             >
-              {/* <p
-              className="text-green-400 font-semibold
-            text-lg"
-            >
-              New
-            </p> */}
               <p className="text-white text-lg">{data?.runtime}</p>
               <p className="text-white text-lg">Rated: {data?.rating}</p>
-              {/* <p className="text-white text-lg">{data?.reviewCount}</p> */}
               {/* <p className="text-white text-lg">{data?.trailer}</p> */}
               {/* <p className="text-white text-lg">{data?.genre}</p> */}
               <p className="text-white text-lg">{data?.summary}</p>
