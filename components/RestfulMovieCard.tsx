@@ -10,27 +10,37 @@ interface RestfulMovieCardProps {
 
 const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
   const router = useRouter();
+  console.log(data);
   return (
     <main
-      className={`relative w-[95%] mx-20 h-[25vh] text-center bg-transparent border border-purple-500`}
+      className={`relative w-[95%] mx-20 h-[25vh] text-center bg-transparent hover:opacity-30 border border-purple-500 z-0`}
     >
-      {!data?.poster_path ? (
-        <Image
-          src={loady}
-          alt="gif to show the intended image is loading"
-          fill
-          className="absolute"
-        />
-      ) : (
-        <Image
-          onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
-          alt={`${data.title}'s official movie poster"`}
-          src={`https://image.tmdb.org/t/p/original/${data?.poster_path}`}
-          fill
-          className="absolute"
-        />
-      )}
-      <section></section>
+      <section className="">
+        {!data?.poster_path ? (
+          <Image
+            src={loady}
+            alt="gif to show the intended image is loading"
+            fill
+          />
+        ) : (
+          <Image
+            onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
+            alt={`${data.title}'s official movie poster"`}
+            src={`https://image.tmdb.org/t/p/original/${data?.poster_path}`}
+            fill
+            className="transition duration-500"
+          />
+        )}
+      </section>
+      <section className="opacity-0  flex flex-col justify-around h-full w-full border border-orange-300 hover:opacity-100">
+        <h2 className="text-white text-center font-bold text-sm lg:text-lg">
+          {data?.title}
+        </h2>
+        <div className="flex flex-row justify-around">
+          <FavoriteButton movieId={data?.id.toString()} />
+          <WatchlistButton movieId={data?.id} />
+        </div>
+      </section>
     </main>
   );
   // return (
