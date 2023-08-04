@@ -10,8 +10,15 @@ export default async function handler(
   }
 
   try {
-    const allHeroOptions = await prismadb.hero.findMany({});
-    return res.status(200).json(allHeroOptions);
+    const heroCount = await prismadb.hero.count();
+    const randomIndex = Math.floor(Math.random() * heroCount);
+
+    //using pagination to fetch for one single movie.
+    const randomMovies = await prismadb.hero.findMany({
+      take: 1,
+      skip: randomIndex,
+    });
+    return res.status(200).json(randomMovies[0]);
   } catch (error: any) {
     logger.error(error.message);
   }
