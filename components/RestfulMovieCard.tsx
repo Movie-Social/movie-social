@@ -11,7 +11,7 @@ interface RestfulMovieCardProps {
 const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
   const router = useRouter();
   return (
-    <main className="relative group flex flex-col items-center justify-center content-center mx-1 text-center bg-zinc-900">
+    <main className="relative group flex flex-col items-center justify-center content-center mx-1 text-center bg-transparent">
       {/* <div className="flex justify-center"> */}
       {!data?.poster_path ? (
         <Image
@@ -31,6 +31,8 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
           transition
           duration
           delay-300
+          width-auto
+          height-auto
           "
           onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
           alt={`${data.title}'s official movie poster"`}
