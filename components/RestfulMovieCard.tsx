@@ -3,12 +3,15 @@ import FavoriteButton from "./FavoriteButton";
 import WatchlistButton from "./WatchlistButton";
 import Image from "next/image";
 import loady from "../public/images/imgLoad.gif";
+// import useInfoModal from "@/hooks/useInfoModal";
+
 interface RestfulMovieCardProps {
   data: Record<string, any>;
 }
 
 const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
   const router = useRouter();
+  // const { openModal } = useInfoModal();
   return (
     <main
       className={`relative group w-[95%] mx-20 h-[25vh] text-center rounded-md bg-black overflow-visible transition duration-500 hover:scale-125 hover:-translate-y-[1vw]`}
@@ -33,7 +36,8 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
       </section>
       <section className="relative flex flex-col justify-around h-full w-full rounded-md opacity-0 transition duration-500 group-hover:opacity-100">
         <Image
-          onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
+          // onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
+          // onClick={() => openModal(data?.id)}
           alt={`${data.title}'s official movie poster"`}
           src={`https://image.tmdb.org/t/p/original/${data?.poster_path}`}
           width={200}
