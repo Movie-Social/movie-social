@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import { BsFillPlayFill } from "react-icons/bs";
 import FavoriteButton from "./FavoriteButton";
 import WatchlistButton from "./WatchlistButton";
 import Image from "next/image";
@@ -10,10 +9,9 @@ interface RestfulMovieCardProps {
 
 const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
   const router = useRouter();
-  console.log(data);
   return (
     <main
-      className={`relative group w-[95%] mx-20 h-[25vh] text-center bg-transparent`}
+      className={`relative group w-[95%] mx-20 h-[25vh] text-center rounded-md bg-black overflow-visible transition duration-500 hover:scale-125 hover:-translate-y-[1vw]`}
     >
       <section className="z-10">
         {!data?.poster_path ? (
@@ -21,6 +19,7 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
             src={loady}
             alt="gif to show the intended image is loading"
             fill
+            className="rounded-md"
           />
         ) : (
           <Image
@@ -28,25 +27,24 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
             alt={`${data.title}'s official movie poster"`}
             src={`https://image.tmdb.org/t/p/original/${data?.poster_path}`}
             fill
-            className="transition duration-500 group-hover:opacity-0"
+            className="cursor-pointer rounded-md transition duration-500 group-hover:opacity-0"
           />
         )}
       </section>
-      <section className=" flex flex-col justify-around h-full w-full opacity-0 transition duration-500 group-hover:opacity-100 border border-orange-300">
-        <div className="h-5/6">
-          <Image
-            onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
-            alt={`${data.title}'s official movie poster"`}
-            src={`https://image.tmdb.org/t/p/original/${data?.poster_path}`}
-            width={200}
-            height={200}
-            className="w-full h-full"
-          />
-        </div>
-        <div className="flex flex-col justify-around h-1/6 border border-green-400">
-          <h2 className="text-white text-center text-sm lg:text-lg">
-            {data?.title}
-          </h2>
+      <section className="relative flex flex-col justify-around h-full w-full rounded-md opacity-0 transition duration-500 group-hover:opacity-100">
+        <Image
+          onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
+          alt={`${data.title}'s official movie poster"`}
+          src={`https://image.tmdb.org/t/p/original/${data?.poster_path}`}
+          width={200}
+          height={200}
+          className="absolute w-full h-full rounded-md opacity-50 cursor-pointer"
+        />
+        <div className="absolute bottom-4 left-1 flex flex-col items-start">
+          <h2 className="text-white mx-2 text-sm lg:text-lg">{data?.title}</h2>
+          <p className="text-white mx-2 text-sm lg:text-lg">
+            {data?.release_date.split("-")[0]}
+          </p>
           <div className="flex flex-row justify-around">
             <FavoriteButton movieId={data?.id.toString()} />
             <WatchlistButton movieId={data?.id} />
@@ -55,104 +53,5 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
       </section>
     </main>
   );
-  // return (
-  //   <main className="relative group flex flex-col items-center justify-center content-center mx-1 text-center bg-transparent">
-  //     {/* <div className="flex justify-center"> */}
-  //     {!data?.poster_path ? (
-  //       <Image
-  //         src={loady}
-  //         alt="gif to show the intended image is loading"
-  //         width={200}
-  //         height={200}
-  //       />
-  //     ) : (
-  //       <Image
-  //         className="
-  //         self-center
-  //         shadow-xl
-  //         rounded-md
-  //         group-hover:opacity-90
-  //         sm:group-hover:opacity-0
-  //         transition
-  //         duration
-  //         delay-300
-  //         width-auto
-  //         height-auto
-  //         "
-  //         onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
-  //         alt={`${data.title}'s official movie poster"`}
-  //         src={`https://image.tmdb.org/t/p/original/${data?.poster_path}`}
-  //         width={200}
-  //         height={200}
-  //       />
-  //     )}
-  //     <div
-  //       className="
-  //       absolute
-  //       z-10
-  //       opacity-0
-  //       sm:visible
-  //       invisible
-  //       group-hover:scale-100
-  //       group-hover:-translate-y-[-4vw]
-  //       group-hover:opacity-100
-  //       scale-0
-  //       duration-300
-  //       delay-200
-  //       transition
-  //       border
-  //       h-[45vw]
-  //       w-full
-  //     "
-  //     >
-  //       <Image
-  //         onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
-  //         className="
-  //       cursor-pointer
-  //       transition
-  //       duration
-  //       shadow-xl
-  //       rounded-t-md
-  //       w-full
-  //       h-[60%]
-  //       "
-  //         width={200}
-  //         height={200}
-  //         src={`https://image.tmdb.org/t/p/original/${data?.poster_path}`}
-  //         alt="thumbnail"
-  //       />
-  //       <section
-  //         className="
-  //       z-10
-  //       absolute
-  //       w-full
-  //       h-[40%]
-  //       shadow-md
-  //       rounded-b-md
-  //       p-2
-  //       lg:p-4
-  //       bg-zinc-800
-  //       transition
-  //       "
-  //       >
-  //         <div
-  //           className="
-  //           flex flex-row items-center"
-  //         >
-  //           <FavoriteButton movieId={data?.id} />
-  //           <WatchlistButton movieId={data?.id} />
-  //         </div>
-  //         <div className="flex flex-row items-center">
-  //           <p
-  //             onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
-  //             className="cursor-pointer text-white text-center text-sm lg:text-sm"
-  //           >
-  //             {data?.title}
-  //           </p>
-  //         </div>
-  //       </section>
-  //     </div>
-  //   </main>
-  // );
 };
 export default RestfulMovieCard;
