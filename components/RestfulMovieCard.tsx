@@ -13,9 +13,9 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
   console.log(data);
   return (
     <main
-      className={`relative w-[95%] mx-20 h-[25vh] text-center bg-transparent hover:opacity-30 border border-purple-500 z-0`}
+      className={`relative group w-[95%] mx-20 h-[25vh] text-center bg-transparent`}
     >
-      <section className="">
+      <section className="z-10">
         {!data?.poster_path ? (
           <Image
             src={loady}
@@ -28,17 +28,29 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
             alt={`${data.title}'s official movie poster"`}
             src={`https://image.tmdb.org/t/p/original/${data?.poster_path}`}
             fill
-            className="transition duration-500"
+            className="transition duration-500 group-hover:opacity-0"
           />
         )}
       </section>
-      <section className="opacity-0  flex flex-col justify-around h-full w-full border border-orange-300 hover:opacity-100">
-        <h2 className="text-white text-center font-bold text-sm lg:text-lg">
-          {data?.title}
-        </h2>
-        <div className="flex flex-row justify-around">
-          <FavoriteButton movieId={data?.id.toString()} />
-          <WatchlistButton movieId={data?.id} />
+      <section className=" flex flex-col justify-around h-full w-full opacity-0 transition duration-500 group-hover:opacity-100 border border-orange-300">
+        <div className="h-5/6">
+          <Image
+            onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
+            alt={`${data.title}'s official movie poster"`}
+            src={`https://image.tmdb.org/t/p/original/${data?.poster_path}`}
+            width={200}
+            height={200}
+            className="w-full h-full"
+          />
+        </div>
+        <div className="flex flex-col justify-around h-1/6 border border-green-400">
+          <h2 className="text-white text-center text-sm lg:text-lg">
+            {data?.title}
+          </h2>
+          <div className="flex flex-row justify-around">
+            <FavoriteButton movieId={data?.id.toString()} />
+            <WatchlistButton movieId={data?.id} />
+          </div>
         </div>
       </section>
     </main>
