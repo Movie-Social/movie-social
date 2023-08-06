@@ -1,13 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Image from "next/image";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import tmdbDetailsFetcher from "@/lib/tmdbDetailsFetcher";
 import FavoriteButton from "./FavoriteButton";
 import useRestfulInfoModal from "@/hooks/useRestfulInfoModal";
-import PlayButton from "./PlayButton";
-import LoadingModal from "./LoadingModal";
+import trailerFetcher from "@/lib/trailerFetcher";
+import YouTube, { YouTubeProps } from "react-youtube";
 
 interface InfoModalProps {
   visible: boolean;
@@ -23,6 +22,7 @@ interface DetailProps {
   overview: string;
   release_date: string;
   genres: Genre[];
+  id: number;
 }
 
 type Genre = {
@@ -34,6 +34,7 @@ const RestfulInfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
   const [isVisible, setIsVisisble] = useState(!!visible);
   const { movieId } = useRestfulInfoModal();
   const [details, setDetails] = useState<DetailProps>();
+  const [trailer, setTrailer] = useState();
   const router = useRouter();
 
   useEffect(() => {
@@ -43,6 +44,20 @@ const RestfulInfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
     };
     fetchTmdb();
   }, [movieId]);
+
+  useEffect(() => {
+    const fetchTrailer = async () => {
+      const trailer = await trailerFetcher(details?.id?.toString() as string);
+      if (trailer?.results?.length > 0) {
+        const youtubeKey = trailer.results
+          .filter((video: any) => video.type === "Trailer")
+          .filter((video: any) => video.site === "YouTube")[0].key;
+        setTrailer(youtubeKey);
+      }
+    };
+
+    fetchTrailer();
+  }, [trailer, details?.id]);
 
   useEffect(() => {
     setIsVisisble(!!visible);
@@ -58,23 +73,33 @@ const RestfulInfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
   if (!visible) {
     return null;
   }
-  console.log(details, ">>");
+
+  const onPlayerReady: YouTubeProps["onReady"] = (event) => {
+    event.target.pauseVideo();
+  };
+
+  const opts: YouTubeProps["opts"] = {
+    playerVars: {
+      autoplay: 1,
+    },
+  };
+
   return (
     <main
       onClick={handleClose}
       className="
   z-50
+  flex
+  justify-center
+  items-center
+  fixed
+  inset-0
+  overflow-x-hidden
+  overflow-y-auto
   transition
   duration-300
   bg-black
   bg-opacity-80
-  flex
-justify-center
-items-center
-overflow-x-hidden
-overflow-y-auto
-fixed
-inset-0
   "
     >
       <section
@@ -89,124 +114,77 @@ overflow-hidden
       >
         <div
           className={`${isVisible ? "scale-100" : "scale-0"}
-        transform
-        duration-300
-        relative
-        flex-auto
+          relative
+          flex-auto
+          transform
+          duration-300
+          drop-shadow-md
         bg-zinc-900
-        drop-shadow-md
         `}
         >
           <div
             className="
             relative
-            h-96
+            mb-2
             "
           >
-            {/* <video
-              autoPlay
-              muted
-              loop
-              className="
-            
-            w-full
-            brightness-[60%]
-            object-cover
-            h-full
-            "
-              src={details?.videoUrl}
-            ></video> */}
-            <Image
-              className="opacity-70
-            "
-              fill
-              src={`https://image.tmdb.org/t/p/original/${details?.poster_path}`}
-              alt={`${details?.title}'s movie cover`}
+            <YouTube
+              videoId={trailer}
+              opts={opts}
+              onReady={onPlayerReady}
+              className="aspect-w-16 aspect-h-9 sm:aspect-w-4 sm:aspect-h-3 md:aspect-w-16 md:aspect-h-9 lg:w-full lg:aspect-h-8"
             />
             <div
               onClick={handleClose}
               className="
-        cursor-pointer
-        absolute
-        top-3
-        right-3
-        h-10
-        w-10
-        rounded-full
+              absolute
+              top-3
+              right-3
+              flex
+              items-center
+              justify-center
+              h-10
+              w-10
+              rounded-full
+              cursor-pointer
         bg-black
         bg-opacity-70
-        flex
-        items-center
-justify-center
         "
             >
               <AiOutlineClose size={20} className="text-white" />
             </div>
-            <div
+          </div>
+
+          <section className="mx-2 pb-1">
+            <p
               className="
-            absolute
-            bottom-[10%]
-            left-10
-            "
-            >
-              <p
-                className="
               text-white
-              text-3xl
-              md:text-4xl
-              h-full
-              lg:text-5xl
-              font-bold
-              mb-8
+              text-center
+              text-2xl
+              md:text-3xl
+              lg:text-4xl
+              font-semibold
+              mb-2
               "
-              >
-                {details?.title}
-              </p>
-              <div
-                className="flex
+            >
+              {details?.title}
+            </p>
+            <div
+              className="flex
               flex-row
-              gap-4
+              gap-3
               items-center
               "
-              >
-                <FavoriteButton movieId={details?.movieId} />
-                <BsFillInfoCircleFill
-                  className="text-white cursor-pointer"
-                  size={30}
-                  onClick={() => router.push(`/movie/${details?.movieId}`)}
-                />
-              </div>
+            >
+              <FavoriteButton movieId={details?.movieId} />
+              <BsFillInfoCircleFill
+                className="text-white cursor-pointer"
+                size={30}
+                onClick={() => router.push(`/movie/${details?.movieId}`)}
+              />
             </div>
-          </div>
-          <div
-            className="px-12
-            py-8 w-4/5"
-          >
-            <p className="text-white text-lg">
-              {details?.release_date?.split("-")[0]}
-            </p>
-            <p className="text-white text-lg">{details?.runtime}m</p>
-            <p className="text-white text-lg">{details?.overview}</p>
-            <p className="text-white text-lg">{details?.runtime}</p>
-            <p className="text-white text-lg">
-              Genres:{" "}
-              {details?.genres?.map((genre: any) => {
-                return (
-                  <button
-                    key={genre.id}
-                    className="px-2 mx-1 
-                    bg-yellow-300
-                    rounded-md
-                    transition
-                    cursor-arrow
-                    "
-                  >
-                    {genre.name}
-                  </button>
-                );
-              })}
-            </p>
-          </div>
+            <p className="text-white text-lg my-4">{details?.overview}</p>
+          </section>
         </div>
       </section>
     </main>
