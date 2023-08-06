@@ -154,7 +154,6 @@ overflow-hidden
               <AiOutlineClose size={20} className="text-white" />
             </div>
           </div>
-
           <section className="mx-2 pb-1">
             <p
               className="
