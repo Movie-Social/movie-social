@@ -3,35 +3,38 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsFillInfoCircleFill } from "react-icons/bs";
-// import useInfoModal from "@/hooks/useInfoModal";
-// import useMovie from "@/hooks/useMovie";?
 import tmdbDetailsFetcher from "@/lib/tmdbDetailsFetcher";
 import FavoriteButton from "./FavoriteButton";
+import useRestfulInfoModal from "@/hooks/useRestfulInfoModal";
 import PlayButton from "./PlayButton";
 import LoadingModal from "./LoadingModal";
 
 interface InfoModalProps {
   visible: boolean;
   onClose: any;
-  id: number;
+}
+interface DetailProps {
+  title: string;
+  poster_path: string;
+  movieId: string | any;
+  runtime: string;
+  rating: string;
+  summary: string;
 }
 
-const RestfulInfoModal: React.FC<InfoModalProps> = ({
-  visible,
-  onClose,
-  id,
-}) => {
+const RestfulInfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
   const [isVisible, setIsVisisble] = useState(!!visible);
-  const [details, setDetails] = useState();
+  const { movieId } = useRestfulInfoModal();
+  const [details, setDetails] = useState<DetailProps>();
   const router = useRouter();
 
   useEffect(() => {
     const fetchTmdb = async () => {
-      const tmdbDetails = await tmdbDetailsFetcher(id);
+      const tmdbDetails = await tmdbDetailsFetcher(movieId);
       setDetails(tmdbDetails);
     };
     fetchTmdb();
-  }, []);
+  }, [movieId]);
 
   useEffect(() => {
     setIsVisisble(!!visible);
@@ -47,7 +50,6 @@ const RestfulInfoModal: React.FC<InfoModalProps> = ({
   if (!visible) {
     return null;
   }
-  console.log("DEEETS", details);
 
   return (
     <main
@@ -111,7 +113,7 @@ overflow-hidden
             brightness-[60%]
             "
               fill
-              src={details?.poster}
+              src={`https://image.tmdb.org/t/p/original/${details?.poster_path}`}
               alt={`${details?.title}'s movie cover`}
             />
             <div
