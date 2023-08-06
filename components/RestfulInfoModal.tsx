@@ -176,11 +176,11 @@ overflow-hidden
               items-center
               "
             >
-              <FavoriteButton movieId={details?.movieId} />
+              {/* <FavoriteButton movieId={details?.movieId} /> */}
               <BsFillInfoCircleFill
                 className="text-white cursor-pointer"
                 size={30}
-                onClick={() => router.push(`/movie/${details?.movieId}`)}
+                onClick={() => router.push(`/movie/tmdb/${details?.id}`)}
               />
             </div>
             <p className="text-white text-lg my-4">{details?.overview}</p>
