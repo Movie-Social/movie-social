@@ -21,17 +21,6 @@ const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
           movie?.original_language === "en"
       );
       setTmdbList(englishMovies);
-      // if (title === "Upcoming") {
-      //   const upcoming = englishMovies.filter((movie) => {
-      //     const dateString = Date(movie.release_date);
-      //     const dateTime = new Date(dateString);
-      //     const milli = dateTime.getTime();
-      //     console.log(milli, "Movie release");
-      //     console.log(Date.now(), "Now ");
-      //     return milli < Date.now();
-      //   });
-      //   setTmdbList(upcoming);
-      // }
     };
 
     fetchTMDBLists();
