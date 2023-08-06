@@ -13,14 +13,22 @@ interface InfoModalProps {
   visible: boolean;
   onClose: any;
 }
+
 interface DetailProps {
   title: string;
   poster_path: string;
   movieId: string | any;
   runtime: string;
   rating: string;
-  summary: string;
+  overview: string;
+  release_date: string;
+  genres: Genre[];
 }
+
+type Genre = {
+  id: string;
+  name: string;
+};
 
 const RestfulInfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
   const [isVisible, setIsVisisble] = useState(!!visible);
@@ -50,7 +58,7 @@ const RestfulInfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
   if (!visible) {
     return null;
   }
-
+  console.log(details, ">>");
   return (
     <main
       onClick={handleClose}
@@ -72,7 +80,7 @@ inset-0
       <section
         className="
 relative
-w-auto
+lg:w-3/5
 mx-auto
 max-w-3xl
 rounded-md
@@ -109,8 +117,7 @@ overflow-hidden
               src={details?.videoUrl}
             ></video> */}
             <Image
-              className="
-            brightness-[60%]
+              className="opacity-70
             "
               fill
               src={`https://image.tmdb.org/t/p/original/${details?.poster_path}`}
@@ -162,7 +169,6 @@ justify-center
               items-center
               "
               >
-                {/* <PlayButton movieId={details?.movieId} /> */}
                 <FavoriteButton movieId={details?.movieId} />
                 <BsFillInfoCircleFill
                   className="text-white cursor-pointer"
@@ -174,13 +180,32 @@ justify-center
           </div>
           <div
             className="px-12
-          py-8"
+            py-8 w-4/5"
           >
+            <p className="text-white text-lg">
+              {details?.release_date?.split("-")[0]}
+            </p>
+            <p className="text-white text-lg">{details?.runtime}m</p>
+            <p className="text-white text-lg">{details?.overview}</p>
             <p className="text-white text-lg">{details?.runtime}</p>
-            <p className="text-white text-lg">Rated: {details?.rating}</p>
-            {/* <p className="text-white text-lg">{details?.trailer}</p> */}
-            {/* <p className="text-white text-lg">{details?.genre}</p> */}
-            <p className="text-white text-lg">{details?.summary}</p>
+            <p className="text-white text-lg">
+              Genres:{" "}
+              {details?.genres?.map((genre: any) => {
+                return (
+                  <button
+                    key={genre.id}
+                    className="px-2 mx-1 
+                    bg-yellow-300
+                    rounded-md
+                    transition
+                    cursor-arrow
+                    "
+                  >
+                    {genre.name}
+                  </button>
+                );
+              })}
+            </p>
           </div>
         </div>
       </section>
