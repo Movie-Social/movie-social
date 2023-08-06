@@ -1,13 +1,15 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Image from "next/image";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import useInfoModal from "@/hooks/useInfoModal";
 import useMovie from "@/hooks/useMovie";
 import FavoriteButton from "./FavoriteButton";
-import PlayButton from "./PlayButton";
 import LoadingModal from "./LoadingModal";
+import trailerFetcher from "@/lib/trailerFetcher";
+import YouTube, { YouTubeProps } from "react-youtube";
+import { tmdbProps } from "@/pages/movie/tmdb/[restfulDetails]";
+import tmdbMovieFetcher from "@/lib/tmdbMovieFetcher";
 
 interface InfoModalProps {
   visible: boolean;
@@ -18,11 +20,40 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
   const [isVisible, setIsVisisble] = useState(!!visible);
   const { movieId } = useInfoModal();
   const { data = {}, isLoading } = useMovie(movieId);
+  const [tmdb, setTmdb] = useState<tmdbProps>();
+  const [trailer, setTrailer] = useState();
+
   const router = useRouter();
+
+  useEffect(() => {
+    const fetchTmdb = async () => {
+      data?.title;
+      const tmdbDetails = await tmdbMovieFetcher(data?.title);
+      const details = tmdbDetails?.results
+        .filter((movie: any) => movie.original_language === "en")
+        .sort((a: any, b: any) => b.popularity - a.popularity)[0];
+      setTmdb(details);
+    };
+    fetchTmdb();
+  }, [data?.title]);
 
   useEffect(() => {
     setIsVisisble(!!visible);
   }, [visible]);
+
+  useEffect(() => {
+    const fetchTrailer = async () => {
+      const trailer = await trailerFetcher(tmdb?.id as string);
+      if (trailer?.results?.length > 0) {
+        const youtubeKey = trailer.results
+          .filter((video: any) => video.type === "Trailer")
+          .filter((video: any) => video.site === "YouTube")[0].key;
+        setTrailer(youtubeKey);
+      }
+    };
+
+    fetchTrailer();
+  }, [trailer, tmdb?.id]);
 
   const handleClose = useCallback(() => {
     setIsVisisble(false);
@@ -34,6 +65,16 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
   if (!visible) {
     return null;
   }
+
+  const onPlayerReady: YouTubeProps["onReady"] = (event) => {
+    event.target.pauseVideo();
+  };
+
+  const opts: YouTubeProps["opts"] = {
+    playerVars: {
+      autoplay: 1,
+    },
+  };
 
   return (
     <main
@@ -82,26 +123,11 @@ overflow-hidden
             h-96
             "
             >
-              {/* <video
-              autoPlay
-              muted
-              loop
-              className="
-            
-            w-full
-            brightness-[60%]
-            object-cover
-            h-full
-            "
-              src={data?.videoUrl}
-            ></video> */}
-              <Image
-                className="
-            brightness-[60%]
-            "
-                fill
-                src={data?.poster}
-                alt={`${data?.title}'s movie cover`}
+              <YouTube
+                videoId={trailer}
+                opts={opts}
+                onReady={onPlayerReady}
+                className="aspect-w-16 aspect-h-9 sm:aspect-w-4 sm:aspect-h-3 md:aspect-w-16 md:aspect-h-9 lg:w-full lg:aspect-h-8"
               />
               <div
                 onClick={handleClose}
