@@ -13,7 +13,7 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
   const { openModal } = useRestfulInfoModal();
   return (
     <main
-      className={`relative group w-[95%] mx-20 h-[25vh] text-center rounded-md bg-black overflow-visible transition duration-500 hover:scale-125 hover:-translate-y-[1vw]`}
+      className={`relative group w-[95%] md:mx-20 h-[25vh] text-center rounded-md bg-black overflow-visible transition duration-500 hover:scale-125 md:hover:-translate-y-[2vw] lg:hover:-translate-y-[1vw]`}
     >
       <section className="z-10">
         {!data?.poster_path ? (
@@ -45,7 +45,7 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
         />
         <div className="absolute bottom-4 left-1 flex flex-col items-start">
           <h2 className="text-white mx-2 text-sm lg:text-lg">{data?.title}</h2>
-          <p className="text-white mx-2 text-sm lg:text-lg">
+          <p className="text-white mx-2 text-sm lg:text-md">
             {data?.release_date.split("-")[0]}
           </p>
           <div className="flex flex-row justify-around">
