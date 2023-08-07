@@ -11,24 +11,52 @@ interface RestfulMovieListProps {
 
 const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
   const [tmdbList, setTmdbList] = useState([]);
+  const [currents, setCurrents] = useState([]);
 
+  useEffect(() => {
+    const fetchCurrents = async () => {
+      const list = await tmdbFetcher("now_playing");
+      const englishMovies = list.results
+        .filter(
+          (movie: { original_language: string }) =>
+            movie?.original_language === "en"
+        )
+        .map((movie: any) => movie.title);
+      setCurrents(englishMovies);
+    };
+    fetchCurrents();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const apiString = title.toLowerCase().split(" ").join("_");
   useEffect(() => {
     const fetchTMDBLists = async () => {
       const list = await tmdbFetcher(apiString);
       const englishMovies = list.results.filter(
-        (movie: { original_language: string }) =>
-          movie?.original_language === "en"
+        (movie: any) => movie?.original_language === "en"
       );
+      if (title === "Upcoming") {
+        const filtered = englishMovies.reduce((acc: any, movie: any) => {
+          if (!currents.includes(movie.title)) {
+            acc.push(movie);
+          }
+          return acc;
+        }, []);
+        setTmdbList(filtered);
+        return null;
+      }
       setTmdbList(englishMovies);
     };
 
     fetchTMDBLists();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   if (isEmpty(tmdbList)) {
     return null;
   }
+
+  // console.log(currents, "CURR");
+  console.log(tmdbList, "<<<<<");
 
   return (
     <main className="flex justify-center w-full self-center px-2 mt-4 space-y-5 md:space-y-7">
