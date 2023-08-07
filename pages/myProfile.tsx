@@ -33,6 +33,7 @@ const MyProfile = () => {
   const { data: watchlist } = useWatchlist();
   const { data: reviews } = useReviews();
   const router = useRouter();
+
   return (
     <main className="flex justify-center text-white">
       <Navbar />

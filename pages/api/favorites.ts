@@ -1,9 +1,7 @@
 //Page for reading the favorites list
 import { NextApiRequest, NextApiResponse } from "next";
 import serverAuth from "@/lib/serverAuth";
-import prismadb from "@/lib/prismadb";
 import logger from "../../lib/logger";
-
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -13,14 +11,7 @@ export default async function handler(
   }
   try {
     const { currentUser } = await serverAuth(req, res);
-    const favoriteMovies = await prismadb.movie.findMany({
-      where: {
-        title: {
-          in: currentUser?.favoriteTitles,
-        },
-      },
-    });
-    return res.status(200).json(favoriteMovies);
+    return res.status(200).json(currentUser?.favoriteTitles);
   } catch (error: any) {
     logger.error(error.message);
     return res.status(400).end();
