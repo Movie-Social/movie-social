@@ -32,7 +32,8 @@ const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
     const fetchTMDBLists = async () => {
       const list = await tmdbFetcher(apiString);
       const englishMovies = list.results.filter(
-        (movie: any) => movie?.original_language === "en"
+        (movie: { original_language: string }) =>
+          movie?.original_language === "en"
       );
       if (title === "Upcoming") {
         const filtered = englishMovies.reduce((acc: any, movie: any) => {
@@ -49,14 +50,11 @@ const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
 
     fetchTMDBLists();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [currents]);
 
   if (isEmpty(tmdbList)) {
     return null;
   }
-
-  // console.log(currents, "CURR");
-  console.log(tmdbList, "<<<<<");
 
   return (
     <main className="flex justify-center w-full self-center px-2 mt-4 space-y-5 md:space-y-7">

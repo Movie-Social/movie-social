@@ -7,40 +7,43 @@ interface ReviewListItemProps {
 const ReviewListItem: React.FC<ReviewListItemProps> = ({ data }) => {
   const router = useRouter();
   const movieMovie = useMovieByTitle(data.title);
+
   return (
-    <main className="flex justify-center">
-      <section className="w-[95%] my-3 p-3 border-b-2 border-yellow-300 border-opacity-30">
-        <h2
-          className="cursor-pointer text-xl lg:text-2xl mb-3 transtion hover:text-yellow-300"
-          onClick={() => router.push(`/movie/${movieMovie.data}`)}
-        >
-          {data?.title}
-        </h2>
-        <div className="flex flex-row">
-          <Image
-            priority
-            className="cursor-pointer transition hover:opacity-70"
+    <main className="flex justify-center ">
+      {movieMovie ? (
+        <section className="w-[95%] my-3 p-3 border-b-2 border-yellow-300 border-opacity-30">
+          <h2
+            className="cursor-pointer text-xl lg:text-2xl mb-3 transtion hover:text-yellow-300"
             onClick={() => router.push(`/movie/${movieMovie.data}`)}
-            src={data.poster}
-            alt={`${data.title}'s official 
+          >
+            {data?.title}
+          </h2>
+          <div className="flex flex-row">
+            <Image
+              priority
+              className="cursor-pointer transition hover:opacity-70"
+              onClick={() => router.push(`/movie/${movieMovie.data}`)}
+              src={data.poster}
+              alt={`${data.title}'s official 
           movie poster`}
-            width={130}
-            height={50}
-          />
-          <div className="flex flex-col justify-evenly">
-            {data.review ? (
-              <p className="mx-3">{data.review}</p>
-            ) : (
-              <p className="mx-3">No Review Submitted</p>
-            )}
-            {data.rating > 0 ? (
-              <p className="mx-3">Rating: {data.rating}/5</p>
-            ) : (
-              <p className="mx-3">Rating: N/A</p>
-            )}
+              width={130}
+              height={50}
+            />
+            <div className="flex flex-col justify-evenly">
+              {data.review ? (
+                <p className="mx-3">{data.review}</p>
+              ) : (
+                <p className="mx-3">No Review Submitted</p>
+              )}
+              {data.rating > 0 ? (
+                <p className="mx-3">Rating: {data.rating}/5</p>
+              ) : (
+                <p className="mx-3">Rating: N/A</p>
+              )}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
     </main>
   );
 };
