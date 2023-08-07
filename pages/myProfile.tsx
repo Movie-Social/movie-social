@@ -7,7 +7,7 @@ import useFavorites from "@/hooks/useFavorites";
 import useReviews from "@/hooks/useReviews";
 import useWatchlist from "@/hooks/useWatchlist";
 import { BiUserCircle } from "react-icons/bi";
-import { GrAddCircle } from "react-icons/gr";
+import { AiOutlinePlusCircle } from "react-icons/ai";
 import { NextPageContext } from "next";
 import { getSession } from "next-auth/react";
 
@@ -61,7 +61,7 @@ const MyProfile = () => {
             <ProfileList data={faves} />
           ) : (
             <div className="flex flex-col justify-center items-center content-center md:w-5/6 md:self-center mb-5 p-3 border-yellow-300 border-2 rounded-md">
-              <GrAddCircle className="text-white" size={50} />
+              <AiOutlinePlusCircle className="text-white" size={50} />
               <h2>Your Favorites are Empty</h2>
               <p>Add movies to keep track of your favorites</p>
               <button
@@ -84,7 +84,7 @@ const MyProfile = () => {
             <ProfileList data={watchlist} />
           ) : (
             <div className="flex flex-col justify-center items-center content-center md:w-5/6 md:self-center mb-5 p-3 border-yellow-300 border-2 rounded-md">
-              <GrAddCircle className="text-white" size={50} />
+              <AiOutlinePlusCircle className="text-white" size={50} />
               <h2>Your Watchlist is Empty</h2>
               <p>Add movies to keep track of what you want to watch</p>
               <button
@@ -107,7 +107,7 @@ const MyProfile = () => {
             <ReviewList data={reviews} />
           ) : (
             <div className="flex flex-col justify-center items-center content-center md:w-5/6 md:self-center  mb-5 p-3 border-yellow-300 border-2 rounded-md">
-              <GrAddCircle size={50} />
+              <AiOutlinePlusCircle size={50} />
               <h2>No Reviews Yet</h2>
               <p className="text-center">
                 Rate movies you have seen using to share your reactions and

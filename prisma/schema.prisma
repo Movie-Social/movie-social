@@ -107,3 +107,10 @@ model MovieDetails {
   tagline     String?
   budget      Int?
 }
+
+model Hero {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  title      String   @unique
+  poster     String
+  caption     String
+}

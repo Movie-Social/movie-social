@@ -58,8 +58,6 @@ const Navbar = () => {
         <section className="flex-row ml-8 gap-7 hidden lg:flex">
           <NavbarItem label="Home" />
           <NavbarItem label="Reviews" />
-          <NavbarItem label="Favorites" />
-          <NavbarItem label="Watchlist" />
           {/* <NavbarItem label="Friends" />
           <NavbarItem label="Clubs" /> */}
         </section>

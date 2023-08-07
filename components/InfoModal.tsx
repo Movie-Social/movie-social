@@ -1,13 +1,15 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Image from "next/image";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import useInfoModal from "@/hooks/useInfoModal";
 import useMovie from "@/hooks/useMovie";
 import FavoriteButton from "./FavoriteButton";
-import PlayButton from "./PlayButton";
 import LoadingModal from "./LoadingModal";
+import trailerFetcher from "@/lib/trailerFetcher";
+import YouTube, { YouTubeProps } from "react-youtube";
+import { tmdbProps } from "@/pages/movie/tmdb/[restfulDetails]";
+import tmdbMovieFetcher from "@/lib/tmdbMovieFetcher";
 
 interface InfoModalProps {
   visible: boolean;
@@ -18,11 +20,40 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
   const [isVisible, setIsVisisble] = useState(!!visible);
   const { movieId } = useInfoModal();
   const { data = {}, isLoading } = useMovie(movieId);
+  const [tmdb, setTmdb] = useState<tmdbProps>();
+  const [trailer, setTrailer] = useState();
+
   const router = useRouter();
+
+  useEffect(() => {
+    const fetchTmdb = async () => {
+      data?.title;
+      const tmdbDetails = await tmdbMovieFetcher(data?.title);
+      const details = tmdbDetails?.results
+        .filter((movie: any) => movie.original_language === "en")
+        .sort((a: any, b: any) => b.popularity - a.popularity)[0];
+      setTmdb(details);
+    };
+    fetchTmdb();
+  }, [data?.title]);
 
   useEffect(() => {
     setIsVisisble(!!visible);
   }, [visible]);
+
+  useEffect(() => {
+    const fetchTrailer = async () => {
+      const trailer = await trailerFetcher(tmdb?.id as string);
+      if (trailer?.results?.length > 0) {
+        const youtubeKey = trailer.results
+          .filter((video: any) => video.type === "Trailer")
+          .filter((video: any) => video.site === "YouTube")[0].key;
+        setTrailer(youtubeKey);
+      }
+    };
+
+    fetchTrailer();
+  }, [trailer, tmdb?.id]);
 
   const handleClose = useCallback(() => {
     setIsVisisble(false);
@@ -35,147 +66,119 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
     return null;
   }
 
+  const onPlayerReady: YouTubeProps["onReady"] = (event) => {
+    event.target.pauseVideo();
+  };
+
+  const opts: YouTubeProps["opts"] = {
+    playerVars: {
+      autoplay: 1,
+    },
+  };
+
   return (
     <main
       onClick={handleClose}
       className="
-  z-50
-  transition
-  duration-300
-  bg-black
-  bg-opacity-80
-  flex
-justify-center
-items-center
-overflow-x-hidden
-overflow-y-auto
-fixed
-inset-0
-  "
+      z-50
+      flex
+      justify-center
+      items-center
+      fixed
+      inset-0
+      overflow-x-hidden
+      overflow-y-auto
+      transition
+      duration-300
+      bg-black
+      bg-opacity-80
+      "
     >
       {isLoading ? (
         <LoadingModal />
       ) : (
         <section
           className="
-relative
-w-auto
-mx-auto
-max-w-3xl
-rounded-md
-overflow-hidden
+          relative
+          lg:w-3/5
+          mx-auto
+          max-w-3xl
+          rounded-md
+          overflow-hidden
 "
         >
           <div
             className={`${isVisible ? "scale-100" : "scale-0"}
-        transform
-        duration-300
-        relative
-        flex-auto
-        bg-zinc-900
-        drop-shadow-md
+            relative
+            flex-auto
+            transform
+            duration-300
+            drop-shadow-md
+          bg-zinc-900
         `}
           >
             <div
               className="
-            relative
-            h-96
+              relative
+              mb-2
             "
             >
-              {/* <video
-              autoPlay
-              muted
-              loop
-              className="
-            
-            w-full
-            brightness-[60%]
-            object-cover
-            h-full
-            "
-              src={data?.videoUrl}
-            ></video> */}
-              <Image
-                className="
-            brightness-[60%]
-            "
-                fill
-                src={data?.poster}
-                alt={`${data?.title}'s movie cover`}
+              <YouTube
+                videoId={trailer}
+                opts={opts}
+                onReady={onPlayerReady}
+                className="aspect-w-16 aspect-h-9 sm:aspect-w-4 sm:aspect-h-3 md:aspect-w-16 md:aspect-h-9 lg:w-full lg:aspect-h-8"
               />
               <div
                 onClick={handleClose}
                 className="
-        cursor-pointer
-        absolute
-        top-3
-        right-3
-        h-10
-        w-10
-        rounded-full
-        bg-black
-        bg-opacity-70
-        flex
-        items-center
-justify-center
+                absolute
+                top-3
+                right-3
+                flex
+                items-center
+                justify-center
+                h-10
+                w-10
+                rounded-full
+                cursor-pointer
+          bg-black
+          bg-opacity-70
         "
               >
                 <AiOutlineClose size={20} className="text-white" />
               </div>
-              <div
+            </div>
+            <section className="mx-2 pb-3">
+              <p
                 className="
-            absolute
-            bottom-[10%]
-            left-10
-            "
-              >
-                <p
-                  className="
-              text-white
-              text-3xl
-              md:text-4xl
-              h-full
-              lg:text-5xl
-              font-bold
-              mb-8
+                text-white
+                text-center
+                text-2xl
+                md:text-3xl
+                lg:text-4xl
+                font-semibold
+                mb-2
               "
-                >
-                  {data?.title}
-                </p>
-                <div
-                  className="flex
+              >
+                {data?.title}
+              </p>
+              <div
+                className="flex
               flex-row
-              gap-4
+              gap-3
               items-center
               "
-                >
-                  {/* <PlayButton movieId={data?.movieId} /> */}
-                  <FavoriteButton movieId={data?.movieId} />
-                  <BsFillInfoCircleFill
-                    className="text-white cursor-pointer"
-                    size={30}
-                    onClick={() => router.push(`/movie/${data?.movieId}`)}
-                  />
-                </div>
+              >
+                <FavoriteButton movieId={data?.movieId} />
+                <BsFillInfoCircleFill
+                  className="text-white cursor-pointer"
+                  size={30}
+                  onClick={() => router.push(`/movie/${data?.movieId}`)}
+                />
               </div>
-            </div>
-            <div
-              className="px-12
-          py-8"
-            >
-              {/* <p
-              className="text-green-400 font-semibold
-            text-lg"
-            >
-              New
-            </p> */}
-              <p className="text-white text-lg">{data?.runtime}</p>
-              <p className="text-white text-lg">Rated: {data?.rating}</p>
-              {/* <p className="text-white text-lg">{data?.reviewCount}</p> */}
-              {/* <p className="text-white text-lg">{data?.trailer}</p> */}
-              {/* <p className="text-white text-lg">{data?.genre}</p> */}
-              <p className="text-white text-lg">{data?.summary}</p>
-            </div>
+              <p className="text-white text-lg my-4">{data?.summary}</p>
+            </section>
           </div>
         </section>
       )}

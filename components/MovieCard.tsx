@@ -2,7 +2,7 @@ import { BsFillPlayFill, BsFillInfoCircleFill } from "react-icons/bs";
 import FavoriteButton from "./FavoriteButton";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
-// import useInfoModal from "@/hooks/useInfoModal";
+import useInfoModal from "@/hooks/useInfoModal";
 import WatchlistButton from "./WatchlistButton";
 import Image from "next/image";
 import loady from "../public/images/imgLoad.gif";
@@ -24,130 +24,53 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
     fetchTmdb();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  // const { openModal } = useInfoModal();
-  // const handleOpenModal = useCallback(() => {
-  //   openModal(data?.id);
-  // }, [openModal, data?.id]);
+  const { openModal } = useInfoModal();
+  const handleOpenModal = useCallback(() => {
+    openModal(data?.id);
+  }, [openModal, data?.id]);
+  // console.log(data);
   return (
-    <main className="relative group flex flex-col items-center justify-center content-center mx-1 text-center h-full bg-zinc-900">
-      {!data?.poster ? (
+    <main
+      className={`relative group w-[95%] md:mx-20 h-[25vh] text-center rounded-md bg-black overflow-visible transition duration-500 hover:scale-125 md:hover:-translate-y-[2vw] lg:hover:-translate-y-[1vw]`}
+    >
+      <section className="z-10">
+        {!data?.poster ? (
+          <Image
+            src={loady}
+            alt="gif to show the intended image is loading"
+            fill
+            className="rounded-md"
+          />
+        ) : (
+          <Image
+            onClick={() => router.push(`/movie/${data?.id}`)}
+            alt={`${data.title}'s official movie poster"`}
+            src={data.poster}
+            fill
+            className="cursor-pointer rounded-md transition duration-500 group-hover:opacity-0"
+          />
+        )}
+      </section>
+      <section className="relative flex flex-col justify-around h-full w-full rounded-md opacity-0 transition duration-500 group-hover:opacity-100">
         <Image
-          src={loady}
-          alt="gif to show the intended image is loading"
-          width={200}
-          height={200}
-        />
-      ) : (
-        <Image
-          className="
-          h-full  
-          self-center       
-          shadow-xl
-          rounded-md
-          group-hover:opacity-90
-          sm:group-hover:opacity-0
-          transition
-          duration
-          delay-300
-        "
-          width={200}
-          height={200}
-          src={data.poster}
-          alt={`${data.title}'s official movie poster"`}
-          onClick={() => router.push(`/movie/${data?.id}`)}
-        />
-      )}
-      <div
-        className="
-        absolute
-        z-10
-        opacity-0
-        sm:visible
-        invisible
-        group-hover:scale-100
-        group-hover:-translate-y-[-4vw]
-        group-hover:opacity-100
-        scale-0
-        duration-300
-        delay-200
-        transition
-        border
-        h-[45vw]
-        w-full
-      "
-      >
-        <Image
-          onClick={() => router.push(`/movie/${data?.id}`)}
-          className="
-          cursor-pointer
-          transition
-          duration
-          shadow-xl
-          rounded-t-md
-          w-full
-          h-[60%]
-        "
+          // onClick={() => router.push(`/movie/${data?.id}`)}
+          onClick={() => openModal(data?.id)}
+          className="absolute w-full h-full rounded-md opacity-50 cursor-pointer"
           width={200}
           height={200}
           src={data.poster}
-          alt="thumbnail"
+          alt={`${data?.title}'s official movie poster`}
         />
-        <section
-          className="
-          z-10
-          absolute
-          w-full
-          h-[40%]
-          shadow-md
-          rounded-b-md
-          p-2
-          lg:p-4
-          bg-zinc-800
-          transition
-        "
-        >
-          <div
-            className="
-flex flex-row items-center
-"
-          >
-            <FavoriteButton movieId={data?.id} />
+        <div className="absolute bottom-4 left-1 flex flex-col items-start">
+          <h2 className="text-white mx-2 mb-2 text-sm lg:text-lg">
+            {data?.title}
+          </h2>
+          <div className="flex flex-row justify-around">
+            <FavoriteButton movieId={data?.id.toString()} />
             <WatchlistButton movieId={data?.id} />
           </div>
-          {/* <div
-              onClick={() => router.push(`/watch/${data?.id}`)}
-              className="
-            cursor-pointer
-            w-6
-            h-6
-            lg:w-8
-            lg:h-8
-            bg-white
-            rounded-full
-            flex
-            justify-center
-            items-center
-            content-center
-            transition
-            hover:bg-neutral-300
-            "
-            >
-              <BsFillPlayFill size={25} />
-            </div> */}
-
-          {/* <p className="text-green-400 font-semibold mt-4">
-            New <span className="text-white">2023</span>
-          </p> */}
-          <div
-            className="flex flex-row items-center"
-            onClick={() => router.push(`/movie/${data?.id}`)}
-          >
-            <p className="cursor-pointer text-white text-center text-sm lg:text-sm">
-              {data.title}
-            </p>
-          </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </main>
   );
 };
