@@ -19,7 +19,7 @@ model User {
   hashedPassword String?
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
-  favoriteIds    String[]  @db.ObjectId
+  favoriteTitles String[]  @unique
   watchlistIds   String[]  @db.ObjectId
   reviews        Review[]
   sessions       Session[]
@@ -109,8 +109,8 @@ model MovieDetails {
 }
 
 model Hero {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  title      String   @unique
-  poster     String
-  caption     String
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  title   String @unique
+  poster  String
+  caption String
 }

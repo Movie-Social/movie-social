@@ -49,7 +49,7 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
             {data?.release_date.split("-")[0]}
           </p>
           <div className="flex flex-row justify-around">
-            <FavoriteButton movieId={data?.id.toString()} />
+            <FavoriteButton movieTitle={data?.title} />
             <WatchlistButton movieId={data?.id} />
           </div>
         </div>
