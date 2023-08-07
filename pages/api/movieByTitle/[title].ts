@@ -15,6 +15,9 @@ export default async function handler(
         title: req.query.title?.toString(),
       },
     });
+    if (!movie) {
+      return res.status(200).json("");
+    }
     return res.status(200).json(movie.id);
   } catch (error) {
     logger.error(error);
