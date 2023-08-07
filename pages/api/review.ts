@@ -15,10 +15,10 @@ export default async function handler(
         },
       });
 
-      if (!existingMovie) {
-        logger.fatal("Can't find the movie in the DB. Check casing");
-        throw new Error("Movie does not exist in Mongodb");
-      }
+      // if (!existingMovie) {
+      //   logger.fatal("Can't find the movie in the DB. Check casing");
+      //   throw new Error("Movie does not exist in Mongodb");
+      // }
 
       const existingUserReview = await prismadb.review.findMany({
         where: {
