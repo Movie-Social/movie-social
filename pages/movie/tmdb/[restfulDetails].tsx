@@ -1,11 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
-import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import YouTube, { YouTubeProps } from "react-youtube";
-import crypto from "crypto";
 import { ReviewProps } from "../[movieDetails]";
 import omdbFetcher from "@/lib/omdbFetcher";
 import trailerFetcher from "@/lib/trailerFetcher";
@@ -73,8 +71,6 @@ const RestfulMovieDetails = () => {
   const [tmdb, setTmdb] = useState<tmdbProps>();
   const [omdb, setOmdb] = useState<omdbProps>();
   const [rating, setRating] = useState(0);
-  const [mongoMovieId, setMongoMovieId] = useState("");
-  const [mongoDetailsId, setMongoDetailsId] = useState("");
   const router = useRouter();
   const movieId = router.query.restfulDetails;
   const allReviews = useAllReviews();
@@ -97,33 +93,6 @@ const RestfulMovieDetails = () => {
       fetchOmdb();
     }
   }, [tmdb]);
-
-  useEffect(() => {
-    const generateUniqueHex = () => {
-      const bytes = crypto.randomBytes(12);
-      return bytes.toString("hex");
-    };
-    setMongoMovieId(generateUniqueHex());
-    setMongoDetailsId(generateUniqueHex());
-  }, []);
-
-  useEffect(() => {
-    const postMovie = async () => {
-      if (omdb?.Title && omdb?.Genre.split(", ")) {
-        let response = await axios.post("/api/movie", {
-          id: mongoMovieId,
-          title: tmdb?.title,
-          score: parseInt(omdb?.imdbRating) || 0,
-          poster: `https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`,
-          categories: omdb?.Genre.split(", ") || [],
-          details: mongoDetailsId,
-        });
-        return response;
-      }
-    };
-
-    postMovie();
-  }, [tmdb, omdb, mongoMovieId, mongoDetailsId]);
 
   useEffect(() => {
     const fetchTrailer = async () => {
