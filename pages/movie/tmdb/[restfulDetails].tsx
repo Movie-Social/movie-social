@@ -158,7 +158,7 @@ const RestfulMovieDetails = () => {
               videoId={trailer}
               opts={opts}
               onReady={onPlayerReady}
-              className="aspect-w-16 aspect-h-9 sm:aspect-w-4 sm:aspect-h-3 md:aspect-w-16 md:aspect-h-9 lg:w-[80vw] lg:aspect-h-6 mx-1"
+              className="aspect-w-16 aspect-h-9 sm:aspect-w-5 sm:aspect-h-3 md:aspect-w-16 md:aspect-h-9 lg:w-[80vw] lg:aspect-h-6 mx-1"
             />
           ) : null}
         </div>
@@ -179,7 +179,7 @@ const RestfulMovieDetails = () => {
               alt={`Movie poster for ${tmdb?.title}`}
               className="max-[767px]:w-2/5 h-2/5 self-center mb-5 border border-yellow-300 rounded-lg"
             />
-            <div className="flex flex-col justify-evenly w-full p-2 my-4 ml-10 border border-yellow-300 rounded-lg bg-opacity-50">
+            <div className="flex flex-col justify-evenly md:w-full p-2 my-4 md:ml-10 border border-yellow-300 rounded-lg bg-opacity-50">
               <h2 className="text-white text-center text-xl md:text-2xl lg:text-3xl font-bold lg:font-semibold">
                 {!tmdb?.title ? "..........." : tmdb?.title}
               </h2>
