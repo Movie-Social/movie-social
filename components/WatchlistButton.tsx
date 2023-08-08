@@ -5,30 +5,30 @@ import useWatchlist from "@/hooks/useWatchlist";
 import axios from "axios";
 
 interface WatchlistButtonProps {
-  movieId: string;
+  movieTitle: string;
 }
 
-const WatchlistButton: React.FC<WatchlistButtonProps> = ({ movieId }) => {
+const WatchlistButton: React.FC<WatchlistButtonProps> = ({ movieTitle }) => {
   const { mutate: mutateWatchlist } = useWatchlist();
   const { data: currentUser, mutate } = useCurrentUser();
-
   const inWatchlist = useMemo(() => {
-    const list = currentUser?.watchlistIds || [];
-    return list.includes(movieId);
-  }, [currentUser, movieId]);
+    const list = currentUser?.watchlistTitles || [];
+
+    return list.includes(movieTitle);
+  }, [currentUser, movieTitle]);
 
   const toggleWatchlist = useCallback(async () => {
     const url = inWatchlist ? "/api/unWatchItem" : "/api/watchItem";
-    const response = await axios.post(url, { movieId });
-
-    const updatedWatchlist = response?.data?.watchlistIds;
+    const response = await axios.post(url, { movieTitle });
+    const updatedWatchlist = response?.data?.watchlistTitles;
 
     mutate({
       ...currentUser,
-      watchlistIds: updatedWatchlist,
+      watchlistTitles: updatedWatchlist,
     });
+
     mutateWatchlist();
-  }, [movieId, inWatchlist, currentUser, mutate, mutateWatchlist]);
+  }, [movieTitle, inWatchlist, currentUser, mutate, mutateWatchlist]);
 
   const Icon = inWatchlist ? AiOutlineCheck : AiOutlineEye;
 

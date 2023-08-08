@@ -12,8 +12,6 @@ export default async function handler(
       const { currentUser } = await serverAuth(req, res);
 
       const title = req.body.movieTitle;
-      console.log(req.body, "BODYody");
-      console.log(title, "TITLE");
 
       const user = await prismadb.user.update({
         where: {
