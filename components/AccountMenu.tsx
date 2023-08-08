@@ -18,7 +18,11 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
     <main className="bg-black w-56 absolute top-14 right-0 py-5 flex-col border-2 border-gray-800 flex">
       <section className="flex flex-col gap-3">
         <div className="px-3 group/item flex flex-row gap-3 items-center w-full">
-          <BiUserCircle className="text-white" size={30} />
+          <BiUserCircle
+            onClick={() => router.push(`/myProfile`)}
+            className="text-white"
+            size={30}
+          />
           <p
             onClick={() => router.push(`/myProfile`)}
             className="text-white text-md group-hover/item:underline"
