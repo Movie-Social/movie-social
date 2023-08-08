@@ -28,7 +28,7 @@ export default async function handler(
 
     return res.status(405).end();
   } catch (error: any) {
-    logger.fatal(error.message);
+    logger.error(error.message);
     return res.status(400).end();
   }
 }
