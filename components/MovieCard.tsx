@@ -67,7 +67,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
           </h2>
           <div className="flex flex-row justify-around">
             <FavoriteButton movieTitle={data?.title} />
-            <WatchlistButton movieId={data?.id} />
+            <WatchlistButton movieTitle={data?.title} />
           </div>
         </div>
       </section>
