@@ -75,6 +75,7 @@ const RestfulMovieDetails = () => {
   const movieId = router.query.restfulDetails;
   const allReviews = useAllReviews();
   const [trailer, setTrailer] = useState("");
+  // const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     const fetchTmdb = async () => {
@@ -109,9 +110,16 @@ const RestfulMovieDetails = () => {
     fetchTrailer();
   }, [trailer, tmdb?.id]);
 
-  const reviews = allReviews?.data?.filter(
+  // useEffect(() => {
+  //   const fetchReviews = async () => {
+  //! add await below as well
+  const movieReviews = allReviews?.data?.filter(
     (review: ReviewProps) => review.title === tmdb?.title
   );
+  //     setReviews(movieReviews);
+  //   };
+  //   fetchReviews();
+  // }, [allReviews?.data]);
 
   const rottenScore = () => {
     if (!omdb?.Ratings) {
@@ -137,6 +145,7 @@ const RestfulMovieDetails = () => {
       autoplay: 1,
     },
   };
+  // console.log(reviews, "?");
 
   return (
     <main className="flex flex-col items-center w-full text-white">
@@ -370,7 +379,7 @@ const RestfulMovieDetails = () => {
                 </h2>
               ) : null}
             </div>
-            <ExistingReviews data={reviews} />
+            <ExistingReviews data={movieReviews} />
             <h2 className=" text-white text-xl md:text-2xl lg:text-3xl font-bold lg:font-semibold mx-2 px-2 border-l-2 border-yellow-300">
               Rate and Review
             </h2>
