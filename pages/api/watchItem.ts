@@ -11,7 +11,9 @@ export default async function handler(
     if (req.method === "POST") {
       const { currentUser } = await serverAuth(req, res);
 
-      const title = req.body.movieId;
+      const title = req.body.movieTitle;
+      console.log(req.body, "BODYody");
+      console.log(title, "TITLE");
 
       const user = await prismadb.user.update({
         where: {
@@ -23,10 +25,13 @@ export default async function handler(
           },
         },
       });
+      console.log(user, "USER");
+
       return res.status(200).json(user);
     }
     return res.status(405).end();
   } catch (error: any) {
     logger.error(error.message);
+    return res.status(400).end();
   }
 }

@@ -50,7 +50,7 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
           </p>
           <div className="flex flex-row justify-around">
             <FavoriteButton movieTitle={data?.title} />
-            <WatchlistButton movieId={data?.id} />
+            <WatchlistButton movieTitle={data?.title} />
           </div>
         </div>
       </section>
