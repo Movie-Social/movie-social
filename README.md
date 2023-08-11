@@ -83,6 +83,7 @@ The following are all technologies that I had to self-teach in order to complete
 - SSR
 - Axios instead of Async/wait or fetch() since I am already familiar with those
 - Pino logs for improved error messages
+- Zustand GSM
 
 ## Organizational Resources 🤓
  - [Jira Sprint Tracker](https://movieclub.atlassian.net/jira/software/projects/MS/boards/2/timeline?selectedIssue=MS-2&shared=&atlOrigin=eyJpIjoiOTY0NGRmNzc1YzVkNDYwNzgxZTc0ODBlOTE4MzRkZTIiLCJwIjoiaiJ9)
