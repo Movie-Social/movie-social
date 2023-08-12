@@ -50,7 +50,7 @@ const WatchlistButton: React.FC<WatchlistButtonProps> = ({ movieTitle }) => {
     justify-center
     items-center
     transition
-    hover:border-neutral-300"
+    hover:border-yellow-300"
     >
       <Icon className="text-white self-center" size={20} />
     </main>
