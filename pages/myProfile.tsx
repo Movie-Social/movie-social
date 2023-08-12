@@ -85,9 +85,9 @@ const MyProfile = () => {
             <div className="px-2 lg:p-0"></div>
           </section> */}
         </aside>
-        <section className="flex flex-col justify-around w-5/5 lg:w-4/6 px-2">
+        <section className="flex flex-col justify-around w-full lg:w-4/6 px-2 ">
           <div className="flex flex-row justify-between items-center">
-            <h2 className="text-2xl lg:text-3xl font-bold mb-2 mx-2 md:mx-10 md:my-5 px-2 border-l-2 border-yellow-300">
+            <h2 className="text-2xl lg:text-3xl font-bold mb-2 md:my-5 px-2 border-l-2 border-yellow-300">
               Favorites
             </h2>
             {/* <h2 className="text-yellow-400 cursor-pointer text-l lg:text-xl font-light">
@@ -110,7 +110,7 @@ const MyProfile = () => {
             </div>
           )}
           <div className="flex flex-row justify-between items-center">
-            <h2 className="text-2xl lg:text-3xl font-bold mb-2 mx-2 md:mx-10 md:my-5 px-2 border-l-2 border-yellow-300">
+            <h2 className="text-2xl lg:text-3xl font-bold mb-2 md:my-5 px-2 border-l-2 border-yellow-300">
               Watchlist
             </h2>
             {/* <h2 className="text-yellow-400 cursor-pointer text-l lg:text-xl font-light">
@@ -133,7 +133,7 @@ const MyProfile = () => {
             </div>
           )}
           <div className="flex flex-row justify-between items-center">
-            <h2 className="text-2xl lg:text-3xl font-bold mb-2 mx-2 md:mx-10 md:my-5 px-2 border-l-2 border-yellow-300">
+            <h2 className="text-2xl lg:text-3xl font-bold mb-2 md:my-5 px-2 border-l-2 border-yellow-300">
               My Reviews
             </h2>
             {/* <h2 className="text-yellow-400 cursor-pointer text-l lg:text-xl font-light">
@@ -143,7 +143,7 @@ const MyProfile = () => {
           {reviews?.length >= 1 ? (
             <ReviewList data={reviews} />
           ) : (
-            <div className="flex flex-col justify-center items-center content-center md:w-5/6 md:self-center  mb-5 p-3 border-yellow-300 border-2 rounded-md">
+            <div className="flex flex-col justify-center items-center content-center md:w-5/6 md:self-center mb-5 p-3 border-yellow-300 border-2 rounded-md">
               <AiOutlinePlusCircle size={50} />
               <h2>No Reviews Yet</h2>
               <p className="text-center">
