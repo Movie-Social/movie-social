@@ -10,7 +10,7 @@ const ReviewList: React.FC<ReviewListProps> = ({ data }) => {
   }
   return (
     <main className="w-full">
-      <section className="flex flex-col justify-around md:w-5/6 lg:w-full my-5 border-white border-opacity-70 border rounded-md">
+      <section className="flex flex-col justify-around md:w-5/6 lg:w-full my-5">
         {data.map((movie) => {
           return <ReviewListItem key={movie.id} data={movie} />;
         })}

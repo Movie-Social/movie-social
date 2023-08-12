@@ -38,7 +38,7 @@ const ProfileListItem: React.FC<ListItemProps> = ({ movieId, faves }) => {
         <Image
           priority
           onClick={() => router.push(`/movie/tmdb/${tmdb?.id}`)}
-          className="cursor-pointer h-full transition hover:opacity-70"
+          className="cursor-pointer h-full transition hover:opacity-70 rounded-md"
           width={150}
           height={50}
           src={`https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`}
