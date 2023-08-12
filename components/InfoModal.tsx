@@ -69,6 +69,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
   const opts: YouTubeProps["opts"] = {
     playerVars: {
       autoplay: 1,
+      mute: 1,
     },
   };
 

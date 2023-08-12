@@ -123,13 +123,10 @@ const MovieDetails = () => {
 
   const theRottenScore = rottenScore();
 
-  const onPlayerReady: YouTubeProps["onReady"] = (event) => {
-    event.target.pauseVideo();
-  };
-
   const opts: YouTubeProps["opts"] = {
     playerVars: {
       autoplay: 1,
+      mute: 1,
     },
   };
 
@@ -143,7 +140,6 @@ const MovieDetails = () => {
             <YouTube
               videoId={trailer}
               opts={opts}
-              onReady={onPlayerReady}
               className="aspect-w-16 aspect-h-9 sm:aspect-w-5 sm:aspect-h-3 md:aspect-w-16 md:aspect-h-9 lg:w-[80vw] lg:aspect-h-6 mx-1"
             />
           ) : null}
