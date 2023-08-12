@@ -11,19 +11,19 @@ datasource db {
 }
 
 model User {
-  id             String    @id @default(auto()) @map("_id") @db.ObjectId
-  name           String
-  image          String?
-  email          String?   @unique
-  emailVerified  DateTime?
-  hashedPassword String?
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
-  favoriteIds    String[]  @db.ObjectId
-  watchlistIds   String[]  @db.ObjectId
-  reviews        Review[]
-  sessions       Session[]
-  accounts       Account[]
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  image           String?
+  email           String?   @unique
+  emailVerified   DateTime?
+  hashedPassword  String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  favoriteTitles  String[]  @unique
+  watchlistTitles String[]  @unique
+  reviews         Review[]
+  sessions        Session[]
+  accounts        Account[]
 }
 
 model Review {
@@ -109,8 +109,8 @@ model MovieDetails {
 }
 
 model Hero {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  title      String   @unique
-  poster     String
-  caption     String
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  title   String @unique
+  poster  String
+  caption String
 }

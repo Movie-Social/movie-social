@@ -34,7 +34,10 @@ const Hero = () => {
           className="cursor-pointer"
         />
         <div className="absolute inset-x-1/4 top-5 text-center z-10 md:text-5xl text-2xl bold text-white">
-          <h2 className="bg-black bg-clip-text">
+          <h2
+            onClick={() => router.push(`/movie/tmdb/${movie?.id}`)}
+            className="bg-black bg-clip-text cursor-pointer"
+          >
             {heroOptions?.caption.split("Scene from the movie ")[1]}
           </h2>
         </div>

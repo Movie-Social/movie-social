@@ -7,32 +7,29 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method === "POST") {
-    const { currentUser } = await serverAuth(req, res);
+  try {
+    if (req.method === "POST") {
+      const { currentUser } = await serverAuth(req, res);
 
-    const { movieId } = req.body;
+      const title = req.body.movieTitle;
 
-    const existingMovie = await prismadb.movie.findUnique({
-      where: {
-        id: movieId,
-      },
-    });
-
-    if (!existingMovie) {
-      logger.info("No movie exists");
-      throw new Error("Invalid ID");
-    }
-
-    const user = await prismadb.user.update({
-      where: {
-        email: currentUser.email || "",
-      },
-      data: {
-        watchlistIds: {
-          push: movieId,
+      const user = await prismadb.user.update({
+        where: {
+          email: currentUser.email || "",
         },
-      },
-    });
-    return res.status(200).json(user);
+        data: {
+          watchlistTitles: {
+            push: title,
+          },
+        },
+      });
+      console.log(user, "USER");
+
+      return res.status(200).json(user);
+    }
+    return res.status(405).end();
+  } catch (error: any) {
+    logger.error(error.message);
+    return res.status(400).end();
   }
 }

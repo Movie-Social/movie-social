@@ -53,7 +53,6 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
       </section>
       <section className="relative flex flex-col justify-around h-full w-full rounded-md opacity-0 transition duration-500 group-hover:opacity-100">
         <Image
-          // onClick={() => router.push(`/movie/${data?.id}`)}
           onClick={() => openModal(data?.id)}
           className="absolute w-full h-full rounded-md opacity-50 cursor-pointer"
           width={200}
@@ -61,13 +60,13 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
           src={data.poster}
           alt={`${data?.title}'s official movie poster`}
         />
-        <div className="absolute bottom-4 left-1 flex flex-col items-start">
+        <div className="absolute bottom-5 left-1 flex flex-col items-start">
           <h2 className="text-white mx-2 mb-2 text-sm lg:text-lg">
             {data?.title}
           </h2>
           <div className="flex flex-row justify-around">
-            <FavoriteButton movieId={data?.id.toString()} />
-            <WatchlistButton movieId={data?.id} />
+            <FavoriteButton movieTitle={data?.title} />
+            <WatchlistButton movieTitle={data?.title} />
           </div>
         </div>
       </section>

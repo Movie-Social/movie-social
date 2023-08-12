@@ -1,11 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
-import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import YouTube, { YouTubeProps } from "react-youtube";
-import crypto from "crypto";
 import { ReviewProps } from "../[movieDetails]";
 import omdbFetcher from "@/lib/omdbFetcher";
 import trailerFetcher from "@/lib/trailerFetcher";
@@ -73,12 +71,11 @@ const RestfulMovieDetails = () => {
   const [tmdb, setTmdb] = useState<tmdbProps>();
   const [omdb, setOmdb] = useState<omdbProps>();
   const [rating, setRating] = useState(0);
-  const [mongoMovieId, setMongoMovieId] = useState("");
-  const [mongoDetailsId, setMongoDetailsId] = useState("");
   const router = useRouter();
   const movieId = router.query.restfulDetails;
   const allReviews = useAllReviews();
   const [trailer, setTrailer] = useState("");
+  // const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     const fetchTmdb = async () => {
@@ -99,33 +96,6 @@ const RestfulMovieDetails = () => {
   }, [tmdb]);
 
   useEffect(() => {
-    const generateUniqueHex = () => {
-      const bytes = crypto.randomBytes(12);
-      return bytes.toString("hex");
-    };
-    setMongoMovieId(generateUniqueHex());
-    setMongoDetailsId(generateUniqueHex());
-  }, []);
-
-  useEffect(() => {
-    const postMovie = async () => {
-      if (omdb?.Title && omdb?.Genre.split(", ")) {
-        let response = await axios.post("/api/movie", {
-          id: mongoMovieId,
-          title: tmdb?.title,
-          score: parseInt(omdb?.imdbRating) || 0,
-          poster: `https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`,
-          categories: omdb?.Genre.split(", ") || [],
-          details: mongoDetailsId,
-        });
-        return response;
-      }
-    };
-
-    postMovie();
-  }, [tmdb, omdb, mongoMovieId, mongoDetailsId]);
-
-  useEffect(() => {
     const fetchTrailer = async () => {
       tmdb?.id;
       const trailer = await trailerFetcher(tmdb?.id as string);
@@ -140,9 +110,16 @@ const RestfulMovieDetails = () => {
     fetchTrailer();
   }, [trailer, tmdb?.id]);
 
-  const reviews = allReviews?.data?.filter(
+  // useEffect(() => {
+  //   const fetchReviews = async () => {
+  //! add await below as well
+  const movieReviews = allReviews?.data?.filter(
     (review: ReviewProps) => review.title === tmdb?.title
   );
+  //     setReviews(movieReviews);
+  //   };
+  //   fetchReviews();
+  // }, [allReviews?.data]);
 
   const rottenScore = () => {
     if (!omdb?.Ratings) {
@@ -168,6 +145,7 @@ const RestfulMovieDetails = () => {
       autoplay: 1,
     },
   };
+  // console.log(reviews, "?");
 
   return (
     <main className="flex flex-col items-center w-full text-white">
@@ -180,7 +158,7 @@ const RestfulMovieDetails = () => {
               videoId={trailer}
               opts={opts}
               onReady={onPlayerReady}
-              className="aspect-w-16 aspect-h-9 sm:aspect-w-4 sm:aspect-h-3 md:aspect-w-16 md:aspect-h-9 lg:w-[80vw] lg:aspect-h-6 mx-1"
+              className="aspect-w-16 aspect-h-9 sm:aspect-w-5 sm:aspect-h-3 md:aspect-w-16 md:aspect-h-9 lg:w-[80vw] lg:aspect-h-6 mx-1"
             />
           ) : null}
         </div>
@@ -201,7 +179,7 @@ const RestfulMovieDetails = () => {
               alt={`Movie poster for ${tmdb?.title}`}
               className="max-[767px]:w-2/5 h-2/5 self-center mb-5 border border-yellow-300 rounded-lg"
             />
-            <div className="flex flex-col justify-evenly w-full p-2 my-4 ml-10 border border-yellow-300 rounded-lg bg-opacity-50">
+            <div className="flex flex-col justify-evenly md:w-full p-2 my-4 md:ml-10 border border-yellow-300 rounded-lg bg-opacity-50">
               <h2 className="text-white text-center text-xl md:text-2xl lg:text-3xl font-bold lg:font-semibold">
                 {!tmdb?.title ? "..........." : tmdb?.title}
               </h2>
@@ -401,7 +379,7 @@ const RestfulMovieDetails = () => {
                 </h2>
               ) : null}
             </div>
-            <ExistingReviews data={reviews} />
+            <ExistingReviews data={movieReviews} />
             <h2 className=" text-white text-xl md:text-2xl lg:text-3xl font-bold lg:font-semibold mx-2 px-2 border-l-2 border-yellow-300">
               Rate and Review
             </h2>
