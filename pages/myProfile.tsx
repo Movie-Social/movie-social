@@ -68,9 +68,9 @@ const MyProfile = () => {
     <main className="flex justify-center text-white">
       <Navbar />
       <main className="flex flex-col lg:flex-row justify-around lg:justify-between w-[100vw] lg:w-4/5 py-5 mt-10">
-        <aside className="flex flex-col content-center w-full lg:w-1/5 h-1/5 lg:h-1/6 p-2 lg:p-0 mb-3 border border-white rounded-md">
-          <div className="h-1/5 bg-yellow-300"></div>
-          <BiUserCircle className="self-center mt-[-1.6rem]" size={50} />
+        <aside className="flex flex-col content-center md:self-center lg:self-auto w-5/6 md:mx-2 md:mt-2 lg:w-1/5 h-1/5 lg:h-1/6 p-0 mb-3 border border-white rounded-md overflow-hidden">
+          <div className="h-3/5 lg:h-1/5 bg-yellow-300"></div>
+          <BiUserCircle className="self-center lg:mt-[-1.6rem]" size={50} />
           <h2 className="text-center m-3 font-bold text-xl">
             {currentUser?.name}
           </h2>
@@ -86,8 +86,8 @@ const MyProfile = () => {
           </section> */}
         </aside>
         <section className="flex flex-col justify-around w-full lg:w-4/6 px-2 ">
-          <div className="flex flex-row justify-between items-center">
-            <h2 className="text-2xl lg:text-3xl font-bold mb-2 md:my-5 px-2 border-l-2 border-yellow-300">
+          <div className="flex flex-row md:justify-center lg:justify-between items-center">
+            <h2 className="text-2xl lg:text-3xl font-bold mb-2 md:my-5 px-2 md:border-b-2 lg:border-b-0 lg:border-l-2 border-yellow-300">
               Favorites
             </h2>
             {/* <h2 className="text-yellow-400 cursor-pointer text-l lg:text-xl font-light">
@@ -109,8 +109,8 @@ const MyProfile = () => {
               </button>
             </div>
           )}
-          <div className="flex flex-row justify-between items-center">
-            <h2 className="text-2xl lg:text-3xl font-bold mb-2 md:my-5 px-2 border-l-2 border-yellow-300">
+          <div className="flex flex-row md:justify-center lg:justify-between items-center">
+            <h2 className="text-2xl lg:text-3xl font-bold mb-2 md:my-5 px-2 md:border-b-2 lg:border-b-0 lg:border-l-2 border-yellow-300">
               Watchlist
             </h2>
             {/* <h2 className="text-yellow-400 cursor-pointer text-l lg:text-xl font-light">
@@ -132,8 +132,8 @@ const MyProfile = () => {
               </button>
             </div>
           )}
-          <div className="flex flex-row justify-between items-center">
-            <h2 className="text-2xl lg:text-3xl font-bold mb-2 md:my-5 px-2 border-l-2 border-yellow-300">
+          <div className="flex flex-row md:justify-center lg:justify-between items-center">
+            <h2 className="text-2xl lg:text-3xl font-bold mb-2 md:my-5 px-2 md:border-b-2 lg:border-b-0 lg:border-l-2 border-yellow-300">
               My Reviews
             </h2>
             {/* <h2 className="text-yellow-400 cursor-pointer text-l lg:text-xl font-light">
