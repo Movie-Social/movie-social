@@ -74,10 +74,6 @@ const RestfulInfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
     return null;
   }
 
-  const onPlayerReady: YouTubeProps["onReady"] = (event) => {
-    event.target.pauseVideo();
-  };
-
   const opts: YouTubeProps["opts"] = {
     playerVars: {
       autoplay: 1,
@@ -131,7 +127,6 @@ overflow-hidden
             <YouTube
               videoId={trailer}
               opts={opts}
-              onReady={onPlayerReady}
               className="aspect-w-16 aspect-h-9 sm:aspect-w-4 sm:aspect-h-3 md:aspect-w-16 md:aspect-h-9 lg:w-full lg:aspect-h-8"
             />
             <div
