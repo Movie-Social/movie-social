@@ -3,7 +3,6 @@ import React, { useCallback, useMemo, useState } from "react";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import useFavorites from "@/hooks/useFavorites";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
-import { AiOutlineCheck } from "react-icons/ai";
 interface FavoriteButtonProps {
   movieTitle: string;
 }

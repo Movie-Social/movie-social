@@ -4,7 +4,6 @@ import { AiOutlineClose } from "react-icons/ai";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import useInfoModal from "@/hooks/useInfoModal";
 import useMovie from "@/hooks/useMovie";
-import FavoriteButton from "./FavoriteButton";
 import LoadingModal from "./LoadingModal";
 import trailerFetcher from "@/lib/trailerFetcher";
 import YouTube, { YouTubeProps } from "react-youtube";
