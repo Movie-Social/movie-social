@@ -2,8 +2,9 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
-import { BsSearch } from "react-icons/bs";
-import { BsBell } from "react-icons/bs";
+//* Future Additions
+// import { BsSearch } from "react-icons/bs";
+// import { BsBell } from "react-icons/bs";
 import { BiUserCircle } from "react-icons/bi";
 import MobileMenu from "./MobileMenu";
 import NavbarItem from "./NavbarItem";
@@ -58,6 +59,7 @@ const Navbar = () => {
         <section className="flex-row ml-8 gap-7 hidden lg:flex">
           <NavbarItem label="Home" />
           <NavbarItem label="Reviews" />
+          {/* //* Future Additions */}
           {/* <NavbarItem label="Friends" />
           <NavbarItem label="Clubs" /> */}
         </section>
@@ -83,6 +85,7 @@ const Navbar = () => {
           <MobileMenu visible={showMobileMenu} />
         </section>
         <section className="flex flex-row content-center gap-6 ml-auto">
+          {/* //* Future Additions */}
           {/* <div className="text-gray-200 hover:text-yellow-300 cursor-pointer transition">
             <BsSearch size={20} />
           </div>

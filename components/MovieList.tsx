@@ -12,6 +12,7 @@ const MovieList: React.FC<MovieListProps> = ({ data, title }) => {
   if (isEmpty(data)) {
     return null;
   }
+
   return (
     <main className="flex justify-center w-full self-center px-2 mt-4 space-y-5 md:space-y-7">
       <section className="flex flex-col w-full">

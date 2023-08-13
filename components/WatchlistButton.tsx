@@ -1,4 +1,3 @@
-import { AiOutlineEye, AiOutlineCheck } from "react-icons/ai";
 import { BsEye, BsEyeFill } from "react-icons/bs";
 import React, { useCallback, useMemo, useState } from "react";
 import useCurrentUser from "@/hooks/useCurrentUser";

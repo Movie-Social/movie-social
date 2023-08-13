@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import tmdbDetailsFetcher from "@/lib/tmdbDetailsFetcher";
-import FavoriteButton from "./FavoriteButton";
 import useRestfulInfoModal from "@/hooks/useRestfulInfoModal";
 import trailerFetcher from "@/lib/trailerFetcher";
 import YouTube, { YouTubeProps } from "react-youtube";

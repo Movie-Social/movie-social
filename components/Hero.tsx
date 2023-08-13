@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-//* Without this line of code I will have a hydration error. Why?
+//! Without this line of code I will have a hydration error. Why?
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import useAllHero from "@/hooks/useAllHero";
@@ -7,11 +7,15 @@ import "react-slideshow-image/dist/styles.css";
 import { useRouter } from "next/router";
 import tmdbMovieFetcher from "@/lib/tmdbMovieFetcher";
 
+interface Movie {
+  id: number;
+}
+
 const Hero = () => {
   const allHero = useAllHero();
   const router = useRouter();
   const heroOptions = allHero?.data;
-  const [movie, setMovie] = useState();
+  const [movie, setMovie] = useState<Movie>();
 
   useEffect(() => {
     const fetchTMDBLists = async () => {
@@ -45,5 +49,5 @@ const Hero = () => {
     </main>
   );
 };
-//* Without this line of code I will have a hydration error. Why?
+//! Without this line of code I will have a hydration error. Why?
 export default dynamic(() => Promise.resolve(Hero), { ssr: false });
