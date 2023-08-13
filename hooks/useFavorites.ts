@@ -1,4 +1,4 @@
-//A hook for data fetching client/user specific info that is irrelevant to SEO
+//* A hook for data fetching client/user specific info that is irrelevant to SEO
 import useSWR from "swr";
 import fetcher from "@/lib/fetcher";
 
