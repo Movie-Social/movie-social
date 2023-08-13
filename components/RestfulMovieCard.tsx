@@ -43,7 +43,12 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
           className="absolute w-full h-full rounded-md opacity-50 cursor-pointer"
         />
         <div className="absolute bottom-5 left-1 flex flex-col items-start">
-          <h2 className="text-white mx-2 text-sm lg:text-lg">{data?.title}</h2>
+          <h2
+            className="cursor-pointer text-white mx-2 text-sm lg:text-lg"
+            onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
+          >
+            {data?.title}
+          </h2>
           <p className="text-white mx-2 text-sm lg:text-md">
             {data?.release_date.split("-")[0]}
           </p>

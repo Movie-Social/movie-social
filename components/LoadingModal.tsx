@@ -8,7 +8,6 @@ const LoadingModal = () => {
       border-2
       border-yellow-300
 relative
-w-auto
 mx-auto
 w-[40vw]
 h-[40vh]
@@ -19,6 +18,7 @@ flex-col
 justify-center
 content-center
 items-center
+p-3
 "
     >
       <h2 className="text-white text-center text-3xl">Loading...</h2>

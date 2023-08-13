@@ -148,6 +148,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
             <section className="mx-2 pb-3">
               <p
                 className="
+                cursor-pointer
                 text-white
                 text-center
                 text-2xl
@@ -155,7 +156,9 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
                 lg:text-4xl
                 font-semibold
                 mb-2
+              hover:text-yellow-300 transition
               "
+                onClick={() => router.push(`/movie/${data?.movieId}`)}
               >
                 {data?.title}
               </p>
@@ -166,10 +169,9 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
               items-center
               "
               >
-                <FavoriteButton movieId={data?.movieId} />
                 <BsFillInfoCircleFill
-                  className="text-white cursor-pointer"
-                  size={30}
+                  className="text-yellow-300 cursor-pointer"
+                  size={20}
                   onClick={() => router.push(`/movie/${data?.movieId}`)}
                 />
               </div>

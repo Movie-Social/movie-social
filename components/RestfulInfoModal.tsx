@@ -153,6 +153,7 @@ overflow-hidden
           <section className="mx-2 pb-1">
             <p
               className="
+              cursor-pointer
               text-white
               text-center
               text-2xl
@@ -160,7 +161,9 @@ overflow-hidden
               lg:text-4xl
               font-semibold
               mb-2
+              hover:text-yellow-300 transition
               "
+              onClick={() => router.push(`/movie/tmdb/${details?.id}`)}
             >
               {details?.title}
             </p>
@@ -171,9 +174,8 @@ overflow-hidden
               items-center
               "
             >
-              {/* <FavoriteButton movieId={details?.movieId} /> */}
               <BsFillInfoCircleFill
-                className="text-white cursor-pointer"
+                className="text-yellow-300 cursor-pointer"
                 size={30}
                 onClick={() => router.push(`/movie/tmdb/${details?.id}`)}
               />
