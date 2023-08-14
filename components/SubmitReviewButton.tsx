@@ -1,6 +1,8 @@
 import logger from "@/lib/logger";
 import axios from "axios";
 import { useCallback } from "react";
+import useAllReviews from "@/hooks/useAllReviews";
+import { mutate } from "swr";
 
 interface SubmitReviewButtonProps {
   rating: number;
@@ -19,9 +21,12 @@ const SubmitReviewButton: React.FC<SubmitReviewButtonProps> = ({
   poster,
   usersName,
 }) => {
+  const allReviews = useAllReviews();
+  const { mutate: mutateReviews } = useAllReviews();
+
   const addReview = useCallback(async () => {
     try {
-      await axios.post("/api/review", {
+      const response = await axios.post("/api/review", {
         userId,
         rating,
         review,
@@ -29,6 +34,12 @@ const SubmitReviewButton: React.FC<SubmitReviewButtonProps> = ({
         poster,
         usersName,
       });
+      const updatedReviews = response?.data;
+      mutate({
+        ...allReviews,
+        updatedReviews,
+      });
+      mutateReviews();
     } catch (error: any) {
       logger.error(error.message);
     }

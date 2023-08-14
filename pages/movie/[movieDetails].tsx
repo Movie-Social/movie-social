@@ -10,7 +10,6 @@ import useAllReviews from "@/hooks/useAllReviews";
 import useMovie from "@/hooks/useMovie";
 import ExistingReviews from "@/components/ExistingReviews";
 import Navbar from "@/components/Navbar";
-import trash from "../../public/images/recyclingBag.png";
 import rotten from "../../public/images/rotten.png";
 import imdb from "../../public/images/imdb.png";
 import meta from "../../public/images/meta.png";
@@ -19,8 +18,6 @@ import YouTube, { YouTubeProps } from "react-youtube";
 import tmdbDetailsFetcher from "@/lib/tmdbDetailsFetcher";
 import omdbFetcher from "@/lib/omdbFetcher";
 import { omdbProps, tmdbProps } from "./tmdb/[restfulDetails]";
-import FavoriteButton from "@/components/FavoriteButton";
-import WatchlistButton from "@/components/WatchlistButton";
 import { getSession } from "next-auth/react";
 import { NextPageContext } from "next";
 
@@ -145,12 +142,7 @@ const MovieDetails = () => {
           ) : null}
         </div>
         <section className="flex flex-col lg:w-[80vw]">
-          {/* :lg may need h-[40vh] justify-evenly*/}
           <aside className="flex flex-col items-center md:flex-row ">
-            {/* <section className="flex flex-row justify-between w-full border border-orange-400">
-              <div className="flex justify-center items-center mx-10 border border-pink-700">
-                <WatchlistButton movieId={tmdb?.id} />
-              </div> */}
             <Image
               priority
               width={300}
@@ -159,10 +151,6 @@ const MovieDetails = () => {
               alt={`Movie poster for ${data?.title}`}
               className="max-[767px]:w-2/5 h-2/5 self-center mb-5 border border-yellow-300 rounded-lg"
             />
-            {/* <div className="flex justify-center items-center mx-10 border border-pink-700">
-                <FavoriteButton movieId={tmdb?.id} />
-              </div>
-            </section> */}
             <div className="flex flex-col justify-evenly md:w-full p-2 mb-4 md:ml-10 border border-yellow-300 rounded-lg bg-opacity-50">
               <h2 className="text-white text-center text-xl md:text-2xl lg:text-3xl font-bold">
                 {!data?.title ? "..........." : data?.title}

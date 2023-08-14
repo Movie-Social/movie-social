@@ -11,6 +11,7 @@ interface WatchlistButtonProps {
 const WatchlistButton: React.FC<WatchlistButtonProps> = ({ movieTitle }) => {
   const { mutate: mutateWatchlist } = useWatchlist();
   const { data: currentUser, mutate } = useCurrentUser();
+
   const inWatchlist = useMemo(() => {
     const list = currentUser?.watchlistTitles || [];
 
