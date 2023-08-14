@@ -43,7 +43,16 @@ const SubmitReviewButton: React.FC<SubmitReviewButtonProps> = ({
     } catch (error: any) {
       logger.error(error.message);
     }
-  }, [title, poster, review, rating, userId, usersName]);
+  }, [
+    title,
+    poster,
+    review,
+    rating,
+    userId,
+    usersName,
+    allReviews,
+    mutateReviews,
+  ]);
 
   return (
     <main
