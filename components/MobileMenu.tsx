@@ -1,5 +1,5 @@
 import React from "react";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 interface MobileMenuProps {
   visible?: boolean;
 }
@@ -46,6 +46,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ visible }) => {
         >
           Watchlist
         </div>
+        {/* Future Addition */}
         {/* <div className="px-3 text-center text-white hover:underline">
           Friends
         </div>

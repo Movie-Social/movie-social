@@ -2,8 +2,7 @@ import axios from "axios";
 import React, { useCallback, useMemo, useState } from "react";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import useFavorites from "@/hooks/useFavorites";
-import { MdFavorite } from "react-icons/md";
-import { AiOutlineCheck } from "react-icons/ai";
+import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 interface FavoriteButtonProps {
   movieTitle: string;
 }
@@ -30,7 +29,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieTitle }) => {
     mutateFavorites();
   }, [movieTitle, isFavorite, currentUser, mutate, mutateFavorites]);
 
-  const Icon = isFavorite ? AiOutlineCheck : MdFavorite;
+  const Icon = isFavorite ? MdFavoriteBorder : MdFavorite;
 
   return (
     <main
@@ -49,10 +48,10 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieTitle }) => {
   justify-center
   items-center
   transition
-  hover:border-neutral-300
+  hover:border-yellow-300
   "
     >
-      {<Icon className="text-white self-center" size={20} />}
+      {<Icon className="text-yellow-300 self-center" size={20} />}
     </main>
   );
 };
