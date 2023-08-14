@@ -185,7 +185,7 @@ const RestfulMovieDetails = () => {
                 </h3>
               ) : null}
               <div className="flex flex-row justify-evenly items-center content-center w-5/6 self-center m-3">
-                {omdb?.Rated ? (
+                {omdb?.Rated !== "N/A" ? (
                   <div className="ml-4 px-2">
                     <p className="text-l lg:text-xl">Rated:</p>
                     <p className="text-l lg:text-xl">{omdb?.Rated} </p>
@@ -207,7 +207,7 @@ const RestfulMovieDetails = () => {
                     </p>
                   </div>
                 ) : null}
-                {omdb?.Runtime ? (
+                {omdb?.Runtime !== "N/A" ? (
                   <div className="ml-4 px-2">
                     <p className="text-l lg:text-xl">Runtime:</p>
                     <p className="text-l lg:text-xl">{omdb?.Runtime} </p>
@@ -302,7 +302,7 @@ const RestfulMovieDetails = () => {
               ) : (
                 <p className="m-2">{omdb?.Plot}</p>
               )}
-              {omdb?.Runtime ? (
+              {omdb?.Runtime !== "N/A" ? (
                 <h2>
                   <span className="font-light text-yellow-300 m-2">
                     Runtime:
@@ -310,7 +310,7 @@ const RestfulMovieDetails = () => {
                   {omdb?.Runtime}
                 </h2>
               ) : null}
-              {omdb?.Rated ? (
+              {omdb?.Rated !== "N/A" ? (
                 <h2>
                   <span className="font-light text-yellow-300 m-2">
                     Rating:
@@ -326,7 +326,7 @@ const RestfulMovieDetails = () => {
                   {tmdb?.genres.map((genre: any) => genre.name).join(", ")}
                 </h2>
               ) : null}
-              {omdb?.Released ? (
+              {omdb?.Released !== "N/A" ? (
                 <h2>
                   <span className="font-light text-yellow-300 m-2">
                     Release Date:
@@ -334,7 +334,7 @@ const RestfulMovieDetails = () => {
                   {omdb?.Released}{" "}
                 </h2>
               ) : null}
-              {omdb?.Director ? (
+              {omdb?.Director !== "N/A" ? (
                 <h2>
                   <span className="font-light text-yellow-300 m-2">
                     Director(s):
@@ -342,7 +342,7 @@ const RestfulMovieDetails = () => {
                   {omdb?.Director}
                 </h2>
               ) : null}
-              {omdb?.Writer ? (
+              {omdb?.Writer !== "N/A" ? (
                 <h2>
                   <span className="font-light text-yellow-300 m-2">
                     Writer(s):
@@ -350,7 +350,7 @@ const RestfulMovieDetails = () => {
                   {omdb?.Writer}{" "}
                 </h2>
               ) : null}
-              {omdb?.Actors ? (
+              {omdb?.Actors !== "N/A" ? (
                 <h2>
                   <span className="font-light text-yellow-300 m-2">
                     Actors:
@@ -366,7 +366,7 @@ const RestfulMovieDetails = () => {
                   ${tmdb?.budget.toLocaleString()}
                 </h2>
               ) : null}
-              {omdb?.BoxOffice ? (
+              {omdb?.BoxOffice !== "N/A" ? (
                 <h2>
                   <span className="font-light text-yellow-300 m-2">
                     Box Office:
