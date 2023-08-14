@@ -1,4 +1,4 @@
-import { AiOutlineEye, AiOutlineCheck } from "react-icons/ai";
+import { BsEye, BsEyeFill } from "react-icons/bs";
 import React, { useCallback, useMemo, useState } from "react";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import useWatchlist from "@/hooks/useWatchlist";
@@ -30,7 +30,7 @@ const WatchlistButton: React.FC<WatchlistButtonProps> = ({ movieTitle }) => {
     mutateWatchlist();
   }, [movieTitle, inWatchlist, currentUser, mutate, mutateWatchlist]);
 
-  const Icon = inWatchlist ? AiOutlineCheck : AiOutlineEye;
+  const Icon = inWatchlist ? BsEyeFill : BsEye;
 
   return (
     <main
@@ -50,9 +50,9 @@ const WatchlistButton: React.FC<WatchlistButtonProps> = ({ movieTitle }) => {
     justify-center
     items-center
     transition
-    hover:border-neutral-300"
+    hover:border-yellow-300"
     >
-      <Icon className="text-white self-center" size={20} />
+      <Icon className="text-yellow-300 self-center" size={20} />
     </main>
   );
 };

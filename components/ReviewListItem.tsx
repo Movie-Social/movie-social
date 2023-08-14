@@ -26,7 +26,7 @@ const ReviewListItem: React.FC<ReviewListItemProps> = ({ data }) => {
   return (
     <main className="flex justify-center ">
       {movieMovie ? (
-        <section className="w-[95%] my-3 p-3 border-b-2 border-yellow-300 border-opacity-30">
+        <section className="w-full my-3 p-3 border-b-2 border-yellow-300 border-opacity-30">
           {movieMovie.data ? (
             <h2
               className="cursor-pointer text-xl lg:text-2xl mb-3 transtion hover:text-yellow-300"
@@ -57,7 +57,7 @@ const ReviewListItem: React.FC<ReviewListItemProps> = ({ data }) => {
             ) : (
               <Image
                 priority
-                className="cursor-pointer transition hover:opacity-70"
+                className="cursor-pointer transition hover:opacity-70 rounded-md"
                 onClick={() => router.push(`/movie/tmdb/${tmdb?.id}`)}
                 src={data.poster}
                 alt={`${data.title}'s official 

@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import tmdbDetailsFetcher from "@/lib/tmdbDetailsFetcher";
-import FavoriteButton from "./FavoriteButton";
 import useRestfulInfoModal from "@/hooks/useRestfulInfoModal";
 import trailerFetcher from "@/lib/trailerFetcher";
 import YouTube, { YouTubeProps } from "react-youtube";
@@ -77,6 +76,7 @@ const RestfulInfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
   const opts: YouTubeProps["opts"] = {
     playerVars: {
       autoplay: 1,
+      mute: 1,
     },
   };
 
@@ -152,6 +152,7 @@ overflow-hidden
           <section className="mx-2 pb-1">
             <p
               className="
+              cursor-pointer
               text-white
               text-center
               text-2xl
@@ -159,7 +160,9 @@ overflow-hidden
               lg:text-4xl
               font-semibold
               mb-2
+              hover:text-yellow-300 transition
               "
+              onClick={() => router.push(`/movie/tmdb/${details?.id}`)}
             >
               {details?.title}
             </p>
@@ -170,9 +173,8 @@ overflow-hidden
               items-center
               "
             >
-              {/* <FavoriteButton movieId={details?.movieId} /> */}
               <BsFillInfoCircleFill
-                className="text-white cursor-pointer"
+                className="text-yellow-300 cursor-pointer"
                 size={30}
                 onClick={() => router.push(`/movie/tmdb/${details?.id}`)}
               />

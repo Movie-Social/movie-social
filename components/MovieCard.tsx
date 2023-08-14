@@ -1,4 +1,3 @@
-import { BsFillPlayFill, BsFillInfoCircleFill } from "react-icons/bs";
 import FavoriteButton from "./FavoriteButton";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
@@ -6,7 +5,6 @@ import useInfoModal from "@/hooks/useInfoModal";
 import WatchlistButton from "./WatchlistButton";
 import Image from "next/image";
 import loady from "../public/images/imgLoad.gif";
-import tmdbDetailsFetcher from "@/lib/tmdbDetailsFetcher";
 import tmdbMovieFetcher from "@/lib/tmdbMovieFetcher";
 
 interface MovieCardProps {
@@ -28,7 +26,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
   const handleOpenModal = useCallback(() => {
     openModal(data?.id);
   }, [openModal, data?.id]);
-  // console.log(data);
+
   return (
     <main
       className={`relative group w-[95%] md:mx-20 h-[25vh] text-center rounded-md bg-black overflow-visible transition duration-500 hover:scale-125 md:hover:-translate-y-[2vw] lg:hover:-translate-y-[1vw]`}
@@ -61,7 +59,10 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
           alt={`${data?.title}'s official movie poster`}
         />
         <div className="absolute bottom-5 left-1 flex flex-col items-start">
-          <h2 className="text-white mx-2 mb-2 text-sm lg:text-lg">
+          <h2
+            className="cursor-pointer text-white mx-2 mb-2 text-sm lg:text-lg"
+            onClick={() => openModal(data?.id)}
+          >
             {data?.title}
           </h2>
           <div className="flex flex-row justify-around">

@@ -24,7 +24,7 @@ const ExistingReviews: React.FC<ExistingReviewProps> = ({ data }) => {
       <h2 className=" text-white text-xl md:text-2xl lg:text-3xl font-bold lg:font-semibold mx-2 px-2 border-l-2 border-yellow-300">
         Movie Social Reviews
       </h2>
-      <section className="flex justify-start">
+      <section className="flex flex-col md:flex-row justify-start">
         {data.map((review) => (
           <ExistingReviewCard
             key={review?.id}
