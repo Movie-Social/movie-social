@@ -14,7 +14,7 @@ import rotten from "../../public/images/rotten.png";
 import imdb from "../../public/images/imdb.png";
 import meta from "../../public/images/meta.png";
 import loady from "../../public/images/imgLoad.gif";
-import YouTube, { YouTubeProps } from "react-youtube";
+import YouTube from "react-youtube";
 import tmdbDetailsFetcher from "@/lib/tmdbDetailsFetcher";
 import omdbFetcher from "@/lib/omdbFetcher";
 import { omdbProps, tmdbProps } from "./tmdb/[restfulDetails]";
@@ -120,7 +120,7 @@ const MovieDetails = () => {
 
   const theRottenScore = rottenScore();
 
-  const opts: YouTubeProps["opts"] = {
+  const opts: any["opts"] = {
     playerVars: {
       autoplay: 1,
       mute: 1,

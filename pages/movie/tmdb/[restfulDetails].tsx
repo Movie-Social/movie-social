@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import YouTube, { YouTubeProps } from "react-youtube";
+import YouTube from "react-youtube";
 import { ReviewProps } from "../[movieDetails]";
 import omdbFetcher from "@/lib/omdbFetcher";
 import trailerFetcher from "@/lib/trailerFetcher";
@@ -128,7 +128,7 @@ const RestfulMovieDetails = () => {
 
   const theRottenScore = rottenScore();
 
-  const opts: YouTubeProps["opts"] = {
+  const opts: any["opts"] = {
     playerVars: {
       autoplay: 1,
       mute: 1,

@@ -11,7 +11,7 @@ interface RestfulMovieListProps {
 
 const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
   const [tmdbList, setTmdbList] = useState([]);
-  const [currents, setCurrents] = useState([]);
+  const [currents, setCurrents] = useState<any>();
 
   useEffect(() => {
     const fetchCurrents = async () => {
@@ -37,7 +37,7 @@ const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
       );
       if (title === "Upcoming") {
         const filtered = englishMovies.reduce((acc: any, movie: any) => {
-          if (!currents.includes(movie.title)) {
+          if (!currents?.includes(movie.title)) {
             acc.push(movie);
           }
           return acc;
