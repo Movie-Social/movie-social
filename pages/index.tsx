@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Hero from "@/components/Hero";
 import InfoModal from "@/components/InfoModal";
 import MovieList from "@/components/MovieList";
@@ -33,6 +34,13 @@ const Home = () => {
 
   return (
     <main>
+      <Head>
+        <title>Movie Social Club</title>
+        <meta
+          name="description"
+          content="I hope this tutorial is helpful for you"
+        />
+      </Head>
       <InfoModal visible={isOpen} onClose={closeModal} />
       <RestfulInfoModal visible={isOpenRestful} onClose={closeModalRestful} />
       <Navbar />
