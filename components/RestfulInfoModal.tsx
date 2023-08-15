@@ -76,7 +76,6 @@ const RestfulInfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
   const opts: any = {
     playerVars: {
       autoplay: 1,
-      mute: 1,
     },
   };
 
