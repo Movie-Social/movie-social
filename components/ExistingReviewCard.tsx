@@ -26,7 +26,7 @@ const ExistingReviewCard: React.FC<ExistingReviewCardProps> = ({
         {rating === 0 ? (
           <h2 className="md:text-lg lg:text-xl font-semibold">Rating: N/A</h2>
         ) : (
-          <h2 className="md:text-lg lg:text-xl font-semibold">
+          <h2 className="md:text-lg lg:text-xl font-semibold mt-4">
             Rating: {rating}/5
           </h2>
         )}

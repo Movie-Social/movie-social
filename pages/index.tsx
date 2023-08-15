@@ -36,10 +36,6 @@ const Home = () => {
     <main>
       <Head>
         <title>Movie Social Club</title>
-        <meta
-          name="description"
-          content="I hope this tutorial is helpful for you"
-        />
       </Head>
       <InfoModal visible={isOpen} onClose={closeModal} />
       <RestfulInfoModal visible={isOpenRestful} onClose={closeModalRestful} />
