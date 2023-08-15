@@ -6,7 +6,7 @@ import useInfoModal from "@/hooks/useInfoModal";
 import useMovie from "@/hooks/useMovie";
 import LoadingModal from "./LoadingModal";
 import trailerFetcher from "@/lib/trailerFetcher";
-import YouTube, { YouTubeProps } from "react-youtube";
+import YouTube from "react-youtube";
 import { tmdbProps } from "@/pages/movie/tmdb/[restfulDetails]";
 import tmdbMovieFetcher from "@/lib/tmdbMovieFetcher";
 
@@ -65,7 +65,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
     return null;
   }
 
-  const opts: YouTubeProps["opts"] = {
+  const opts: any["opts"] = {
     playerVars: {
       autoplay: 1,
       mute: 1,

@@ -5,7 +5,7 @@ import { BsFillInfoCircleFill } from "react-icons/bs";
 import tmdbDetailsFetcher from "@/lib/tmdbDetailsFetcher";
 import useRestfulInfoModal from "@/hooks/useRestfulInfoModal";
 import trailerFetcher from "@/lib/trailerFetcher";
-import YouTube, { YouTubeProps } from "react-youtube";
+import YouTube from "react-youtube";
 
 interface InfoModalProps {
   visible: boolean;
@@ -73,7 +73,7 @@ const RestfulInfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
     return null;
   }
 
-  const opts: YouTubeProps["opts"] = {
+  const opts: any["opts"] = {
     playerVars: {
       autoplay: 1,
       mute: 1,
