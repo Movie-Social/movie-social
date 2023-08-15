@@ -4,7 +4,6 @@ import MovieList from "@/components/MovieList";
 import Navbar from "@/components/Navbar";
 import RestfulInfoModal from "@/components/RestfulInfoModal";
 import RestfulMovieList from "@/components/RestfulMovieList";
-import useFavorites from "@/hooks/useFavorites";
 import useInfoModal from "@/hooks/useInfoModal";
 import useRestfulInfoModal from "@/hooks/useRestfulInfoModal";
 import useMovieList from "@/hooks/useMovieList";
