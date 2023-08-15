@@ -11,6 +11,7 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import { NextPageContext } from "next";
 import { getSession } from "next-auth/react";
 import { useEffect, useState } from "react";
+import Head from "next/head";
 
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
@@ -66,6 +67,9 @@ const MyProfile = () => {
 
   return (
     <main className="flex justify-center text-white">
+      <Head>
+        <title>Movie Social Club</title>
+      </Head>
       <Navbar />
       <main className="flex flex-col lg:flex-row justify-around lg:justify-between w-[100vw] lg:w-4/5 py-5 mt-10">
         <aside className="flex flex-col content-center self-center lg:self-auto w-[97vw] md:w-5/6 md:mx-2 md:mt-2 lg:w-1/5 h-1/5 lg:h-1/6 pb:2 p-0 mb-3 border border-white rounded-md overflow-hidden">
