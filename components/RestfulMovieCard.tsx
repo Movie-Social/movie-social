@@ -24,13 +24,15 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
             className="rounded-md"
           />
         ) : (
-          <Image
-            onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
-            alt={`${data.title}'s official movie poster"`}
-            src={`https://image.tmdb.org/t/p/original/${data?.poster_path}`}
-            fill
-            className="cursor-pointer rounded-md transition duration-500 group-hover:opacity-0"
-          />
+          <button>
+            <Image
+              onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
+              alt={`${data.title}'s official movie poster"`}
+              src={`https://image.tmdb.org/t/p/original/${data?.poster_path}`}
+              fill
+              className="cursor-pointer rounded-md transition duration-500 group-hover:opacity-0"
+            />
+          </button>
         )}
       </section>
       <section className="relative flex flex-col justify-around h-full w-full rounded-md opacity-0 transition duration-500 group-hover:opacity-100">
@@ -43,18 +45,24 @@ const RestfulMovieCard: React.FC<RestfulMovieCardProps> = ({ data }) => {
           className="absolute w-full h-full rounded-md opacity-50 cursor-pointer"
         />
         <div className="absolute bottom-5 left-1 flex flex-col items-start">
-          <h2
-            className="cursor-pointer text-white mx-2 text-sm lg:text-lg"
-            onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
-          >
-            {data?.title}
-          </h2>
+          <button>
+            <h2
+              className="cursor-pointer text-white mx-2 text-sm lg:text-lg"
+              onClick={() => router.push(`/movie/tmdb/${data?.id}`)}
+            >
+              {data?.title}
+            </h2>
+          </button>
           <p className="text-white mx-2 text-sm lg:text-md">
             {data?.release_date.split("-")[0]}
           </p>
           <div className="flex flex-row justify-around">
-            <FavoriteButton movieTitle={data?.title} />
-            <WatchlistButton movieTitle={data?.title} />
+            <button>
+              <FavoriteButton movieTitle={data?.title} />
+            </button>
+            <button>
+              <WatchlistButton movieTitle={data?.title} />
+            </button>
           </div>
         </div>
       </section>
