@@ -84,14 +84,17 @@ Solo fullstack application built with Next.js.
 
 ## Stretch Techs
 The following are all technologies that I had to self-teach in order to complete this application:
-- Tailwind CSS
-- useSWR?
-- MongoDB
-- SSR
-- Axios instead of Async/wait or fetch() since I am already familiar with those
-- Pino logs for improved error messages
-- Zustand GSM
+- Next.JS
 - Next Auth
+- Tailwind CSS
+- SWR from Next.JS
+- Axios instead of Async/wait or fetch() since I am already familiar with those
+- MongoDB for curated Movie Social movie lists, storing user reviews, user data, encrypted account data, and sessions.
+- Server Side Rendering (SSR)
+- Pino logs for improved error messages
+- Zustand for GSM
+- Pino Logger
+- JWT
 
 ## Organizational Resources 🤓
  - [Standup Tracker](https://docs.google.com/spreadsheets/d/15W0ZOf6QuopjNkneR7NCgACKUaP8B5sUfrAjegcO9Bo/edit?usp=sharing)
@@ -104,12 +107,12 @@ The following are all technologies that I had to self-teach in order to complete
 
 ## Accessibility ♿️
  - [Lighthouse Score](https://docs.google.com/document/d/1AfWWZpLgxhDDj-k_7DGRWXokUnNZso7ZLMR_vWxoqs8/edit?usp=sharing)
- - [Taba11y]()
+ - [Taba11y](https://docs.google.com/document/d/12DJ_rB4hPe-B3unKoGz-G5979lIOv1QlEIpMuLzzkEU/edit?usp=sharing)
 
 ## Future Additions 🔮
 - chatGPT integration for curated movie suggestions
-- clubs for users to join
-- friends lists
+- Movie Clubs for users to join
+- Friends lists so users can get ideas from others
 
 
 ## Sole Contributor 💪🏾
