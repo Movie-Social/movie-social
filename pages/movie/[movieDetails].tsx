@@ -20,6 +20,7 @@ import omdbFetcher from "@/lib/omdbFetcher";
 import { omdbProps, tmdbProps } from "./tmdb/[restfulDetails]";
 import { getSession } from "next-auth/react";
 import { NextPageContext } from "next";
+import Head from "next/head";
 
 export interface ReviewProps {
   id: string;
@@ -129,6 +130,9 @@ const MovieDetails = () => {
 
   return (
     <main className="flex flex-col items-center w-full text-white">
+      <Head>
+        <title>Movie Social Club</title>
+      </Head>
       <Navbar />
       <br></br>
       <section className="flex flex-col items-center md:w-[90vw] mt-10">

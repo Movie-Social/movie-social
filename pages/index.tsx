@@ -1,10 +1,10 @@
+import Head from "next/head";
 import Hero from "@/components/Hero";
 import InfoModal from "@/components/InfoModal";
 import MovieList from "@/components/MovieList";
 import Navbar from "@/components/Navbar";
 import RestfulInfoModal from "@/components/RestfulInfoModal";
 import RestfulMovieList from "@/components/RestfulMovieList";
-import useFavorites from "@/hooks/useFavorites";
 import useInfoModal from "@/hooks/useInfoModal";
 import useRestfulInfoModal from "@/hooks/useRestfulInfoModal";
 import useMovieList from "@/hooks/useMovieList";
@@ -34,6 +34,9 @@ const Home = () => {
 
   return (
     <main>
+      <Head>
+        <title>Movie Social Club</title>
+      </Head>
       <InfoModal visible={isOpen} onClose={closeModal} />
       <RestfulInfoModal visible={isOpenRestful} onClose={closeModalRestful} />
       <Navbar />
