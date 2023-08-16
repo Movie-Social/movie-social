@@ -57,9 +57,9 @@ const SubmitReviewButton: React.FC<SubmitReviewButtonProps> = ({
   return (
     <main
       onClick={addReview}
-      className="cursor-pointer md:w-1/5 text-black text-center m-2 p-1 bg-yellow-500 rounded-md"
+      className="cursor-pointer md:w-1/5 text-black text-center m-2 p-1 bg-yellow-300 rounded-md"
     >
-      Submit
+      <button className="accessibilityScore">Submit</button>
     </main>
   );
 };
