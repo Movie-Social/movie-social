@@ -18,6 +18,7 @@ import Reviewform from "@/components/ReviewForm";
 import ExistingReviews from "@/components/ExistingReviews";
 import { NextPageContext } from "next";
 import { getSession } from "next-auth/react";
+import Head from "next/head";
 
 export interface tmdbProps {
   id: string | any;
@@ -137,6 +138,9 @@ const RestfulMovieDetails = () => {
 
   return (
     <main className="flex flex-col items-center w-full text-white">
+      <Head>
+        <title>Movie Social Club</title>
+      </Head>
       <Navbar />
       <br></br>
       <section className="flex flex-col items-center md:w-[90vw] mt-10">
