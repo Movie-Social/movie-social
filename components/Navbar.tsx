@@ -48,17 +48,23 @@ const Navbar = () => {
       ${showBackground ? "bg-zinc-900" : ""}
       `}
       >
-        <Image
-          width={30}
-          height={30}
-          onClick={() => router.push("/")}
-          className="cursor-pointer w-6 h-6 md:w-8 md:h-8 object-cover rounded-3xl text-white"
-          src="/images/newLogo.png"
-          alt="Movie Social Logo"
-        />
+        <button>
+          <Image
+            width={30}
+            height={30}
+            onClick={() => router.push("/")}
+            className="cursor-pointer w-6 h-6 md:w-8 md:h-8 object-cover rounded-3xl text-white"
+            src="/images/newLogo.png"
+            alt="Movie Social Logo"
+          />
+        </button>
         <section className="flex-row ml-8 gap-7 hidden lg:flex">
-          <NavbarItem label="Home" />
-          <NavbarItem label="Reviews" />
+          <button>
+            <NavbarItem label="Home" />
+          </button>
+          <button>
+            <NavbarItem label="Reviews" />
+          </button>
           {/* //* Future Additions */}
           {/* <NavbarItem label="Friends" />
           <NavbarItem label="Clubs" /> */}
@@ -103,12 +109,14 @@ const Navbar = () => {
                 size={20}
               />
             </div>
-            <BsChevronDown
-              size={20}
-              className={`cursor-pointer w-5 h-5 md:w-7 md:h-7 object-cover rounded-3xl text-white hover:text-yellow-300 transition ${
-                showAccountMenu ? "rotate-180" : "rotate-0"
-              }`}
-            />
+            <button>
+              <BsChevronDown
+                size={20}
+                className={`cursor-pointer w-5 h-5 md:w-7 md:h-7 object-cover rounded-3xl text-white hover:text-yellow-300 transition ${
+                  showAccountMenu ? "rotate-180" : "rotate-0"
+                }`}
+              />
+            </button>
             <AccountMenu visible={showAccountMenu} />
           </div>
         </section>
