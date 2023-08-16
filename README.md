@@ -19,13 +19,20 @@
 </details>
 
 ## About the project
-Solo fullstack application built with Next.js. As a frontend engineer it has been frustrating for me to be completely dependent on the open source APIs available. Partial Netflix comp?
+Solo fullstack application built with Next.js.
 
 
 ## [Deployed Application]()
 
 ## User Stories
-- As a user I should be able to 
+- As a user, I should be able to log in with google, github, or create a custom login
+- As a user, I should be able to see multiple movie lists to choose from
+- As a user, I should be able to see a modal of with additional movie information
+- As a user, I should be able to visit an even more detailed page for movie information
+- As a user, I should be able to leave a review on movies
+- As a user, I should be able to see reviews from other Movie Social members
+- As a user, I should be able to add/remove movies from a favorites and watchlist
+- As a user, I should be able to visit a profile page to see all reviews, favorites, and watchlist items.
 
 
 ## Application in Action
@@ -84,9 +91,9 @@ The following are all technologies that I had to self-teach in order to complete
 - Axios instead of Async/wait or fetch() since I am already familiar with those
 - Pino logs for improved error messages
 - Zustand GSM
+- Next Auth
 
 ## Organizational Resources 🤓
- - [Jira Sprint Tracker](https://movieclub.atlassian.net/jira/software/projects/MS/boards/2/timeline?selectedIssue=MS-2&shared=&atlOrigin=eyJpIjoiOTY0NGRmNzc1YzVkNDYwNzgxZTc0ODBlOTE4MzRkZTIiLCJwIjoiaiJ9)
  - [Standup Tracker](https://docs.google.com/spreadsheets/d/15W0ZOf6QuopjNkneR7NCgACKUaP8B5sUfrAjegcO9Bo/edit?usp=sharing)
  - [Current Project Board](https://github.com/orgs/Movie-Social/projects/2/views/1)
  - [Original Project Board](https://github.com/users/kendallm360/projects/9/views/1)
@@ -96,9 +103,8 @@ The following are all technologies that I had to self-teach in order to complete
  - [Design Inspiration](https://docs.google.com/document/d/1sxDiycUfwIj-4myQa6dECsee5QxNetZfu_kyMeIu4eo/edit) UPDATE THIS
 
 ## Accessibility ♿️
- - [Lighthouse Score]()
+ - [Lighthouse Score](https://docs.google.com/document/d/1AfWWZpLgxhDDj-k_7DGRWXokUnNZso7ZLMR_vWxoqs8/edit?usp=sharing)
  - [Taba11y]()
-
 
 ## Future Additions 🔮
 - chatGPT integration for curated movie suggestions
