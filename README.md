@@ -32,21 +32,21 @@ Solo fullstack application built with Next.js.
 - As a user, I should be able to leave a review on movies
 - As a user, I should be able to see reviews from other Movie Social members
 - As a user, I should be able to add/remove movies from a favorites and watchlist
-- As a user, I should be able to visit a profile page to see all reviews, favorites, and watchlist items.
+- As a user, I should be able to visit a profile page to see all their reviews, favorites, and watchlist items.
 
 
 ## Application in Action
 
-### Loading the application:
+### Logging into the application:
 ![demo1]()
 
-### Toggling between the different about me sections:
+### Navigating the Homepage:
 ![demo2]()
 
-### Toggling between the different project sections:
-![demo4]()
+### Details Page and Leaving Reviews:
+![demo3]()
 
-### Site navigation:
+### User's profile page:
 ![demo4]()
 
 
@@ -70,7 +70,6 @@ Solo fullstack application built with Next.js.
 ![Jira](https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
-![CircleCI](https://img.shields.io/badge/circle%20ci-%23161616.svg?style=for-the-badge&logo=circleci&logoColor=white)
 <br>
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 <img src="https://img.shields.io/badge/Dribbble-EA4C89?style=for-the-badge&logo=dribbble&logoColor=white" />
