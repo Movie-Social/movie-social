@@ -7,6 +7,7 @@ import Input from "@/components/Input";
 import logger from "@/lib/logger";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import Head from "next/head";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
@@ -49,7 +50,10 @@ const Auth = () => {
   }, [email, name, password, login]);
 
   return (
-    <main className="relative h-full w-full bg-[url('/images/socialHero.png')] bg-center bg-fixed bg-no-repeat">
+    <main className="relative h-full w-full bg-[url('/images/background.jpg')] bg-center bg-fixed bg-no-repeat">
+      <Head>
+        <title>Movie Social Club</title>
+      </Head>
       <main className="w-full h-full bg-black lg:bg-opacity-50">
         <section className="flex justify-center items-center content-center h-full ">
           <section className="w-full md:w-4/5 lg:w-2/5 px-16 py-16 bg-black bg-opacity-70 rounded-md lg:max-w-md">
@@ -90,7 +94,7 @@ const Auth = () => {
               onClick={variant === "login" ? login : register}
               className="
               w-full
-              text-white
+              text-black
               mt-10
               py-3
               bg-yellow-300
