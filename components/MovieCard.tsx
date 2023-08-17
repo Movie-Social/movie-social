@@ -60,7 +60,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
           src={data.poster}
           alt={`${data?.title}'s official movie poster`}
         />
-        <div className="absolute bottom-5 left-1 flex flex-col items-start">
+        <div className="absolute bottom-8 left-1 flex flex-col items-start">
           <button className="accessibilityScore">
             <h2
               className="cursor-pointer text-white mx-2 mb-2 text-sm lg:text-lg"
