@@ -35,15 +35,17 @@ const ProfileListItem: React.FC<ListItemProps> = ({ movieId, faves }) => {
           alt={"loading gif"}
         />
       ) : (
-        <Image
-          priority
-          onClick={() => router.push(`/movie/tmdb/${tmdb?.id}`)}
-          className="cursor-pointer h-full transition hover:opacity-70 rounded-md"
-          width={150}
-          height={50}
-          src={`https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`}
-          alt={`${tmdb?.title}'s official movie poster`}
-        />
+        <button className="accessibilityScore">
+          <Image
+            priority
+            onClick={() => router.push(`/movie/tmdb/${tmdb?.id}`)}
+            className="cursor-pointer h-full transition hover:opacity-70 rounded-md"
+            width={150}
+            height={50}
+            src={`https://image.tmdb.org/t/p/original/${tmdb?.poster_path}`}
+            alt={`${tmdb?.title}'s official movie poster`}
+          />
+        </button>
       )}
       <h2
         className="cursor-pointer transition hover:text-yellow-300"
