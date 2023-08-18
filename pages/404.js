@@ -29,7 +29,13 @@ const ErrorPage = () => {
         <span className="text-yellow-300 font-light">{"B.)"}</span> Reach out
         and help troubleshoot this puppy with me....{" "}
         <a href="mailto:mcgreekendall@gmail.com">
-          <Image src={gmail} width={50} height={50} className="inline" />
+          <Image
+            src={gmail}
+            width={50}
+            height={50}
+            className="inline"
+            alt="gmail emoji to redirect users to emailing me"
+          />
         </a>
       </h2>
     </main>
