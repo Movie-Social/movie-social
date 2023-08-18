@@ -92,7 +92,6 @@ The following are all technologies that I had to self-teach in order to complete
 - Server Side Rendering (SSR)
 - Pino logs for improved error messages
 - Zustand for GSM
-- Pino Logger
 - JWT
 
 ## Organizational Resources 🤓
@@ -109,7 +108,7 @@ The following are all technologies that I had to self-teach in order to complete
  - [Taba11y](https://docs.google.com/document/d/12DJ_rB4hPe-B3unKoGz-G5979lIOv1QlEIpMuLzzkEU/edit?usp=sharing)
 
 ## Future Additions 🔮
-- chatGPT integration for curated movie suggestions
+- ChatGPT integration for curated movie suggestions
 - Movie Clubs for users to join
 - Friends lists so users can get ideas from others
 
