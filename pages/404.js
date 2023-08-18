@@ -1,5 +1,6 @@
 import Image from "next/image";
 import movie404 from "../public/images/movie404.gif";
+import gmail from "../public/images/gmail.png";
 const ErrorPage = () => {
   return (
     <main className="flex flex-col justify-center w-full h-full text-white px-3">
@@ -8,7 +9,7 @@ const ErrorPage = () => {
         <span className="text-yellow-300 font-light">
           {"(Kendall McGree) "}
         </span>
-        off his game 🤦🏾‍♂️
+        slipping 🤦🏾‍♂️
       </h2>
       <Image
         src={movie404}
@@ -25,8 +26,11 @@ const ErrorPage = () => {
       </h2>
       <br></br>
       <h2 className="text-center lg:text-2xl">
-        <span className="text-yellow-300 font-light">{"B.)"}</span> Help
-        troubleshoot this puppy with me....
+        <span className="text-yellow-300 font-light">{"B.)"}</span> Reach out
+        and help troubleshoot this puppy with me....{" "}
+        <a href="mailto:mcgreekendall@gmail.com">
+          <Image src={gmail} width={50} height={50} className="inline" />
+        </a>
       </h2>
     </main>
   );
