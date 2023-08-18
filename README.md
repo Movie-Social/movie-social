@@ -100,8 +100,9 @@ The following are all technologies that I had to self-teach in order to complete
  - [Original Project Board](https://github.com/users/kendallm360/projects/9/views/1)
  - [Figma](https://www.figma.com/file/oZAqVK1lRyLbxgsAfVlD1g/Movie-Club?type=design&node-id=0-1&mode=design&t=eOyU4LJwOz8A4WBi-0)
  - [Sprint 1 MVP](https://docs.google.com/document/d/1Kwk03A8VvwA6KMVbE-R77hyDKUV8YLc4AlEuOxlKjLE/edit?usp=sharing)
- - [Sprint 2 MVP](https://docs.google.com/document/d/1h7y-M20puhWu6bIJw2HrhkEELf2f7yn_iA2pQj2snVI/edit?usp=sharing) UPDATE THIS
- - [Design Inspiration](https://docs.google.com/document/d/1sxDiycUfwIj-4myQa6dECsee5QxNetZfu_kyMeIu4eo/edit) UPDATE THIS
+ - [Sprint 2 MVP](https://docs.google.com/document/d/1h7y-M20puhWu6bIJw2HrhkEELf2f7yn_iA2pQj2snVI/edit?usp=sharing)
+ - [Sprint 3 MVP](https://docs.google.com/document/d/1-mC86IrrheNUsP-MZn6ossTd-Sll6nAIFTdfLrVXypA/edit?usp=sharing)
+ - [Design Inspiration](https://docs.google.com/document/d/1sxDiycUfwIj-4myQa6dECsee5QxNetZfu_kyMeIu4eo/edit)
 
 ## Accessibility ♿️
  - [Lighthouse Score](https://docs.google.com/document/d/1AfWWZpLgxhDDj-k_7DGRWXokUnNZso7ZLMR_vWxoqs8/edit?usp=sharing)
