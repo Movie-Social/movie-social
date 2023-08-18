@@ -18,6 +18,12 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/404.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "pages/404.js",
+    "pages/500.js"
+  ],
   "exclude": ["node_modules"]
 }

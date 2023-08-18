@@ -43,15 +43,16 @@ const Reviewform: React.FC<ReviewProps> = ({
       .fill(0)
       .map((_, i) => i + 1)
       .map((idx) => (
-        <BsFillStarFill
-          key={idx}
-          size={20}
-          style={{ color: getColor(idx) }}
-          className="cursor-pointer mx-1"
-          onMouseEnter={() => setHoverRating(idx)}
-          onMouseLeave={() => setHoverRating(0)}
-          onClick={() => onRating(idx)}
-        />
+        <button className="accessibilityScore" key={idx}>
+          <BsFillStarFill
+            size={20}
+            style={{ color: getColor(idx) }}
+            className="cursor-pointer mx-1"
+            onMouseEnter={() => setHoverRating(idx)}
+            onMouseLeave={() => setHoverRating(0)}
+            onClick={() => onRating(idx)}
+          />
+        </button>
       ));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rating, hoverRating]);

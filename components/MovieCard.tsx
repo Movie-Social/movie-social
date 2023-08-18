@@ -40,13 +40,15 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
             className="rounded-md"
           />
         ) : (
-          <Image
-            onClick={() => router.push(`/movie/${data?.id}`)}
-            alt={`${data.title}'s official movie poster"`}
-            src={data.poster}
-            fill
-            className="cursor-pointer rounded-md transition duration-500 group-hover:opacity-0"
-          />
+          <button className="accessibilityScore">
+            <Image
+              onClick={() => router.push(`/movie/${data?.id}`)}
+              alt={`${data.title}'s official movie poster"`}
+              src={data.poster}
+              fill
+              className="cursor-pointer rounded-md transition duration-500 group-hover:opacity-0"
+            />
+          </button>
         )}
       </section>
       <section className="relative flex flex-col justify-around h-full w-full rounded-md opacity-0 transition duration-500 group-hover:opacity-100">
@@ -58,16 +60,22 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
           src={data.poster}
           alt={`${data?.title}'s official movie poster`}
         />
-        <div className="absolute bottom-5 left-1 flex flex-col items-start">
-          <h2
-            className="cursor-pointer text-white mx-2 mb-2 text-sm lg:text-lg"
-            onClick={() => openModal(data?.id)}
-          >
-            {data?.title}
-          </h2>
+        <div className="absolute bottom-8 left-1 flex flex-col items-start">
+          <button className="accessibilityScore">
+            <h2
+              className="cursor-pointer text-white mx-2 mb-2 text-sm lg:text-lg"
+              onClick={() => openModal(data?.id)}
+            >
+              {data?.title}
+            </h2>
+          </button>
           <div className="flex flex-row justify-around">
-            <FavoriteButton movieTitle={data?.title} />
-            <WatchlistButton movieTitle={data?.title} />
+            <button className="accessibilityScore">
+              <FavoriteButton movieTitle={data?.title} />
+            </button>
+            <button className="accessibilityScore">
+              <WatchlistButton movieTitle={data?.title} />
+            </button>
           </div>
         </div>
       </section>

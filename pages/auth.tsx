@@ -129,7 +129,9 @@ const Auth = () => {
                 hover:opacity-80
                 transition"
               >
-                <FcGoogle size={30} />
+                <button>
+                  <FcGoogle size={30} />
+                </button>
               </div>
               <div
                 onClick={() => signIn("github", { callbackUrl: "/" })}
@@ -145,19 +147,23 @@ const Auth = () => {
                 hover:opacity-80
                 transition"
               >
-                <FaGithub size={30} />
+                <button>
+                  <FaGithub size={30} />
+                </button>
               </div>
             </nav>
             <p className="text-neutral-500 text-md mt-12 md:text-center">
               {variant === "login"
                 ? "First time Using Movie Social? | "
                 : "Already have an account? | "}
-              <span
-                onClick={toggleVariant}
-                className="text-white text-md ml-1 hover:underline cursor-pointer"
-              >
-                {variant === "login" ? "Create an account" : "Login"}
-              </span>
+              <button>
+                <span
+                  onClick={toggleVariant}
+                  className="text-white text-md ml-1 hover:underline cursor-pointer"
+                >
+                  {variant === "login" ? "Create an account" : "Login"}
+                </span>
+              </button>
             </p>
           </section>
         </section>

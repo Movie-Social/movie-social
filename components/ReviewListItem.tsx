@@ -55,16 +55,18 @@ const ReviewListItem: React.FC<ReviewListItemProps> = ({ data }) => {
                 height={50}
               />
             ) : (
-              <Image
-                priority
-                className="cursor-pointer transition hover:opacity-70 rounded-md"
-                onClick={() => router.push(`/movie/tmdb/${tmdb?.id}`)}
-                src={data.poster}
-                alt={`${data.title}'s official 
-        movie poster`}
-                width={130}
-                height={50}
-              />
+              <button className="accessibilityScore">
+                <Image
+                  priority
+                  className="cursor-pointer transition hover:opacity-70 rounded-md"
+                  onClick={() => router.push(`/movie/tmdb/${tmdb?.id}`)}
+                  src={data.poster}
+                  alt={`${data.title}'s official 
+                movie poster`}
+                  width={130}
+                  height={50}
+                />
+              </button>
             )}
             <div className="flex flex-col justify-evenly">
               {data.review ? (
