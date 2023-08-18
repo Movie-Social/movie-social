@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import { NextApiRequest, NextApiResponse } from "next";
-import prismadb from "@/lib/prismadb";
-import logger from "@/lib/logger";
+import prismadb from "../../lib/prismadb";
+import logger from "../../lib/logger";
 
 export default async function handler(
   req: NextApiRequest,
