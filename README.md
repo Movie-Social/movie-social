@@ -1,4 +1,4 @@
-# Movie Social
+# [Movie Social Club](https://movie-social-club.vercel.app/)
 
 <details>
   <summary>Table of Contents</summary>
@@ -22,7 +22,7 @@
 Solo fullstack application built with Next.js.
 
 
-## [Deployed Application]()
+## [Deployed Application](https://movie-social-club.vercel.app/)
 
 ## User Stories
 - As a user, I should be able to log in with google, github, or create a custom login
@@ -35,8 +35,7 @@ Solo fullstack application built with Next.js.
 - As a user, I should be able to visit a profile page to see all their reviews, favorites, and watchlist items.
 
 
-## [Application in Action](https://movie-social-club.vercel.app/)
-[Movie Social Club](https://movie-social-club.vercel.app/)
+## Application in Action
 ### Logging into the application:
 ![demo1]()
 
