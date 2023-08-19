@@ -89,11 +89,8 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
       bg-opacity-80
       "
     >
-      {isLoading ? (
-        <LoadingModal />
-      ) : (
-        <section
-          className="
+      <section
+        className="
           relative
           lg:w-3/5
           mx-auto
@@ -101,9 +98,9 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
           rounded-md
           overflow-hidden
 "
-        >
-          <div
-            className={`${isVisible ? "scale-100" : "scale-0"}
+      >
+        <div
+          className={`${isVisible ? "scale-100" : "scale-0"}
             relative
             flex-auto
             transform
@@ -111,21 +108,21 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
             drop-shadow-md
           bg-zinc-900
         `}
-          >
-            <div
-              className="
+        >
+          <div
+            className="
               relative
               mb-2
             "
-            >
-              <YouTube
-                videoId={trailer}
-                opts={opts}
-                className="aspect-w-16 aspect-h-9 sm:aspect-w-4 sm:aspect-h-3 md:aspect-w-16 md:aspect-h-9 lg:w-full lg:aspect-h-8"
-              />
-              <div
-                onClick={handleClose}
-                className="
+          >
+            <YouTube
+              videoId={trailer}
+              opts={opts}
+              className="aspect-w-16 aspect-h-9 sm:aspect-w-4 sm:aspect-h-3 md:aspect-w-16 md:aspect-h-9 lg:w-full lg:aspect-h-8"
+            />
+            <div
+              onClick={handleClose}
+              className="
                 absolute
                 top-3
                 right-3
@@ -139,13 +136,13 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
           bg-black
           bg-opacity-70
         "
-              >
-                <AiOutlineClose size={20} className="text-white" />
-              </div>
+            >
+              <AiOutlineClose size={20} className="text-white" />
             </div>
-            <section className="mx-2 pb-3">
-              <p
-                className="
+          </div>
+          <section className="mx-2 pb-3">
+            <p
+              className="
                 cursor-pointer
                 text-white
                 text-center
@@ -156,28 +153,27 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
                 mb-2
               hover:text-yellow-300 transition
               "
-                onClick={() => router.push(`/movie/${data?.movieId}`)}
-              >
-                {data?.title}
-              </p>
-              <div
-                className="flex
+              onClick={() => router.push(`/movie/${data?.movieId}`)}
+            >
+              {data?.title}
+            </p>
+            <div
+              className="flex
               flex-row
               gap-3
               items-center
               "
-              >
-                <BsFillInfoCircleFill
-                  className="text-yellow-300 cursor-pointer"
-                  size={20}
-                  onClick={() => router.push(`/movie/${data?.movieId}`)}
-                />
-              </div>
-              <p className="text-white text-lg my-4">{data?.summary}</p>
-            </section>
-          </div>
-        </section>
-      )}
+            >
+              <BsFillInfoCircleFill
+                className="text-yellow-300 cursor-pointer"
+                size={20}
+                onClick={() => router.push(`/movie/${data?.movieId}`)}
+              />
+            </div>
+            <p className="text-white text-lg my-4">{data?.summary}</p>
+          </section>
+        </div>
+      </section>
     </main>
   );
 };
