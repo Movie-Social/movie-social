@@ -1,5 +1,3 @@
-import logger from "@/lib/logger";
-
 const tmdbDetailsFetcher = async (movieId: any) => {
   try {
     const response = await fetch(
@@ -7,7 +5,7 @@ const tmdbDetailsFetcher = async (movieId: any) => {
     );
     return response.json();
   } catch (error) {
-    logger.error(error);
+    console.log(error);
   }
 };
 export default tmdbDetailsFetcher;

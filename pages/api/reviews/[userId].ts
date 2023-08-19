@@ -1,6 +1,5 @@
 import serverAuth from "@/lib/serverAuth";
 import { NextApiRequest, NextApiResponse } from "next";
-import logger from "@/lib/logger";
 import prismadb from "@/lib/prismadb";
 export default async function handler(
   req: NextApiRequest,
@@ -21,7 +20,7 @@ export default async function handler(
 
     return res.status(200).json(reviews);
   } catch (error: any) {
-    logger.error(error.message);
+    console.log(error.message);
     return res.status(400).end();
   }
 }

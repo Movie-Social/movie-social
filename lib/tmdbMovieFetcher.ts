@@ -1,5 +1,3 @@
-import logger from "@/lib/logger";
-
 const tmdbMovieFetcher = async (searchWords: any) => {
   try {
     const response = await fetch(
@@ -9,7 +7,7 @@ const tmdbMovieFetcher = async (searchWords: any) => {
     );
     return response.json();
   } catch (error) {
-    logger.error(error);
+    console.log(error);
   }
 };
 export default tmdbMovieFetcher;

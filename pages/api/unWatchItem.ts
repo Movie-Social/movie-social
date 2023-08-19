@@ -2,7 +2,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 import prismadb from "@/lib/prismadb";
 import serverAuth from "@/lib/serverAuth";
 import { without } from "lodash";
-import logger from "@/lib/logger";
 
 export default async function handler(
   req: NextApiRequest,
@@ -40,7 +39,7 @@ export default async function handler(
 
     return res.status(200).json(updatedUser);
   } catch (error) {
-    logger.error(error);
+    console.log(error);
 
     return res.status(500).end();
   }

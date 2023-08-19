@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import prismadb from "@/lib/prismadb";
-import logger from "../../../lib/logger";
 
 export default async function handler(
   req: NextApiRequest,
@@ -20,6 +19,6 @@ export default async function handler(
     }
     return res.status(200).json(movie.id);
   } catch (error) {
-    logger.error(error);
+    console.log(error);
   }
 }

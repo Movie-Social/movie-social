@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import serverAuth from "@/lib/serverAuth";
-import logger from "@/lib/logger";
 
 export default async function handler(
   req: NextApiRequest,
@@ -13,7 +12,7 @@ export default async function handler(
     const { currentUser } = await serverAuth(req, res);
     return res.status(200).json(currentUser?.watchlistTitles);
   } catch (error: any) {
-    logger.error(error.message);
+    console.log(error.message);
     return res.status(400).end();
   }
 }

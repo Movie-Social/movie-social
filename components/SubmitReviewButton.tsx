@@ -1,4 +1,4 @@
-import logger from "@/lib/logger";
+// import logger from "@/lib/logger";
 import axios from "axios";
 import { useCallback } from "react";
 import useAllReviews from "@/hooks/useAllReviews";
@@ -41,7 +41,7 @@ const SubmitReviewButton: React.FC<SubmitReviewButtonProps> = ({
       });
       mutateReviews();
     } catch (error: any) {
-      logger.error(error.message);
+      console.log(error.message);
     }
   }, [
     title,

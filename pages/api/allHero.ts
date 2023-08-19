@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import prismadb from "@/lib/prismadb";
-import logger from "@/lib/logger";
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -20,6 +19,6 @@ export default async function handler(
     });
     return res.status(200).json(randomMovies[0]);
   } catch (error: any) {
-    logger.error(error.message);
+    console.log(error.message);
   }
 }

@@ -4,7 +4,6 @@ import axios from "axios";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import Input from "@/components/Input";
-import logger from "@/lib/logger";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import Head from "next/head";
@@ -32,7 +31,7 @@ const Auth = () => {
 
       router.push("/");
     } catch (error: any) {
-      logger.error(error.message);
+      console.log(error.message);
     }
   }, [email, password, router]);
 
@@ -45,7 +44,7 @@ const Auth = () => {
       });
       login();
     } catch (error: any) {
-      logger.error(error.message);
+      console.log(error.message);
     }
   }, [email, name, password, login]);
 

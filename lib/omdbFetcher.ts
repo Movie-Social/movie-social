@@ -1,4 +1,4 @@
-import logger from "@/lib/logger";
+// import logger from "@/lib/logger";
 
 const omdbFetcher = async (title: any) => {
   try {
@@ -17,7 +17,7 @@ const omdbFetcher = async (title: any) => {
     );
     return response.json();
   } catch (error) {
-    logger.error(error);
+    console.log(error);
   }
 };
 
