@@ -7,6 +7,7 @@
     <li><a href="#deployed-application">Deployed Application</a></li>
     <li><a href="#user-stories">User Stories</a></li>
     <li><a href="#application-in-action">Application in Action</a></li>
+    <li><a href="#walkthroughs-and-highlights">WalkThroughs and Highlights</a></li>
     <li><a href="#frontend-technologies-used-">Frontend Technologies Used</a></li>
     <li><a href="#backend-technologies-used-">Backend Technologies Used</a></li>
     <li><a href="#organizational-resources-">Organizational Resources</a></li>
@@ -36,17 +37,18 @@ Solo fullstack application built with Next.js.
 
 
 ## Application in Action
-### Logging into the application:
-[Auth Page](https://www.loom.com/share/49aa514f005c400587f12e87b56e0d5c?sid=6bbb6eeb-45b4-469d-8bc6-9ff38ba41f95)
+![Demo1](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWc4ZXhydnUzYnZ6M2FyendkZmg2aXV5d3NtdjZ3bWQ0b3dxenkycSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LxiADv1K3rFB7mjI4h/giphy.gif)
+![Demo2](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTVuODUxeDV3NmN5czk2Y240Y3d5aWJpOW11NnlndzFtdWNoMnVqdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jfVVvJmTziwaTg8gCj/giphy.gif)
 
-### Navigating the Homepage:
-![demo2]()
 
-### Details Page and Leaving Reviews:
-![demo3]()
+## WalkThroughs and Highlights
+![Auth Page](https://www.loom.com/share/49aa514f005c400587f12e87b56e0d5c?sid=6bbb6eeb-45b4-469d-8bc6-9ff38ba41f95)
 
-### User's profile page:
-![demo4](https://www.loom.com/embed/12d6d70821174c0d99b1faf1dc18b135?sid=513c1a0b-469e-49da-8a0e-438f8c1ebb25")
+![Home Page](https://www.loom.com/share/0a9b580e7ffe442aa41819e394520b17?sid=2fc03641-a9bd-40a2-a864-e0ed1cb5e1fb)
+
+![Details Page](https://www.loom.com/share/828baa7bdf6f40729a3b4cea03eb2538?sid=d118710d-3e3a-4779-887b-16190fb96b0c)
+
+![User's Profile Page](https://www.loom.com/share/12d6d70821174c0d99b1faf1dc18b135?sid=d082d27c-08d7-485b-ba56-80f89d9ed8c2)
 
 
 ## Frontend Technologies Used 👨🏾‍💻
