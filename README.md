@@ -38,11 +38,13 @@ Solo fullstack application built with Next.js.
 
 ## Application in Action
 ![Demo1](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWc4ZXhydnUzYnZ6M2FyendkZmg2aXV5d3NtdjZ3bWQ0b3dxenkycSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LxiADv1K3rFB7mjI4h/giphy.gif)
+<br>
 ![Demo2](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTVuODUxeDV3NmN5czk2Y240Y3d5aWJpOW11NnlndzFtdWNoMnVqdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jfVVvJmTziwaTg8gCj/giphy.gif)
 
 
 ## WalkThroughs and Highlights
 ![Auth Page](https://www.loom.com/share/49aa514f005c400587f12e87b56e0d5c?sid=6bbb6eeb-45b4-469d-8bc6-9ff38ba41f95)
+![Auth](https://www.loom.com/share/49aa514f005c400587f12e87b56e0d5c?sid=b9e6616f-3c37-47bf-afd1-6744b95048e2)
 
 ![Home Page](https://www.loom.com/share/0a9b580e7ffe442aa41819e394520b17?sid=2fc03641-a9bd-40a2-a864-e0ed1cb5e1fb)
 
