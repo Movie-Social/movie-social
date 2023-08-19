@@ -1,5 +1,3 @@
-// import logger from "@/lib/logger";
-
 const omdbFetcher = async (title: any) => {
   try {
     if (!title) {

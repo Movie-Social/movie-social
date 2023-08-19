@@ -1,4 +1,3 @@
-// import logger from "@/lib/logger";
 import axios from "axios";
 import { useCallback } from "react";
 import useAllReviews from "@/hooks/useAllReviews";

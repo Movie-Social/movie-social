@@ -6,7 +6,6 @@ import prismadb from "../../../lib/prismadb";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import logger from "../../../lib/logger";
 
 export const authOptions: AuthOptions = {
   providers: [
