@@ -43,15 +43,13 @@ Solo fullstack application built with Next.js.
 
 
 ## WalkThroughs and Highlights
-![Auth Page](https://www.loom.com/share/49aa514f005c400587f12e87b56e0d5c?sid=6bbb6eeb-45b4-469d-8bc6-9ff38ba41f95)
-![Auth](https://www.loom.com/share/49aa514f005c400587f12e87b56e0d5c?sid=b9e6616f-3c37-47bf-afd1-6744b95048e2)
+[Auth Page](https://www.youtube.com/watch?v=pIaEPk0xWsQ)
 
-![Home Page](https://www.loom.com/share/0a9b580e7ffe442aa41819e394520b17?sid=2fc03641-a9bd-40a2-a864-e0ed1cb5e1fb)
+[Home Page](https://www.youtube.com/watch?v=Af532keifRI)
 
-![Details Page](https://www.loom.com/share/828baa7bdf6f40729a3b4cea03eb2538?sid=d118710d-3e3a-4779-887b-16190fb96b0c)
+[Details Page](https://www.youtube.com/watch?v=0JSXMUWlUgI)
 
-![User's Profile Page](https://www.loom.com/share/12d6d70821174c0d99b1faf1dc18b135?sid=d082d27c-08d7-485b-ba56-80f89d9ed8c2)
-
+[User's Profile Page](https://www.youtube.com/watch?v=JP5QdthF90Q)
 
 ## Frontend Technologies Used 👨🏾‍💻
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
