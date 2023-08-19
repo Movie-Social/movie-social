@@ -37,7 +37,7 @@ Solo fullstack application built with Next.js.
 
 ## Application in Action
 ### Logging into the application:
-![demo1]()
+[Auth Page](https://www.loom.com/share/49aa514f005c400587f12e87b56e0d5c?sid=6bbb6eeb-45b4-469d-8bc6-9ff38ba41f95)
 
 ### Navigating the Homepage:
 ![demo2]()
