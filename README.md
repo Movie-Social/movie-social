@@ -46,7 +46,7 @@ Solo fullstack application built with Next.js.
 ![demo3]()
 
 ### User's profile page:
-![demo4](https://www.loom.com/share/12d6d70821174c0d99b1faf1dc18b135?sid=bdfdcd60-3124-4aef-9719-cb6e22d93758)
+![demo4](https://www.loom.com/embed/12d6d70821174c0d99b1faf1dc18b135?sid=513c1a0b-469e-49da-8a0e-438f8c1ebb25")
 
 
 ## Frontend Technologies Used 👨🏾‍💻
