@@ -11,8 +11,8 @@ const ExistingReviewCard: React.FC<ExistingReviewCardProps> = ({
   name,
 }) => {
   return (
-    <main>
-      <section className="flex flex-col items-center p-2 m-2 md:m-5 border-2 border-yellow-300 rounded-md">
+    <main className="flex flex-col items-center">
+      <section className="flex flex-col items-center justify-center w-5/6 h-full p-2 m-2 md:m-5 border-2 border-yellow-300 rounded-md">
         <div className="flex flex-row justify-center items-center content-center">
           <Image
             alt="Movie Social logo"
@@ -31,7 +31,7 @@ const ExistingReviewCard: React.FC<ExistingReviewCardProps> = ({
           </h2>
         )}
       </section>
-      <section className="flex flex-row justify-center items-center mb-5">
+      <section className="flex flex-row justify-center content-center self-center mb-5 w-full">
         <BiUserCircle className="text-white mx-2" size={30} />
         <p className="text-yellow-300 md:text-xl lg:text-2xl">{name}</p>
       </section>
