@@ -20,6 +20,6 @@ export default async function handler(
     }
     return res.status(200).json(movie.id);
   } catch (error) {
-    logger.error(error);
+    console.log(error);
   }
 }

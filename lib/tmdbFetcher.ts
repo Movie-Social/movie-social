@@ -7,7 +7,7 @@ const tmdbFetcher = async (category: string) => {
     );
     return response.json();
   } catch (error) {
-    logger.error(error);
+    console.log(error);
   }
 };
 export default tmdbFetcher;

@@ -9,7 +9,7 @@ const tmdbMovieFetcher = async (searchWords: any) => {
     );
     return response.json();
   } catch (error) {
-    logger.error(error);
+    console.log(error);
   }
 };
 export default tmdbMovieFetcher;

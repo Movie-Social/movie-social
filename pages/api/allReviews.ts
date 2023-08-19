@@ -18,6 +18,6 @@ export default async function handler(
     });
     return res.status(200).json(allReviews);
   } catch (error: any) {
-    logger.error(error.message);
+    console.log(error.message);
   }
 }

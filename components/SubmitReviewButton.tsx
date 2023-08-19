@@ -41,7 +41,7 @@ const SubmitReviewButton: React.FC<SubmitReviewButtonProps> = ({
       });
       mutateReviews();
     } catch (error: any) {
-      logger.error(error.message);
+      console.log(error.message);
     }
   }, [
     title,

@@ -44,7 +44,7 @@ export default async function handler(
 
     res.status(200).json(movieDetails);
   } catch (error: any) {
-    logger.error(error.message);
+    console.log(error.message);
     return res.status(400).end();
   }
 }

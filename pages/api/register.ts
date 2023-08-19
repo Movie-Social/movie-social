@@ -37,7 +37,7 @@ export default async function handler(
 
     return res.status(200).json(user);
   } catch (error: any) {
-    logger.error(error.message);
+    console.log(error.message);
     return res.status(400).end();
   }
 }

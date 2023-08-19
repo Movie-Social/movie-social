@@ -32,7 +32,7 @@ const Auth = () => {
 
       router.push("/");
     } catch (error: any) {
-      logger.error(error.message);
+      console.log(error.message);
     }
   }, [email, password, router]);
 
@@ -45,7 +45,7 @@ const Auth = () => {
       });
       login();
     } catch (error: any) {
-      logger.error(error.message);
+      console.log(error.message);
     }
   }, [email, name, password, login]);
 

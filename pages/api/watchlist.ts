@@ -13,7 +13,7 @@ export default async function handler(
     const { currentUser } = await serverAuth(req, res);
     return res.status(200).json(currentUser?.watchlistTitles);
   } catch (error: any) {
-    logger.error(error.message);
+    console.log(error.message);
     return res.status(400).end();
   }
 }

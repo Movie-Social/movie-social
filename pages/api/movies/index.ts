@@ -16,7 +16,7 @@ export default async function handler(
     // console.log(movies, "movies");
     return res.status(200).json(movies);
   } catch (error: any) {
-    logger.error(error.message);
+    console.log(error.message);
     return res.status(400).end();
   }
 }
