@@ -35,8 +35,8 @@ Solo fullstack application built with Next.js.
 - As a user, I should be able to visit a profile page to see all their reviews, favorites, and watchlist items.
 
 
-## Application in Action
-
+## [Application in Action](https://movie-social-club.vercel.app/)
+[Movie Social Club](https://movie-social-club.vercel.app/)
 ### Logging into the application:
 ![demo1]()
 
