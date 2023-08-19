@@ -6,7 +6,7 @@ const fetcher = (url: string) =>
     .get(url)
     .then((res) => res.data)
     .catch((error) => {
-      logger.info(`Error fetching data from ${url}`, error);
+      console.log(`Error fetching data from ${url}`, error);
       throw error;
     });
 export default fetcher;

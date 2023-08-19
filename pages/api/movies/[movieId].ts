@@ -15,12 +15,12 @@ export default async function handler(
     await serverAuth(req, res);
     const { movieId } = req.query;
     if (typeof movieId !== "string") {
-      logger.info("No movie exists for fetching its details");
+      console.log("No movie exists for fetching its details");
       throw new Error("Invalid ID");
     }
 
     if (!movieId) {
-      logger.info("No movie exists for fetching its details");
+      console.log("No movie exists for fetching its details");
       throw new Error("Invalid ID");
     }
 
@@ -38,7 +38,7 @@ export default async function handler(
     });
 
     if (!movieDetails) {
-      logger.info("No movie exists for fetching its details");
+      console.log("No movie exists for fetching its details");
       throw new Error("Invalid ID");
     }
 
