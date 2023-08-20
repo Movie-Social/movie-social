@@ -11,7 +11,7 @@ import useMovie from "@/hooks/useMovie";
 import ExistingReviews from "@/components/ExistingReviews";
 import Navbar from "@/components/Navbar";
 import rotten from "../../public/images/rotten.png";
-import imdb from "../../public/images/imdb.png";
+import imdb from "../../public/images/imdb.jpeg";
 import meta from "../../public/images/meta.png";
 import loady from "../../public/images/imgLoad.gif";
 import YouTube from "react-youtube";
@@ -206,6 +206,7 @@ const MovieDetails = () => {
                         width={50}
                         height={50}
                         alt="IMDB Logo"
+                        className="rounded-lg"
                       />
                       <p className="text-white text-center text-l md:text-xl lg:text-2xl ml-2">
                         {omdb?.imdbRating * 10}%
@@ -220,13 +221,13 @@ const MovieDetails = () => {
                     </h2>
                     <div className="flex flex-row justify-around items-center content-center">
                       <Image
-                        className="rounded-full"
+                        className="rounded-lg"
                         src={rotten}
                         width={50}
                         height={50}
                         alt="Rotten Tomatoes logo"
                       />
-                      <p className="text-white text-center text-xl lg:text-2xl">
+                      <p className="text-white text-center text-l md:text-xl lg:text-2xl ml-2">
                         {theRottenScore}
                       </p>
                     </div>
@@ -243,13 +244,15 @@ const MovieDetails = () => {
                         width={50}
                         height={50}
                         alt="Metacritic logo"
+                        className="rounded-lg"
                       />
-                      <p className="text-white text-center text-xl lg:text-2xl">
+                      <p className="text-white text-center text-l md:text-xl lg:text-2xl ml-2">
                         {omdb?.Metascore}%
                       </p>
                     </div>
                   </div>
                 )}
+                {/* FUTURE FEATURE BELOW */}
                 {/* <div className="flex flex-col flex-grow justify-between items-center">
                   <h2 className="text-white text-center text-xl lg:text-2xl font-semibold">
                     Movie Social
@@ -270,7 +273,6 @@ const MovieDetails = () => {
               </div>
             </div>
           </aside>
-
           <article className="w-full lg:self-center mt-8">
             <h2 className=" text-white text-xl md:text-2xl lg:text-3xl font-bold lg:font-semibold mx-2 px-2 border-l-2 border-yellow-300">
               Movie Info
