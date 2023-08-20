@@ -212,7 +212,7 @@ const RestfulMovieDetails = () => {
               <div className="flex flex-row justify-around h-full mt-2 py-1">
                 {omdb?.imdbRating === "N/A" ? null : (
                   <div className="flex flex-col flex-grow justify-between items-center">
-                    <h2 className="text-white text-center text-l md:text-xl lg:text-2xl font-semibold">
+                    <h2 className="text-white text-center text-md md:text-xl lg:text-2xl md:font-semibold">
                       IMDB
                     </h2>
                     <div className="flex flex-row justify-around items-center content-center">
@@ -231,7 +231,7 @@ const RestfulMovieDetails = () => {
                 )}
                 {theRottenScore ? (
                   <div className="flex flex-col flex-grow justify-between items-center">
-                    <h2 className="text-white text-center text-l md:text-xl lg:text-2xl font-semibold">
+                    <h2 className="text-white text-center text-md md:text-xl lg:text-2xl md:font-semibold">
                       Rotten Tomatoes
                     </h2>
                     <div className="flex flex-row justify-around items-center content-center">
@@ -250,7 +250,7 @@ const RestfulMovieDetails = () => {
                 ) : null}
                 {omdb?.Metascore === "N/A" ? null : (
                   <div className="flex flex-col flex-grow justify-between items-center">
-                    <h2 className="text-white text-center text-l md:text-xl lg:text-2xl font-semibold">
+                    <h2 className="text-white text-center text-md md:text-xl lg:text-2xl md:font-semibold">
                       MetaCritic
                     </h2>
                     <div className="flex flex-row justify-around items-center content-center">
