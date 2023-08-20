@@ -96,7 +96,6 @@ The following are all technologies that I had to self-teach in order to complete
 - JWT
 
 ## Organizational Resources 🤓
- - [Standup Tracker](https://docs.google.com/spreadsheets/d/15W0ZOf6QuopjNkneR7NCgACKUaP8B5sUfrAjegcO9Bo/edit?usp=sharing)
  - [Current Project Board](https://github.com/orgs/Movie-Social/projects/2/views/1)
  - [Original Project Board](https://github.com/users/kendallm360/projects/9/views/1)
  - [Figma](https://www.figma.com/file/oZAqVK1lRyLbxgsAfVlD1g/Movie-Club?type=design&node-id=0-1&mode=design&t=eOyU4LJwOz8A4WBi-0)
