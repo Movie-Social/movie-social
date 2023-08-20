@@ -101,7 +101,7 @@ const MyProfile = () => {
           {faves?.length >= 1 ? (
             <ProfileList data={faves} />
           ) : (
-            <div className="flex flex-col justify-center items-center content-center lg:w-full md:w-5/6 md:self-center mb-5 p-3 border-yellow-300 border-2 rounded-md">
+            <div className="flex flex-col justify-center items-center content-center lg:w-full md:w-5/6 md:self-center my-5 p-3 border-yellow-300 border-2 rounded-md">
               <AiOutlinePlusCircle className="text-white" size={50} />
               <h2>Your Favorites are Empty</h2>
               <p>Add movies to keep track of your favorites</p>
@@ -124,7 +124,7 @@ const MyProfile = () => {
           {watchlist?.length >= 1 ? (
             <ProfileList data={watchlist} />
           ) : (
-            <div className="flex flex-col justify-center items-center content-center lg:w-full md:w-5/6 md:self-center mb-5 p-3 border-yellow-300 border-2 rounded-md">
+            <div className="flex flex-col justify-center items-center content-center lg:w-full md:w-5/6 md:self-center my-5 p-3 border-yellow-300 border-2 rounded-md">
               <AiOutlinePlusCircle className="text-white" size={50} />
               <h2>Your Watchlist is Empty</h2>
               <p>Add movies to keep track of what you want to watch</p>
@@ -147,12 +147,11 @@ const MyProfile = () => {
           {reviews?.length >= 1 ? (
             <ReviewList data={reviews} />
           ) : (
-            <div className="flex flex-col justify-center items-center content-center lg:w-full md:w-5/6 md:self-center mb-5 p-3 border-yellow-300 border-2 rounded-md">
+            <div className="flex flex-col justify-center items-center content-center lg:w-full md:w-5/6 md:self-center my-5 p-3 border-yellow-300 border-2 rounded-md">
               <AiOutlinePlusCircle size={50} />
               <h2>No Reviews Yet</h2>
               <p className="text-center">
-                Rate movies you have seen using to share your reactions and
-                opinions
+                Rate movies you have seen, share your reactions, or opinions
               </p>
               <button
                 onClick={() => router.push("/")}
