@@ -277,7 +277,7 @@ const MovieDetails = () => {
             <h2 className=" text-white text-xl md:text-2xl lg:text-3xl font-bold lg:font-semibold mx-2 px-2 border-l-2 border-yellow-300">
               Movie Info
             </h2>
-            <div className="text-l md:text-xl lg:text-2xl p-2 lg:ml-5 mb-8">
+            <div className="text-l md:text-xl lg:text-2xl p-2 mb-8">
               {tmdb?.overview ? (
                 <p className="m-2">{tmdb?.overview}</p>
               ) : (

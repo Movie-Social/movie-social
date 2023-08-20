@@ -12,7 +12,7 @@ const ExistingReviewCard: React.FC<ExistingReviewCardProps> = ({
 }) => {
   return (
     <main className="flex flex-col items-center">
-      <section className="flex flex-col items-center justify-center w-5/6 h-full p-2 m-2 md:m-5 border-2 border-yellow-300 rounded-md">
+      <section className="flex flex-col items-center justify-center md:w-full h-full p-2 m-2 md:m-5 border-2 border-yellow-300 rounded-md">
         <div className="flex flex-row justify-center items-center content-center">
           <Image
             alt="Movie Social logo"
