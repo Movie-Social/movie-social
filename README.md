@@ -14,6 +14,7 @@
     <li><a href="#tools-used-">Tools Used</a></li>
     <li><a href="#stretch-techs">Stretch Techs</a></li>
     <li><a href="#accessibility-%EF%B8%8F">Accessibility</a></li>
+    <li><a href="#room-for-improvement">Room For Improvement</a></li>
     <li><a href="#future-additions-">Future Additions</a></li>
     <li><a href="#sole-contributor-">Contributor</a></li>
   </ol>
@@ -97,16 +98,24 @@ The following are all technologies that I had to self-teach in order to complete
 
 ## Organizational Resources 🤓
  - [Current Project Board](https://github.com/orgs/Movie-Social/projects/2/views/1)
- - [Original Project Board](https://github.com/users/kendallm360/projects/9/views/1)
  - [Figma](https://www.figma.com/file/oZAqVK1lRyLbxgsAfVlD1g/Movie-Club?type=design&node-id=0-1&mode=design&t=eOyU4LJwOz8A4WBi-0)
  - [Sprint 1 MVP](https://docs.google.com/document/d/1Kwk03A8VvwA6KMVbE-R77hyDKUV8YLc4AlEuOxlKjLE/edit?usp=sharing)
  - [Sprint 2 MVP](https://docs.google.com/document/d/1h7y-M20puhWu6bIJw2HrhkEELf2f7yn_iA2pQj2snVI/edit?usp=sharing)
  - [Sprint 3 MVP](https://docs.google.com/document/d/1-mC86IrrheNUsP-MZn6ossTd-Sll6nAIFTdfLrVXypA/edit?usp=sharing)
  - [Design Inspiration](https://docs.google.com/document/d/1sxDiycUfwIj-4myQa6dECsee5QxNetZfu_kyMeIu4eo/edit)
+ - [Original Project Board](https://github.com/users/kendallm360/projects/9/views/1)
 
 ## Accessibility ♿️
  - [Lighthouse Score](https://docs.google.com/document/d/1AfWWZpLgxhDDj-k_7DGRWXokUnNZso7ZLMR_vWxoqs8/edit?usp=sharing)
  - [Taba11y](https://docs.google.com/document/d/12DJ_rB4hPe-B3unKoGz-G5979lIOv1QlEIpMuLzzkEU/edit?usp=sharing)
+
+## Room For Improvement 🚨
+  - Both the auth and review form does not have as much error handling involved as I usually would have done. Users do not get a message if their password/username are incorrect, signal the login in was successful and is loading, or if next auth fails.
+  - Image optimization needs work. With how many pictures are involved with the website my homepage's weight cause slow loads, especially on mobile devices.
+  - Users can't add or remove movies from watchlists and favorite lists from the My Profile page. This can only be done from the hover effect on the homepage
+  - Fetching movie data on the backend is not 100% fool proof. Depending on a movie's title the wrong information could be fetched and displayed to users (see Barbie)
+  - I could have made the code more DRY by having a more dynamic component that serbices both fetched data from restful apis and fetched data from my internal backend
+  - I did not do as much planning as I would have liked and rushed more than I should have. 
 
 ## Future Additions 🔮
 - ChatGPT integration for curated movie suggestions
