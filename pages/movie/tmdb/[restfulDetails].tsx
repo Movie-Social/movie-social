@@ -10,7 +10,7 @@ import trailerFetcher from "@/lib/trailerFetcher";
 import tmdbDetailsFetcher from "@/lib/tmdbDetailsFetcher";
 import useAllReviews from "@/hooks/useAllReviews";
 import rotten from "../../../public/images/rotten.png";
-import imdb from "../../../public/images/imdb.png";
+import imdb from "../../../public/images/imdb.jpeg";
 import meta from "../../../public/images/meta.png";
 import loady from "../../../public/images/imgLoad.gif";
 import Navbar from "@/components/Navbar";
@@ -212,7 +212,7 @@ const RestfulMovieDetails = () => {
               <div className="flex flex-row justify-around h-full mt-2 py-1">
                 {omdb?.imdbRating === "N/A" ? null : (
                   <div className="flex flex-col flex-grow justify-between items-center">
-                    <h2 className="text-white text-center text-l md:text-xl lg:text-2xl font-semibold">
+                    <h2 className="text-white text-center text-md md:text-xl lg:text-2xl md:font-semibold">
                       IMDB
                     </h2>
                     <div className="flex flex-row justify-around items-center content-center">
@@ -221,6 +221,7 @@ const RestfulMovieDetails = () => {
                         width={50}
                         height={50}
                         alt="IMDB Logo"
+                        className="rounded-lg"
                       />
                       <p className="text-white text-center text-l md:text-xl lg:text-2xl ml-2">
                         {omdb?.imdbRating * 10}%
@@ -230,12 +231,12 @@ const RestfulMovieDetails = () => {
                 )}
                 {theRottenScore ? (
                   <div className="flex flex-col flex-grow justify-between items-center">
-                    <h2 className="text-white text-center text-l md:text-xl lg:text-2xl font-semibold">
+                    <h2 className="text-white text-center text-md md:text-xl lg:text-2xl md:font-semibold">
                       Rotten Tomatoes
                     </h2>
                     <div className="flex flex-row justify-around items-center content-center">
                       <Image
-                        className="rounded-full"
+                        className="rounded-lg"
                         src={rotten}
                         width={50}
                         height={50}
@@ -249,7 +250,7 @@ const RestfulMovieDetails = () => {
                 ) : null}
                 {omdb?.Metascore === "N/A" ? null : (
                   <div className="flex flex-col flex-grow justify-between items-center">
-                    <h2 className="text-white text-center text-l md:text-xl lg:text-2xl font-semibold">
+                    <h2 className="text-white text-center text-md md:text-xl lg:text-2xl md:font-semibold">
                       MetaCritic
                     </h2>
                     <div className="flex flex-row justify-around items-center content-center">
@@ -258,7 +259,7 @@ const RestfulMovieDetails = () => {
                         width={50}
                         height={50}
                         alt="Metacritic logo"
-                        className="rounded-full"
+                        className="rounded-lg"
                       />
                       <p className="text-white text-center text-l md:text-xl lg:text-2xl ml-2">
                         {omdb?.Metascore}%
@@ -266,6 +267,7 @@ const RestfulMovieDetails = () => {
                     </div>
                   </div>
                 )}
+                {/* FUTURE FEATURE BELOW */}
                 {/* <div className="flex flex-col flex-grow justify-between items-center">
                   <h2 className="text-white text-center text-l md:text-xl lg:text-2xl font-semibold">
                     Movie Social
@@ -291,7 +293,7 @@ const RestfulMovieDetails = () => {
             <h2 className="mx-2 px-2 text-white text-xl md:text-2xl lg:text-3xl font-bold lg:font-semibold mb-5 border-l-2 border-yellow-300 ">
               Movie Info
             </h2>
-            <div className="text-l md:text-xl lg:text-2xl p-2 lg:ml-5 mb-5 ">
+            <div className="text-l md:text-xl lg:text-2xl p-2 mb-5 ">
               {tmdb?.overview ? (
                 <p className="m-2">{tmdb?.overview}</p>
               ) : (

@@ -76,7 +76,7 @@ const Reviewform: React.FC<ReviewProps> = ({
           className="w-full h-3/5 lg:h-[90%] text-center md:text-xl lg:text-xl text-black my-3 rounded-md"
         />
       ) : (
-        <div className="flex flex-col items-center justify-around w-full h-4/5 lg:h-[80%] text-center md:text-xl lg:text-xl text-black my-3 rounded-md border border-white">
+        <div className="flex flex-col items-center justify-around w-full h-4/5 lg:h-[80%] text-center md:text-xl lg:text-xl text-black my-3 rounded-md border border-yellow-300">
           <Image
             src={feedback}
             alt="symbol to show movie has been reviewed"

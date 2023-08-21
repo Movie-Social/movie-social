@@ -65,9 +65,10 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
     return null;
   }
 
-  const opts: any = {
+  const opts: any["opts"] = {
     playerVars: {
       autoplay: 1,
+      mute: 1,
     },
   };
 
