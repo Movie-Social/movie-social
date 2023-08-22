@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-//! Without this line of code I will have a hydration error. Why?
-import dynamic from "next/dynamic";
 import Image from "next/image";
 import useAllHero from "@/hooks/useAllHero";
 import "react-slideshow-image/dist/styles.css";
@@ -37,7 +35,7 @@ const Hero = () => {
           alt={heroOptions?.caption}
           className="cursor-pointer"
         />
-        <div className="absolute inset-x-1/4 top-5 text-center z-10 md:text-5xl text-2xl bold text-white">
+        <div className="absolute inset-x-1/4 top-7 text-center z-10 md:text-5xl text-2xl bold text-white">
           <button>
             <h2
               onClick={() => router.push(`/movie/tmdb/${movie?.id}`)}
@@ -51,5 +49,4 @@ const Hero = () => {
     </main>
   );
 };
-//! Without this line of code I will have a hydration error. Why?
-export default dynamic(() => Promise.resolve(Hero), { ssr: false });
+export default Hero;
