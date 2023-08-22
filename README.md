@@ -110,18 +110,19 @@ The following are all technologies that I had to self-teach in order to complete
  - [Taba11y](https://docs.google.com/document/d/12DJ_rB4hPe-B3unKoGz-G5979lIOv1QlEIpMuLzzkEU/edit?usp=sharing)
 
 ## Room For Improvement 🚨
-  - Both the auth and review form does not have as much error handling involved as I usually would have done. Users do not get a message if their password/username are incorrect, signal the login in was successful and is loading, or if next auth fails.
-  - Image optimization needs work. With how many pictures are involved with the website my homepage's weight cause slow loads, especially on mobile devices.
-  - Users can't add or remove movies from watchlists and favorite lists from the My Profile page. This can only be done from the hover effect on the homepage
+  - Both the auth and review form does not have as much error handling involved as I usually would have done. Users do not get a message if their password/username are incorrect, there is no signal the login was successful and is loading, nor if NextAuth fails. **(This will be added)**
+  - Image optimization needs work. With how many pictures are involved with the website my homepage's weight causes slow loads, especially on mobile devices.
+  - Users can't add or remove movies from watchlists and favorite lists from the My Profile page. This can only be done from the hover effect on the homepage. **(This will be added)**
+  - Users can't update their reviews **(This will be added)**
   - Fetching movie data on the backend is not 100% fool proof. Depending on a movie's title the wrong information could be fetched and displayed to users (see Barbie)
-  - I could have made the code more DRY by having a more dynamic component that serbices both fetched data from restful apis and fetched data from my internal backend
+  - I could have made the code more DRY by having a more dynamic component that services both fetched data from restful apis and fetched data from my internal backend
   - I did not do as much planning as I would have liked and rushed more than I should have. 
 
 ## Future Additions 🔮
-- ChatGPT integration for curated movie suggestions
+- Search Functionality
 - Movie Clubs for users to join
 - Friends lists so users can get ideas from others
-
+- ChatGPT integration for curated movie suggestions
 
 ## Sole Contributor 💪🏾
   <a href="https://github.com/kendallm360">![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)</a>
