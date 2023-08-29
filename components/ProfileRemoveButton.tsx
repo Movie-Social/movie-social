@@ -41,13 +41,7 @@ const ProfileRemoveButton: React.FC<ProfileRemoveButtonProps> = ({
       onClick={toggleFavorites}
       className="cursor-pointer
   group/item
-  w-6
-  h-6
-  lg:w-7
-  lg:h-7
-  mx-1
-  border-white
-  border-2
+
   rounded-full
   flex
   justify-center
@@ -56,7 +50,7 @@ const ProfileRemoveButton: React.FC<ProfileRemoveButtonProps> = ({
   hover:border-yellow-300
   "
     >
-      {<MdDeleteForever className="text-yellow-300 self-center" size={80} />}
+      {<MdDeleteForever className="text-yellow-300 opacity-80" size={60} />}
     </main>
   );
 };
