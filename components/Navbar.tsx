@@ -117,7 +117,7 @@ const Navbar = () => {
               placeholder="Search By Title"
               value={searchTerms}
               onChange={handleChange}
-              className="text-center rounded-md p-1 mx-2"
+              className="text-center text-black rounded-md p-1 mx-2"
             />
             <BsSearch onClick={fetchTmdb} size={20} />
           </div>
