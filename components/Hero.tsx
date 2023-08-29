@@ -36,7 +36,12 @@ const Hero = () => {
 
   return (
     <main className="relative lg:w-full lg:h-[80vh] self-center opacity-50">
-      <Slide>
+      <Slide
+        duration={6000}
+        transitionDuration={2500}
+        prevArrow={<></>}
+        nextArrow={<></>}
+      >
         {shuffled?.map((slideImage, index) => (
           <div className="relative h-56 lg:h-[100vh] w-full" key={index}>
             <Image
@@ -44,12 +49,14 @@ const Hero = () => {
               fill
               priority
               alt={slideImage.caption}
+              onClick={() => router.push(`/movie/tmdb/${slideImage.id}`)}
+              className="cursor-pointer"
             />
             <div className="absolute inset-x-1/4 top-7 text-center z-10 md:text-5xl text-2xl bold text-white">
               <button>
                 <h2
                   onClick={() => router.push(`/movie/tmdb/${slideImage.id}`)}
-                  className="bg-black bg-clip-text cursor-pointer"
+                  className="bg-black bg-clip-text cursor-pointer transition hover:duration-400 hover:text-yellow-300"
                 >
                   {slideImage.caption.split("Scene from the movie ")[1]}
                 </h2>
