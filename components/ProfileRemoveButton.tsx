@@ -14,14 +14,15 @@ const ProfileRemoveButton: React.FC<ProfileRemoveButtonProps> = ({
   const { mutate: mutateFavorites } = useFavorites();
   const { mutate: mutateWatchlist } = useWatchlist();
   const { data: currentUser, mutate } = useCurrentUser();
-  const isFavorite = useMemo(() => {
-    const list = currentUser?.favoriteTitles || [];
+
+  const inWatchlist = useMemo(() => {
+    const list = currentUser?.watchlistTitles || [];
 
     return list.includes(movieTitle);
   }, [currentUser, movieTitle]);
 
   const toggleFavorites = useCallback(async () => {
-    const url = isFavorite ? "/api/unfavorite" : "/api/unWatchItem";
+    const url = inWatchlist ? "/api/unWatchItem" : "/api/unfavorite";
     const response = await axios.post(url, { movieTitle });
     const updatedFavoriteTitles = response?.data?.favoriteTitles;
     const updatedWatchlist = response?.data?.watchlistTitles;
@@ -34,7 +35,7 @@ const ProfileRemoveButton: React.FC<ProfileRemoveButtonProps> = ({
 
     mutateFavorites();
     mutateWatchlist();
-  }, [movieTitle, isFavorite, currentUser, mutate, mutateFavorites]);
+  }, [movieTitle, inWatchlist, currentUser, mutate, mutateFavorites]);
 
   return (
     <main
