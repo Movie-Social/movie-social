@@ -2,13 +2,17 @@ import axios from "axios";
 import React, { useCallback, useMemo, useState } from "react";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import useFavorites from "@/hooks/useFavorites";
-import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
-interface FavoriteButtonProps {
+import { MdDeleteForever } from "react-icons/md";
+import useWatchlist from "@/hooks/useWatchlist";
+interface ProfileRemoveButtonProps {
   movieTitle: string;
 }
 
-const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieTitle }) => {
+const ProfileRemoveButton: React.FC<ProfileRemoveButtonProps> = ({
+  movieTitle,
+}) => {
   const { mutate: mutateFavorites } = useFavorites();
+  const { mutate: mutateWatchlist } = useWatchlist();
   const { data: currentUser, mutate } = useCurrentUser();
   const isFavorite = useMemo(() => {
     const list = currentUser?.favoriteTitles || [];
@@ -17,19 +21,20 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieTitle }) => {
   }, [currentUser, movieTitle]);
 
   const toggleFavorites = useCallback(async () => {
-    const url = isFavorite ? "/api/unfavorite" : "/api/favorite";
+    const url = isFavorite ? "/api/unfavorite" : "/api/unWatchItem";
     const response = await axios.post(url, { movieTitle });
     const updatedFavoriteTitles = response?.data?.favoriteTitles;
+    const updatedWatchlist = response?.data?.watchlistTitles;
 
     mutate({
       ...currentUser,
       favoriteTitles: updatedFavoriteTitles,
+      watchlistTitles: updatedWatchlist,
     });
 
     mutateFavorites();
+    mutateWatchlist();
   }, [movieTitle, isFavorite, currentUser, mutate, mutateFavorites]);
-
-  const Icon = isFavorite ? MdFavorite : MdFavoriteBorder;
 
   return (
     <main
@@ -51,9 +56,9 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieTitle }) => {
   hover:border-yellow-300
   "
     >
-      {<Icon className="text-yellow-300 self-center" size={20} />}
+      {<MdDeleteForever className="text-yellow-300 self-center" size={80} />}
     </main>
   );
 };
 
-export default FavoriteButton;
+export default ProfileRemoveButton;
