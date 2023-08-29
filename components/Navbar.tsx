@@ -50,7 +50,9 @@ const Navbar = () => {
       .filter((movie: any) => movie.original_language === "en")
       .sort((a: any, b: any) => b.popularity - a.popularity)[0];
     setTmdb(details);
-    router.push(`/movie/tmdb/${details.id}`);
+    details.id
+      ? router.push(`/movie/tmdb/${details.id}`)
+      : router.push(`/404}`);
   }, [router, searchTerms]);
 
   const toggleMobileMenu = () => {
