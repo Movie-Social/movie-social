@@ -1,14 +1,15 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
+import { BsSearch } from "react-icons/bs";
 //* Future Additions
-// import { BsSearch } from "react-icons/bs";
 // import { BsBell } from "react-icons/bs";
 import { BiUserCircle } from "react-icons/bi";
 import MobileMenu from "./MobileMenu";
 import NavbarItem from "./NavbarItem";
 import AccountMenu from "./AccountMenu";
+import tmdbMovieFetcher from "@/lib/tmdbMovieFetcher";
 
 const TOP_OFFSET = 66;
 
@@ -16,6 +17,10 @@ const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showAccountMenu, setShowAccountMenu] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
+  const [searchTerms, setSearchTerms] = useState("");
+  const [typing, setTyping] = useState<boolean>(false);
+  const [tmdb, setTmdb] = useState();
+
   const router = useRouter();
 
   useEffect(() => {
@@ -33,12 +38,35 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const handleChange = (event: any) => {
+    const { value } = event.target;
+    setSearchTerms(value);
+  };
+
+  const fetchTmdb = useCallback(async () => {
+    const tmdbDetails = await tmdbMovieFetcher(searchTerms);
+    const details = tmdbDetails?.results
+      .filter((movie: any) => movie.original_language === "en")
+      .sort((a: any, b: any) => b.popularity - a.popularity)[0];
+    setTmdb(details);
+    details.id
+      ? router.push(`/movie/tmdb/${details.id}`)
+      : router.push(`/404}`);
+  }, [router, searchTerms]);
+
   const toggleMobileMenu = () => {
     setShowMobileMenu((current) => !current);
   };
 
   const toggleAccountMenu = () => {
     setShowAccountMenu((current) => !current);
+  };
+
+  const handleKeyPress = (event: any) => {
+    if (event.key === "Enter") {
+      fetchTmdb();
+    }
   };
 
   return (
@@ -92,10 +120,33 @@ const Navbar = () => {
         </section>
         <section className="flex flex-row content-center gap-6 ml-auto">
           {/* //* Future Additions */}
-          {/* <div className="text-gray-200 hover:text-yellow-300 cursor-pointer transition">
-            <BsSearch size={20} />
+          <div className="relative flex flex-row items-center text-white hover:text-yellow-300 cursor-pointer transition duration-700">
+            {typing ? (
+              <div className="transition ease-in-out">
+                <input
+                  type="text"
+                  placeholder="Search By Title"
+                  value={searchTerms}
+                  onChange={handleChange}
+                  className="text-center text-clip text-yellow-300 rounded-md bg-zinc-900 border border-yellow-300 p-1 mx-2"
+                  onKeyDown={handleKeyPress}
+                />
+                <BsSearch
+                  className="absolute top-1 left-3 mr-3 bg-zinc-900 self-start text-yellow-300"
+                  onClick={fetchTmdb}
+                  size={20}
+                />
+              </div>
+            ) : (
+              <BsSearch
+                className="transition ease-in-out self-center text-white"
+                onClick={() => setTyping(true)}
+                size={20}
+              />
+            )}
           </div>
-          <div className="text-gray-200 hover:text-yellow-300 cursor-pointer transition">
+          {/* Future Addition */}
+          {/* <div className="text-gray-200 hover:text-yellow-300 cursor-pointer transition">
             <BsBell size={20} />
           </div> */}
           <div

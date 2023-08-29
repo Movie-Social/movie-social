@@ -83,7 +83,7 @@ const RestfulMovieDetails = () => {
       setTmdb(tmdbDetails);
     };
     fetchTmdb();
-  }, []);
+  }, [movieId]);
 
   useEffect(() => {
     const fetchOmdb = async () => {
