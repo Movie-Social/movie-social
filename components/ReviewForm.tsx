@@ -1,10 +1,11 @@
 import Image from "next/image";
 import useCurrentUser from "@/hooks/useCurrentUser";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { BiUserCircle } from "react-icons/bi";
 import { BsFillStarFill } from "react-icons/bs";
 import SubmitReviewButton from "./SubmitReviewButton";
 import feedback from "../public/images/feedback.png";
+import useAllReviews from "@/hooks/useAllReviews";
 
 interface ReviewProps {
   onRating: Function;
@@ -22,7 +23,29 @@ const Reviewform: React.FC<ReviewProps> = ({
   const { data: currentUser } = useCurrentUser();
   const [hoverRating, setHoverRating] = useState(0);
   const [review, setReview] = useState("");
+  const [reviewed, setReviewed] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const allReviews = useAllReviews();
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      if (!title) {
+        return null;
+      }
+      const existingReview = await allReviews?.data
+        .filter((review: any) => review.title === title)
+        .filter((review: any) => review.usersName === currentUser?.name);
+      console.log(existingReview, "existing");
+      console.log(existingReview.length, "length");
+
+      if (existingReview.length > 0) {
+        setReviewed(true);
+      } else {
+        setReviewed(false);
+      }
+    };
+    fetchReviews();
+  }, [allReviews?.data, currentUser?.name, title]);
 
   const handleChange = (event: any) => {
     const { value } = event.target;
@@ -56,9 +79,24 @@ const Reviewform: React.FC<ReviewProps> = ({
       ));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rating, hoverRating]);
+  console.log(reviewed, "<<");
+
   return (
     <main className="w-full h-[30vh] p-4 ">
-      {!submitted ? (
+      {reviewed ? (
+        <div className="flex flex-col items-center justify-around w-full h-4/5 lg:h-[80%] text-center md:text-xl lg:text-xl text-black my-3 rounded-md border border-yellow-300">
+          <Image
+            src={feedback}
+            alt="symbol to show movie has been reviewed"
+            width={100}
+            height={100}
+          />
+          <p className="text-white">
+            You have already reviewed this movie. Movie Social Club members
+            thank you
+          </p>
+        </div>
+      ) : !submitted ? (
         <section className="flex flex-row justify-between items-center">
           <div className="flex flex-row justify-center items-center">
             <BiUserCircle size={30} />
@@ -67,7 +105,7 @@ const Reviewform: React.FC<ReviewProps> = ({
           <div className="flex flex-row">{starRating}</div>
         </section>
       ) : null}
-      {!submitted ? (
+      {reviewed ? null : !submitted ? (
         <input
           type="text"
           placeholder="What did you think of the movie? (optional)"
@@ -87,7 +125,7 @@ const Reviewform: React.FC<ReviewProps> = ({
           <p className="text-white">{currentUser?.name}!</p>
         </div>
       )}
-      {!submitted ? (
+      {reviewed ? null : !submitted ? (
         <div className="flex justify-center" onClick={() => setSubmitted(true)}>
           <SubmitReviewButton
             userId={currentUser?.id}
