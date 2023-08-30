@@ -61,6 +61,7 @@ export const authOptions: AuthOptions = {
   ],
   pages: {
     signIn: "/auth",
+    error: "/auth/error",
   },
   debug: process.env.NODE_ENV === "development",
   adapter: PrismaAdapter(prismadb),
