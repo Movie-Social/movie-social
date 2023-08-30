@@ -32,11 +32,10 @@ const Reviewform: React.FC<ReviewProps> = ({
       if (!title) {
         return null;
       }
+
       const existingReview = await allReviews?.data
         .filter((review: any) => review.title === title)
         .filter((review: any) => review.usersName === currentUser?.name);
-      console.log(existingReview, "existing");
-      console.log(existingReview.length, "length");
 
       if (existingReview.length > 0) {
         setReviewed(true);
@@ -79,7 +78,6 @@ const Reviewform: React.FC<ReviewProps> = ({
       ));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rating, hoverRating]);
-  console.log(reviewed, "<<");
 
   return (
     <main className="w-full h-[30vh] p-4 ">
