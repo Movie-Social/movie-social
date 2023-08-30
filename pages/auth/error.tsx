@@ -56,9 +56,10 @@ const Error = () => {
       <main className="w-full h-full bg-black lg:bg-opacity-50">
         <section className="flex justify-center items-center content-center h-full ">
           <section className="w-full md:w-4/5 lg:w-2/5 px-16 py-16 bg-black bg-opacity-70 rounded-md lg:max-w-md">
-            <h1 className="text-red-500">
-              Wrong username or password. Try Again
-            </h1>
+            <p className="text-red-500 text-center mb-4">
+              <span className="font-bold">Incorrect email or password. </span>
+              Please try again
+            </p>
             <h2 className="text-white text-2xl font-semibold mb-8">
               {variant === "login" ? "Sign In" : "Create An Account"}
             </h2>
