@@ -128,11 +128,11 @@ const Navbar = () => {
                   placeholder="Search By Title"
                   value={searchTerms}
                   onChange={handleChange}
-                  className="text-center text-clip text-yellow-300 rounded-md bg-zinc-900 border border-yellow-300 p-1 mx-2"
+                  className="text-center text-clip text-yellow-300 rounded-md bg-zinc-900 border border-yellow-300 md:p-1 mx-2"
                   onKeyDown={handleKeyPress}
                 />
                 <BsSearch
-                  className="absolute top-1 left-3 mr-3 bg-zinc-900 self-start text-yellow-300"
+                  className="absolute invisible md:visible top-1 left-3 mr-3 bg-zinc-900 self-start text-yellow-300"
                   onClick={fetchTmdb}
                   size={20}
                 />
@@ -141,7 +141,7 @@ const Navbar = () => {
               <BsSearch
                 className="transition ease-in-out self-center text-white"
                 onClick={() => setTyping(true)}
-                size={20}
+                size={18}
               />
             )}
           </div>

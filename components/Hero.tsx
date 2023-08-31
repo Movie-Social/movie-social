@@ -52,7 +52,7 @@ const Hero = () => {
               onClick={() => router.push(`/movie/tmdb/${slideImage.id}`)}
               className="cursor-pointer"
             />
-            <div className="absolute inset-x-1/4 top-7 text-center z-10 md:text-5xl text-2xl bold text-white">
+            <div className="absolute inset-x-1/4 bottom-2 md:top-7 text-center z-10 md:text-5xl text-2xl bold text-white">
               <button>
                 <h2
                   onClick={() => router.push(`/movie/tmdb/${slideImage.id}`)}
