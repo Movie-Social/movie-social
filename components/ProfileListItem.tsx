@@ -52,13 +52,13 @@ const ProfileListItem: React.FC<ListItemProps> = ({ movieId, faves }) => {
               alt={`${tmdb?.title}'s official movie poster`}
             />
           </button>
-          <button className="absolute bottom-20 left-11 text-yellow-300 invisible group-hover:visible cursor-pointer">
+          <button className="absolute inset-y-1/4 inset-x-1/4 text-yellow-300 invisible group-hover:visible cursor-pointer">
             <ProfileRemoveButton movieTitle={tmdb?.title as string} />
           </button>
         </div>
       )}
       <h2
-        className="cursor-pointer transition hover:text-yellow-300"
+        className="cursor-pointer transition text-center hover:text-yellow-300"
         onClick={() => router.push(`/movie/tmdb/${tmdb?.id}`)}
       >
         {tmdb?.title}
