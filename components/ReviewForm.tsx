@@ -29,7 +29,7 @@ const Reviewform: React.FC<ReviewProps> = ({
 
   useEffect(() => {
     const fetchReviews = async () => {
-      if (!title) {
+      if (!title || !allReviews?.data || !currentUser?.name) {
         return null;
       }
 
