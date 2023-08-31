@@ -21,8 +21,7 @@
 </details>
 
 ## About the project
-Solo fullstack application built with Next.js.
-
+Solo fullstack application for Movie lovers. Check out current movies, curated movies, leave reviews, and add/remove movies from watch and favorite lists to customize your experience
 
 ## [Deployed Application](https://movie-social-club.vercel.app/)
 
@@ -34,7 +33,8 @@ Solo fullstack application built with Next.js.
 - As a user, I should be able to leave a review on movies
 - As a user, I should be able to see reviews from other Movie Social members
 - As a user, I should be able to add/remove movies from a favorites and watchlist
-- As a user, I should be able to visit a profile page to see all their reviews, favorites, and watchlist items.
+- As a user, I should be able to visit a profile page to see all their reviews, favorites, and watchlist items
+- As a user, I should be able to search for any movie and have full MSC functionality for it
 
 
 ## Application in Action
@@ -110,16 +110,14 @@ The following are all technologies that I had to self-teach in order to complete
  - [Taba11y](https://docs.google.com/document/d/12DJ_rB4hPe-B3unKoGz-G5979lIOv1QlEIpMuLzzkEU/edit?usp=sharing)
 
 ## Room For Improvement 🚨
-  - Both the auth and review form does not have as much error handling involved as I usually would have done. Users do not get a message if their password/username are incorrect, there is no signal the login was successful and is loading, nor if NextAuth fails. **(This will be added)**
   - Image optimization needs work. With how many pictures are involved with the website my homepage's weight causes slow loads, especially on mobile devices.
-  - Users can't add or remove movies from watchlists and favorite lists from the My Profile page. This can only be done from the hover effect on the homepage. **(This will be added)**
   - Users can't update their reviews **(This will be added)**
   - Fetching movie data on the backend is not 100% fool proof. Depending on a movie's title the wrong information could be fetched and displayed to users (see Barbie)
   - I could have made the code more DRY by having a more dynamic component that services both fetched data from restful apis and fetched data from my internal backend
-  - I did not do as much planning as I would have liked and rushed more than I should have. 
+  - Additional error handling surrounding forms
+  - I rushed the planning phase because I was so excited to start. I will contain myself and be more patient next time
 
 ## Future Additions 🔮
-- Search Functionality
 - Movie Clubs for users to join
 - Friends lists so users can get ideas from others
 - ChatGPT integration for curated movie suggestions
