@@ -32,7 +32,11 @@ const ExistingReviewForm: React.FC<ExistingReviewFormProps> = ({
             className="w-full h-full text-center overflow-hidden md:text-xl lg:text-xl text-white bg-transparent my-3 rounded-md"
           />
         }
-        <UpdateReviewButton />
+        <UpdateReviewButton
+          oldReview={review}
+          updatedReview={updatedReview}
+          name={name}
+        />
       </section>
     </main>
   );

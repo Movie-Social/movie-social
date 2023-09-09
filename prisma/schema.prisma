@@ -30,7 +30,7 @@ model Review {
   id        String @id @default(auto()) @map("_id") @db.ObjectId
   userId    String @unique @db.ObjectId
   rating    Int
-  review    String
+  review    String @unique
   title     String @unique
   poster    String
   usersName String
