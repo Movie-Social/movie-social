@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MdOutlineCancel } from "react-icons/md";
+import UpdateReviewButton from "./UpdateReviewButton";
 
 interface ExistingReviewFormProps {
   review: string;
@@ -31,6 +32,7 @@ const ExistingReviewForm: React.FC<ExistingReviewFormProps> = ({
             className="w-full h-full text-center overflow-hidden md:text-xl lg:text-xl text-white bg-transparent my-3 rounded-md"
           />
         }
+        <UpdateReviewButton />
       </section>
     </main>
   );
