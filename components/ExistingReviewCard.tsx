@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { BiUserCircle } from "react-icons/bi";
+import useCurrentUser from "@/hooks/useCurrentUser";
+import EditReviewButton from "./EditReviewButton";
 interface ExistingReviewCardProps {
   review: string;
   rating: number;
@@ -10,9 +12,15 @@ const ExistingReviewCard: React.FC<ExistingReviewCardProps> = ({
   review,
   name,
 }) => {
+  const currentUser = useCurrentUser();
+
   return (
     <main className="flex flex-col items-center">
       <section className="flex flex-col items-center justify-center md:w-full h-full p-2 m-2 md:m-5 border-2 border-yellow-300 rounded-md">
+        {/* onClick={() =>
+            console.log(rating, review, name, currentUser.data.name)
+          } */}
+        <EditReviewButton review={review} usersName={name} />
         <div className="flex flex-row justify-center items-center content-center">
           <Image
             alt="Movie Social logo"
