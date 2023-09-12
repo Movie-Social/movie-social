@@ -12,7 +12,7 @@ interface EditReviewButtonProps {
 const EditReviewButton: React.FC<EditReviewButtonProps> = ({ review }) => {
   return (
     <>
-      <AiOutlineEdit className="text-yellow-300 self-center" size={20} />
+      <AiOutlineEdit className="text-yellow-300 self-center my-4" size={20} />
     </>
   );
 };
