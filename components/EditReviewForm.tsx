@@ -45,6 +45,7 @@ const ExistingReviewForm: React.FC<ExistingReviewFormProps> = ({
               oldReview={review}
               updatedReview={updatedReview}
               name={name}
+              rating={rating}
             />
           </section>
           <section className="flex flex-row justify-center content-center self-center mb-5 w-full">

@@ -80,7 +80,7 @@ const Reviewform: React.FC<ReviewProps> = ({
   }, [rating, hoverRating]);
 
   return (
-    <main className="w-full h-[30vh] p-4 ">
+    <main className="w-full h-[30vh] p-4">
       {reviewed ? (
         <div className="flex flex-col items-center justify-around w-full h-4/5 lg:h-[80%] text-center md:text-xl lg:text-xl text-black my-3 rounded-md border border-yellow-300">
           <Image
