@@ -277,79 +277,79 @@ const MovieDetails = () => {
             <h2 className=" text-white text-xl md:text-2xl lg:text-3xl font-bold lg:font-semibold mx-2 px-2 border-l-2 border-yellow-300">
               Movie Info
             </h2>
-            <div className="text-l md:text-xl lg:text-2xl p-2 mb-8">
+            <div className="text-l md:text-xl lg:text-2xl py-2 mb-8">
               {tmdb?.overview ? (
                 <p className="m-2">{tmdb?.overview}</p>
               ) : (
                 <p className="m-2">{omdb?.Plot}</p>
               )}
               {omdb?.Runtime !== "N/A" ? (
-                <h2>
-                  <span className="font-light text-yellow-300 m-2">
+                <h2 className="mx-2">
+                  <span className="font-light text-yellow-300 mr-2">
                     Runtime:
                   </span>
                   {omdb?.Runtime}
                 </h2>
               ) : null}
               {omdb?.Rated !== "N/A" ? (
-                <h2>
-                  <span className="font-light text-yellow-300 m-2">
+                <h2 className="mx-2">
+                  <span className="font-light text-yellow-300 mr-2">
                     Rating:
                   </span>
                   {omdb?.Rated}
                 </h2>
               ) : null}
               {details?.genres ? (
-                <h2>
-                  <span className="font-light text-yellow-300 m-2">
+                <h2 className="mx-2">
+                  <span className="font-light text-yellow-300 mr-2">
                     Genres:
                   </span>
                   {details?.genres.map((genre: any) => genre.name).join(", ")}
                 </h2>
               ) : null}
               {omdb?.Released !== "N/A" ? (
-                <h2>
-                  <span className="font-light text-yellow-300 m-2">
+                <h2 className="mx-2">
+                  <span className="font-light text-yellow-300 mr-2">
                     Release Date:
                   </span>
                   {omdb?.Released}{" "}
                 </h2>
               ) : null}
               {omdb?.Director !== "N/A" ? (
-                <h2>
-                  <span className="font-light text-yellow-300 m-2">
+                <h2 className="mx-2">
+                  <span className="font-light text-yellow-300 mr-2">
                     Director(s):
                   </span>
                   {omdb?.Director}
                 </h2>
               ) : null}
               {omdb?.Writer !== "N/A" ? (
-                <h2>
-                  <span className="font-light text-yellow-300 m-2">
+                <h2 className="mx-2">
+                  <span className="font-light text-yellow-300 mr-2">
                     Writer(s):
                   </span>
                   {omdb?.Writer}{" "}
                 </h2>
               ) : null}
               {omdb?.Actors !== "N/A" ? (
-                <h2>
-                  <span className="font-light text-yellow-300 m-2">
+                <h2 className="mx-2">
+                  <span className="font-light text-yellow-300 mr-2">
                     Actors:
                   </span>
                   {omdb?.Actors}{" "}
                 </h2>
               ) : null}
               {details?.budget ? (
-                <h2>
-                  <span className="font-light text-yellow-300 m-2">
+                <h2 className="mx-2">
+                  <span className="font-light text-yellow-300 mr-2">
                     Budget:
                   </span>
                   ${details?.budget.toLocaleString()}
                 </h2>
               ) : null}
               {omdb?.BoxOffice !== "N/A" ? (
-                <h2>
-                  <span className="font-light text-yellow-300 m-2">
+                <h2 className="mx-2">
+                  <span className="font-light text-yellow-300 mr-2">
                     Box Office:
                   </span>
                   {omdb?.BoxOffice}

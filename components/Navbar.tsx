@@ -128,7 +128,7 @@ const Navbar = () => {
                   placeholder="Search By Title"
                   value={searchTerms}
                   onChange={handleChange}
-                  className="text-center text-clip text-yellow-300 rounded-md bg-zinc-900 border border-yellow-300 md:p-1 mx-2"
+                  className="w-5/6 text-center text-clip text-yellow-300 rounded-md bg-zinc-900 border border-yellow-300 md:p-1 mx-2"
                   onKeyDown={handleKeyPress}
                 />
                 <BsSearch

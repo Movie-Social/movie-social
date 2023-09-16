@@ -10,11 +10,6 @@ export const images = [
     caption: "Scene from the movie Big Lebowski",
   },
   {
-    id: 9032,
-    image: "/images/hero/IMG_8088.jpg",
-    caption: "Scene from the movie Big Daddy",
-  },
-  {
     id: 419430,
     image: "/images/hero/IMG_8089.jpg",
     caption: "Scene from the movie Get Out",
@@ -93,11 +88,6 @@ export const images = [
     id: 16136,
     image: "/images/hero/IMG_8109.jpg",
     caption: "Scene from the movie Juice",
-  },
-  {
-    id: 16158,
-    image: "/images/hero/IMG_8110.jpg",
-    caption: "Scene from the movie The Wood",
   },
   {
     id: 13,

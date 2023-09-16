@@ -48,6 +48,20 @@ const Error = () => {
     }
   }, [email, name, password, login]);
 
+  const guestLogin = useCallback(async () => {
+    try {
+      await signIn("credentials", {
+        email: "guest@gmail.com",
+        password: "Guest1357",
+        redirect: true,
+        callbackUrl: "/",
+      });
+      router.push("/");
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  }, [router]);
+
   return (
     <main className="relative h-full w-full bg-[url('/images/background.jpg')] bg-center bg-fixed bg-no-repeat">
       <Head>
@@ -155,16 +169,22 @@ const Error = () => {
                 </button>
               </div>
             </nav>
-            <p className="text-neutral-500 text-md mt-12 md:text-center">
+            <p className="text-neutral-500 text-md mt-8 md:text-center">
               {variant === "login"
-                ? "First time Using Movie Social? | "
-                : "Already have an account? | "}
+                ? "First time Using Movie Social?"
+                : "Already have an account?"}
               <button>
                 <span
                   onClick={toggleVariant}
                   className="text-white text-md ml-1 hover:underline cursor-pointer"
                 >
                   {variant === "login" ? "Create an account" : "Login"}
+                </span>
+                <span
+                  className="text-white text-md ml-1 hover:underline cursor-pointer"
+                  onClick={guestLogin}
+                >
+                  | Continue as guest
                 </span>
               </button>
             </p>
