@@ -1,6 +1,6 @@
 const tmdbDetailsFetcher = async (movieId: any) => {
   if (!movieId) {
-    console.clear();
+    return null;
   }
   try {
     const response = await fetch(
@@ -8,7 +8,7 @@ const tmdbDetailsFetcher = async (movieId: any) => {
     );
     return response.json();
   } catch (error) {
-    console.clear();
+    console.log(error);
   }
 };
 export default tmdbDetailsFetcher;

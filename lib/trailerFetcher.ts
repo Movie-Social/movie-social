@@ -1,6 +1,6 @@
 const trailerFetcher = async (tmdbId: string) => {
   if (!tmdbId) {
-    console.clear();
+    return null;
   }
   try {
     const response = await fetch(
@@ -8,7 +8,7 @@ const trailerFetcher = async (tmdbId: string) => {
     );
     return response.json();
   } catch (error) {
-    console.clear();
+    console.log(error);
   }
 };
 export default trailerFetcher;
