@@ -1,7 +1,6 @@
 import Image from "next/image";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { useEffect, useMemo, useState } from "react";
-import { BiUserCircle } from "react-icons/bi";
 import { BsFillStarFill } from "react-icons/bs";
 import SubmitReviewButton from "./SubmitReviewButton";
 import feedback from "../public/images/feedback.png";
@@ -24,7 +23,6 @@ const Reviewform: React.FC<ReviewProps> = ({
   const [hoverRating, setHoverRating] = useState(0);
   const [review, setReview] = useState("");
   const [reviewed, setReviewed] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const allReviews = useAllReviews();
 
   useEffect(() => {
@@ -94,47 +92,28 @@ const Reviewform: React.FC<ReviewProps> = ({
             thank you
           </p>
         </div>
-      ) : !submitted ? (
-        <section className="flex flex-row justify-between items-center">
-          <div className="flex flex-row justify-center items-center">
-            <BiUserCircle size={30} />
-            <p className="text-white ">{currentUser?.name}</p>
-          </div>
-          <div className="flex flex-row">{starRating}</div>
-        </section>
-      ) : null}
-      {reviewed ? null : !submitted ? (
-        <input
-          type="text"
-          placeholder="What did you think of the movie? (optional)"
-          value={review}
-          onChange={handleChange}
-          className="w-full h-3/5 lg:h-[90%] text-center md:text-xl lg:text-xl text-black my-3 rounded-md"
-        />
       ) : (
-        <div className="flex flex-col items-center justify-around w-full h-4/5 lg:h-[80%] text-center md:text-xl lg:text-xl text-black my-3 rounded-md border border-yellow-300">
-          <Image
-            src={feedback}
-            alt="symbol to show movie has been reviewed"
-            width={100}
-            height={100}
+        <>
+          <input
+            type="text"
+            placeholder="What did you think of the movie? (optional)"
+            value={review}
+            onChange={handleChange}
+            className="w-full h-3/5 lg:h-[90%] text-center md:text-xl lg:text-xl text-black my-3 rounded-md"
           />
-          <p className="text-white">Thank you for your review,</p>
-          <p className="text-white">{currentUser?.name}!</p>
-        </div>
+
+          <div className="flex justify-center">
+            <SubmitReviewButton
+              userId={currentUser?.id}
+              rating={rating}
+              review={review}
+              title={title}
+              poster={poster}
+              usersName={currentUser?.name}
+            />
+          </div>
+        </>
       )}
-      {reviewed ? null : !submitted ? (
-        <div className="flex justify-center" onClick={() => setSubmitted(true)}>
-          <SubmitReviewButton
-            userId={currentUser?.id}
-            rating={rating}
-            review={review}
-            title={title}
-            poster={poster}
-            usersName={currentUser?.name}
-          />
-        </div>
-      ) : null}
     </main>
   );
 };
