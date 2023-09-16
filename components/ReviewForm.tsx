@@ -30,11 +30,10 @@ const Reviewform: React.FC<ReviewProps> = ({
       if (!title || !allReviews?.data || !currentUser?.name) {
         return null;
       }
-
       const existingReview = await allReviews?.data
         .filter((review: any) => review.title === title)
         .filter((review: any) => review.usersName === currentUser?.name);
-
+      setReview("");
       if (existingReview.length > 0) {
         setReviewed(true);
       } else {
