@@ -1,6 +1,6 @@
 const tmdbDetailsFetcher = async (movieId: any) => {
   if (!movieId) {
-    console.clear();
+    return null;
   }
   try {
     const response = await fetch(

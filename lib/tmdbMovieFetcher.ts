@@ -1,4 +1,7 @@
 const tmdbMovieFetcher = async (searchWords: any) => {
+  if (!searchWords) {
+    return null;
+  }
   try {
     const response = await fetch(
       `https://api.themoviedb.org/3/search/movie?query=${searchWords

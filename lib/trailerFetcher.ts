@@ -1,6 +1,6 @@
 const trailerFetcher = async (tmdbId: string) => {
   if (!tmdbId) {
-    console.clear();
+    return null;
   }
   try {
     const response = await fetch(
