@@ -16,11 +16,11 @@ interface InfoModalProps {
 }
 
 const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
-  const [isVisible, setIsVisisble] = useState(!!visible);
+  const [isVisible, setIsVisisble] = useState<boolean>(!!visible);
   const { movieId } = useInfoModal();
   const { data = {}, isLoading } = useMovie(movieId);
   const [tmdb, setTmdb] = useState<tmdbProps>();
-  const [trailer, setTrailer] = useState();
+  const [trailer, setTrailer] = useState<string>();
 
   const router = useRouter();
 

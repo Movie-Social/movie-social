@@ -30,10 +30,10 @@ type Genre = {
 };
 
 const RestfulInfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
-  const [isVisible, setIsVisisble] = useState(!!visible);
+  const [isVisible, setIsVisisble] = useState<boolean>(!!visible);
   const { movieId } = useRestfulInfoModal();
   const [details, setDetails] = useState<DetailProps>();
-  const [trailer, setTrailer] = useState();
+  const [trailer, setTrailer] = useState<string>();
   const router = useRouter();
 
   useEffect(() => {
