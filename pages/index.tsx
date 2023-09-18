@@ -10,6 +10,7 @@ import useRestfulInfoModal from "@/hooks/useRestfulInfoModal";
 import useMovieList from "@/hooks/useMovieList";
 import { NextPageContext } from "next";
 import { getSession } from "next-auth/react";
+import Footer from "@/components/Footer";
 
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
@@ -50,6 +51,7 @@ const Home = () => {
         <MovieList title="Action" data={movies} />
         <MovieList title="Horror" data={movies} />
         <RestfulMovieList title="Top Rated" />
+        <Footer />
       </section>
     </main>
   );
