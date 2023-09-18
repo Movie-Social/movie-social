@@ -169,7 +169,7 @@ const Error = () => {
                 </button>
               </div>
             </nav>
-            <p className="text-neutral-500 text-md mt-8 md:text-center">
+            <p className="text-neutral-500 text-md mt-8 text-center">
               {variant === "login"
                 ? "First time Using Movie Social?"
                 : "Already have an account?"}
