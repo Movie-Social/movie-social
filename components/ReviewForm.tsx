@@ -20,9 +20,9 @@ const Reviewform: React.FC<ReviewProps> = ({
   poster,
 }) => {
   const { data: currentUser } = useCurrentUser();
-  const [hoverRating, setHoverRating] = useState(0);
-  const [review, setReview] = useState("");
-  const [reviewed, setReviewed] = useState(false);
+  const [hoverRating, setHoverRating] = useState<number>(0);
+  const [review, setReview] = useState<string>("");
+  const [reviewed, setReviewed] = useState<boolean>(false);
   const allReviews = useAllReviews();
 
   useEffect(() => {

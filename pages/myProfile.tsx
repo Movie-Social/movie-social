@@ -34,7 +34,7 @@ const MyProfile = () => {
   const { data: faves } = useFavorites();
   const { data: watchlist } = useWatchlist();
   const { data: reviews } = useReviews();
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState<string>("");
   const router = useRouter();
 
   useEffect(() => {
