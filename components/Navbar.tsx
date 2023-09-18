@@ -14,10 +14,10 @@ import tmdbMovieFetcher from "@/lib/tmdbMovieFetcher";
 const TOP_OFFSET = 66;
 
 const Navbar = () => {
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const [showAccountMenu, setShowAccountMenu] = useState(false);
-  const [showBackground, setShowBackground] = useState(false);
-  const [searchTerms, setSearchTerms] = useState("");
+  const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
+  const [showAccountMenu, setShowAccountMenu] = useState<boolean>(false);
+  const [showBackground, setShowBackground] = useState<boolean>(false);
+  const [searchTerms, setSearchTerms] = useState<string>("");
   const [typing, setTyping] = useState<boolean>(false);
   const [tmdb, setTmdb] = useState();
 

@@ -9,10 +9,10 @@ import { FaGithub } from "react-icons/fa";
 import Head from "next/head";
 
 const Error = () => {
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [variant, setVariant] = useState("login");
+  const [email, setEmail] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [variant, setVariant] = useState<string>("login");
   const router = useRouter();
   const toggleVariant = () => {
     setVariant((currentVariant) =>
