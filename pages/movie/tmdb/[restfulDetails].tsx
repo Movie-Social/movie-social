@@ -71,11 +71,11 @@ export async function getServerSideProps(context: NextPageContext) {
 const RestfulMovieDetails = () => {
   const [tmdb, setTmdb] = useState<tmdbProps>();
   const [omdb, setOmdb] = useState<omdbProps>();
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState<number>(0);
   const router = useRouter();
   const movieId = router.query.restfulDetails;
   const allReviews = useAllReviews();
-  const [trailer, setTrailer] = useState("");
+  const [trailer, setTrailer] = useState<string>("");
 
   useEffect(() => {
     const fetchTmdb = async () => {

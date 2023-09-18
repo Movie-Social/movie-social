@@ -51,12 +51,12 @@ const MovieDetails = () => {
   const router = useRouter();
   const movieId = router.query.movieDetails;
   const { data } = useMovie(movieId as string);
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState<number>(0);
   const allReviews = useAllReviews();
   const [tmdb, setTmdb] = useState<tmdbProps>();
   const [omdb, setOmdb] = useState<omdbProps>();
   const [details, setDetails] = useState<tmdbProps>();
-  const [trailer, setTrailer] = useState("");
+  const [trailer, setTrailer] = useState<string>("");
   useEffect(() => {
     const fetchTmdb = async () => {
       data?.title;
