@@ -6,6 +6,7 @@ import WatchlistButton from "./WatchlistButton";
 import Image from "next/image";
 import loady from "../public/images/imgLoad.gif";
 import tmdbMovieFetcher from "@/lib/tmdbMovieFetcher";
+import { tmdbProps } from "@/pages/movie/tmdb/[restfulDetails]";
 
 interface MovieCardProps {
   data: Record<string, any>;
@@ -13,7 +14,7 @@ interface MovieCardProps {
 
 const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
   const router = useRouter();
-  const [tmdb, setTmdb] = useState("");
+  const [tmdb, setTmdb] = useState<tmdbProps>();
   useEffect(() => {
     const fetchTmdb = async () => {
       const tmdbDetails = await tmdbMovieFetcher(data?.title);

@@ -4,13 +4,14 @@ import { Slide } from "react-slideshow-image";
 import tmdbFetcher from "@/lib/tmdbFetcher";
 import RestfulMovieCard from "./RestfulMovieCard";
 import { BiSkipNext, BiSkipPrevious } from "react-icons/bi";
+import { tmdbProps } from "@/pages/movie/tmdb/[restfulDetails]";
 
 interface RestfulMovieListProps {
   title: string;
 }
 
 const RestfulMovieList: React.FC<RestfulMovieListProps> = ({ title }) => {
-  const [tmdbList, setTmdbList] = useState([]);
+  const [tmdbList, setTmdbList] = useState<tmdbProps[]>([]);
   const [currents, setCurrents] = useState<any>();
 
   useEffect(() => {

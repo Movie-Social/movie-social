@@ -10,6 +10,7 @@ import MobileMenu from "./MobileMenu";
 import NavbarItem from "./NavbarItem";
 import AccountMenu from "./AccountMenu";
 import tmdbMovieFetcher from "@/lib/tmdbMovieFetcher";
+import { tmdbProps } from "@/pages/movie/tmdb/[restfulDetails]";
 
 const TOP_OFFSET = 66;
 
@@ -19,7 +20,7 @@ const Navbar = () => {
   const [showBackground, setShowBackground] = useState<boolean>(false);
   const [searchTerms, setSearchTerms] = useState<string>("");
   const [typing, setTyping] = useState<boolean>(false);
-  const [tmdb, setTmdb] = useState();
+  const [tmdb, setTmdb] = useState<tmdbProps>();
 
   const router = useRouter();
 
