@@ -121,7 +121,7 @@ const Navbar = () => {
         </section>
         <section className="flex flex-row content-center gap-6 ml-auto">
           {/* //* Future Additions */}
-          <div className="relative flex flex-row items-center text-white hover:text-yellow-300 cursor-pointer transition duration-700">
+          <div className="relative flex flex-row items-center text-white hover:text-yellow-300 cursor-pointer transition duration-700 ml-3">
             {typing ? (
               <div className="transition ease-in-out">
                 <input
