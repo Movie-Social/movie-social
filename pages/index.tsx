@@ -51,7 +51,7 @@ const Home = () => {
         <MovieList title="Action" data={movies} />
         <MovieList title="Horror" data={movies} />
         <RestfulMovieList title="Top Rated" />
-        <Footer />
+        {/* <Footer /> */}
       </section>
     </main>
   );
